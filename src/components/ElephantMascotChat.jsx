@@ -69,11 +69,29 @@ export default function ElephantMascotChat({ onNavigate }) {
     setMessages(prev => [...prev, { sender: 'user', text: userText }])
     setIsLoading(true)
 
-    // Check OpenRouter API key first
-    const key = apiKey.trim() || localStorage.getItem('openrouter_key')
+    // Check OpenRouter API key first (supports env var, state, or localStorage)
+    const key = apiKey.trim() || import.meta.env.VITE_OPENROUTER_API_KEY || localStorage.getItem('openrouter_key')
 
     if (key) {
       try {
+        const fullKnowledgeContext = `
+You are Gaja, the regal, intelligent, articulate, and welcoming 3D elephant mascot of YUKTI ’27.
+YUKTI ’27 is South India's premier national management & cultural confluence hosted by Thiagarajar School of Management (TSM), Madurai.
+
+CRITICAL INSTRUCTIONS & CONSTRAINTS:
+1. NEVER mention the phrase "ai + human touch". Focus on strategic intelligence, leadership, grandeur, and excellence.
+2. The GRAND PRIZE POOL is ₹20,00,000 (Twenty Lakhs Rupees), distributed across all flagship management arenas and cultural spectacles along with national trophies.
+3. Event Dates: ${SITE_CONFIG.dates} at TSM Madurai (a 17-acre residential campus founded in 1962 by Karumuttu Thiagarajan Chettiar, NAAC A+ & NBA accredited).
+4. Management Arenas (8 Flagship Tracks):
+${MANAGEMENT_EVENTS.map(e => `   - ${e.title} (${e.domain}): Team: ${e.teamSize} | Fee: ${e.fee} | Prize: ${e.prizes} | Focus: ${e.shortDesc}`).join('\n')}
+5. Cultural Events (5 Tracks):
+${CULTURAL_EVENTS.map(c => `   - ${c.title} (${c.category}): Team: ${c.teamSize} | Fee: ${c.fee} | Prize: ${c.prizes} | Tagline: ${c.tagline}`).join('\n')}
+6. Registration & Payment:
+   - Participants register via the Registration Portal on the website.
+   - Fees start from ₹300 (individual) to ₹1,500 (group).
+   - Instant UPI QR code payment with local confirmation receipt generation.
+7. Keep answers structured, dignified, concise, and helpful. Use formatting (bullet points) where appropriate.
+`
         const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
           method: 'POST',
           headers: {
@@ -87,14 +105,12 @@ export default function ElephantMascotChat({ onNavigate }) {
             messages: [
               {
                 role: 'system',
-                content: `You are Gaja, the regal, articulate, and welcoming 3D elephant mascot of YUKTI ’27 — the flagship national management and cultural summit at Thiagarajar School of Management (TSM), Madurai.
-Key facts:
-- Grand Prize Pool: ₹20,00,000 (Twenty Lakhs)
-- Dates: February 19 - 21, 2027
-- 8 Management Events (The Last Knight, Optimize, Fintorum, DataVista, Emporia, Manav Prasth, BizThrive, Quorum Quest)
-- 5 Cultural Events (StyleVerse, Rhythm, Lens, Natya Kavya, Vox Populi)
-- Keep responses concise, enthusiastic, dignified, and helpful.`
+                content: fullKnowledgeContext
               },
+              ...messages.slice(-4).map(m => ({
+                role: m.sender === 'user' ? 'user' : 'assistant',
+                content: m.text
+              })),
               { role: 'user', content: userText }
             ]
           })
