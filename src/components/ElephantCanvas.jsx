@@ -13,15 +13,16 @@ export default function ElephantCanvas() {
     const container = mountRef.current
     if (!container) return
 
-    const width = 110
-    const height = 110
+    const size = 96
 
     const scene = new THREE.Scene()
-    const camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 50)
-    camera.position.set(0, 0.8, 4.6)
+    const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 50)
+    // Centered viewpoint framing the whole mascot
+    camera.position.set(0, 0.45, 4.4)
+    camera.lookAt(0, 0.35, 0)
 
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true })
-    renderer.setSize(width, height)
+    renderer.setSize(size, size)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     container.appendChild(renderer.domElement)
 
@@ -142,5 +143,17 @@ export default function ElephantCanvas() {
     }
   }, [])
 
-  return <div ref={mountRef} style={{ width: 110, height: 110, pointerEvents: 'none' }} />
+  return (
+    <div
+      ref={mountRef}
+      style={{
+        width: 96,
+        height: 96,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        pointerEvents: 'none',
+      }}
+    />
+  )
 }

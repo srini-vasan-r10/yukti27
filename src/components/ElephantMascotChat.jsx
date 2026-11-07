@@ -4,12 +4,14 @@ import { SITE_CONFIG, MANAGEMENT_EVENTS, CULTURAL_EVENTS } from '../utils/conflu
 
 export default function ElephantMascotChat({ onNavigate }) {
   const [isOpen, setIsOpen] = useState(false)
-  const [apiKey, setApiKey] = useState(() => localStorage.getItem('openrouter_key') || '')
+  const [apiKey, setApiKey] = useState(() => 
+    import.meta.env.VITE_GEMINI_API_KEY || localStorage.getItem('gemini_api_key') || ''
+  )
   const [showKeyInput, setShowKeyInput] = useState(false)
   const [messages, setMessages] = useState([
     {
       sender: 'bot',
-      text: `Vanakkam! I am Gaja, the official YUKTI ’27 AI mascot. Ask me anything about the ₹20,00,000 prize pool, management arenas, cultural spectacles, registration fees, or Thiagarajar School of Management!`
+      text: `Vanakkam! I am Gaja, the official YUKTI ’27 summit guide. Ask me anything about the ₹20,00,000 grand prize pool, management arenas, cultural spectacles, schedule, or TSM Madurai!`
     }
   ])
   const [inputVal, setInputVal] = useState('')
@@ -24,35 +26,40 @@ export default function ElephantMascotChat({ onNavigate }) {
 
   const handleSaveKey = (e) => {
     e.preventDefault()
-    localStorage.setItem('openrouter_key', apiKey.trim())
+    localStorage.setItem('gemini_api_key', apiKey.trim())
     setShowKeyInput(false)
   }
 
-  // Pre-baked smart fallback answers in case OpenRouter key isn't provided yet
+  // Pre-baked smart fallback knowledge base in case external API is not configured or fails
   const getKnowledgeResponse = (query) => {
     const q = query.toLowerCase()
-    if (q.includes('prize') || q.includes('money') || q.includes('cash') || q.includes('pool') || q.includes('20')) {
-      return `The cumulative grand prize bounty for YUKTI ’27 is a monumental ₹20,00,000 (Twenty Lakhs Rupees), distributed across all flagship management arenas and cultural competitions along with national rolling trophies!`
+    if (q.includes('prize') || q.includes('money') || q.includes('cash') || q.includes('pool') || q.includes('20') || q.includes('lakh')) {
+      return `The cumulative grand prize bounty for YUKTI ’27 is a monumental ₹20,00,000 (Twenty Lakhs Rupees), distributed across all flagship management arenas and cultural competitions along with rolling national trophies and shields!`
     }
-    if (q.includes('date') || q.includes('when') || q.includes('schedule')) {
+    if (q.includes('date') || q.includes('when') || q.includes('schedule') || q.includes('time')) {
       return `YUKTI ’27 is officially scheduled for ${SITE_CONFIG.dates} at the lush 17-acre residential campus of Thiagarajar School of Management (TSM), Madurai, Tamil Nadu.`
     }
     if (q.includes('management') || q.includes('events') || q.includes('arena') || q.includes('tracks')) {
-      return `We have 8 flagship management tracks: 
-1. The Last Knight (Best Manager - ₹2,50,000)
-2. Optimize (Operations & Supply Chain - ₹1,50,000)
-3. Fintorum (Finance & Quant - ₹1,50,000)
-4. DataVista (Business Analytics - ₹1,50,000)
-5. Emporia (Marketing & Brand - ₹1,50,000)
-6. Manav Prasth (HR & Leadership - ₹1,50,000)
-7. BizThrive: TerraPitch (Venture Inception - ₹2,00,000)
-8. Quorum Quest (Corporate Quiz & Auctions - ₹1,00,000).`
+      return `We have 8 flagship management tracks:\n` +
+        `1. The Last Knight (Best Manager - ₹2,50,000)\n` +
+        `2. Optimize (Operations & Supply Chain - ₹1,50,000)\n` +
+        `3. Fintorum (Finance & Investment - ₹1,50,000)\n` +
+        `4. DataVista (Business Analytics - ₹1,50,000)\n` +
+        `5. Emporia (Marketing & Brand - ₹1,50,000)\n` +
+        `6. Manav Prasth (HR & Leadership - ₹1,50,000)\n` +
+        `7. BizThrive: TerraPitch (Venture Inception - ₹2,00,000)\n` +
+        `8. Quorum Quest (Corporate Quiz & Auctions - ₹1,00,000).`
     }
-    if (q.includes('cultural') || q.includes('dance') || q.includes('music') || q.includes('fashion')) {
-      return `YUKTI's cultural confluences include StyleVerse (Haute Couture - ₹2,00,000), Rhythm (Battle of the Bands - ₹1,75,000), Natya Kavya (Thematic Dance - ₹1,50,000), Vox Populi (Street Theatre - ₹1,50,000), and Lens (Photojournalism - ₹1,00,000)!`
+    if (q.includes('cultural') || q.includes('dance') || q.includes('music') || q.includes('fashion') || q.includes('band')) {
+      return `YUKTI's cultural confluences include:\n` +
+        `• StyleVerse (Haute Couture Fashion - ₹2,00,000)\n` +
+        `• Rhythm (Battle of the Bands - ₹1,75,000)\n` +
+        `• Natya Kavya (Thematic Classical/Contemporary Dance - ₹1,50,000)\n` +
+        `• Vox Populi (Street Theatre - ₹1,50,000)\n` +
+        `• Lens (Photojournalism & Short Filmmaking - ₹1,00,000)!`
     }
-    if (q.includes('fee') || q.includes('cost') || q.includes('register') || q.includes('pay') || q.includes('qr')) {
-      return `You can register through our integrated Portal page! Delegate fees start from ₹300 for individual contests up to ₹1,500 for large cultural crews. You can generate a Priority Dossier and scan the instant UPI QR code to complete payment locally!`
+    if (q.includes('fee') || q.includes('cost') || q.includes('register') || q.includes('pay') || q.includes('qr') || q.includes('upi')) {
+      return `Registration is live through our Portal! Individual events start at ₹300–₹500, while group/contingent entries range from ₹750–₹1,500. You can submit team records, generate your verified registration docket, and complete payment via instant UPI QR code directly on the portal page.`
     }
     if (q.includes('tsm') || q.includes('thiagarajar') || q.includes('madurai') || q.includes('college')) {
       return `Thiagarajar School of Management (TSM) was founded in 1962 by industrialist & philanthropist Karumuttu Thiagarajan Chettiar in Madurai. It is NAAC A+ accredited, NBA accredited, and recognized as one of South India's premier B-schools.`
@@ -69,73 +76,74 @@ export default function ElephantMascotChat({ onNavigate }) {
     setMessages(prev => [...prev, { sender: 'user', text: userText }])
     setIsLoading(true)
 
-    // Check OpenRouter API key first (supports env var, state, or localStorage)
-    const key = apiKey.trim() || import.meta.env.VITE_OPENROUTER_API_KEY || localStorage.getItem('openrouter_key')
+    // Check Gemini API key first (supports VITE_GEMINI_API_KEY env or user-saved key)
+    const key = apiKey.trim() || import.meta.env.VITE_GEMINI_API_KEY || localStorage.getItem('gemini_api_key')
 
     if (key) {
       try {
-        const fullKnowledgeContext = `
+        const fullSystemContext = `
 You are Gaja, the regal, intelligent, articulate, and welcoming 3D elephant mascot of YUKTI ’27.
 YUKTI ’27 is South India's premier national management & cultural confluence hosted by Thiagarajar School of Management (TSM), Madurai.
 
-CRITICAL INSTRUCTIONS & CONSTRAINTS:
-1. NEVER mention the phrase "ai + human touch". Focus on strategic intelligence, leadership, grandeur, and excellence.
+CONSTRAINTS & RULES:
+1. NEVER mention the phrase "ai + human touch". Emphasize strategic intelligence, leadership, grandeur, and excellence.
 2. The GRAND PRIZE POOL is ₹20,00,000 (Twenty Lakhs Rupees), distributed across all flagship management arenas and cultural spectacles along with national trophies.
 3. Event Dates: ${SITE_CONFIG.dates} at TSM Madurai (a 17-acre residential campus founded in 1962 by Karumuttu Thiagarajan Chettiar, NAAC A+ & NBA accredited).
-4. Management Arenas (8 Flagship Tracks):
-${MANAGEMENT_EVENTS.map(e => `   - ${e.title} (${e.domain}): Team: ${e.teamSize} | Fee: ${e.fee} | Prize: ${e.prizes} | Focus: ${e.shortDesc}`).join('\n')}
+4. Management Arenas (8 Tracks):
+${MANAGEMENT_EVENTS.map(ev => `   - ${ev.title} (${ev.domain}): Team: ${ev.teamSize} | Fee: ${ev.fee} | Prize: ${ev.prizes} | Focus: ${ev.shortDesc}`).join('\n')}
 5. Cultural Events (5 Tracks):
 ${CULTURAL_EVENTS.map(c => `   - ${c.title} (${c.category}): Team: ${c.teamSize} | Fee: ${c.fee} | Prize: ${c.prizes} | Tagline: ${c.tagline}`).join('\n')}
 6. Registration & Payment:
    - Participants register via the Registration Portal on the website.
-   - Fees start from ₹300 (individual) to ₹1,500 (group).
+   - Fees range from ₹300 (individual) to ₹1,500 (group).
    - Instant UPI QR code payment with local confirmation receipt generation.
-7. Keep answers structured, dignified, concise, and helpful. Use formatting (bullet points) where appropriate.
+7. Keep answers structured, dignified, concise, and helpful.
 `
-        const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${key}`,
-            'HTTP-Referer': 'https://yukti27.tsm.ac.in',
-            'X-Title': 'YUKTI 27 Assistant'
-          },
-          body: JSON.stringify({
-            model: 'meta-llama/llama-3.2-3b-instruct:free',
-            messages: [
-              {
-                role: 'system',
-                content: fullKnowledgeContext
-              },
-              ...messages.slice(-4).map(m => ({
-                role: m.sender === 'user' ? 'user' : 'assistant',
-                content: m.text
-              })),
-              { role: 'user', content: userText }
-            ]
-          })
-        })
+        // Google AI Studio / Gemini API call
+        const response = await fetch(
+          `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${key}`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              contents: [
+                {
+                  role: 'user',
+                  parts: [
+                    { text: `[System Instruction: ${fullSystemContext}]\n\nUser Question: ${userText}` }
+                  ]
+                }
+              ],
+              generationConfig: {
+                temperature: 0.7,
+                maxOutputTokens: 350,
+              }
+            })
+          }
+        )
 
         const data = await response.json()
-        if (data.choices && data.choices[0]?.message?.content) {
-          const reply = data.choices[0].message.content
-          setMessages(prev => [...prev, { sender: 'bot', text: reply }])
+        const candidate = data.candidates?.[0]?.content?.parts?.[0]?.text
+        if (candidate) {
+          setMessages(prev => [...prev, { sender: 'bot', text: candidate }])
           setIsLoading(false)
           return
         }
       } catch (err) {
-        console.warn('OpenRouter call error, falling back to local knowledge base:', err)
+        console.warn('Gemini API call error, falling back to local knowledge base:', err)
       }
     }
 
-    // Fast Intelligent Knowledge Response (Instant & Free)
+    // Fast Intelligent Knowledge Response (Instant Fallback)
     setTimeout(() => {
       const localAnswer = getKnowledgeResponse(userText) || 
-        `I am happy to guide you! YUKTI ’27 features a massive ₹20,00,000 prize pool across 8 Management Arenas and 5 Cultural Events at TSM Madurai. Click the navigation tabs or the Registration Portal to explore full rulebooks and instant payment options!`
+        `I am happy to guide you! YUKTI ’27 features a monumental ₹20,00,000 grand prize pool across 8 Management Arenas and 5 Cultural Events at TSM Madurai. Click the navigation tabs or the Registration Portal to explore full rulebooks and instant payment options!`
 
       setMessages(prev => [...prev, { sender: 'bot', text: localAnswer }])
       setIsLoading(false)
-    }, 450)
+    }, 350)
   }
 
   return (
@@ -168,13 +176,13 @@ ${CULTURAL_EVENTS.map(c => `   - ${c.title} (${c.category}): Team: ${c.teamSize}
               <span className="mascot-avatar-dot" />
               <div>
                 <h4>Gaja · YUKTI ’27 AI Guide</h4>
-                <small className="mono">Free Llama 3.2 / TSM Knowledge Core</small>
+                <small className="mono">TSM Knowledge Core · Interactive Guide</small>
               </div>
             </div>
             <div className="header-actions">
               <button
                 className="key-config-btn"
-                title="Configure OpenRouter Key"
+                title="Configure Studio Key"
                 onClick={() => setShowKeyInput(!showKeyInput)}
               >
                 ⚙
@@ -185,18 +193,18 @@ ${CULTURAL_EVENTS.map(c => `   - ${c.title} (${c.category}): Team: ${c.teamSize}
             </div>
           </div>
 
-          {/* Optional OpenRouter Key Configuration Bar */}
+          {/* Optional Google Studio API Key Configuration Drawer */}
           {showKeyInput && (
             <form onSubmit={handleSaveKey} className="key-input-drawer">
-              <label className="mono" style={{ fontSize: '0.65rem', color: '#e9c878' }}>
-                OpenRouter API Key (Optional — Free Llama / DeepSeek):
+              <label className="mono" style={{ fontSize: '0.65rem', color: 'var(--gold)' }}>
+                Google AI Studio Key (Optional):
               </label>
               <div style={{ display: 'flex', gap: '8px', marginTop: '4px' }}>
                 <input
                   type="password"
                   value={apiKey}
                   onChange={(e) => setApiKey(e.target.value)}
-                  placeholder="sk-or-v1-..."
+                  placeholder="AIzaSy..."
                   className="key-input-field"
                 />
                 <button type="submit" className="btn" style={{ padding: '6px 12px', fontSize: '0.72rem' }}>
@@ -204,7 +212,7 @@ ${CULTURAL_EVENTS.map(c => `   - ${c.title} (${c.category}): Team: ${c.teamSize}
                 </button>
               </div>
               <small style={{ color: '#94a3b8', fontSize: '0.65rem' }}>
-                If empty, Gaja uses the instant embedded YUKTI summit database.
+                If empty, Gaja uses the instant embedded YUKTI summit knowledge core.
               </small>
             </form>
           )}
@@ -249,11 +257,11 @@ ${CULTURAL_EVENTS.map(c => `   - ${c.title} (${c.category}): Team: ${c.teamSize}
               type="text"
               value={inputVal}
               onChange={(e) => setInputVal(e.target.value)}
-              placeholder="Ask about events, rules, fees..."
+              placeholder="Ask Gaja about YUKTI ’27..."
               className="chat-text-input"
             />
             <button type="submit" className="chat-send-btn" disabled={!inputVal.trim() || isLoading}>
-              ➤
+              ↗
             </button>
           </form>
         </div>

@@ -62,90 +62,110 @@ export default function App() {
 
       scene = new THREE.Scene()
       camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100)
-      camera.position.set(0, 0.2, 10.5)
-
-      group = new THREE.Group()
-      scene.add(group)
+      camera.position.set(0, 0, 11)
 
       const goldMat = new THREE.MeshStandardMaterial({
         color: 0xe9c878,
         metalness: 0.88,
-        roughness: 0.18,
+        roughness: 0.2,
         emissive: 0x8a5e20,
         emissiveIntensity: 0.35,
       })
       const cyberMat = new THREE.MeshStandardMaterial({
         color: 0x38bdf8,
-        metalness: 0.8,
+        metalness: 0.85,
         roughness: 0.25,
         emissive: 0x0284c7,
         emissiveIntensity: 0.45,
       })
+      const violetMat = new THREE.MeshStandardMaterial({
+        color: 0xa855f7,
+        metalness: 0.8,
+        roughness: 0.28,
+        emissive: 0x6b21a8,
+        emissiveIntensity: 0.4,
+      })
+      const wireMat = new THREE.MeshBasicMaterial({
+        color: 0x38bdf8,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.55,
+      })
 
-      // Dual Nested Icosahedron Core
-      core = new THREE.Mesh(new THREE.IcosahedronGeometry(1.35, 2), goldMat)
-      group.add(core)
+      // Multi-Floating Geometric Clusters distributed across full screen
+      const shapes = []
 
-      const innerWire = new THREE.Mesh(
-        new THREE.IcosahedronGeometry(1.0, 1),
-        new THREE.MeshBasicMaterial({ color: 0x38bdf8, wireframe: true, transparent: true, opacity: 0.85 })
-      )
-      core.add(innerWire)
+      // 1. Spinning Pyramids (Tetrahedrons)
+      const pyramid1 = new THREE.Mesh(new THREE.TetrahedronGeometry(1.25, 0), goldMat)
+      pyramid1.position.set(-4.5, 2.2, -1.5)
+      scene.add(pyramid1)
+      shapes.push({ mesh: pyramid1, rotX: 0.008, rotY: 0.012, rotZ: 0.005, orbitR: 4.8, orbitY: 2.2, speed: 0.0004, phase: 0 })
 
-      // Orbital Rings
+      const pyramid2 = new THREE.Mesh(new THREE.ConeGeometry(0.9, 1.6, 4), violetMat)
+      pyramid2.position.set(3.8, -2.6, -1.0)
+      scene.add(pyramid2)
+      shapes.push({ mesh: pyramid2, rotX: -0.009, rotY: 0.014, rotZ: 0.006, orbitR: 4.2, orbitY: -2.6, speed: -0.00035, phase: 2 })
+
+      // 2. Spinning Cubes (Box Geometries with Wireframe Nested Core)
+      const cube1 = new THREE.Mesh(new THREE.BoxGeometry(1.4, 1.4, 1.4), cyberMat)
+      cube1.position.set(-4.2, -2.4, -0.8)
+      const cube1Wire = new THREE.Mesh(new THREE.BoxGeometry(1.7, 1.7, 1.7), wireMat)
+      cube1.add(cube1Wire)
+      scene.add(cube1)
+      shapes.push({ mesh: cube1, rotX: 0.01, rotY: -0.011, rotZ: 0.007, orbitR: 4.5, orbitY: -2.4, speed: 0.0003, phase: 3.5 })
+
+      const cube2 = new THREE.Mesh(new THREE.BoxGeometry(1.1, 1.1, 1.1), goldMat)
+      cube2.position.set(4.6, 2.8, -2.0)
+      scene.add(cube2)
+      shapes.push({ mesh: cube2, rotX: -0.012, rotY: 0.008, rotZ: -0.006, orbitR: 5.0, orbitY: 2.8, speed: -0.00045, phase: 1.2 })
+
+      // 3. Spinning Spheres / Balls (Icosahedrons & Smooth Spheres)
+      const ball1 = new THREE.Mesh(new THREE.IcosahedronGeometry(1.1, 2), goldMat)
+      ball1.position.set(-1.8, -3.2, 0)
+      const ballRing = new THREE.Mesh(new THREE.TorusGeometry(1.6, 0.02, 8, 80), wireMat)
+      ballRing.rotation.x = Math.PI / 3
+      ball1.add(ballRing)
+      scene.add(ball1)
+      shapes.push({ mesh: ball1, rotX: 0.006, rotY: 0.015, rotZ: 0.009, orbitR: 2.5, orbitY: -3.2, speed: 0.0005, phase: 4.8 })
+
+      const ball2 = new THREE.Mesh(new THREE.SphereGeometry(0.85, 24, 24), cyberMat)
+      ball2.position.set(-2.2, 3.4, -1.2)
+      scene.add(ball2)
+      shapes.push({ mesh: ball2, rotX: 0.014, rotY: 0.008, rotZ: -0.005, orbitR: 3.0, orbitY: 3.4, speed: -0.0004, phase: 2.8 })
+
+      const ball3 = new THREE.Mesh(new THREE.DodecahedronGeometry(0.95, 0), violetMat)
+      ball3.position.set(2.0, -3.5, -1.5)
+      scene.add(ball3)
+      shapes.push({ mesh: ball3, rotX: -0.008, rotY: -0.012, rotZ: 0.01, orbitR: 2.8, orbitY: -3.5, speed: 0.00035, phase: 5.6 })
+
+      // 4. Center-Right Ambient Kinetic Geometries (filling back of hero & page)
+      const midOcta = new THREE.Mesh(new THREE.OctahedronGeometry(1.3, 0), goldMat)
+      midOcta.position.set(-0.2, 0.5, -2.5)
+      scene.add(midOcta)
+      shapes.push({ mesh: midOcta, rotX: 0.005, rotY: 0.009, rotZ: 0.004, orbitR: 1.2, orbitY: 0.5, speed: 0.0002, phase: 0 })
+
+      // Ambient Kinetic Orbital Rings
       ringA = new THREE.Mesh(
-        new THREE.TorusGeometry(2.2, 0.016, 12, 160),
-        new THREE.MeshStandardMaterial({ color: 0xe9c878, metalness: 0.9, roughness: 0.2, transparent: true, opacity: 0.85 })
+        new THREE.TorusGeometry(3.5, 0.018, 12, 160),
+        new THREE.MeshStandardMaterial({ color: 0xe9c878, metalness: 0.9, roughness: 0.2, transparent: true, opacity: 0.65 })
       )
-      ringA.rotation.x = 1.1
-      group.add(ringA)
+      ringA.position.set(-1.0, 0, -2)
+      ringA.rotation.set(0.8, 0.3, 0)
+      scene.add(ringA)
 
       ringB = new THREE.Mesh(
-        new THREE.TorusGeometry(2.8, 0.012, 12, 180),
-        new THREE.MeshStandardMaterial({ color: 0x38bdf8, metalness: 0.8, roughness: 0.3, transparent: true, opacity: 0.75 })
+        new THREE.TorusGeometry(4.2, 0.014, 12, 180),
+        new THREE.MeshStandardMaterial({ color: 0x38bdf8, metalness: 0.8, roughness: 0.3, transparent: true, opacity: 0.55 })
       )
-      ringB.rotation.set(0.6, 0.4, 0.2)
-      group.add(ringB)
-
-      ringC = new THREE.Mesh(
-        new THREE.TorusGeometry(3.3, 0.01, 12, 180),
-        new THREE.MeshStandardMaterial({ color: 0xe9c878, metalness: 0.8, roughness: 0.2, transparent: true, opacity: 0.6 })
-      )
-      ringC.rotation.set(-0.4, 0.7, -0.3)
-      group.add(ringC)
-
-      // 8 Satellite Cognitive Nodes
-      for (let i = 0; i < 8; i++) {
-        const a = (i / 8) * Math.PI * 2
-        const mat = i % 2 === 0 ? goldMat : cyberMat
-        const node = new THREE.Mesh(
-          new THREE.OctahedronGeometry(0.13 + (i % 3) * 0.025, 0),
-          mat
-        )
-        node.position.set(Math.cos(a) * 2.8, Math.sin(a) * 1.8, Math.sin(a * 2) * 0.6)
-        group.add(node)
-
-        const lineGeo = new THREE.BufferGeometry().setFromPoints([
-          new THREE.Vector3(0, 0, 0),
-          node.position.clone(),
-        ])
-        const line = new THREE.Line(
-          lineGeo,
-          new THREE.LineBasicMaterial({
-            color: i % 2 ? 0x38bdf8 : 0xe9c878,
-            transparent: true,
-            opacity: 0.35
-          })
-        )
-        group.add(line)
-        stars.push({ node, a })
-      }
+      ringB.position.set(1.2, -0.5, -2.5)
+      ringB.rotation.set(-0.5, 0.6, 0.2)
+      scene.add(ringB)
 
       // Star Field
       const starCount = 1400
       const pos = new Float32Array(starCount * 3)
       for (let i = 0; i < starCount; i++) {
-        const r = 5 + Math.random() * 18
+        const r = 5 + Math.random() * 20
         const theta = Math.random() * Math.PI * 2
         const phi = Math.acos(2 * Math.random() - 1)
         pos[i * 3] = r * Math.sin(phi) * Math.cos(theta)
@@ -161,14 +181,18 @@ export default function App() {
       scene.add(particles)
 
       // Lighting
-      scene.add(new THREE.AmbientLight(0x312e81, 1.8))
-      const keyLight = new THREE.PointLight(0xe9c878, 40, 35)
-      keyLight.position.set(4, 5, 6)
+      scene.add(new THREE.AmbientLight(0x312e81, 2.0))
+      const keyLight = new THREE.PointLight(0xe9c878, 45, 40)
+      keyLight.position.set(5, 5, 8)
       scene.add(keyLight)
 
-      const rimLight = new THREE.PointLight(0x38bdf8, 28, 30)
-      rimLight.position.set(-6, -3, 3)
+      const rimLight = new THREE.PointLight(0x38bdf8, 35, 35)
+      rimLight.position.set(-6, -4, 5)
       scene.add(rimLight)
+
+      const violetLight = new THREE.PointLight(0xa855f7, 30, 35)
+      violetLight.position.set(0, -6, 4)
+      scene.add(violetLight)
 
       const handleResize = () => {
         renderer.setSize(window.innerWidth, window.innerHeight, false)
@@ -177,8 +201,6 @@ export default function App() {
       }
       window.addEventListener('resize', handleResize)
 
-      let currentGlobeX = -2.8
-      let currentGlobeY = 0
       let animId
 
       const render = (t) => {
@@ -187,38 +209,31 @@ export default function App() {
         scrollVelocity += (targetVelocity - scrollVelocity) * 0.15
         targetVelocity *= 0.88
 
-        const rotDelta = 0.005 + (scrollVelocity * 0.08)
+        const rotMultiplier = 1 + Math.abs(scrollVelocity * 2.5)
 
-        const isMobile = window.innerWidth <= 850
-        const targetX = isMobile ? 0 : -2.8
-        const targetY = isMobile ? 0.6 : 0
-        currentGlobeX += (targetX - currentGlobeX) * 0.08
-        currentGlobeY += (targetY - currentGlobeY) * 0.08
-        group.position.x = currentGlobeX
-        group.position.y = currentGlobeY
-
-        camera.position.x += (mouseX * 0.25 - camera.position.x) * 0.04
-        camera.position.y += (-mouseY * 0.2 - camera.position.y) * 0.04
+        camera.position.x += (mouseX * 0.35 - camera.position.x) * 0.04
+        camera.position.y += (-mouseY * 0.25 - camera.position.y) * 0.04
         camera.lookAt(0, 0, 0)
 
-        group.rotation.y += rotDelta * 0.8
-        group.rotation.x += rotDelta * 0.25
+        // Rotate and orbit all geometric primitives across the page
+        shapes.forEach((item) => {
+          item.mesh.rotation.x += item.rotX * rotMultiplier
+          item.mesh.rotation.y += item.rotY * rotMultiplier
+          item.mesh.rotation.z += item.rotZ * rotMultiplier
 
-        core.rotation.y += rotDelta * 1.2
-        core.rotation.x += rotDelta * 0.7
-
-        ringA.rotation.z -= rotDelta * 1.4
-        ringB.rotation.y += rotDelta * 1.1
-        ringC.rotation.x -= rotDelta * 0.9
-
-        const time = t * 0.0003
-        stars.forEach((s, i) => {
-          s.node.position.x = Math.cos(s.a + time * 0.25) * 2.8
-          s.node.position.y = Math.sin(s.a + time * 0.25) * 1.8
-          s.node.rotation.x += rotDelta * (i % 2 ? 1 : -1)
+          // Gentle floating sine motion
+          const orbitTime = t * item.speed + item.phase
+          item.mesh.position.y = item.orbitY + Math.sin(orbitTime * 2.5) * 0.35
+          item.mesh.position.x += Math.cos(orbitTime * 1.8) * 0.003
         })
 
-        particles.rotation.y += rotDelta * 0.15
+        ringA.rotation.z -= 0.003 * rotMultiplier
+        ringA.rotation.x += 0.001 * rotMultiplier
+
+        ringB.rotation.y += 0.004 * rotMultiplier
+        ringB.rotation.z += 0.002 * rotMultiplier
+
+        particles.rotation.y += 0.0006 * rotMultiplier
         renderer.render(scene, camera)
       }
       render(0)
@@ -346,7 +361,7 @@ export default function App() {
                 Thiagarajar School of Management (TSM) · Madurai
               </div>
 
-              <h1>YUKTI<br /><em>’27</em></h1>
+              <h1 className="hero-single-line">YUKTI ’27</h1>
 
               <div className="theme-headline-badge mono">
                 The Strategic Confluence · National Summit
