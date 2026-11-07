@@ -190,15 +190,19 @@ h1 em{font-style:normal;color:var(--gold);text-shadow:0 0 45px rgba(245,158,11,.
 }
 .prize-sum-display{
   font-family:'Space Grotesk',sans-serif;
-  font-size:clamp(3.2rem,6.2vw,5.2rem);
+  font-size:clamp(2.1rem,4.5vw,3.8rem);
   font-weight:800;
-  letter-spacing:-0.03em;
-  line-height:1;
+  letter-spacing:-0.02em;
+  line-height:1.1;
   background:linear-gradient(135deg, #ffffff 0%, #fbbf24 45%, #f59e0b 100%);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   margin:10px 0 12px;
   text-shadow:0 10px 30px rgba(245,158,11,0.3);
+  word-break:keep-all;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 .prize-caption{
   margin:0;
@@ -968,13 +972,34 @@ footer{padding:45px 7vw;border-top:1px solid var(--line);display:flex;justify-co
 .mgmt-card-footer{
   display:flex;
   justify-content:space-between;
-  align-items:center;
+  align-items:flex-end;
   border-top:1px solid var(--line);
-  padding-top:16px;
-  margin-top:10px;
+  padding-top:18px;
+  margin-top:14px;
+  gap:12px;
 }
-.meta-col{display:flex;flex-direction:column;gap:3px}
-.meta-label{font-size:.68rem;color:var(--muted);text-transform:uppercase;font-family:'DM Mono',monospace}
+.meta-col{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  min-width:0;
+}
+.meta-col strong{
+  font-size:.92rem;
+  line-height:1.2;
+}
+.actions-col{
+  flex-shrink:0;
+}
+.actions-col .btn,
+.cult-footer .btn{
+  padding:10px 18px;
+  font-size:.76rem;
+  white-space:nowrap;
+  border-radius:999px;
+  height:auto;
+  min-height:unset;
+}
 
 /* Cultural Cards Grid */
 .cultural-cards-grid{
