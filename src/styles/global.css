@@ -401,17 +401,22 @@ footer{padding:45px 7vw;border-top:1px solid var(--line);display:flex;justify-co
   cursor:pointer;
   backdrop-filter:blur(16px);
   animation:cue 2s infinite ease-in-out;
+  white-space:nowrap;
+  max-width:max-content;
 }
 .mascot-speech-bubble p{
   margin:2px 0 0;
   font-size:.76rem;
   color:#ffffff;
   font-weight:600;
+  white-space:nowrap;
 }
 .speech-badge{
   font-size:.6rem;
   color:var(--gold);
   display:block;
+  white-space:nowrap;
+  letter-spacing:.12em;
 }
 
 .mascot-btn{
@@ -1117,11 +1122,37 @@ footer{padding:45px 7vw;border-top:1px solid var(--line);display:flex;justify-co
   .subpage-quick-stats{grid-template-columns:1fr;gap:15px}
   .subpage-cta-banner{flex-direction:column;align-items:flex-start}
 
-  .mascot-dock{right:16px;bottom:16px}
-  .mascot-chat-window{right:0;width:calc(100vw - 32px);height:480px}
+  .mascot-dock{
+    right:16px;
+    bottom:60px; /* Elevated above Netlify badge */
+  }
+  .mascot-speech-bubble{
+    display:none !important; /* Hide speech bubble on mobile phones */
+  }
+  .mascot-btn{
+    width:76px;
+    height:76px;
+  }
+  .mascot-chat-window{
+    right:0;
+    bottom:90px;
+    width:calc(100vw - 32px);
+    height:460px;
+  }
 }
 
 @media(max-width:550px){
+  .mascot-dock{
+    right:12px;
+    bottom:62px;
+  }
+  .mascot-speech-bubble{
+    display:none !important;
+  }
+  .mascot-btn{
+    width:68px;
+    height:68px;
+  }
   h1{font-size:clamp(3.8rem,18vw,5.5rem)}
   .timeline{grid-template-columns:1fr}
   footer{flex-direction:column;text-align:center;gap:15px}
