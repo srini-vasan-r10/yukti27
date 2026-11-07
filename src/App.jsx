@@ -262,8 +262,12 @@ export default function App() {
       {/* ── Header ───────────────────────────────────────────── */}
       <header className="topbar">
         <a className="brand" href="#home" onClick={(e) => { e.preventDefault(); navigateTo('home') }}>
-          <span className="brandmark"><span>Y</span></span>
-          <span>YUKTI <span className="gold">’27</span></span>
+          <img
+            src="/yukti-logo.png"
+            alt="YUKTI ’27 Logo"
+            className="brand-logo-img"
+          />
+          <span className="brand-text">YUKTI <span className="gold">’27</span></span>
         </a>
 
         {/* Desktop Nav */}

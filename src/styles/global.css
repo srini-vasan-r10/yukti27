@@ -33,10 +33,27 @@ button,a,.btn{cursor:pointer}
 }
 
 /* ─── Topbar & Nav ───────────────────────────────────────────── */
-.topbar{position:fixed;z-index:100;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:16px 5vw;border-bottom:1px solid var(--line);background:linear-gradient(#070310fa,#070310b0);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
-.brand{display:flex;gap:12px;align-items:center;font-weight:800;letter-spacing:.12em}
-.brandmark{width:32px;height:32px;border:1px solid var(--gold);transform:rotate(45deg);display:grid;place-items:center;background:rgba(245,158,11,0.08)}
-.brandmark span{transform:rotate(-45deg);color:var(--gold);font-size:.72rem;font-weight:800}
+.topbar{position:fixed;z-index:100;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:14px 5vw;border-bottom:1px solid var(--line);background:linear-gradient(#070310fa,#070310b0);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
+.brand{display:flex;gap:12px;align-items:center;font-weight:800;letter-spacing:.08em}
+.brand-logo-img{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  object-fit:cover;
+  display:block;
+  box-shadow:0 0 16px rgba(245,158,11,0.35);
+  border:1.5px solid var(--gold);
+  transition:transform .3s ease;
+}
+.brand:hover .brand-logo-img{
+  transform:scale(1.08) rotate(4deg);
+}
+.brand-text{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:1.15rem;
+  letter-spacing:.05em;
+  font-weight:700;
+}
 .nav{display:flex;align-items:center;gap:24px;font-size:.82rem;color:#cbd5e1}
 .nav a{transition:color .25s ease;position:relative}
 .nav a:hover{color:var(--gold)}
