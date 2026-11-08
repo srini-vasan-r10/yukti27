@@ -674,12 +674,16 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
 
 /* ═══ CREATIVE FOOTER STYLES ═══ */
 .creative-footer{
-  padding:60px 7vw 35px;
+  position:relative;
+  z-index:20; /* Elevate above WebGL canvas (z-index: 1) and standard sections */
+  padding:65px 7vw 40px;
   display:flex;
   flex-direction:column;
   gap:40px;
-  background:linear-gradient(180deg, #160a2c 0%, #0b0514 100%);
-  border-top:1.5px solid var(--gold-border);
+  background:#0b0514; /* Solid opaque backdrop so 3D objects never bleed through */
+  background:linear-gradient(180deg, #180927 0%, #0b0514 100%);
+  border-top:2px solid var(--gold-border);
+  box-shadow:0 -30px 60px rgba(0,0,0,0.85);
 }
 .footer-top-row{
   display:flex;
