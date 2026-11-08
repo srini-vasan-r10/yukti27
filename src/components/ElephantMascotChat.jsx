@@ -162,7 +162,9 @@ ${CULTURAL_EVENTS.map(c => `   - ${c.title} (${c.category}): Team: ${c.teamSize}
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Interact with YUKTI Mascot"
         >
-          <ElephantCanvas />
+          <div className="mascot-canvas-holder">
+            <ElephantCanvas />
+          </div>
           <div className="mascot-pulse-ring" />
         </button>
       </div>

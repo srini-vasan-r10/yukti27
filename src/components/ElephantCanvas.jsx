@@ -13,17 +13,21 @@ export default function ElephantCanvas() {
     const container = mountRef.current
     if (!container) return
 
-    const size = 96
+    const width = 96
+    const height = 96
 
     const scene = new THREE.Scene()
-    const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 50)
+    const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 50)
     // Centered viewpoint framing the whole mascot
     camera.position.set(0, 0.45, 4.4)
     camera.lookAt(0, 0.35, 0)
 
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true })
-    renderer.setSize(size, size)
+    renderer.setSize(width, height)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    renderer.domElement.style.display = 'block'
+    renderer.domElement.style.width = '96px'
+    renderer.domElement.style.height = '96px'
     container.appendChild(renderer.domElement)
 
     // Materials: Regal Gold and Obsidian
