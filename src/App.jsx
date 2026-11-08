@@ -65,28 +65,28 @@ export default function App() {
       camera.position.set(0, 0, 11)
 
       const goldMat = new THREE.MeshStandardMaterial({
-        color: 0xe9c878,
-        metalness: 0.88,
-        roughness: 0.2,
-        emissive: 0x8a5e20,
+        color: 0xC59B3C, // #C59B3C Deep Gold
+        metalness: 0.9,
+        roughness: 0.18,
+        emissive: 0x4D1D64, // #4D1D64 Medium Purple Shading
         emissiveIntensity: 0.35,
       })
       const cyberMat = new THREE.MeshStandardMaterial({
-        color: 0x38bdf8,
+        color: 0xF5D77F, // #F5D77F Golden Yellow Highlights
         metalness: 0.85,
-        roughness: 0.25,
-        emissive: 0x0284c7,
-        emissiveIntensity: 0.45,
-      })
-      const violetMat = new THREE.MeshStandardMaterial({
-        color: 0xa855f7,
-        metalness: 0.8,
-        roughness: 0.28,
-        emissive: 0x6b21a8,
+        roughness: 0.22,
+        emissive: 0xC59B3C,
         emissiveIntensity: 0.4,
       })
+      const violetMat = new THREE.MeshStandardMaterial({
+        color: 0x4D1D64, // #4D1D64 Medium Purple
+        metalness: 0.8,
+        roughness: 0.28,
+        emissive: 0x1F0E2C, // #1F0E2C Dark Purple
+        emissiveIntensity: 0.5,
+      })
       const wireMat = new THREE.MeshBasicMaterial({
-        color: 0x38bdf8,
+        color: 0xFFF2A6, // #FFF2A6 Bright Spark
         wireframe: true,
         transparent: true,
         opacity: 0.55,
