@@ -633,9 +633,13 @@ export default function App() {
         <div className="footer-top-row">
           <div className="footer-brand-col">
             <div className="footer-dual-logos">
-              <img src="/yukti-logo.png" alt="YUKTI ’27 Logo" className="footer-yukti-logo" />
+              <div className="footer-logo-ring">
+                <img src="/yukti-logo.png" alt="YUKTI ’27 Logo" className="footer-yukti-logo" />
+              </div>
               <div className="footer-logo-divider" />
-              <img src="/tsm-logo.png" alt="TSM Madurai Crest" className="footer-tsm-logo" />
+              <div className="footer-logo-ring">
+                <img src="/tsm-logo.png" alt="TSM Madurai Crest" className="footer-tsm-logo" />
+              </div>
             </div>
             <div className="footer-titles">
               <span className="footer-super">YUKTI ’27 · INTANGIBLES</span>
