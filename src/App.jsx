@@ -4,7 +4,6 @@ import { SITE_CONFIG, SPONSORS_DATA } from './utils/confluenceData'
 import ManagementEventsPage from './pages/ManagementEventsPage'
 import CulturalEventsPage from './pages/CulturalEventsPage'
 import RegistrationPortalPage from './pages/RegistrationPortalPage'
-import ElephantMascotChat from './components/ElephantMascotChat'
 
 export default function App() {
   const canvasRef = useRef(null)
@@ -530,9 +529,6 @@ export default function App() {
           Built for the next chapter of enterprise leadership.
         </div>
       </footer>
-
-      {/* ── Floating 3D Elephant Mascot with Integrated AI Chatbot ── */}
-      <ElephantMascotChat onNavigate={navigateTo} />
 
       {/* Committee Preview Toggle Button */}
       <button className="admin" onClick={() => setPreviewMode(!previewMode)}>
