@@ -702,9 +702,15 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
   gap:40px;
   flex-wrap:wrap;
 }
+.footer-brand-col{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
 .footer-dual-logos{
   display:flex;
   align-items:center;
+  justify-content:center;
   gap:16px;
   margin-bottom:14px;
 }
@@ -1624,6 +1630,16 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
     flex-direction:column;
     align-items:center;
     text-align:center;
+  }
+  .footer-brand-col{
+    align-items:center;
+    text-align:center;
+    width:100%;
+  }
+  .footer-dual-logos{
+    justify-content:center;
+    margin-left:auto;
+    margin-right:auto;
   }
   .footer-nav-columns{
     flex-direction:column;
