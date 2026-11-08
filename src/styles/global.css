@@ -1647,9 +1647,48 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
   .subpage-quick-stats{grid-template-columns:1fr;gap:15px}
   .subpage-cta-banner{flex-direction:column;align-items:flex-start}
 
-  .mascot-dock{
-    right:16px;
-    bottom:80px !important; /* Elevated securely above Netlify badge */
+  .sponsors-marquee-section{
+    padding:45px 0 55px;
+  }
+  .sponsors-marquee-track-wrap{
+    mask-image:none;
+    -webkit-mask-image:none;
+    padding:0 16px;
+    box-sizing:border-box;
+  }
+  .sponsors-marquee-track{
+    animation:none !important;
+    display:grid !important;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)) !important;
+    grid-auto-flow:dense;
+    grid-template-rows:repeat(3, auto);
+    gap:12px !important;
+    width:100% !important;
+    max-width:100% !important;
+    overflow-x:auto;
+    padding-bottom:10px;
+    -webkit-overflow-scrolling:touch;
+    scroll-snap-type:x mandatory;
+  }
+  .marquee-sponsor-tile{
+    min-width:210px;
+    padding:14px 16px;
+    flex-shrink:0;
+    scroll-snap-align:start;
+  }
+  .marquee-tile-content{
+    gap:12px;
+  }
+  .marquee-tile-emblem{
+    width:38px;
+    height:38px;
+    font-size:.7rem;
+  }
+  .marquee-sp-name{
+    font-size:.82rem;
+  }
+  .marquee-sp-type{
+    font-size:.58rem;
   }
   .mascot-speech-bubble{
     display:none !important; /* Completely removed on mobile devices */
@@ -1712,6 +1751,36 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
   }
   .prize-sum-display{
     font-size:clamp(1.8rem, 8vw, 2.5rem);
+  }
+  .sponsors-marquee-section{
+    padding:40px 0 50px;
+  }
+  .sponsors-marquee-track-wrap{
+    padding:0 12px;
+  }
+  .sponsors-marquee-track{
+    grid-template-rows:repeat(3, auto) !important;
+    gap:10px !important;
+  }
+  .marquee-sponsor-tile{
+    min-width:185px;
+    padding:11px 13px;
+    border-radius:12px;
+  }
+  .marquee-tile-content{
+    gap:10px;
+  }
+  .marquee-tile-emblem{
+    width:34px;
+    height:34px;
+    font-size:.65rem;
+    border-radius:8px;
+  }
+  .marquee-sp-name{
+    font-size:.76rem;
+  }
+  .marquee-sp-type{
+    font-size:.54rem;
   }
   .hero-meta{
     grid-template-columns:1fr;
