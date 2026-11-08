@@ -174,37 +174,50 @@ main{position:relative;z-index:10}
   margin-bottom:16px;
 }
 
-.eyebrow{display:flex;gap:12px;align-items:center;margin-bottom:16px}
-.eyebrow:before{content:'';height:1.5px;width:34px;background:var(--gold-figure)}
+.eyebrow{
+  display:inline-flex;
+  gap:12px;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 16px;
+  text-align:center;
+  width:100%;
+}
+/* Removed leading dash (.eyebrow:before) for a clean, centered modern badge */
 
 .hero-titles-wrap{
   display:flex;
   flex-direction:column;
+  align-items:center;
+  text-align:center;
   margin-bottom:14px;
 }
-.hero-theme-marquee{
+.hero-theme-clean-subtitle{
   display:flex;
   align-items:center;
-  gap:12px;
+  justify-content:center;
+  gap:14px;
   flex-wrap:wrap;
-  margin-bottom:12px;
+  margin-bottom:14px;
 }
 .theme-super-title{
   font-family:'Space Grotesk',sans-serif;
-  font-size:clamp(1.4rem,2.8vw,2.2rem);
+  font-size:clamp(1.25rem,2.2vw,1.8rem);
   font-weight:800;
-  letter-spacing:.12em;
-  color:var(--bright-spark);
-  text-shadow:0 0 25px rgba(245,215,127,0.4);
-}
-.theme-tagline-pill{
-  font-size:.65rem;
-  background:rgba(197,155,60,0.18);
-  border:1px solid var(--gold-border);
-  color:var(--gold-figure);
-  padding:4px 10px;
-  border-radius:999px;
   letter-spacing:.14em;
+  color:var(--bright-spark);
+  text-shadow:0 0 20px rgba(245,215,127,0.35);
+}
+.theme-divider{
+  color:var(--gold-border);
+  font-size:1.1rem;
+  line-height:1;
+}
+.theme-tagline-text{
+  font-size:.78rem;
+  letter-spacing:.18em;
+  color:var(--gold-figure);
+  font-weight:600;
 }
 
 /* Single line heading for YUKTI '27 */
@@ -1528,17 +1541,57 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
   .topbar-cta-btn{display:none}
 
   .hero{
-    padding:110px 6vw 70px;
+    padding:100px 16px 60px;
     justify-content:center;
+    width:100%;
+    box-sizing:border-box;
   }
   .hero-copy{
     width:100%;
-    padding:2.2rem 1.6rem;
+    max-width:540px;
+    margin:0 auto;
+    padding:2rem 1.4rem;
+    text-align:center;
+    box-sizing:border-box;
+  }
+  .hero-titles-wrap{
+    align-items:center;
     text-align:center;
   }
-  .hero-sub{margin-left:auto;margin-right:auto}
-  .hero-actions{justify-content:center}
-  .hero-meta{grid-template-columns:repeat(2, 1fr);gap:14px}
+  .hero-theme-clean-subtitle{
+    justify-content:center;
+  }
+  .theme-headline-badge{
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .grand-prize-hero-banner{
+    width:100%;
+    margin:24px auto;
+    box-sizing:border-box;
+  }
+  .prize-banner-inner{
+    padding:20px 16px;
+  }
+  .prize-label-row{
+    justify-content:center;
+  }
+  .hero-sub{
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+  }
+  .hero-actions{
+    justify-content:center;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .hero-meta{
+    grid-template-columns:repeat(2, 1fr);
+    gap:14px;
+    width:100%;
+    box-sizing:border-box;
+  }
 
   .section{
     padding:80px 6vw;
@@ -1624,6 +1677,59 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
 }
 
 @media(max-width:550px){
+  .hero{
+    padding:90px 14px 50px;
+  }
+  .hero-copy{
+    padding:1.6rem 1.1rem;
+    border-radius:18px;
+  }
+  .hero-single-line{
+    font-size:clamp(2.6rem, 13vw, 4rem);
+    letter-spacing:-0.02em;
+  }
+  .hero-theme-clean-subtitle{
+    gap:8px;
+  }
+  .theme-super-title{
+    font-size:1.15rem;
+    letter-spacing:.1em;
+  }
+  .theme-divider{
+    display:none;
+  }
+  .theme-tagline-text{
+    display:block;
+    width:100%;
+    font-size:.68rem;
+    letter-spacing:.12em;
+  }
+  .theme-headline-badge{
+    font-size:.65rem;
+    padding:5px 10px;
+    letter-spacing:.08em;
+  }
+  .grand-prize-hero-banner{
+    border-radius:14px;
+    margin:18px auto;
+  }
+  .prize-banner-inner{
+    padding:16px 12px;
+  }
+  .prize-sum-display{
+    font-size:clamp(1.8rem, 8vw, 2.5rem);
+  }
+  .hero-meta{
+    grid-template-columns:1fr;
+    gap:10px;
+    text-align:center;
+  }
+  .section{
+    padding:60px 16px;
+  }
+  .legacy-frosted-container{
+    padding:24px 14px;
+  }
   .mascot-dock{
     right:14px;
     bottom:80px !important;

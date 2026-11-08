@@ -382,9 +382,10 @@ export default function App() {
 
               <div className="hero-titles-wrap">
                 <h1 className="hero-single-line">YUKTI ’27</h1>
-                <div className="hero-theme-marquee">
+                <div className="hero-theme-clean-subtitle">
                   <span className="theme-super-title">INTANGIBLES</span>
-                  <span className="theme-tagline-pill mono">INFINITE POSSIBILITIES</span>
+                  <span className="theme-divider">·</span>
+                  <span className="theme-tagline-text mono">INFINITE POSSIBILITIES</span>
                 </div>
               </div>
 
