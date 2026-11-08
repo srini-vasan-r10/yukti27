@@ -301,13 +301,16 @@ export default function App() {
             Registration Portal
           </a>
 
-          <button
-            className="btn"
-            style={{ marginTop: menuOpen ? '10px' : '0' }}
-            onClick={() => navigateTo('portal')}
-          >
-            Join Confluence ↗
-          </button>
+          {/* Mobile-only menu CTA */}
+          {menuOpen && (
+            <button
+              className="btn"
+              style={{ marginTop: '14px', width: '100%' }}
+              onClick={() => navigateTo('portal')}
+            >
+              Join Confluence ↗
+            </button>
+          )}
         </nav>
 
         <button className="btn topbar-cta-btn" onClick={() => navigateTo('portal')}>
@@ -512,18 +515,20 @@ export default function App() {
       )}
 
       {/* ── Global Footer ────────────────────────────────────── */}
-      <footer>
-        <div>
-          <strong>YUKTI ’27 — The Strategic Confluence</strong><br />
-          Thiagarajar School of Management (TSM), Madurai 625005
+      <footer className="site-footer">
+        <div className="footer-brand-col">
+          <strong>YUKTI ’27 — The Strategic Confluence</strong>
+          <p>Thiagarajar School of Management (TSM), Madurai 625005</p>
         </div>
-        <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
+        <div className="footer-nav-links">
           <a href="#home" onClick={(e) => { e.preventDefault(); navigateTo('home') }}>Home</a>
           <a href="#management" onClick={(e) => { e.preventDefault(); navigateTo('management') }}>Management Tracks</a>
           <a href="#cultural" onClick={(e) => { e.preventDefault(); navigateTo('cultural') }}>Cultural Tracks</a>
           <a href="#portal" onClick={(e) => { e.preventDefault(); navigateTo('portal') }}>Register Portal</a>
         </div>
-        <div>Built for the next chapter of enterprise leadership.</div>
+        <div className="footer-tagline">
+          Built for the next chapter of enterprise leadership.
+        </div>
       </footer>
 
       {/* ── Floating 3D Elephant Mascot with Integrated AI Chatbot ── */}
