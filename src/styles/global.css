@@ -412,9 +412,9 @@ footer{padding:45px 7vw;border-top:1px solid var(--line);display:flex;justify-co
    ═══════════════════════════════════════════════════════════════ */
 .mascot-dock{
   position:fixed;
-  right:26px;
-  bottom:26px;
-  z-index:999;
+  right:32px;
+  bottom:75px; /* Cleanly elevated above Netlify and third-party badges */
+  z-index:9999;
 }
 .mascot-trigger-wrap{
   display:flex;
@@ -422,26 +422,27 @@ footer{padding:45px 7vw;border-top:1px solid var(--line);display:flex;justify-co
   gap:12px;
 }
 .mascot-speech-bubble{
-  background:rgba(15,7,32,0.92);
+  background:rgba(15,7,32,0.95);
   border:1px solid var(--gold);
   border-radius:12px;
-  padding:8px 14px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.6);
+  padding:10px 16px;
+  box-shadow:0 12px 30px rgba(0,0,0,0.7);
   cursor:pointer;
-  backdrop-filter:blur(16px);
+  backdrop-filter:blur(20px);
   animation:cue 2s infinite ease-in-out;
   white-space:nowrap;
-  max-width:max-content;
+  flex-shrink:0;
+  width:max-content;
 }
 .mascot-speech-bubble p{
-  margin:2px 0 0;
+  margin:3px 0 0;
   font-size:.76rem;
   color:#ffffff;
   font-weight:600;
   white-space:nowrap;
 }
 .speech-badge{
-  font-size:.6rem;
+  font-size:.62rem;
   color:var(--gold);
   display:block;
   white-space:nowrap;
@@ -452,6 +453,7 @@ footer{padding:45px 7vw;border-top:1px solid var(--line);display:flex;justify-co
   position:relative;
   width:96px;
   height:96px;
+  flex-shrink:0;
   border-radius:50%;
   background:radial-gradient(circle at 35% 35%, #271442, #0d061c);
   border:2px solid var(--gold);
@@ -1171,18 +1173,21 @@ footer{padding:45px 7vw;border-top:1px solid var(--line);display:flex;justify-co
 
   .mascot-dock{
     right:16px;
-    bottom:60px; /* Elevated above Netlify badge */
+    bottom:80px !important; /* Elevated securely above Netlify badge */
   }
   .mascot-speech-bubble{
-    display:none !important; /* Hide speech bubble on mobile phones */
+    display:none !important; /* Completely removed on mobile devices */
+    visibility:hidden !important;
+    opacity:0 !important;
+    pointer-events:none !important;
   }
   .mascot-btn{
-    width:76px;
-    height:76px;
+    width:72px;
+    height:72px;
   }
   .mascot-chat-window{
     right:0;
-    bottom:90px;
+    bottom:85px;
     width:calc(100vw - 32px);
     height:460px;
   }
@@ -1190,15 +1195,18 @@ footer{padding:45px 7vw;border-top:1px solid var(--line);display:flex;justify-co
 
 @media(max-width:550px){
   .mascot-dock{
-    right:12px;
-    bottom:62px;
+    right:14px;
+    bottom:80px !important;
   }
   .mascot-speech-bubble{
     display:none !important;
+    visibility:hidden !important;
+    opacity:0 !important;
+    pointer-events:none !important;
   }
   .mascot-btn{
-    width:68px;
-    height:68px;
+    width:66px;
+    height:66px;
   }
   h1{font-size:clamp(3.8rem,18vw,5.5rem)}
   .timeline{grid-template-columns:1fr}
