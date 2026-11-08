@@ -5,13 +5,13 @@ export default function ManagementEventsPage({ onSelectEvent, onBackToHome, onOp
   const [selectedDomain, setSelectedDomain] = useState('All')
   const [searchQuery, setSearchQuery] = useState('')
 
-  const domains = ['All', 'Operations & Supply Chain', 'Best Manager Flagship', 'Finance & Quantitative Strategy', 'Business Analytics & Data Science', 'Marketing & Neuromarketing', 'Human Resources & Organizational Behaviour', 'Entrepreneurship & Venture Inception', 'Strategic Corporate Quiz & Auctions']
+  const domains = ['All', 'Executive Leadership & Best Manager', 'Brand Strategy & Digital Campaigns', 'Supply Chain, Logistics & Systems', 'Consulting & Financial Restructuring', 'Corporate Trivia & Dynamic Auctions', 'Startup Inception & Angel Pitch']
 
   const filteredEvents = MANAGEMENT_EVENTS.filter(ev => {
     const matchesDomain = selectedDomain === 'All' || ev.domain === selectedDomain
     const matchesSearch = ev.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                           ev.shortDesc.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          ev.aiHumanAngle.toLowerCase().includes(searchQuery.toLowerCase())
+                          ev.domain.toLowerCase().includes(searchQuery.toLowerCase())
     return matchesDomain && matchesSearch
   })
 
@@ -30,21 +30,21 @@ export default function ManagementEventsPage({ onSelectEvent, onBackToHome, onOp
             Management <span className="gold">Arenas</span>
           </h1>
           <p className="subpage-lead">
-            Where artificial intelligence and predictive algorithms meet human boardroom intuition, moral ethics, and crisis leadership. Explore our 8 competitive domains below.
+            Where artificial intelligence and predictive algorithms meet human boardroom intuition, moral ethics, and crisis leadership. Explore our 6 flagship competitive domains below.
           </p>
 
           <div className="subpage-quick-stats">
             <div>
-              <strong>8 Flagship Tracks</strong>
-              <small>Operations, Finance, AI, Marketing, HR, Strategy</small>
+              <strong>6 Flagship Arenas</strong>
+              <small>Leadership, Strategy, Supply Chain, Consulting, M&A, Inception</small>
             </div>
             <div>
-              <strong>₹3,00,000+</strong>
-              <small>Management Cash Prize Pool & Trophies</small>
+              <strong>₹10,00,000+</strong>
+              <small>Management Cash Bounties, Shields & Incubation</small>
             </div>
             <div>
-              <strong>National Jury</strong>
-              <small>CXOs, Venture Capitalists & TSM Faculty</small>
+              <strong>National Corporate Jury</strong>
+              <small>Industry CEOs, Venture Capitalists & TSM Faculty</small>
             </div>
           </div>
         </div>
@@ -56,7 +56,7 @@ export default function ManagementEventsPage({ onSelectEvent, onBackToHome, onOp
           <input
             type="text"
             className="confluence-search-input"
-            placeholder="Search events, concepts, AI challenges..."
+            placeholder="Search events, concepts, leadership challenges..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
@@ -69,7 +69,7 @@ export default function ManagementEventsPage({ onSelectEvent, onBackToHome, onOp
               className={`cat-filter-pill ${selectedDomain === dom ? 'active' : ''}`}
               onClick={() => setSelectedDomain(dom)}
             >
-              {dom === 'All' ? 'All Domains' : dom.split('&')[0]}
+              {dom === 'All' ? 'All Arenas' : dom.split('&')[0]}
             </button>
           ))}
         </div>
@@ -81,22 +81,12 @@ export default function ManagementEventsPage({ onSelectEvent, onBackToHome, onOp
           {filteredEvents.map((ev) => (
             <div key={ev.id} className="mgmt-detail-card">
               <div className="mgmt-card-head">
-                <span className="mono track-badge">TRACK {ev.num}</span>
+                <span className="mono track-badge">ARENA {ev.num}</span>
                 <span className="domain-tag">{ev.domain}</span>
               </div>
 
               <h2 className="mgmt-card-title">{ev.title}</h2>
               <p className="mgmt-card-desc">{ev.shortDesc}</p>
-
-              {/* The AI + Human Confluence Angle Feature Box */}
-              <div className="ai-human-highlight-box">
-                <div className="ai-human-tag">
-                  <span className="chip-ai">AI Matrix</span>
-                  <span className="confluence-symbol">✕</span>
-                  <span className="chip-human">Human Touch</span>
-                </div>
-                <p className="ai-human-text">{ev.aiHumanAngle}</p>
-              </div>
 
               {/* Rounds Overview */}
               <div className="rounds-summary-section">
@@ -115,6 +105,7 @@ export default function ManagementEventsPage({ onSelectEvent, onBackToHome, onOp
                 <div className="meta-col">
                   <span className="meta-label">Team Formation</span>
                   <strong>{ev.teamSize}</strong>
+                  <span style={{ fontSize: '0.72rem', color: '#a69cb4', marginTop: '2px' }}>Fee: {ev.fee}</span>
                 </div>
                 <div className="meta-col">
                   <span className="meta-label">Prize Bounty</span>

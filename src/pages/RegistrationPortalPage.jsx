@@ -3,7 +3,7 @@ import { MANAGEMENT_EVENTS, CULTURAL_EVENTS, SITE_CONFIG } from '../utils/conflu
 
 export default function RegistrationPortalPage({ onBackToHome }) {
   const [selectedTrackType, setSelectedTrackType] = useState('management')
-  const [selectedEventId, setSelectedEventId] = useState('the-last-knight')
+  const [selectedEventId, setSelectedEventId] = useState('the-ai-ceo-challenge')
 
   // Form Fields
   const [formData, setFormData] = useState({

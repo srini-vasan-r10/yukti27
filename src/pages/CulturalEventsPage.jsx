@@ -4,7 +4,15 @@ import { CULTURAL_EVENTS } from '../utils/confluenceData'
 export default function CulturalEventsPage({ onSelectEvent, onBackToHome, onOpenRegister }) {
   const [selectedCategory, setSelectedCategory] = useState('All')
 
-  const categories = ['All', 'Runway & Haute Couture', 'Battle of the Bands', 'Visual Storytelling', 'Thematic Dance Showcase', 'Street & Proscenium Theatre']
+  const categories = [
+    'All',
+    'Acoustic, Rock & Fusion',
+    'Thematic Dance & Choreography',
+    'Runway & Haute Couture',
+    'Visual Storytelling & Photography',
+    'Fine Arts & Generative Design',
+    'Cinematography & Proscenium Drama'
+  ]
 
   const filteredEvents = CULTURAL_EVENTS.filter(ev => {
     return selectedCategory === 'All' || ev.category === selectedCategory
@@ -30,12 +38,12 @@ export default function CulturalEventsPage({ onSelectEvent, onBackToHome, onOpen
 
           <div className="subpage-quick-stats">
             <div>
-              <strong>5 Stellar Arenas</strong>
-              <small>Couture, Bands, Dance, Street Theatre, Photography</small>
+              <strong>6 Stellar Arenas</strong>
+              <small>Bands, Dance, Runway Couture, Photo, Digital Art, Film</small>
             </div>
             <div>
-              <strong>₹7,75,000+</strong>
-              <small>Cultural Cash Rewards & Studio Grants</small>
+              <strong>₹8,50,000+</strong>
+              <small>Cultural Cash Bounties & Studio Grants</small>
             </div>
             <div>
               <strong>Open Stage</strong>
@@ -54,7 +62,7 @@ export default function CulturalEventsPage({ onSelectEvent, onBackToHome, onOpen
               className={`cat-filter-pill ${selectedCategory === cat ? 'active' : ''}`}
               onClick={() => setSelectedCategory(cat)}
             >
-              {cat}
+              {cat === 'All' ? 'All Disciplines' : cat.split('&')[0]}
             </button>
           ))}
         </div>
@@ -85,7 +93,7 @@ export default function CulturalEventsPage({ onSelectEvent, onBackToHome, onOpen
                       <span className="mono">Adjudication Criteria:</span>
                       <ul className="criteria-tags" style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', listStyle: 'none', padding: 0, marginTop: '8px' }}>
                         {cult.judging.map((c, i) => (
-                          <li key={i} style={{ background: 'rgba(255,255,255,0.06)', padding: '3px 8px', borderRadius: '4px', fontSize: '0.72rem', color: '#cbd5e1' }}>
+                          <li key={i} style={{ background: 'rgba(77,29,100,0.3)', border: '1px solid rgba(197,155,60,0.2)', padding: '3px 8px', borderRadius: '4px', fontSize: '0.72rem', color: '#e2d9eb' }}>
                             {c}
                           </li>
                         ))}
@@ -99,7 +107,7 @@ export default function CulturalEventsPage({ onSelectEvent, onBackToHome, onOpen
                   <div>
                     <span className="meta-label" style={{ display: 'block', fontSize: '0.68rem', color: 'var(--muted)', textTransform: 'uppercase' }}>Bounty & Honors</span>
                     <strong className="gold" style={{ fontSize: '1.1rem' }}>{cult.prizes}</strong>
-                    <span style={{ display: 'block', fontSize: '0.7rem', color: '#94a3b8', marginTop: '2px' }}>Fee: {cult.fee}</span>
+                    <span style={{ display: 'block', fontSize: '0.7rem', color: '#a69cb4', marginTop: '2px' }}>Fee: {cult.fee}</span>
                   </div>
                   <button className="btn" onClick={() => onSelectEvent(cult)}>
                     Full Rulebook ↗
@@ -111,10 +119,10 @@ export default function CulturalEventsPage({ onSelectEvent, onBackToHome, onOpen
         </div>
 
         {/* Call to Action */}
-        <div className="subpage-cta-banner" style={{ marginTop: '45px', padding: '32px', background: 'rgba(245,158,11,0.06)', border: '1px solid var(--line)', borderRadius: '18px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '20px' }}>
+        <div className="subpage-cta-banner">
           <div className="cta-left">
-            <h3 style={{ margin: '0 0 6px', fontFamily: "'Space Grotesk', sans-serif" }}>Bring your crew, your instruments, your voice.</h3>
-            <p style={{ margin: 0, color: '#cbd5e1' }}>Registration for university dance crews, musical bands, models, and photographers is now open.</p>
+            <h3>Bring your crew, your instruments, your voice.</h3>
+            <p>Registration for university dance crews, musical bands, models, digital artists, and filmmakers is now open.</p>
           </div>
           <div className="cta-right">
             <button className="btn" onClick={onOpenRegister}>
