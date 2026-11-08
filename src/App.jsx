@@ -489,21 +489,23 @@ export default function App() {
 
           {/* ═══ LEGACY TIMELINE ═══ */}
           <section className="section" id="legacy">
-            <div className="section-head reveal in">
-              <div>
-                <div className="mono">Over 6 Decades of Excellence</div>
-                <h2>Rooted in Legacy.<br /><span className="gold">Built for Tomorrow.</span></h2>
+            <div className="legacy-frosted-container">
+              <div className="section-head reveal in">
+                <div>
+                  <div className="mono">Over 6 Decades of Excellence</div>
+                  <h2>Rooted in Legacy.<br /><span className="gold">Built for Tomorrow.</span></h2>
+                </div>
+                <p className="section-intro">
+                  Hosted by Thiagarajar School of Management (TSM), Madurai — an institution of national repute fostering visionary management leaders since 1962.
+                </p>
               </div>
-              <p className="section-intro">
-                Hosted by Thiagarajar School of Management (TSM), Madurai — an institution of national repute fostering visionary management leaders since 1962.
-              </p>
-            </div>
 
-            <div className="timeline reveal in">
-              <div className="timeline-item"><div className="mono">1962</div><strong>TSM Founded</strong><p>Established by philanthropist Karumuttu Thiagarajan Chettiar.</p></div>
-              <div className="timeline-item"><div className="mono">1999*</div><strong>YUKTI Inception</strong><p>The genesis of YUKTI as an all-India corporate and cultural confluence.</p></div>
-              <div className="timeline-item"><div className="mono">17 Acres*</div><strong>Serene Campus</strong><p>A residential academic sanctuary at Pamban Swamy Nagar, Madurai.</p></div>
-              <div className="timeline-item"><div className="mono">2027</div><strong>₹20L Confluence</strong><p>A milestone edition celebrating ambitious student leaders across the nation.</p></div>
+              <div className="timeline reveal in">
+                <div className="timeline-item"><div className="mono">1962</div><strong>TSM Founded</strong><p>Established by philanthropist Karumuttu Thiagarajan Chettiar.</p></div>
+                <div className="timeline-item"><div className="mono">1999*</div><strong>YUKTI Inception</strong><p>The genesis of YUKTI as an all-India corporate and cultural confluence.</p></div>
+                <div className="timeline-item"><div className="mono">17 Acres*</div><strong>Serene Campus</strong><p>A residential academic sanctuary at Pamban Swamy Nagar, Madurai.</p></div>
+                <div className="timeline-item"><div className="mono">2027</div><strong>₹20L Confluence</strong><p>A milestone edition celebrating ambitious student leaders across the nation.</p></div>
+              </div>
             </div>
           </section>
         </main>

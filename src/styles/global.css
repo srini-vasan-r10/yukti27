@@ -333,6 +333,18 @@ h1 em{font-style:normal;color:var(--gold);text-shadow:0 0 45px rgba(245,158,11,.
 /* ─── DUAL ARENA PORTAL CARDS ON HOMEPAGE ────────────────────── */
 .section{padding:120px 7vw;position:relative}
 .section-dark{background:rgba(15,7,32,0.85)}
+
+/* Legacy Section Frosted Glass Container */
+.legacy-frosted-container{
+  background:rgba(15,9,28,0.78);
+  border:1px solid rgba(245,158,11,0.25);
+  border-radius:28px;
+  padding:50px 48px;
+  backdrop-filter:blur(32px);
+  -webkit-backdrop-filter:blur(32px);
+  box-shadow:0 30px 80px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
 .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:45px}
 .section h2{font-family:'Cinzel',serif;font-size:clamp(2.4rem,5vw,4.4rem);line-height:1.05;margin:12px 0 0}
 .section-intro{max-width:440px;color:var(--muted);line-height:1.75;font-size:.92rem}
@@ -1131,6 +1143,10 @@ footer{padding:45px 7vw;border-top:1px solid var(--line);display:flex;justify-co
 
   .section{
     padding:80px 6vw;
+  }
+  .legacy-frosted-container{
+    padding:32px 24px;
+    border-radius:20px;
   }
   .section-head{
     flex-direction:column;
