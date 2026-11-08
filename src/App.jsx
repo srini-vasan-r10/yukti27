@@ -273,15 +273,6 @@ export default function App() {
           </div>
         </a>
 
-        {/* TSM College Emblem Badge */}
-        <div className="topbar-tsm-col">
-          <img src="/tsm-logo.png" alt="TSM Madurai Crest" className="topbar-tsm-logo" />
-          <div className="tsm-topbar-text">
-            <strong>TSM MADURAI</strong>
-            <small>ESTD 1962</small>
-          </div>
-        </div>
-
         {/* Desktop Nav */}
         <nav className={`nav ${menuOpen ? 'open' : ''}`}>
           <a
@@ -383,9 +374,8 @@ export default function App() {
               <div className="hero-titles-wrap">
                 <h1 className="hero-single-line">YUKTI ’27</h1>
                 <div className="hero-theme-clean-subtitle">
-                  <span className="theme-super-title">INTANGIBLES</span>
-                  <span className="theme-divider">·</span>
-                  <span className="theme-tagline-text mono">INFINITE POSSIBILITIES</span>
+                  <div className="theme-super-title">INTANGIBLES</div>
+                  <div className="theme-tagline-text mono">INFINITE POSSIBILITIES</div>
                 </div>
               </div>
 
