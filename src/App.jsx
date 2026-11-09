@@ -502,7 +502,6 @@ export default function App() {
                       </div>
                       <div className="marquee-tile-info">
                         <span className="marquee-sp-name">{sp.name}</span>
-                        <span className="marquee-sp-type mono">{sp.type}</span>
                       </div>
                     </div>
                   </div>
