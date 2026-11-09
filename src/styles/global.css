@@ -350,41 +350,24 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
   overflow:hidden;
   position:relative;
   display:flex;
-  mask-image:linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-  -webkit-mask-image:linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-}
-.row-gap-wrap{
-  margin-top:14px;
+  mask-image:linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image:linear-gradient(to right, transparent, black 8%, black 92%, transparent);
 }
 @keyframes scrollMarqueeRightToLeft{
   0%{
     transform:translateX(0);
   }
   100%{
-    transform:translateX(-33.333%);
-  }
-}
-@keyframes scrollMarqueeLeftToRight{
-  0%{
-    transform:translateX(-33.333%);
-  }
-  100%{
-    transform:translateX(0);
+    transform:translateX(-50%);
   }
 }
 .sponsors-marquee-track{
   display:flex;
-  gap:16px;
+  gap:20px;
   width:max-content;
 }
-.track-row-1{
-  animation:scrollMarqueeRightToLeft 24s linear infinite;
-}
-.track-row-2{
-  animation:scrollMarqueeLeftToRight 26s linear infinite;
-}
-.track-row-3{
-  animation:scrollMarqueeRightToLeft 22s linear infinite;
+.single-line-loop{
+  animation:scrollMarqueeRightToLeft 32s linear infinite;
 }
 .sponsors-marquee-track:hover{
   animation-play-state:paused;
@@ -392,11 +375,11 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
 
 .marquee-sponsor-tile{
   position:relative;
-  min-width:260px;
-  background:rgba(255,255,255,0.035);
+  min-width:240px;
+  background:rgba(31,14,44,0.65);
   border:1px solid var(--line);
   border-radius:16px;
-  padding:18px 22px;
+  padding:14px 20px;
   backdrop-filter:blur(16px);
   -webkit-backdrop-filter:blur(16px);
   transition:all .3s ease;
@@ -405,7 +388,7 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
   align-items:center;
 }
 .marquee-sponsor-tile:hover{
-  transform:translateY(-6px);
+  transform:translateY(-4px);
   border-color:var(--gold);
   box-shadow:0 12px 30px rgba(0,0,0,0.6);
 }
@@ -424,18 +407,23 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
   align-items:center;
   gap:16px;
 }
-.marquee-tile-emblem{
-  width:46px;
-  height:46px;
+.marquee-tile-logo-frame{
+  width:58px;
+  height:58px;
   border-radius:12px;
-  display:grid;
-  place-items:center;
-  font-family:'DM Mono',monospace;
-  font-weight:800;
-  font-size:.76rem;
-  letter-spacing:.05em;
-  box-shadow:0 4px 15px rgba(0,0,0,0.5);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,0.96);
+  padding:6px;
+  box-shadow:0 4px 14px rgba(0,0,0,0.4);
   flex-shrink:0;
+}
+.marquee-sponsor-img{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  display:block;
 }
 .marquee-tile-info{display:flex;flex-direction:column;gap:3px}
 .marquee-sp-name{font-family:'Cinzel',serif;font-size:.9rem;color:#ffffff;white-space:nowrap}
@@ -1683,7 +1671,7 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
   .subpage-cta-banner{flex-direction:column;align-items:flex-start}
 
   .sponsors-marquee-section{
-    padding:45px 0 55px;
+    padding:40px 0 50px;
   }
   .sponsors-marquee-track-wrap{
     width:100%;
@@ -1693,41 +1681,32 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
     padding:0;
     box-sizing:border-box;
   }
-  .row-gap-wrap{
-    margin-top:10px;
-  }
   .sponsors-marquee-track{
     display:flex !important;
-    gap:12px !important;
+    gap:14px !important;
     width:max-content !important;
   }
-  .track-row-1{
-    animation:scrollMarqueeRightToLeft 18s linear infinite !important;
-  }
-  .track-row-2{
-    animation:scrollMarqueeLeftToRight 20s linear infinite !important;
-  }
-  .track-row-3{
-    animation:scrollMarqueeRightToLeft 17s linear infinite !important;
+  .single-line-loop{
+    animation:scrollMarqueeRightToLeft 24s linear infinite !important;
   }
   .marquee-sponsor-tile{
-    min-width:190px;
-    padding:12px 14px;
+    min-width:200px;
+    padding:10px 14px;
     flex-shrink:0;
   }
   .marquee-tile-content{
-    gap:10px;
+    gap:12px;
   }
-  .marquee-tile-emblem{
-    width:36px;
-    height:36px;
-    font-size:.68rem;
+  .marquee-tile-logo-frame{
+    width:46px;
+    height:46px;
+    padding:4px;
   }
   .marquee-sp-name{
-    font-size:.78rem;
+    font-size:.8rem;
   }
   .marquee-sp-type{
-    font-size:.55rem;
+    font-size:.56rem;
   }
   .mascot-speech-bubble{
     display:none !important; /* Completely removed on mobile devices */
@@ -1792,30 +1771,27 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
     font-size:clamp(1.8rem, 8vw, 2.5rem);
   }
   .sponsors-marquee-section{
-    padding:35px 0 45px;
-  }
-  .row-gap-wrap{
-    margin-top:8px;
+    padding:30px 0 40px;
   }
   .marquee-sponsor-tile{
-    min-width:170px;
-    padding:10px 12px;
+    min-width:180px;
+    padding:9px 12px;
     border-radius:12px;
   }
   .marquee-tile-content{
-    gap:8px;
+    gap:10px;
   }
-  .marquee-tile-emblem{
-    width:32px;
-    height:32px;
-    font-size:.62rem;
+  .marquee-tile-logo-frame{
+    width:40px;
+    height:40px;
+    padding:3px;
     border-radius:8px;
   }
   .marquee-sp-name{
-    font-size:.74rem;
+    font-size:.76rem;
   }
   .marquee-sp-type{
-    font-size:.52rem;
+    font-size:.54rem;
   }
   .hero-meta{
     grid-template-columns:1fr;

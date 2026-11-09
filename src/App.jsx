@@ -482,63 +482,24 @@ export default function App() {
             </div>
           </section>
 
-          {/* ═══ SPONSORSHIP CONTINUOUS MARQUEE (Right to Left Scrolling - 3 Rows on Mobile) ═══ */}
+          {/* ═══ SPONSORSHIP CONTINUOUS MARQUEE (Seamless Single-Line Loop) ═══ */}
           <section className="sponsors-marquee-section">
             <div className="marquee-section-head">
-              <span className="mono gold">Legacy of Trust · Previous Champions & Partners</span>
+              <span className="mono gold">Legacy of Trust · Corporate Partners & Supporters</span>
               <h3>Proudly Supported by Industry Titans</h3>
             </div>
 
-            {/* Row 1 - Auto scrolling right to left */}
+            {/* Seamless Infinite CSS Marquee Strip */}
             <div className="sponsors-marquee-track-wrap">
-              <div className="sponsors-marquee-track track-row-1">
-                {[...SPONSORS_DATA.slice(0, 4), ...SPONSORS_DATA.slice(0, 4), ...SPONSORS_DATA.slice(0, 4)].map((sp, idx) => (
+              <div className="sponsors-marquee-track single-line-loop">
+                {/* Repeat list twice for seamless infinite scroll loop */}
+                {[...SPONSORS_DATA, ...SPONSORS_DATA].map((sp, idx) => (
                   <div key={idx} className="marquee-sponsor-tile">
                     <div className="tile-ambient-glow" style={{ background: sp.bg }} />
                     <div className="marquee-tile-content">
-                      <span className="marquee-tile-emblem" style={{ background: sp.bg, color: '#fff' }}>
-                        {sp.logo}
-                      </span>
-                      <div className="marquee-tile-info">
-                        <span className="marquee-sp-name">{sp.name}</span>
-                        <span className="marquee-sp-type mono">{sp.type}</span>
+                      <div className="marquee-tile-logo-frame">
+                        <img src={sp.logoImg} alt={sp.name} className="marquee-sponsor-img" />
                       </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Row 2 - Auto scrolling reverse (left to right) */}
-            <div className="sponsors-marquee-track-wrap row-gap-wrap">
-              <div className="sponsors-marquee-track track-row-2">
-                {[...SPONSORS_DATA.slice(4, 8), ...SPONSORS_DATA.slice(4, 8), ...SPONSORS_DATA.slice(4, 8)].map((sp, idx) => (
-                  <div key={idx} className="marquee-sponsor-tile">
-                    <div className="tile-ambient-glow" style={{ background: sp.bg }} />
-                    <div className="marquee-tile-content">
-                      <span className="marquee-tile-emblem" style={{ background: sp.bg, color: '#fff' }}>
-                        {sp.logo}
-                      </span>
-                      <div className="marquee-tile-info">
-                        <span className="marquee-sp-name">{sp.name}</span>
-                        <span className="marquee-sp-type mono">{sp.type}</span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Row 3 - Auto scrolling right to left */}
-            <div className="sponsors-marquee-track-wrap row-gap-wrap">
-              <div className="sponsors-marquee-track track-row-3">
-                {[...SPONSORS_DATA.slice(8, 12), ...SPONSORS_DATA.slice(8, 12), ...SPONSORS_DATA.slice(8, 12)].map((sp, idx) => (
-                  <div key={idx} className="marquee-sponsor-tile">
-                    <div className="tile-ambient-glow" style={{ background: sp.bg }} />
-                    <div className="marquee-tile-content">
-                      <span className="marquee-tile-emblem" style={{ background: sp.bg, color: '#fff' }}>
-                        {sp.logo}
-                      </span>
                       <div className="marquee-tile-info">
                         <span className="marquee-sp-name">{sp.name}</span>
                         <span className="marquee-sp-type mono">{sp.type}</span>

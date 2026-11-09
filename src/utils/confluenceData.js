@@ -24,18 +24,20 @@ export const SITE_CONFIG = {
 };
 
 export const SPONSORS_DATA = [
-  { name: "Tata Consultancy Services", logo: "TCS", type: "Technology Partner", color: "#F5D77F", bg: "linear-gradient(135deg, #1F0E2C, #4D1D64)" },
-  { name: "HCLTech", logo: "HCL", type: "Digital Ecosystem Partner", color: "#FFF2A6", bg: "linear-gradient(135deg, #2A123D, #4D1D64)" },
-  { name: "TVS Motor Company", logo: "TVS", type: "Mobility Partner", color: "#F5D77F", bg: "linear-gradient(135deg, #1F0E2C, #3B1450)" },
-  { name: "ICICI Bank", logo: "ICICI", type: "Banking Partner", color: "#C59B3C", bg: "linear-gradient(135deg, #2D1442, #4D1D64)" },
-  { name: "Marico", logo: "MARICO", type: "Brand Strategy Partner", color: "#F5D77F", bg: "linear-gradient(135deg, #1F0E2C, #4D1D64)" },
-  { name: "Federal Bank", logo: "FEDERAL", type: "Fintech Partner", color: "#FFF2A6", bg: "linear-gradient(135deg, #230E33, #4D1D64)" },
-  { name: "Apollo Tyres", logo: "APOLLO", type: "Supply Chain Partner", color: "#C59B3C", bg: "linear-gradient(135deg, #1F0E2C, #3E1655)" },
-  { name: "Zoho Corporation", logo: "ZOHO", type: "SaaS Partner", color: "#F5D77F", bg: "linear-gradient(135deg, #2A113C, #4D1D64)" },
-  { name: "The Hindu BusinessLine", logo: "HBL", type: "Media Partner", color: "#FFF2A6", bg: "linear-gradient(135deg, #1F0E2C, #4D1D64)" },
-  { name: "Red Bull", logo: "RED BULL", type: "Energy Partner", color: "#F5D77F", bg: "linear-gradient(135deg, #260D38, #4D1D64)" },
-  { name: "Radio Mirchi 98.3", logo: "MIRCHI", type: "Broadcast Partner", color: "#C59B3C", bg: "linear-gradient(135deg, #1F0E2C, #3F1556)" },
-  { name: "Madurai Startups", logo: "STARTUP", type: "Incubation Partner", color: "#FFF2A6", bg: "linear-gradient(135deg, #2B123E, #4D1D64)" }
+  { name: "Thangamayil", logoImg: "/sponsors/thangamayil.png", type: "Gold Partner", color: "#F5D77F", bg: "rgba(255,255,255,0.06)" },
+  { name: "HDFC Credila", logoImg: "/sponsors/hdfc credilla.png", type: "Education Loan Partner", color: "#FFF2A6", bg: "rgba(255,255,255,0.06)" },
+  { name: "Bank of Baroda", logoImg: "/sponsors/bob.png", type: "Banking Partner", color: "#C59B3C", bg: "rgba(255,255,255,0.06)" },
+  { name: "Federal Bank", logoImg: "/sponsors/federal.png", type: "Associate Partner", color: "#FFF2A6", bg: "rgba(255,255,255,0.06)" },
+  { name: "State Bank of India", logoImg: "/sponsors/sbi.png", type: "Banking Partner", color: "#F5D77F", bg: "rgba(255,255,255,0.06)" },
+  { name: "Pepsi", logoImg: "/sponsors/pepsi.png", type: "Beverage Partner", color: "#FFF2A6", bg: "rgba(255,255,255,0.06)" },
+  { name: "Red Taxi", logoImg: "/sponsors/red taxi.png", type: "Mobility Partner", color: "#F5D77F", bg: "rgba(255,255,255,0.06)" },
+  { name: "Greenlight", logoImg: "/sponsors/greenlight.png", type: "Sustainability Partner", color: "#C59B3C", bg: "rgba(255,255,255,0.06)" },
+  { name: "Hotel Arasan Sapthagiri", logoImg: "/sponsors/hotel arasan saptagiri.png", type: "Hospitality Partner", color: "#F5D77F", bg: "rgba(255,255,255,0.06)" },
+  { name: "TAPL", logoImg: "/sponsors/tapl.png", type: "Corporate Sponsor", color: "#FFF2A6", bg: "rgba(255,255,255,0.06)" },
+  { name: "Star Guru", logoImg: "/sponsors/starguru.png", type: "Talent Partner", color: "#F5D77F", bg: "rgba(255,255,255,0.06)" },
+  { name: "ARS HTA", logoImg: "/sponsors/ars hta.png", type: "Logistics Partner", color: "#C59B3C", bg: "rgba(255,255,255,0.06)" },
+  { name: "Ramachandra", logoImg: "/sponsors/ramachandra.png", type: "Retail Partner", color: "#F5D77F", bg: "rgba(255,255,255,0.06)" },
+  { name: "Anuj", logoImg: "/sponsors/anuj.png", type: "Merchandise Partner", color: "#FFF2A6", bg: "rgba(255,255,255,0.06)" }
 ];
 
 export const MANAGEMENT_EVENTS = [
