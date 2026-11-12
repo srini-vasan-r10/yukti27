@@ -304,6 +304,7 @@ export default function App() {
           >
             Registration Portal
           </a>
+          {/*
           <a
             href="#sponsors"
             className={currentPage === 'sponsors' ? 'active-nav-link' : ''}
@@ -311,6 +312,7 @@ export default function App() {
           >
             YUKTI ’26 Sponsors
           </a>
+          */}
 
           {/* Mobile-only menu CTA */}
           {menuOpen && (
@@ -497,8 +499,7 @@ export default function App() {
             </div>
           </section>
 
-          {/* ═══ SPONSORSHIP CONTINUOUS MARQUEE (Commented out for all viewports) ═══ */}
-          {/*
+          {/* ═══ SPONSORSHIP CONTINUOUS MARQUEE (Restored on Homepage) ═══ */}
           <section className="sponsors-marquee-section">
             <div className="marquee-section-head">
               <span className="mono gold">Legacy of Trust · Corporate Partners & Supporters</span>
@@ -523,7 +524,6 @@ export default function App() {
               </div>
             </div>
           </section>
-          */}
 
           {/* ═══ SUMMIT OVERVIEW & QUICK PORTALS ═══ */}
           <section className="section section-dark">
@@ -659,7 +659,9 @@ export default function App() {
               <a href="#management" onClick={(e) => { e.preventDefault(); navigateTo('management') }}>Management Arenas (6)</a>
               <a href="#cultural" onClick={(e) => { e.preventDefault(); navigateTo('cultural') }}>Cultural Confluence (6)</a>
               <a href="#portal" onClick={(e) => { e.preventDefault(); navigateTo('portal') }}>Registration Portal</a>
+              {/*
               <a href="#sponsors" onClick={(e) => { e.preventDefault(); navigateTo('sponsors') }}>YUKTI ’26 Sponsors</a>
+              */}
             </div>
 
             <div className="footer-col-block">
