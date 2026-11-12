@@ -1859,3 +1859,366 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
   .timeline{grid-template-columns:1fr}
   .side-note{display:none}
 }
+
+
+/* ══════════════════════════════════════════════════════════════════
+   YUKTI '26 THEATRICAL SPOTLIGHT SPONSOR STAGE
+   Theme: Royal Purple & Radiant Gold with Theatrical Lighting
+   ══════════════════════════════════════════════════════════════════ */
+
+.yukti26-stage-wrapper {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  padding-bottom: 60px;
+}
+
+/* 1. Theatrical Aurora & Beam Lighting */
+.stage-aurora-bg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1000px;
+  height: 600px;
+  background: radial-gradient(ellipse at top, rgba(168, 85, 247, 0.28) 0%, rgba(77, 29, 100, 0.15) 45%, transparent 75%);
+  pointer-events: none;
+  filter: blur(40px);
+  z-index: 1;
+}
+
+.stage-spotlight-beam {
+  position: absolute;
+  top: -80px;
+  width: 280px;
+  height: 900px;
+  background: linear-gradient(180deg, rgba(245, 215, 127, 0.22) 0%, rgba(168, 85, 247, 0.1) 45%, transparent 100%);
+  clip-path: polygon(45% 0%, 55% 0%, 100% 100%, 0% 100%);
+  filter: blur(22px);
+  transform-origin: top center;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.85;
+  animation: beamSway 8s ease-in-out infinite alternate;
+}
+
+.stage-spotlight-beam.beam-left {
+  left: 8%;
+  transform: rotate(-16deg);
+  animation-delay: 0s;
+}
+.stage-spotlight-beam.beam-center-left {
+  left: 28%;
+  transform: rotate(-6deg);
+  animation-delay: 2s;
+}
+.stage-spotlight-beam.beam-center-right {
+  right: 28%;
+  transform: rotate(6deg);
+  animation-delay: 1s;
+}
+.stage-spotlight-beam.beam-right {
+  right: 8%;
+  transform: rotate(16deg);
+  animation-delay: 3s;
+}
+
+@keyframes beamSway {
+  0% { opacity: 0.6; filter: blur(20px); }
+  50% { opacity: 0.95; filter: blur(16px); }
+  100% { opacity: 0.65; filter: blur(24px); }
+}
+
+.stage-pedestal-light {
+  position: absolute;
+  top: 580px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 720px;
+  height: 180px;
+  background: radial-gradient(ellipse at center, rgba(245, 215, 127, 0.32) 0%, rgba(168, 85, 247, 0.2) 40%, transparent 75%);
+  filter: blur(30px);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* 2. YUKTI '26 Crest Showcase */
+.yukti26-crest-holder {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+.yukti26-crest-frame {
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  padding: 4px;
+  border: 1.5px solid var(--gold-border);
+  background: radial-gradient(circle at center, rgba(77, 29, 100, 0.8), rgba(31, 14, 44, 0.95));
+  box-shadow: 0 0 35px rgba(245, 215, 127, 0.35), inset 0 0 20px rgba(255, 242, 166, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.yukti26-crest-frame:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 50px rgba(245, 215, 127, 0.55);
+}
+.yukti26-logo-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.yukti26-title {
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.02em;
+  margin: 8px 0;
+}
+.yukti26-theme-subtitle {
+  font-size: 0.82rem;
+  letter-spacing: 0.22em;
+  color: var(--gold-figure);
+  margin-top: 4px;
+}
+
+/* 3. Stage Display Pedestal & Card */
+.stage-display-container {
+  position: relative;
+  z-index: 10;
+  max-width: 760px;
+  margin: 20px auto 40px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stage-pedestal-base {
+  width: 100%;
+  perspective: 1000px;
+  display: flex;
+  justify-content: center;
+}
+
+.stage-sponsor-card {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  background: linear-gradient(145deg, rgba(31, 14, 44, 0.92) 0%, rgba(15, 7, 24, 0.96) 100%);
+  border: 1.5px solid rgba(197, 155, 60, 0.4);
+  border-radius: 28px;
+  padding: 38px 42px;
+  box-shadow:
+    0 35px 80px rgba(0, 0, 0, 0.9),
+    0 0 50px rgba(168, 85, 247, 0.2),
+    inset 0 1px 1px rgba(255, 242, 166, 0.25);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: cardFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.stage-card-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(245, 215, 127, 0.16) 0%, rgba(77, 29, 100, 0.12) 50%, transparent 80%);
+  pointer-events: none;
+}
+
+/* Card Top: Rank/Tier Badge & Counter */
+.stage-card-top-row {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.sponsor-rank-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  background: linear-gradient(135deg, rgba(197, 155, 60, 0.25) 0%, rgba(77, 29, 100, 0.35) 100%);
+  border: 1px solid var(--gold-border);
+  color: var(--bright-spark);
+  box-shadow: 0 0 15px rgba(197, 155, 60, 0.2);
+}
+.rank-star {
+  color: var(--gold-figure);
+  font-size: 0.85rem;
+}
+
+.sponsor-counter-badge {
+  font-size: 0.76rem;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+
+/* Center Logo Presentation */
+.stage-logo-presentation {
+  position: relative;
+  margin: 10px 0 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.stage-logo-halo {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245, 215, 127, 0.25) 0%, rgba(168, 85, 247, 0.15) 50%, transparent 75%);
+  filter: blur(20px);
+  pointer-events: none;
+}
+.stage-logo-plate {
+  position: relative;
+  z-index: 2;
+  min-width: 240px;
+  max-width: 320px;
+  height: 120px;
+  border-radius: 20px;
+  background: #ffffff;
+  border: 2px solid var(--gold-border);
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.7),
+    0 0 35px rgba(245, 215, 127, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 24px;
+}
+.stage-sponsor-full-logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Sponsor Identity Typography */
+.stage-sponsor-identity {
+  position: relative;
+  z-index: 2;
+  margin-top: 6px;
+}
+.stage-sponsor-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.6rem, 3.4vw, 2.3rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  margin: 0;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+}
+.stage-sponsor-line {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold-figure), transparent);
+  margin: 12px auto 0;
+}
+
+/* 4. Indicator Dots Rack (ONLY dots, no bottom controls) */
+.stage-dots-rack {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+  max-width: 580px;
+}
+.stage-dot-pill {
+  background: transparent;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.2s ease;
+}
+.stage-dot-pill:hover {
+  transform: scale(1.25);
+}
+.stage-dot-pill .dot-fill {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(197, 155, 60, 0.3);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.stage-dot-pill.active .dot-fill {
+  width: 28px;
+  background: linear-gradient(90deg, var(--gold-border), var(--gold-figure));
+  border-color: var(--bright-spark);
+  box-shadow: 0 0 12px rgba(245, 215, 127, 0.6);
+}
+
+/* Mobile Responsiveness for Spotlight Stage */
+@media (max-width: 768px) {
+  .stage-spotlight-beam {
+    width: 180px;
+    filter: blur(28px);
+    opacity: 0.6;
+  }
+  .stage-spotlight-beam.beam-left,
+  .stage-spotlight-beam.beam-right {
+    display: none; /* Hide outer beams on small screens to avoid clutter */
+  }
+  .stage-pedestal-light {
+    width: 380px;
+    height: 120px;
+    top: 500px;
+  }
+  .stage-sponsor-card {
+    padding: 26px 20px;
+    border-radius: 20px;
+  }
+  .stage-logo-plate {
+    min-width: 200px;
+    max-width: 260px;
+    height: 95px;
+    padding: 12px 18px;
+  }
+  .yukti26-crest-frame {
+    width: 86px;
+    height: 86px;
+  }
+  .stage-dots-rack {
+    gap: 8px;
+  }
+  .stage-dot-pill.active .dot-fill {
+    width: 22px;
+  }
+}

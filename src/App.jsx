@@ -4,10 +4,11 @@ import { SITE_CONFIG, SPONSORS_DATA } from './utils/confluenceData'
 import ManagementEventsPage from './pages/ManagementEventsPage'
 import CulturalEventsPage from './pages/CulturalEventsPage'
 import RegistrationPortalPage from './pages/RegistrationPortalPage'
+import Yukti26SponsorsPage from './pages/Yukti26SponsorsPage'
 
 export default function App() {
   const canvasRef = useRef(null)
-  const [currentPage, setCurrentPage] = useState('home') // 'home' | 'management' | 'cultural' | 'portal'
+  const [currentPage, setCurrentPage] = useState('home') // 'home' | 'management' | 'cultural' | 'portal' | 'sponsors'
   const [menuOpen, setMenuOpen] = useState(false)
   const [modalData, setModalData] = useState(null)
   const [previewMode, setPreviewMode] = useState(false)
@@ -303,6 +304,13 @@ export default function App() {
           >
             Registration Portal
           </a>
+          <a
+            href="#sponsors"
+            className={currentPage === 'sponsors' ? 'active-nav-link' : ''}
+            onClick={(e) => { e.preventDefault(); navigateTo('sponsors') }}
+          >
+            YUKTI ’26 Sponsors
+          </a>
 
           {/* Mobile-only menu CTA */}
           {menuOpen && (
@@ -358,6 +366,13 @@ export default function App() {
       {currentPage === 'portal' && (
         <RegistrationPortalPage
           onBackToHome={() => navigateTo('home')}
+        />
+      )}
+
+      {currentPage === 'sponsors' && (
+        <Yukti26SponsorsPage
+          onBackToHome={() => navigateTo('home')}
+          onOpenRegister={() => navigateTo('portal')}
         />
       )}
 
@@ -483,16 +498,16 @@ export default function App() {
           </section>
 
           {/* ═══ SPONSORSHIP CONTINUOUS MARQUEE (Seamless Single-Line Loop) ═══ */}
+          {/* TO REVERT: Uncomment this block if the homepage scrolling marquee is ever needed again */}
+          {/*
           <section className="sponsors-marquee-section">
             <div className="marquee-section-head">
               <span className="mono gold">Legacy of Trust · Corporate Partners & Supporters</span>
               <h3>Proudly Supported by Industry Titans</h3>
             </div>
 
-            {/* Seamless Infinite CSS Marquee Strip */}
             <div className="sponsors-marquee-track-wrap">
               <div className="sponsors-marquee-track single-line-loop">
-                {/* Repeat list twice for seamless infinite scroll loop */}
                 {[...SPONSORS_DATA, ...SPONSORS_DATA].map((sp, idx) => (
                   <div key={idx} className="marquee-sponsor-tile">
                     <div className="tile-ambient-glow" style={{ background: sp.bg }} />
@@ -509,6 +524,7 @@ export default function App() {
               </div>
             </div>
           </section>
+          */}
 
           {/* ═══ SUMMIT OVERVIEW & QUICK PORTALS ═══ */}
           <section className="section section-dark">
@@ -644,6 +660,7 @@ export default function App() {
               <a href="#management" onClick={(e) => { e.preventDefault(); navigateTo('management') }}>Management Arenas (6)</a>
               <a href="#cultural" onClick={(e) => { e.preventDefault(); navigateTo('cultural') }}>Cultural Confluence (6)</a>
               <a href="#portal" onClick={(e) => { e.preventDefault(); navigateTo('portal') }}>Registration Portal</a>
+              <a href="#sponsors" onClick={(e) => { e.preventDefault(); navigateTo('sponsors') }}>YUKTI ’26 Sponsors</a>
             </div>
 
             <div className="footer-col-block">
