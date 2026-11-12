@@ -31,7 +31,7 @@ export const SPONSORS_DATA = [
   { name: "State Bank of India", logoImg: "/sponsors/sbi.png", type: "Banking Partner", color: "#F5D77F", bg: "rgba(255,255,255,0.06)" },
   { name: "Pepsi", logoImg: "/sponsors/pepsi.png", type: "Beverage Partner", color: "#FFF2A6", bg: "rgba(255,255,255,0.06)" },
   { name: "Red Taxi", logoImg: "/sponsors/red taxi.png", type: "Mobility Partner", color: "#F5D77F", bg: "rgba(255,255,255,0.06)" },
-  { name: "Greenlight", logoImg: "/sponsors/greenlight.png", type: "Sustainability Partner", color: "#C59B3C", bg: "rgba(255,255,255,0.06)" },
+  { name: "Greenlight", logoImg: "/sponsors/greenlight.png", type: "Photography Partner", color: "#C59B3C", bg: "rgba(255,255,255,0.06)" },
   { name: "Hotel Arasan Sapthagiri", logoImg: "/sponsors/hotel arasan saptagiri.png", type: "Hospitality Partner", color: "#F5D77F", bg: "rgba(255,255,255,0.06)" },
   { name: "TAPL", logoImg: "/sponsors/tapl.png", type: "Corporate Sponsor", color: "#FFF2A6", bg: "rgba(255,255,255,0.06)" },
   { name: "Star Guru", logoImg: "/sponsors/starguru.png", type: "Talent Partner", color: "#F5D77F", bg: "rgba(255,255,255,0.06)" },
