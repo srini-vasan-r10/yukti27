@@ -1443,20 +1443,24 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
   border-top:1px solid var(--line);
   padding-top:18px;
   margin-top:14px;
-  gap:12px;
+  gap:16px;
+  flex-wrap:wrap;
 }
 .meta-col{
   display:flex;
   flex-direction:column;
   gap:4px;
-  min-width:0;
+  min-width:120px;
+  flex:1 1 auto;
 }
 .meta-col strong{
   font-size:.92rem;
-  line-height:1.2;
+  line-height:1.3;
+  word-break:break-word;
 }
 .actions-col{
   flex-shrink:0;
+  margin-left:auto;
 }
 .actions-col .btn,
 .cult-footer .btn{
@@ -1670,7 +1674,50 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
     gap:12px;
   }
 
-  .home-dual-cards-grid, .portal-layout-grid, .qr-checkout-box, .mgmt-cards-grid, .cultural-cards-grid{
+  .mgmt-cards-grid, .cultural-cards-grid{
+    grid-template-columns:1fr;
+    gap:18px;
+  }
+  .mgmt-detail-card{
+    padding:22px 18px;
+    border-radius:16px;
+  }
+  .mgmt-card-title{
+    font-size:1.35rem;
+  }
+  .mgmt-card-footer{
+    flex-direction:column;
+    align-items:stretch;
+    gap:14px;
+  }
+  .meta-col{
+    width:100%;
+    min-width:100%;
+  }
+  .actions-col{
+    width:100%;
+    margin-left:0;
+  }
+  .actions-col .btn{
+    width:100%;
+    text-align:center;
+    justify-content:center;
+  }
+  .cult-body-content{
+    padding:20px 18px 22px;
+  }
+  .cult-footer{
+    flex-direction:column;
+    align-items:stretch;
+    gap:14px;
+  }
+  .cult-footer .btn{
+    width:100%;
+    text-align:center;
+    justify-content:center;
+  }
+
+  .home-dual-cards-grid, .portal-layout-grid, .qr-checkout-box{
     grid-template-columns:1fr;
   }
   .fields-row-2, .dossier-grid-details{
