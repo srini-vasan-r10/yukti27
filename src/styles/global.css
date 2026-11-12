@@ -542,15 +542,16 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
   color:#ffffff;
 }
 .about-quote{
-  margin:0 0 20px;
-  padding:18px 24px;
+  margin:0 0 24px;
+  padding:26px 36px 26px 42px;
   background:rgba(77,29,100,0.35); /* #4D1D64 */
-  border-left:3px solid var(--gold-border);
+  border-left:4px solid var(--gold-border);
   border-radius:0 14px 14px 0;
   font-size:1.02rem;
-  line-height:1.7;
+  line-height:1.8;
   color:var(--bright-spark);
   font-style:italic;
+  box-sizing:border-box;
 }
 .about-description{
   color:#cbd5e1;
