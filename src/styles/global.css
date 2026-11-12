@@ -111,6 +111,11 @@ button,a,.btn{cursor:pointer}
 .nav a:hover{color:var(--gold-figure)}
 .nav a.active-nav-link{color:var(--gold-figure);font-weight:700}
 .nav a.active-nav-link:after{content:'';position:absolute;bottom:-6px;left:0;right:0;height:2px;background:var(--gold-border);border-radius:2px}
+
+/* Hide YUKTI '26 Sponsors in Desktop/PC topbar nav - show only on Tablet & Mobile */
+.mobile-tab-only-nav-link{
+  display:none !important;
+}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 24px;border-radius:999px;background:linear-gradient(135deg, var(--gold-border), #b5892f);color:#1F0E2C;font-size:.78rem;font-weight:800;border:1px solid var(--gold-figure);transition:transform .3s,background .3s,box-shadow .3s}
 .btn:hover{transform:translateY(-2px);background:linear-gradient(135deg, var(--gold-figure), var(--gold-border));box-shadow:0 8px 24px rgba(197,155,60,.45)}
 .btn.ghost{background:transparent;color:var(--ink);border-color:rgba(197,155,60,0.35)}
@@ -1539,6 +1544,11 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
 
 /* Mobile Rules */
 @media(max-width:850px){
+  /* Show YUKTI '26 Sponsors in mobile & tablet navigation menu */
+  .mobile-tab-only-nav-link{
+    display:block !important;
+  }
+
   .nav{
     display:none;
     position:fixed;

@@ -306,7 +306,7 @@ export default function App() {
           </a>
           <a
             href="#sponsors"
-            className={currentPage === 'sponsors' ? 'active-nav-link' : ''}
+            className={`mobile-tab-only-nav-link ${currentPage === 'sponsors' ? 'active-nav-link' : ''}`}
             onClick={(e) => { e.preventDefault(); navigateTo('sponsors') }}
           >
             YUKTI ’26 Sponsors
@@ -498,8 +498,6 @@ export default function App() {
           </section>
 
           {/* ═══ SPONSORSHIP CONTINUOUS MARQUEE (Seamless Single-Line Loop) ═══ */}
-          {/* TO REVERT: Uncomment this block if the homepage scrolling marquee is ever needed again */}
-          {/*
           <section className="sponsors-marquee-section">
             <div className="marquee-section-head">
               <span className="mono gold">Legacy of Trust · Corporate Partners & Supporters</span>
@@ -524,7 +522,6 @@ export default function App() {
               </div>
             </div>
           </section>
-          */}
 
           {/* ═══ SUMMIT OVERVIEW & QUICK PORTALS ═══ */}
           <section className="section section-dark">
