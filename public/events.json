@@ -5,11 +5,20 @@
     "num": "01",
     "title": "The AI CEO Challenge",
     "domain": "Executive Leadership & Best Manager",
-    "shortDesc": "The premier individual trial of executive composure, strategic intellect, boardroom negotiation, and visionary decision-making.",
+    "shortDesc": "A high-stakes individual competition testing strategic thinking, executive composure, and leadership under pressure.",
     "rounds": [
-      { "name": "Round 1: Cognitive Inquisitor", "desc": "Psychometric evaluation, rapid-fire executive dilemmas & analytical stress test." },
-      { "name": "Round 2: Hostile Takeover & Press Gauntlet", "desc": "Navigate reputational firestorms, activist shareholder revolts, and public inquiry." },
-      { "name": "Round 3: The 24-Hour Corporate Crucible", "desc": "Formulate an enterprise turnaround blueprint and defend before corporate juries." }
+      {
+        "name": "Round 1: Cognitive Inquisitor",
+        "desc": "Psychometric evaluation and analytical reasoning challenge."
+      },
+      {
+        "name": "Round 2: Boardroom Crisis",
+        "desc": "Resolve a simulated corporate crisis with limited resources and time."
+      },
+      {
+        "name": "Round 3: The CEO's Verdict",
+        "desc": "Present a strategic business decision before an expert jury."
+      }
     ],
     "teamSize": "Individual",
     "prizes": "₹2,50,000 + Best Manager Shield",
@@ -17,148 +26,437 @@
   },
   {
     "type": "man",
-    "id": "marketing-the-ineffable",
+    "id": "market-mavericks",
     "num": "02",
-    "title": "Marketing the Ineffable",
-    "domain": "Brand Strategy & Digital Campaigns",
-    "shortDesc": "Craft resonant brand narratives, reposition legacy enterprises, and engineer omnichannel growth campaigns that dominate digital mindshare.",
+    "title": "Market Mavericks",
+    "domain": "Marketing Strategy & Brand Management",
+    "shortDesc": "A battlefield of brands where participants transform ordinary products into extraordinary market leaders.",
     "rounds": [
-      { "name": "Round 1: Consumer Archetype Discovery", "desc": "Hyper-niche behavioural dissection and digital journey reconstruction." },
-      { "name": "Round 2: Guerrilla Launch & PR Firefight", "desc": "Live brand launch and rapid crisis communication response." },
-      { "name": "Round 3: Global Repositioning Pitch", "desc": "Defend cohesive corporate brand resurgence plan." }
+      {
+        "name": "Round 1: Brand Decode",
+        "desc": "Identify brands through unconventional marketing clues."
+      },
+      {
+        "name": "Round 2: Market Disruptor",
+        "desc": "Develop a creative campaign for a challenging product."
+      },
+      {
+        "name": "Round 3: Brand Wars",
+        "desc": "Defend your marketing strategy against competing teams."
+      }
     ],
-    "teamSize": "2 - 3 Delegates",
-    "prizes": "₹1,50,000 + Trophy",
-    "fee": "₹750 per team"
+    "teamSize": "2 - 3 Members",
+    "prizes": "₹1,00,000 + Marketing Excellence Trophy",
+    "fee": "₹600 per team"
   },
   {
     "type": "man",
-    "id": "operations-4-0",
+    "id": "the-analyst-arena",
     "num": "03",
-    "title": "Operations 4.0",
-    "domain": "Supply Chain, Logistics & Systems",
-    "shortDesc": "Tackle systemic disruptions, stochastic logistics constraints, and end-to-end multi-echelon network flows under market turbulence.",
+    "title": "The Analyst Arena",
+    "domain": "Business Analytics & Decision Science",
+    "shortDesc": "Where numbers tell stories and data-driven minds compete to uncover business opportunities.",
     "rounds": [
-      { "name": "Round 1: Value-Chain Diagnostics", "desc": "Algorithmic bottleneck isolation & dynamic capacity balancing." },
-      { "name": "Round 2: The Black Swan Incursion", "desc": "Live boardroom crisis simulation responding to geopolitical supply chokepoints." },
-      { "name": "Round 3: Sustainable Matrix Pitch", "desc": "Defend resilient operational roadmap before corporate executive jury." }
+      {
+        "name": "Round 1: Data Detective",
+        "desc": "Interpret datasets and identify hidden business patterns."
+      },
+      {
+        "name": "Round 2: Insight Factory",
+        "desc": "Solve a business problem using analytical reasoning."
+      },
+      {
+        "name": "Round 3: Data to Decisions",
+        "desc": "Present actionable recommendations to the judging panel."
+      }
     ],
-    "teamSize": "2 - 3 Delegates",
-    "prizes": "₹1,50,000 + Trophy",
-    "fee": "₹750 per team"
-  },
-  {
-    "type": "man",
-    "id": "case-study-challenge",
-    "num": "04",
-    "title": "Case Study Challenge",
-    "domain": "Consulting & Financial Restructuring",
-    "shortDesc": "Financial restructuring, capital allocation, complex M&A valuation, and disciplined risk mitigation in volatile markets.",
-    "rounds": [
-      { "name": "Round 1: Quantitative Audit", "desc": "Portfolio rebalancing, derivatives evaluation, and solvency stress-testing." },
-      { "name": "Round 2: Cross-Border M&A War Room", "desc": "Distressed asset acquisitions and hostile debt renegotiations." },
-      { "name": "Round 3: Fiduciary Defense", "desc": "Defend sovereign capital allocation before veteran venture financiers." }
-    ],
-    "teamSize": "2 - 3 Delegates",
-    "prizes": "₹1,50,000 + Trophy",
-    "fee": "₹750 per team"
-  },
-  {
-    "type": "man",
-    "id": "business-quiz",
-    "num": "05",
-    "title": "Business Quiz",
-    "domain": "Corporate Trivia & Dynamic Auctions",
-    "shortDesc": "A cerebral arena testing razor-sharp business acumen, strategic bidding game theory, and bold tactical resource allocation.",
-    "rounds": [
-      { "name": "Round 1: Global Business Intelligence", "desc": "Rapid-fire buzzer quiz on economic history, M&A, and market titans." },
-      { "name": "Round 2: Blind Valuation Sprint", "desc": "Assess distressed portfolio assets under severe countdown pressure." },
-      { "name": "Round 3: The High-Stakes Auction Floor", "desc": "Strategic bidding war to construct the highest-yield corporate empire." }
-    ],
-    "teamSize": "2 Delegates",
-    "prizes": "₹1,00,000 + Trophy",
+    "teamSize": "2 Members",
+    "prizes": "₹1,00,000 + Analytics Champion Trophy",
     "fee": "₹500 per team"
   },
   {
     "type": "man",
-    "id": "pitch-perfect",
-    "num": "06",
-    "title": "Pitch Perfect",
-    "domain": "Startup Inception & Angel Pitch",
-    "shortDesc": "Validate, stress-test, and pitch scalable, defensible ventures addressing industrial, climate, and socioeconomic frontiers.",
+    "id": "startup-storm",
+    "num": "04",
+    "title": "Startup Storm",
+    "domain": "Entrepreneurship & Innovation",
+    "shortDesc": "An entrepreneurial showdown challenging participants to turn disruptive ideas into scalable ventures.",
     "rounds": [
-      { "name": "Round 1: Economics & Defensibility Filter", "desc": "Tearsheet review, TAM validation, and unit-economic stress analysis." },
-      { "name": "Round 2: Angel Cross-Examination", "desc": "Survive intense due diligence on CAC, LTV, and competitive moats." },
-      { "name": "Round 3: Angel Investors Conclave", "desc": "Live syndicate pitch for simulated capitalization and incubation." }
+      {
+        "name": "Round 1: Idea Ignition",
+        "desc": "Pitch an innovative startup concept."
+      },
+      {
+        "name": "Round 2: Investor Interrogation",
+        "desc": "Defend your business model before a panel of investors."
+      },
+      {
+        "name": "Round 3: Scale or Fail",
+        "desc": "Develop a growth strategy under real-world constraints."
+      }
     ],
-    "teamSize": "2 - 4 Delegates",
-    "prizes": "₹2,00,000 + Incubation Access",
+    "teamSize": "2 - 4 Members",
+    "prizes": "₹1,50,000 + Startup Incubation Opportunity",
     "fee": "₹800 per team"
+  },
+  {
+    "type": "man",
+    "id": "supply-chain-syndicate",
+    "num": "05",
+    "title": "Supply Chain Syndicate",
+    "domain": "Operations & Supply Chain Management",
+    "shortDesc": "A strategic operations challenge testing participants' ability to manage disruptions and optimize complex supply networks.",
+    "rounds": [
+      {
+        "name": "Round 1: Logistics Logic",
+        "desc": "Solve supply chain and inventory management challenges."
+      },
+      {
+        "name": "Round 2: Disruption Protocol",
+        "desc": "Respond to simulated logistics and procurement crises."
+      },
+      {
+        "name": "Round 3: The Optimization Mission",
+        "desc": "Design an efficient end-to-end supply chain."
+      }
+    ],
+    "teamSize": "2 - 3 Members",
+    "prizes": "₹1,00,000 + Operations Excellence Shield",
+    "fee": "₹600 per team"
+  },
+  {
+    "type": "man",
+    "id": "deal-or-no-deal",
+    "num": "06",
+    "title": "Deal or No Deal",
+    "domain": "Negotiation & Business Communication",
+    "shortDesc": "A high-pressure negotiation arena where persuasion, confidence, and strategic thinking determine the winners.",
+    "rounds": [
+      {
+        "name": "Round 1: Negotiator's Instinct",
+        "desc": "Demonstrate negotiation skills through rapid-fire scenarios."
+      },
+      {
+        "name": "Round 2: The Bargaining Table",
+        "desc": "Negotiate a simulated business transaction."
+      },
+      {
+        "name": "Round 3: The Final Deal",
+        "desc": "Close a complex multi-party business agreement."
+      }
+    ],
+    "teamSize": "Individual",
+    "prizes": "₹75,000 + Master Negotiator Trophy",
+    "fee": "₹400"
+  },
+  {
+    "type": "man",
+    "id": "finance-frenzy",
+    "num": "07",
+    "title": "Finance Frenzy",
+    "domain": "Finance & Investment Management",
+    "shortDesc": "An intense financial competition challenging participants to think like investment bankers and portfolio managers.",
+    "rounds": [
+      {
+        "name": "Round 1: Financial IQ",
+        "desc": "Test financial knowledge through rapid-fire challenges."
+      },
+      {
+        "name": "Round 2: Portfolio Panic",
+        "desc": "Manage a simulated investment portfolio amid market fluctuations."
+      },
+      {
+        "name": "Round 3: The Investment Verdict",
+        "desc": "Present an investment strategy backed by financial analysis."
+      }
+    ],
+    "teamSize": "2 Members",
+    "prizes": "₹1,00,000 + Finance Excellence Trophy",
+    "fee": "₹500 per team"
+  },
+  {
+    "type": "man",
+    "id": "hr-human-capital",
+    "num": "08",
+    "title": "HR: Human Capital",
+    "domain": "Human Resource Management & Organizational Behaviour",
+    "shortDesc": "A people-management challenge testing talent acquisition, conflict resolution, and organizational leadership.",
+    "rounds": [
+      {
+        "name": "Round 1: Talent Detective",
+        "desc": "Evaluate candidates through recruitment scenarios."
+      },
+      {
+        "name": "Round 2: Workplace Wars",
+        "desc": "Resolve complex employee conflicts and organizational dilemmas."
+      },
+      {
+        "name": "Round 3: Culture Architects",
+        "desc": "Develop a people strategy for a growing organization."
+      }
+    ],
+    "teamSize": "2 Members",
+    "prizes": "₹75,000 + HR Excellence Shield",
+    "fee": "₹500 per team"
+  },
+  {
+    "type": "man",
+    "id": "the-consulting-room",
+    "num": "09",
+    "title": "The Consulting Room",
+    "domain": "Business Consulting & Strategic Management",
+    "shortDesc": "A consulting simulation where participants tackle real-world business problems and deliver boardroom-ready solutions.",
+    "rounds": [
+      {
+        "name": "Round 1: Case Crack",
+        "desc": "Analyze a complex business case and identify its core problem."
+      },
+      {
+        "name": "Round 2: Strategy Sprint",
+        "desc": "Develop a practical solution under strict time constraints."
+      },
+      {
+        "name": "Round 3: Partner's Review",
+        "desc": "Defend recommendations before a panel of industry experts."
+      }
+    ],
+    "teamSize": "2 - 3 Members",
+    "prizes": "₹1,25,000 + Consulting Excellence Trophy",
+    "fee": "₹700 per team"
+  },
+  {
+    "type": "man",
+    "id": "the-sales-showdown",
+    "num": "10",
+    "title": "The Sales Showdown",
+    "domain": "Sales Management & Business Development",
+    "shortDesc": "A high-energy sales competition testing persuasion, customer understanding, objection handling, and closing skills.",
+    "rounds": [
+      {
+        "name": "Round 1: Pitch Perfect",
+        "desc": "Deliver a compelling product pitch within a limited time."
+      },
+      {
+        "name": "Round 2: Objection Overload",
+        "desc": "Handle difficult customer objections and negotiate effectively."
+      },
+      {
+        "name": "Round 3: Close the Deal",
+        "desc": "Convert a simulated prospect into a successful business deal."
+      }
+    ],
+    "teamSize": "Individual",
+    "prizes": "₹75,000 + Sales Champion Trophy",
+    "fee": "₹400"
+  },
+  {
+    "type": "man",
+    "id": "global-business-league",
+    "num": "11",
+    "title": "Global Business League",
+    "domain": "International Business & Global Strategy",
+    "shortDesc": "A global market simulation challenging participants to navigate international trade, cultural differences, and geopolitical uncertainty.",
+    "rounds": [
+      {
+        "name": "Round 1: Global Radar",
+        "desc": "Identify international business opportunities and market trends."
+      },
+      {
+        "name": "Round 2: Borderless Battles",
+        "desc": "Solve international trade and cross-border business challenges."
+      },
+      {
+        "name": "Round 3: Global Expansion",
+        "desc": "Present an international market entry strategy."
+      }
+    ],
+    "teamSize": "2 - 3 Members",
+    "prizes": "₹1,00,000 + Global Strategist Trophy",
+    "fee": "₹600 per team"
+  },
+  {
+    "type": "man",
+    "id": "the-crisis-command",
+    "num": "12",
+    "title": "The Crisis Command",
+    "domain": "Crisis Management & Corporate Governance",
+    "shortDesc": "An intense corporate crisis simulation testing leadership, ethical judgment, risk management, and decision-making under uncertainty.",
+    "rounds": [
+      {
+        "name": "Round 1: Risk Radar",
+        "desc": "Identify organizational risks through real-world business scenarios."
+      },
+      {
+        "name": "Round 2: Crisis Unleashed",
+        "desc": "Manage a rapidly evolving corporate emergency."
+      },
+      {
+        "name": "Round 3: Reputation Recovery",
+        "desc": "Present a recovery strategy to restore stakeholder confidence."
+      }
+    ],
+    "teamSize": "2 - 3 Members",
+    "prizes": "₹1,25,000 + Crisis Commander Shield",
+    "fee": "₹700 per team"
   },
   {
     "type": "cul",
     "id": "battle-of-bands",
     "title": "Battle of Bands",
     "category": "Acoustic, Rock & Fusion",
-    "shortDesc": "High-octane acoustic and fusion band competition uniting electrifying original compositions, raga fusions, and pure instrumental mastery.",
+    "shortDesc": "A high-energy musical showdown bringing together talented bands for an electrifying live performance.",
     "format": "Band Ensemble (5 - 8 musicians, 15 minutes stage set)",
-    "judging": ["Harmonic Complexity", "Instrumental Virtuosity", "Arrangement Synergy", "Crowd Dynamics"],
+    "judging": [
+      "Harmonic Complexity",
+      "Instrumental Virtuosity",
+      "Stage Presence",
+      "Originality"
+    ],
     "prizes": "₹1,75,000 + Studio Grants",
     "fee": "₹1,200 per band"
   },
   {
     "type": "cul",
-    "id": "classical-fusion-dance",
-    "title": "Classical Fusion Dance",
-    "category": "Thematic Dance & Choreography",
-    "shortDesc": "Choreographed thematic group dance blending technical classical discipline with explosive contemporary expression.",
-    "format": "Group Choreography (6 - 12 dancers, 8 - 10 minutes)",
-    "judging": ["Synchronization & Precision", "Thematic Story Arc", "Emotional Resonance", "Visual Formations"],
-    "prizes": "₹1,50,000 + Trophy",
+    "id": "solo-symphony",
+    "title": "Solo Symphony",
+    "category": "Solo Singing & Vocal Performance",
+    "shortDesc": "A platform for exceptional vocalists to showcase their range, expression, and musical identity before a live audience.",
+    "format": "Individual Performance (4 - 5 minutes)",
+    "judging": [
+      "Vocal Range",
+      "Pitch Accuracy",
+      "Musical Expression",
+      "Stage Presence"
+    ],
+    "prizes": "₹75,000 + Best Vocalist Trophy",
+    "fee": "₹300"
+  },
+  {
+    "type": "cul",
+    "id": "footloose-frenzy",
+    "title": "Footloose Frenzy",
+    "category": "Western & Contemporary Dance",
+    "shortDesc": "An explosive dance competition celebrating choreography, rhythm, synchronization, and stage charisma.",
+    "format": "Group Performance (6 - 12 dancers, 8 minutes)",
+    "judging": [
+      "Choreography",
+      "Synchronization",
+      "Creativity",
+      "Stage Energy"
+    ],
+    "prizes": "₹1,25,000 + Dance Excellence Trophy",
     "fee": "₹1,000 per team"
   },
   {
     "type": "cul",
-    "id": "rhythms-and-algorithms",
-    "title": "Rhythms & Algorithms",
-    "category": "Runway & Haute Couture",
-    "shortDesc": "The pinnacle collegiate fashion runway showcasing avant-garde silhouette design, sustainable luxury, and stage presence.",
-    "format": "Runway Team (8 - 14 models + backstage design crew)",
-    "judging": ["Silhouette Innovation & Craft", "Choreography & Poise", "Theme Cohesion", "Material Integrity"],
-    "prizes": "₹2,00,000 (Winner & Runner-Up)",
-    "fee": "₹1,500 per team"
+    "id": "natyarangam",
+    "title": "Natyarangam",
+    "category": "Classical & Folk Dance",
+    "shortDesc": "A celebration of India's rich cultural heritage through classical elegance and vibrant traditional dance forms.",
+    "format": "Solo or Group Performance (5 - 10 minutes)",
+    "judging": [
+      "Technical Precision",
+      "Traditional Authenticity",
+      "Expression",
+      "Presentation"
+    ],
+    "prizes": "₹1,00,000 + Cultural Excellence Shield",
+    "fee": "₹500 per entry"
   },
   {
     "type": "cul",
-    "id": "pixel-harmony",
-    "title": "Pixel Harmony",
-    "category": "Visual Storytelling & Photography",
-    "shortDesc": "On-campus live photojournalism marathon capturing the authentic raw human spirit and monumental architectural moments.",
-    "format": "Live Photo Marathon (Individual entry)",
-    "judging": ["Visual Composition", "Authentic Depth", "Lighting Technique", "Narrative Purity"],
-    "prizes": "₹1,00,000 + Exhibition Honours",
-    "fee": "₹300 per entrant"
+    "id": "theatre-thunder",
+    "title": "Theatre Thunder",
+    "category": "Drama, Theatre & Street Play",
+    "shortDesc": "A dramatic stage competition where powerful storytelling, compelling performances, and creative direction take center stage.",
+    "format": "Theatre Ensemble (5 - 12 members, 15 minutes)",
+    "judging": [
+      "Acting",
+      "Script Quality",
+      "Direction",
+      "Audience Engagement"
+    ],
+    "prizes": "₹1,25,000 + Theatre Excellence Trophy",
+    "fee": "₹1,000 per team"
   },
   {
     "type": "cul",
-    "id": "digital-painting",
-    "title": "Digital Painting",
-    "category": "Fine Arts & Generative Design",
-    "shortDesc": "Live digital art and conceptual illustration challenge exploring the theme INTANGIBLES across canvas and digital styluses.",
-    "format": "Solo Creative Challenge (3 hours live creation)",
-    "judging": ["Thematic Fidelity", "Technical Brushwork", "Color Harmony", "Concept Originality"],
-    "prizes": "₹75,000 + Graphic Studio Licenses",
-    "fee": "₹300 per entrant"
+    "id": "frame-by-frame",
+    "title": "Frame by Frame",
+    "category": "Photography & Visual Storytelling",
+    "shortDesc": "A creative photography challenge where participants capture compelling stories through a powerful visual lens.",
+    "format": "Individual Competition (3 submitted photographs based on a theme)",
+    "judging": [
+      "Composition",
+      "Visual Storytelling",
+      "Creativity",
+      "Technical Quality"
+    ],
+    "prizes": "₹50,000 + Photography Excellence Award",
+    "fee": "₹250"
   },
   {
     "type": "cul",
-    "id": "short-film-fest",
-    "title": "Short Film Fest",
-    "category": "Cinematography & Proscenium Drama",
-    "shortDesc": "Hard-hitting cinematic shorts and stage drama addressing profound human questions, societal transformation, and empathy.",
-    "format": "Production Crew (Up to 10 members, 10-15 min screening/play)",
-    "judging": ["Screenplay & Direction", "Cinematography/Staging", "Sound Design", "Audience Impact"],
-    "prizes": "₹1,50,000 + Trophy",
-    "fee": "₹1,000 per troupe"
+    "id": "canvas-conquest",
+    "title": "Canvas Conquest",
+    "category": "Fine Arts, Painting & Illustration",
+    "shortDesc": "An artistic battlefield where imagination meets technique through live painting and creative visual expression.",
+    "format": "Individual Competition (90-minute live creation)",
+    "judging": [
+      "Originality",
+      "Artistic Technique",
+      "Theme Interpretation",
+      "Visual Impact"
+    ],
+    "prizes": "₹60,000 + Artist Excellence Trophy",
+    "fee": "₹300"
+  },
+  {
+    "type": "cul",
+    "id": "reel-revolution",
+    "title": "Reel Revolution",
+    "category": "Short Films & Digital Content Creation",
+    "shortDesc": "A digital storytelling competition challenging creators to produce impactful short-form visual content.",
+    "format": "Individual or Team (maximum 4 members, 3-minute film)",
+    "judging": [
+      "Storytelling",
+      "Editing",
+      "Creativity",
+      "Audience Impact"
+    ],
+    "prizes": "₹1,00,000 + Digital Creator Award",
+    "fee": "₹600 per team"
+  },
+  {
+    "type": "cul",
+    "id": "battle-of-the-beats",
+    "title": "Battle of the Beats",
+    "category": "DJ, Music Production & Beatboxing",
+    "shortDesc": "A high-voltage music arena featuring live mixing, original beats, rhythm innovation, and electrifying performances.",
+    "format": "Individual or Duo Performance (8 minutes)",
+    "judging": [
+      "Beat Selection",
+      "Mixing Skills",
+      "Originality",
+      "Crowd Engagement"
+    ],
+    "prizes": "₹1,00,000 + Music Production Grants",
+    "fee": "₹500 per entry"
+  },
+  {
+    "type": "cul",
+    "id": "wordsmith-wars",
+    "title": "Wordsmith Wars",
+    "category": "Literary Arts, Poetry & Creative Writing",
+    "shortDesc": "A celebration of language and imagination where writers and speakers compete through poetry, storytelling, and spoken word.",
+    "format": "Individual Performance (5 minutes)",
+    "judging": [
+      "Language Proficiency",
+      "Originality",
+      "Expression",
+      "Audience Connection"
+    ],
+    "prizes": "₹50,000 + Literary Excellence Trophy",
+    "fee": "₹250"
   }
 ]
