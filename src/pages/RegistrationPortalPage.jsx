@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { QRCodeSVG } from 'qrcode.react'
 import { MANAGEMENT_EVENTS, CULTURAL_EVENTS, SITE_CONFIG } from '../utils/confluenceData'
 import {
   isRazorpayConfigured,
@@ -7,6 +8,7 @@ import {
 } from '../utils/razorpayService'
 import { submitToGoogleSheets } from '../utils/googleSheetsService'
 import { submitToPostgres } from '../utils/postgresService'
+import { buildUpiUri, extractNumericAmount, UPI_CONFIG } from '../utils/upiService'
 
 export default function RegistrationPortalPage({ onBackToHome }) {
   const [selectedTrackType, setSelectedTrackType] = useState('management')
@@ -341,93 +343,114 @@ export default function RegistrationPortalPage({ onBackToHome }) {
           </div>
         )}
 
-        {/* Step 02: Interactive Sample UPI QR Checkout Modal */}
-        {paymentStep === 'qr_modal' && submittedDossier && (
-          <div className="qr-checkout-box reveal in">
-            <div className="qr-left-pane">
-              <div className="mono gold" style={{ marginBottom: '8px' }}>Sample Integrated Payment Gateway</div>
-              <h2>Scan & Pay via Any UPI App</h2>
-              <p className="qr-sub">
-                Scan the dynamic payment QR code using Google Pay, PhonePe, Paytm, or BHIM. Enter your 12-digit transaction ID below to confirm and store your registration locally.
-              </p>
+        {/* Step 02: Interactive Real UPI QR Checkout Modal */}
+        {paymentStep === 'qr_modal' && submittedDossier && (() => {
+          const upiUri = buildUpiUri({
+            amount: submittedDossier.fee,
+            candidateName: submittedDossier.name,
+            eventName: submittedDossier.event
+          })
+          const formattedAmount = extractNumericAmount(submittedDossier.fee)
 
-              {/* Dynamic Sample QR Canvas/SVG */}
-              <div className="sample-qr-card">
-                <svg className="sample-qr-code-svg" viewBox="0 0 200 200">
-                  <rect width="200" height="200" fill="#ffffff" rx="10" />
-                  {/* Top-Left Finder */}
-                  <rect x="20" y="20" width="45" height="45" fill="#0c061a" rx="4" />
-                  <rect x="28" y="28" width="29" height="29" fill="#ffffff" />
-                  <rect x="34" y="34" width="17" height="17" fill="#f59e0b" />
-                  {/* Top-Right Finder */}
-                  <rect x="135" y="20" width="45" height="45" fill="#0c061a" rx="4" />
-                  <rect x="143" y="28" width="29" height="29" fill="#ffffff" />
-                  <rect x="149" y="34" width="17" height="17" fill="#f59e0b" />
-                  {/* Bottom-Left Finder */}
-                  <rect x="20" y="135" width="45" height="45" fill="#0c061a" rx="4" />
-                  <rect x="28" y="143" width="29" height="29" fill="#ffffff" />
-                  <rect x="34" y="149" width="17" height="17" fill="#f59e0b" />
-                  {/* Procedural Data Matrix Dots */}
-                  <rect x="80" y="25" width="12" height="12" fill="#0c061a" />
-                  <rect x="105" y="35" width="15" height="10" fill="#0c061a" />
-                  <rect x="75" y="60" width="20" height="20" fill="#0c061a" />
-                  <rect x="105" y="70" width="15" height="15" fill="#f59e0b" />
-                  <rect x="135" y="85" width="12" height="25" fill="#0c061a" />
-                  <rect x="85" y="95" width="30" height="12" fill="#0c061a" />
-                  <rect x="25" y="85" width="15" height="15" fill="#0c061a" />
-                  <rect x="50" y="90" width="12" height="12" fill="#0c061a" />
-                  <rect x="75" y="130" width="15" height="15" fill="#0c061a" />
-                  <rect x="100" y="140" width="25" height="12" fill="#f59e0b" />
-                  <rect x="140" y="140" width="20" height="20" fill="#0c061a" />
-                  <rect x="165" y="165" width="15" height="15" fill="#0c061a" />
-                  <rect x="135" y="170" width="15" height="10" fill="#0c061a" />
-                  <rect x="90" y="165" width="20" height="15" fill="#0c061a" />
-                  <circle cx="100" cy="100" r="14" fill="#0c061a" />
-                  <text x="100" y="104" textAnchor="middle" fill="#f59e0b" fontSize="10" fontWeight="bold">Y27</text>
-                </svg>
+          return (
+            <div className="qr-checkout-box reveal in">
+              <div className="qr-left-pane">
+                <div className="mono gold" style={{ marginBottom: '8px' }}>Official UPI Payment Gateway</div>
+                <h2>Scan & Pay via Any UPI App</h2>
+                <p className="qr-sub">
+                  Scan this dynamic QR code using <strong>Google Pay, PhonePe, Paytm, BHIM</strong>, or any bank UPI app. The exact payable fee (<strong>₹{formattedAmount}</strong>) and your delegate docket note are pre-configured automatically.
+                </p>
 
-                <div className="qr-scan-meta">
-                  <span className="mono">UPI ID: yukti27@tsm.ac.in</span>
-                  <div className="amount-pill mono">Payable: {submittedDossier.fee}</div>
+                {/* Real Dynamic Scannable UPI QR */}
+                <div className="sample-qr-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                  <div style={{ background: '#ffffff', padding: '12px', borderRadius: '12px', display: 'inline-block' }}>
+                    <QRCodeSVG
+                      value={upiUri}
+                      size={200}
+                      level="M"
+                      includeMargin={false}
+                      imageSettings={{
+                        src: "/yukti-logo.png",
+                        x: undefined,
+                        y: undefined,
+                        height: 36,
+                        width: 36,
+                        excavate: true,
+                      }}
+                    />
+                  </div>
+
+                  <div className="qr-scan-meta" style={{ marginTop: '14px', textAlign: 'center' }}>
+                    <div style={{ fontSize: '0.82rem', color: '#1F0E2C', fontWeight: 600 }}>
+                      Payee: <strong>{UPI_CONFIG.payeeName}</strong>
+                    </div>
+                    <span className="mono" style={{ fontSize: '0.78rem', color: '#4D1D64', display: 'block', marginTop: '2px' }}>
+                      UPI VPA: {UPI_CONFIG.vpa}
+                    </span>
+                    <div className="amount-pill mono" style={{ fontSize: '1.05rem', marginTop: '6px' }}>
+                      Payable: ₹{formattedAmount}
+                    </div>
+                    
+                    {/* Direct tap to launch UPI app on mobile devices */}
+                    <a
+                      href={upiUri}
+                      className="btn"
+                      style={{
+                        display: 'inline-block',
+                        marginTop: '12px',
+                        padding: '8px 16px',
+                        fontSize: '0.78rem',
+                        background: '#1F0E2C',
+                        color: '#FFF2A6',
+                        border: '1px solid #C59B3C',
+                        borderRadius: '8px'
+                      }}
+                    >
+                      📱 Open UPI App Directly ↗
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* Right Pane: UTR Confirmation */}
-            <div className="qr-right-pane">
-              <div className="receipt-preview-box">
-                <span className="mono gold">Docket #{submittedDossier.regId}</span>
-                <h4>{submittedDossier.event}</h4>
-                <p>Lead: {submittedDossier.name} · {submittedDossier.college}</p>
+              {/* Right Pane: UTR Confirmation */}
+              <div className="qr-right-pane">
+                <div className="receipt-preview-box">
+                  <span className="mono gold">Docket #{submittedDossier.regId}</span>
+                  <h4>{submittedDossier.event}</h4>
+                  <p>Lead: {submittedDossier.name} · {submittedDossier.college}</p>
+                  <p style={{ marginTop: '6px', fontSize: '0.76rem', color: '#cbd5e1' }}>
+                    <em>Note attached: "Payee : {submittedDossier.name}, Event : {submittedDossier.event}"</em>
+                  </p>
+                </div>
+
+                <form onSubmit={handleConfirmUpi} className="utr-submit-form">
+                  <label className="mono">Enter 12-Digit UPI Ref / UTR Number *</label>
+                  <input
+                    type="text"
+                    required
+                    maxLength="16"
+                    value={utrNumber}
+                    onChange={(e) => setUtrNumber(e.target.value)}
+                    placeholder="e.g. 431209874521"
+                    className="portal-input"
+                    style={{ fontSize: '1.1rem', letterSpacing: '0.1em' }}
+                  />
+                  <button type="submit" className="btn" style={{ width: '100%', marginTop: '12px' }}>
+                    Verify & Confirm Registration ↗
+                  </button>
+                  <button
+                    type="button"
+                    className="btn ghost"
+                    style={{ width: '100%', marginTop: '8px' }}
+                    onClick={() => setPaymentStep('form')}
+                  >
+                    ← Edit Participant Information
+                  </button>
+                </form>
               </div>
-
-              <form onSubmit={handleConfirmUpi} className="utr-submit-form">
-                <label className="mono">Enter 12-Digit UPI Ref / UTR Number *</label>
-                <input
-                  type="text"
-                  required
-                  maxLength="16"
-                  value={utrNumber}
-                  onChange={(e) => setUtrNumber(e.target.value)}
-                  placeholder="e.g. 431209874521"
-                  className="portal-input"
-                  style={{ fontSize: '1.1rem', letterSpacing: '0.1em' }}
-                />
-                <button type="submit" className="btn" style={{ width: '100%', marginTop: '12px' }}>
-                  Verify & Confirm Registration ↗
-                </button>
-                <button
-                  type="button"
-                  className="btn ghost"
-                  style={{ width: '100%', marginTop: '8px' }}
-                  onClick={() => setPaymentStep('form')}
-                >
-                  ← Edit Participant Information
-                </button>
-              </form>
             </div>
-          </div>
-        )}
+          )
+        })()}
 
         {/* Step 03: Confirmed Dossier Certificate */}
         {paymentStep === 'confirmed' && submittedDossier && (

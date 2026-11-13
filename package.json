@@ -15,6 +15,7 @@
     "@react-three/fiber": "^9.8.2",
     "@react-three/postprocessing": "^3.2.1",
     "gsap": "^3.15.0",
+    "qrcode.react": "^4.2.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "react-helmet-async": "^3.1.0",
