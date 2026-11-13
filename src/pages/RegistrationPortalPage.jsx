@@ -1,5 +1,10 @@
 import React, { useState } from 'react'
 import { MANAGEMENT_EVENTS, CULTURAL_EVENTS, SITE_CONFIG } from '../utils/confluenceData'
+import {
+  isRazorpayConfigured,
+  parseAmountToPaise,
+  openRazorpayCheckout
+} from '../utils/razorpayService'
 
 export default function RegistrationPortalPage({ onBackToHome }) {
   const [selectedTrackType, setSelectedTrackType] = useState('management')
@@ -22,6 +27,8 @@ export default function RegistrationPortalPage({ onBackToHome }) {
   const [utrNumber, setUtrNumber] = useState('')
   const [submittedDossier, setSubmittedDossier] = useState(null)
 
+  const [isProcessingPayment, setIsProcessingPayment] = useState(false)
+
   // Find active selected event to compute fee
   const allEvents = [...MANAGEMENT_EVENTS, ...CULTURAL_EVENTS]
   const currentEvent = allEvents.find(e => e.id === selectedEventId) || MANAGEMENT_EVENTS[0]
@@ -30,7 +37,7 @@ export default function RegistrationPortalPage({ onBackToHome }) {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleInitiatePayment = (e) => {
+  const handleInitiatePayment = async (e) => {
     e.preventDefault()
     // Generate Registration reference ID
     const regId = 'YK27-' + Math.random().toString(36).substring(2, 6).toUpperCase() + '-' + Math.random().toString(36).substring(2, 6).toUpperCase()
@@ -45,9 +52,50 @@ export default function RegistrationPortalPage({ onBackToHome }) {
       status: 'Awaiting Payment Verification'
     }
     localStorage.setItem('yukti_last_pending_reg', JSON.stringify(pendingRecord))
-
     setSubmittedDossier(pendingRecord)
-    setPaymentStep('qr_modal')
+
+    // Check if Razorpay Key ID is provisioned
+    if (isRazorpayConfigured()) {
+      setIsProcessingPayment(true)
+      try {
+        const amountPaise = parseAmountToPaise(currentEvent.fee)
+        await openRazorpayCheckout({
+          amount: amountPaise,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          eventTitle: currentEvent.title,
+          regId: regId,
+          onSuccess: (paymentResult) => {
+            const confirmedRecord = {
+              ...pendingRecord,
+              paymentMethod: 'Razorpay Online Gateway',
+              razorpayPaymentId: paymentResult.paymentId,
+              razorpayOrderId: paymentResult.orderId,
+              utr: paymentResult.paymentId,
+              status: 'Payment Verified & Confirmed'
+            }
+            const existingList = JSON.parse(localStorage.getItem('yukti_local_registrations') || '[]')
+            existingList.unshift(confirmedRecord)
+            localStorage.setItem('yukti_local_registrations', JSON.stringify(existingList))
+            setSubmittedDossier(confirmedRecord)
+            setPaymentStep('confirmed')
+            setIsProcessingPayment(false)
+          },
+          onDismiss: () => {
+            setIsProcessingPayment(false)
+          }
+        })
+      } catch (err) {
+        console.error('Razorpay initialization error:', err)
+        setIsProcessingPayment(false)
+        // Fallback to QR checkout if popup fails
+        setPaymentStep('qr_modal')
+      }
+    } else {
+      // Default / fallback mode when key is not yet configured: Sample UPI QR modal
+      setPaymentStep('qr_modal')
+    }
   }
 
   const handleConfirmUpi = (e) => {
@@ -231,8 +279,19 @@ export default function RegistrationPortalPage({ onBackToHome }) {
                     />
                   </div>
 
-                  <button type="submit" className="btn portal-submit-btn">
-                    Proceed to Registration Checkout ({currentEvent.fee || '₹500'}) ↗
+                  <button
+                    type="submit"
+                    className="btn portal-submit-btn"
+                    disabled={isProcessingPayment}
+                    style={{ position: 'relative' }}
+                  >
+                    {isProcessingPayment ? (
+                      'Connecting to Secure Gateway...'
+                    ) : isRazorpayConfigured() ? (
+                      `Pay via Razorpay (${currentEvent.fee || '₹500'}) ↗`
+                    ) : (
+                      `Proceed to Registration Checkout (${currentEvent.fee || '₹500'}) ↗`
+                    )}
                   </button>
                 </form>
               </div>
@@ -394,8 +453,8 @@ export default function RegistrationPortalPage({ onBackToHome }) {
                 <strong>{submittedDossier.email}</strong>
               </div>
               <div>
-                <span className="mono">UPI UTR Ref</span>
-                <strong>{submittedDossier.utr}</strong>
+                <span className="mono">{submittedDossier.paymentMethod ? 'Gateway / Ref' : 'UPI UTR Ref'}</span>
+                <strong className="gold">{submittedDossier.utr || submittedDossier.razorpayPaymentId || 'Verified'}</strong>
               </div>
             </div>
 
