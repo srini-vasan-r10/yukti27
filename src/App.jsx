@@ -6,6 +6,7 @@ import ManagementEventsPage from './pages/ManagementEventsPage'
 import CulturalEventsPage from './pages/CulturalEventsPage'
 import RegistrationPortalPage from './pages/RegistrationPortalPage'
 import Yukti26SponsorsPage from './pages/Yukti26SponsorsPage'
+import DelegatePassPage from './pages/DelegatePassPage'
 
 export default function App() {
   const canvasRef = useRef(null)
@@ -22,6 +23,7 @@ export default function App() {
       else if (path.includes('cultural')) setCurrentPage('cultural')
       else if (path.includes('register') || path.includes('portal')) setCurrentPage('portal')
       else if (path.includes('sponsors')) setCurrentPage('sponsors')
+      else if (path.includes('pass')) setCurrentPage('pass')
       else setCurrentPage('home')
     }
 
@@ -41,7 +43,8 @@ export default function App() {
       management: '/events/management',
       cultural: '/events/cultural',
       portal: '/register',
-      sponsors: '/sponsors'
+      sponsors: '/sponsors',
+      pass: '/pass'
     }
     const targetPath = pathMap[pageId] || '/'
     if (window.location.pathname !== targetPath) {
@@ -432,8 +435,15 @@ export default function App() {
           />
           <RegistrationPortalPage
             onBackToHome={() => navigateTo('home')}
+            onOpenPass={() => navigateTo('pass')}
           />
         </>
+      )}
+
+      {currentPage === 'pass' && (
+        <DelegatePassPage
+          onBackToHome={() => navigateTo('home')}
+        />
       )}
 
       {currentPage === 'sponsors' && (

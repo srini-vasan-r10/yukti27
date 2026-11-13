@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { QRCodeSVG } from 'qrcode.react'
-import { MANAGEMENT_EVENTS, CULTURAL_EVENTS, SITE_CONFIG } from '../utils/confluenceData'
+import { MANAGEMENT_EVENTS, CULTURAL_EVENTS, SITE_CONFIG, getSiteUrl } from '../utils/confluenceData'
 import {
   isRazorpayConfigured,
   parseAmountToPaise,
@@ -9,8 +9,10 @@ import {
 import { submitToGoogleSheets } from '../utils/googleSheetsService'
 import { submitToPostgres } from '../utils/postgresService'
 import { buildUpiUri, extractNumericAmount, UPI_CONFIG } from '../utils/upiService'
+import { getTeamSizeRange } from '../utils/teamSizeHelper'
+import ReceiptModal from '../components/ReceiptModal'
 
-export default function RegistrationPortalPage({ onBackToHome }) {
+export default function RegistrationPortalPage({ onBackToHome, onOpenPass }) {
   const [selectedTrackType, setSelectedTrackType] = useState('management')
   const [selectedEventId, setSelectedEventId] = useState('the-ai-ceo-challenge')
 
@@ -22,27 +24,84 @@ export default function RegistrationPortalPage({ onBackToHome }) {
     college: '',
     year: 'PG / MBA — 1st Year',
     delegationType: 'Team Entry',
-    teamMembers: '',
     specialRequirements: '',
   })
 
+  // Dynamic additional team members array: [{ name: '', role: '' }]
+  const [additionalMembers, setAdditionalMembers] = useState([])
+  const [showAddMemberPrompt, setShowAddMemberPrompt] = useState(false)
+
   // Payment State: 'form' | 'qr_modal' | 'confirmed'
   const [paymentStep, setPaymentStep] = useState('form')
+  const [showReceiptModal, setShowReceiptModal] = useState(false)
   const [utrNumber, setUtrNumber] = useState('')
   const [submittedDossier, setSubmittedDossier] = useState(null)
 
   const [isProcessingPayment, setIsProcessingPayment] = useState(false)
 
-  // Find active selected event to compute fee
+  // Find active selected event to compute fee & team constraints
   const allEvents = [...MANAGEMENT_EVENTS, ...CULTURAL_EVENTS]
   const currentEvent = allEvents.find(e => e.id === selectedEventId) || MANAGEMENT_EVENTS[0]
+  const teamConstraints = getTeamSizeRange(currentEvent)
+
+  // Auto-calibrate member slots based on event constraints from events.json
+  useEffect(() => {
+    if (!teamConstraints.isTeam || teamConstraints.max <= 1) {
+      setAdditionalMembers([])
+      setFormData(prev => ({ ...prev, delegationType: 'Individual Contender' }))
+    } else {
+      setFormData(prev => ({ ...prev, delegationType: 'Team Entry' }))
+      // Pre-populate minimum required extra members (team size - 1 for primary lead)
+      const minExtraNeeded = Math.max(0, teamConstraints.min - 1)
+      setAdditionalMembers(prev => {
+        if (prev.length < minExtraNeeded) {
+          const added = []
+          for (let i = prev.length; i < minExtraNeeded; i++) {
+            added.push({ name: '', role: `Team Member ${i + 2}` })
+          }
+          return [...prev, ...added]
+        }
+        return prev
+      })
+    }
+  }, [selectedEventId])
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
+  const handleAddMemberSlot = () => {
+    const currentTotal = 1 + additionalMembers.length
+    if (teamConstraints.max && currentTotal >= teamConstraints.max) {
+      alert(`Maximum team size for ${currentEvent.title} is ${teamConstraints.max} members.`)
+      return
+    }
+    setAdditionalMembers(prev => [...prev, { name: '', role: `Team Member ${prev.length + 2}` }])
+    setShowAddMemberPrompt(false)
+  }
+
+  const handleRemoveMemberSlot = (index) => {
+    setAdditionalMembers(prev => prev.filter((_, idx) => idx !== index))
+  }
+
+  const handleMemberChange = (index, field, value) => {
+    setAdditionalMembers(prev => {
+      const updated = [...prev]
+      updated[index][field] = value
+      return updated
+    })
+  }
+
   const handleInitiatePayment = async (e) => {
     e.preventDefault()
+
+    // Validate minimum required team members
+    const totalMembers = 1 + additionalMembers.filter(m => m.name.trim()).length
+    if (teamConstraints.min && totalMembers < teamConstraints.min) {
+      alert(`This event requires a minimum of ${teamConstraints.min} members. Please add ${teamConstraints.min - totalMembers} more member(s).`)
+      return
+    }
+
     // Generate Registration reference ID
     const regId = 'YK27-' + Math.random().toString(36).substring(2, 6).toUpperCase() + '-' + Math.random().toString(36).substring(2, 6).toUpperCase()
     
@@ -52,6 +111,7 @@ export default function RegistrationPortalPage({ onBackToHome }) {
       regId,
       event: currentEvent.title,
       fee: currentEvent.fee || '₹500',
+      members: additionalMembers.filter(m => m.name.trim()).map(m => m.name.trim()),
       timestamp: new Date().toISOString(),
       status: 'Awaiting Payment Verification'
     }
@@ -88,6 +148,7 @@ export default function RegistrationPortalPage({ onBackToHome }) {
 
             setSubmittedDossier(confirmedRecord)
             setPaymentStep('confirmed')
+            setShowReceiptModal(true)
             setIsProcessingPayment(false)
           },
           onDismiss: () => {
@@ -101,7 +162,7 @@ export default function RegistrationPortalPage({ onBackToHome }) {
         setPaymentStep('qr_modal')
       }
     } else {
-      // Default / fallback mode when key is not yet configured: Sample UPI QR modal
+      // Default / fallback mode: Real dynamic UPI QR modal
       setPaymentStep('qr_modal')
     }
   }
@@ -130,6 +191,7 @@ export default function RegistrationPortalPage({ onBackToHome }) {
 
     setSubmittedDossier(finalRecord)
     setPaymentStep('confirmed')
+    setShowReceiptModal(true) // Display authentic thermal receipt modal
   }
 
   return (
@@ -279,17 +341,96 @@ export default function RegistrationPortalPage({ onBackToHome }) {
                     </div>
                   </div>
 
-                  <div className="field-group">
-                    <label className="mono">Additional Team Member Names & Roles (if applicable)</label>
-                    <textarea
-                      name="teamMembers"
-                      rows="2"
-                      value={formData.teamMembers}
-                      onChange={handleChange}
-                      placeholder="e.g. Member 2: Priya S. (Finance), Member 3: Arun M. (Analytics)..."
-                      className="portal-input"
-                    />
-                  </div>
+                  {/* Dynamic Team Member Management (Replaced static textarea with + / auto constraints) */}
+                  {teamConstraints.isTeam && (
+                    <div style={{
+                      background: 'rgba(77,29,100,0.22)',
+                      border: '1px solid rgba(197,155,60,0.3)',
+                      borderRadius: '16px',
+                      padding: '18px 20px',
+                      marginTop: '6px'
+                    }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px', flexWrap: 'wrap', gap: '8px' }}>
+                        <div>
+                          <span className="mono gold" style={{ fontSize: '0.72rem', letterSpacing: '0.12em' }}>TEAM COMPOSITION ROSTER</span>
+                          <div style={{ fontSize: '0.82rem', color: '#cbd5e1', marginTop: '2px' }}>
+                            Arena Format: <strong>{currentEvent.teamSize || currentEvent.format}</strong>
+                            <span style={{ color: '#F5D77F', marginLeft: '8px' }}>({1 + additionalMembers.length} Members registered)</span>
+                          </div>
+                        </div>
+
+                        {/* Add Member Button (+ Button) */}
+                        {(!teamConstraints.max || (1 + additionalMembers.length) < teamConstraints.max) && (
+                          <button
+                            type="button"
+                            onClick={handleAddMemberSlot}
+                            className="btn"
+                            style={{ padding: '6px 14px', fontSize: '0.76rem', background: '#1F0E2C', border: '1px solid #C59B3C' }}
+                          >
+                            + Add Team Member
+                          </button>
+                        )}
+                      </div>
+
+                      {/* Primary Lead Display */}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '8px 12px', background: 'rgba(255,255,255,0.04)', borderRadius: '10px', marginBottom: '10px', fontSize: '0.82rem' }}>
+                        <span style={{ color: '#F5D77F' }}>👑 Leader (You):</span>
+                        <strong style={{ color: '#fff' }}>{formData.name || 'Primary Delegate'}</strong>
+                        <span style={{ color: '#94a3b8', fontSize: '0.72rem' }}>({formData.email || 'Email above'})</span>
+                      </div>
+
+                      {/* Additional Member Slot Inputs */}
+                      {additionalMembers.map((member, index) => (
+                        <div key={index} style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '10px' }}>
+                          <input
+                            type="text"
+                            required
+                            placeholder={`Member ${index + 2} Full Name *`}
+                            value={member.name}
+                            onChange={(e) => handleMemberChange(index, 'name', e.target.value)}
+                            className="portal-input"
+                            style={{ flex: 2, padding: '10px 12px', fontSize: '0.84rem' }}
+                          />
+                          <input
+                            type="text"
+                            placeholder="Role / Domain (e.g. Finance / Pitch)"
+                            value={member.role}
+                            onChange={(e) => handleMemberChange(index, 'role', e.target.value)}
+                            className="portal-input"
+                            style={{ flex: 1.5, padding: '10px 12px', fontSize: '0.84rem' }}
+                          />
+                          {(1 + additionalMembers.length) > (teamConstraints.min || 1) && (
+                            <button
+                              type="button"
+                              onClick={() => handleRemoveMemberSlot(index)}
+                              style={{
+                                background: 'rgba(239, 68, 68, 0.15)',
+                                border: '1px solid rgba(239, 68, 68, 0.4)',
+                                color: '#f87171',
+                                borderRadius: '8px',
+                                width: '34px',
+                                height: '34px',
+                                cursor: 'pointer',
+                                display: 'grid',
+                                placeItems: 'center',
+                                flexShrink: 0
+                              }}
+                              title="Remove Member"
+                            >
+                              ✕
+                            </button>
+                          )}
+                        </div>
+                      ))}
+
+                      {/* Interactive prompt if under max capacity */}
+                      {(!teamConstraints.max || (1 + additionalMembers.length) < teamConstraints.max) && (
+                        <div style={{ marginTop: '8px', fontSize: '0.74rem', color: '#a69cb4' }}>
+                          💡 Have another teammate joining your squad? Click <strong>+ Add Team Member</strong> above to generate a verified credential on your pass.
+                        </div>
+                      )}
+                    </div>
+                  )}
 
                   <button
                     type="submit"
@@ -492,8 +633,18 @@ export default function RegistrationPortalPage({ onBackToHome }) {
             </div>
 
             <div className="confirmed-actions">
-              <button className="btn" onClick={() => window.print()}>
-                Print Verified Docket / Save as PDF ↗
+              <button
+                className="btn"
+                style={{ background: 'linear-gradient(135deg, #FFF2A6 0%, #C59B3C 100%)', color: '#1F0E2C', fontWeight: '800' }}
+                onClick={() => setShowReceiptModal(true)}
+              >
+                🧾 View Official Thermal Payment Receipt ↗
+              </button>
+              <button
+                className="btn"
+                onClick={onOpenPass}
+              >
+                👑 View Royal Delegate Pass ↗
               </button>
               <button
                 className="btn ghost"
@@ -517,6 +668,35 @@ export default function RegistrationPortalPage({ onBackToHome }) {
             </div>
           </div>
         )}
+        {/* Thermal Payment Receipt Modal (Matches user uploaded second image) */}
+        {showReceiptModal && submittedDossier && (() => {
+          const siteUrl = getSiteUrl()
+          // Construct self-contained pass URL with query parameters
+          const membersList = (submittedDossier.members || []).join(',')
+          const queryParams = new URLSearchParams({
+            name: submittedDossier.name || '',
+            college: submittedDossier.college || '',
+            regId: submittedDossier.regId || '',
+            year: submittedDossier.year || '',
+            delegationType: submittedDossier.delegationType || '',
+            members: membersList,
+            fee: submittedDossier.fee || '',
+            utr: submittedDossier.utr || ''
+          })
+          const passFullUrl = `${siteUrl}/pass?${queryParams.toString()}`
+
+          return (
+            <ReceiptModal
+              dossier={submittedDossier}
+              passUrl={passFullUrl}
+              onOpenPass={() => {
+                setShowReceiptModal(false)
+                if (onOpenPass) onOpenPass()
+              }}
+              onClose={() => setShowReceiptModal(false)}
+            />
+          )
+        })()}
       </div>
     </div>
   )

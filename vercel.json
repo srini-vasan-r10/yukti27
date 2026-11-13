@@ -5,6 +5,7 @@
     { "source": "/events/management", "destination": "/events/management/index.html" },
     { "source": "/events/cultural", "destination": "/events/cultural/index.html" },
     { "source": "/register", "destination": "/register/index.html" },
+    { "source": "/pass", "destination": "/pass/index.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [

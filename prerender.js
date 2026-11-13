@@ -114,6 +114,17 @@ const routes = [
       <p>Registration includes verified candidate credentials, preliminary problem brief, and delegate kit.</p>
       <p><a href="/">Return to Home Confluence</a></p>
     `
+  },
+  {
+    path: 'pass',
+    outputPath: 'pass/index.html',
+    title: "Official Delegate Entry Pass & Credential — YUKTI ’27 | TSM Madurai",
+    description: "Official verified delegate security pass and gate credential for YUKTI '27 at Thiagarajar School of Management (TSM), Madurai.",
+    canonical: `${siteUrl}/pass`,
+    heading: "Official Delegate Entry Pass — YUKTI ’27",
+    content: `
+      <p>All-Arena delegate security pass with biometric badge and scannable gate entry QR code for Thiagarajar School of Management (TSM), Madurai.</p>
+    `
   }
 ]
 
