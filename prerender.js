@@ -148,24 +148,26 @@ routes.forEach(route => {
     : '<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />'
   html = html.replace('</head>', `  ${robotsMeta}\n  </head>`)
 
-  // Inject crawlable content into root element
-  const rootContent = `
-    <header>
-      <nav aria-label="Main Navigation">
-        <a href="/">Home Confluence</a> · 
-        <a href="/events/management">Management Events</a> · 
-        <a href="/events/cultural">Cultural Events</a> · 
-        <a href="/register">Registration Portal</a>
-      </nav>
-    </header>
-    <main>
-      <article>
-        <h1>${route.heading}</h1>
-        ${route.content}
-      </article>
-    </main>
+  // Inject crawlable content into noscript element (search bots parse it completely; human browsers never flash it)
+  const botCrawlableContent = `
+    <noscript>
+      <header>
+        <nav aria-label="Main Navigation">
+          <a href="/">Home Confluence</a> · 
+          <a href="/events/management">Management Events</a> · 
+          <a href="/events/cultural">Cultural Events</a> · 
+          <a href="/register">Registration Portal</a>
+        </nav>
+      </header>
+      <main>
+        <article>
+          <h1>${route.heading}</h1>
+          ${route.content}
+        </article>
+      </main>
+    </noscript>
   `
-  html = html.replace('<div id="root"></div>', `<div id="root">${rootContent}</div>`)
+  html = html.replace('<div id="root"></div>', `<div id="root"></div>${botCrawlableContent}`)
 
   fs.writeFileSync(destPath, html, 'utf-8')
   console.log(`✅ Pre-rendered static route: ${route.outputPath}`)
