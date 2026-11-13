@@ -264,9 +264,12 @@ export default function App() {
       <header className="topbar">
         <a className="brand" href="#home" onClick={(e) => { e.preventDefault(); navigateTo('home') }}>
           <img
-            src="/yukti-logo.png"
+            src="/yukti-logo.webp"
             alt="YUKTI ’27 Logo"
             className="brand-logo-img"
+            width="42"
+            height="42"
+            fetchpriority="high"
           />
           <div className="brand-text-block">
             <span className="brand-text">YUKTI <span className="gold">’27</span></span>
@@ -486,7 +489,14 @@ export default function App() {
 
                 <div className="about-crest-showcase">
                   <div className="tsm-crest-frame">
-                    <img src="/tsm-logo.png" alt="TSM Madurai Crest" className="about-tsm-crest-img" />
+                    <img
+                      src="/tsm-logo.webp"
+                      alt="TSM Madurai Crest"
+                      className="about-tsm-crest-img"
+                      loading="lazy"
+                      width="160"
+                      height="160"
+                    />
                     <div className="crest-halo" />
                   </div>
                   <div className="tsm-legacy-badge">
@@ -513,7 +523,13 @@ export default function App() {
                     <div className="tile-ambient-glow" style={{ background: sp.bg }} />
                     <div className="marquee-tile-content">
                       <div className="marquee-tile-logo-frame">
-                        <img src={sp.logoImg} alt={sp.name} className="marquee-sponsor-img" />
+                        <img
+                          src={sp.logoImg}
+                          alt={sp.name}
+                          className="marquee-sponsor-img"
+                          loading="lazy"
+                          decoding="async"
+                        />
                       </div>
                       <div className="marquee-tile-info">
                         <span className="marquee-sp-name">{sp.name}</span>
@@ -639,11 +655,11 @@ export default function App() {
           <div className="footer-brand-col">
             <div className="footer-dual-logos">
               <div className="footer-logo-ring">
-                <img src="/yukti-logo.png" alt="YUKTI ’27 Logo" className="footer-yukti-logo" />
+                <img src="/yukti-logo.webp" alt="YUKTI ’27 Logo" className="footer-yukti-logo" loading="lazy" width="64" height="64" />
               </div>
               <div className="footer-logo-divider" />
               <div className="footer-logo-ring">
-                <img src="/tsm-logo.png" alt="TSM Madurai Crest" className="footer-tsm-logo" />
+                <img src="/tsm-logo.webp" alt="TSM Madurai Crest" className="footer-tsm-logo" loading="lazy" width="64" height="64" />
               </div>
             </div>
             <div className="footer-titles">

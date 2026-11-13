@@ -5,6 +5,8 @@ import {
   parseAmountToPaise,
   openRazorpayCheckout
 } from '../utils/razorpayService'
+import { submitToGoogleSheets } from '../utils/googleSheetsService'
+import { submitToPostgres } from '../utils/postgresService'
 
 export default function RegistrationPortalPage({ onBackToHome }) {
   const [selectedTrackType, setSelectedTrackType] = useState('management')
@@ -78,6 +80,10 @@ export default function RegistrationPortalPage({ onBackToHome }) {
             const existingList = JSON.parse(localStorage.getItem('yukti_local_registrations') || '[]')
             existingList.unshift(confirmedRecord)
             localStorage.setItem('yukti_local_registrations', JSON.stringify(existingList))
+            // Automatically sync with cloud database / sheets
+            submitToGoogleSheets(confirmedRecord)
+            submitToPostgres(confirmedRecord)
+
             setSubmittedDossier(confirmedRecord)
             setPaymentStep('confirmed')
             setIsProcessingPayment(false)
@@ -115,6 +121,10 @@ export default function RegistrationPortalPage({ onBackToHome }) {
     const existingList = JSON.parse(localStorage.getItem('yukti_local_registrations') || '[]')
     existingList.unshift(finalRecord)
     localStorage.setItem('yukti_local_registrations', JSON.stringify(existingList))
+
+    // Automatically sync with cloud database / sheets
+    submitToGoogleSheets(finalRecord)
+    submitToPostgres(finalRecord)
 
     setSubmittedDossier(finalRecord)
     setPaymentStep('confirmed')
