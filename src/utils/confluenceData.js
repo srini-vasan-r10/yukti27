@@ -58,7 +58,7 @@ export const SITE_CONFIG = {
   portalUrl: "yukti27.tsm.ac.in",
   organizerUrl: "https://tsm.ac.in",
   email: "yukti@tsm.ac.in",
-  socialHandle: "@yukti_tsm",
+  socialHandle: "@yukti.tsm",
   metaDescription: "YUKTI ’27 is the premier annual pan-India management and cultural fest hosted by Thiagarajar School of Management (TSM), Madurai. Featuring 12 national arenas, ₹20,00,000 bounty, boardroom trials, executive leadership, and cultural spectacles.",
   stats: {
     prizePool: "₹20,00,000",

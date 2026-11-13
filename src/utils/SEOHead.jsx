@@ -93,7 +93,7 @@ export default function SEOHead({
         "logo": `${siteUrl}/tsm-logo.webp`,
         "sameAs": [
           "https://tsm.ac.in",
-          "https://instagram.com/yukti_tsm"
+          "https://instagram.com/yukti.tsm"
         ]
       },
       "offers": {

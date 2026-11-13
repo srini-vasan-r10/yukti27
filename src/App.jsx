@@ -752,8 +752,7 @@ export default function App() {
             <div className="footer-col-block">
               <span className="mono gold col-title">Reach Out</span>
               <span className="contact-link">Email: <a href="mailto:yukti@tsm.ac.in">yukti@tsm.ac.in</a></span>
-              <span className="contact-link">Portal: <a href="https://yukti27.tsm.ac.in" target="_blank" rel="noreferrer">yukti27.tsm.ac.in</a></span>
-              <span className="contact-link">Instagram: <a href="https://instagram.com/yukti_tsm" target="_blank" rel="noreferrer">@yukti_tsm</a></span>
+              <span className="contact-link">Instagram: <a href="https://instagram.com/yukti.tsm" target="_blank" rel="noreferrer">@yukti.tsm</a></span>
             </div>
           </div>
         </div>
