@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node prerender.js && node generate-sitemap.js",
+    "postbuild": "node generate-sitemap.js",
     "lint": "oxlint",
     "preview": "vite preview"
   },
@@ -16,6 +17,7 @@
     "gsap": "^3.15.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
+    "react-helmet-async": "^3.1.0",
     "three": "^0.186.1"
   },
   "devDependencies": {

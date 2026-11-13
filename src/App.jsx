@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import * as THREE from 'three'
-import { SITE_CONFIG, SPONSORS_DATA } from './utils/confluenceData'
+import { SITE_CONFIG, SPONSORS_DATA, MANAGEMENT_EVENTS, CULTURAL_EVENTS } from './utils/confluenceData'
+import SEOHead from './utils/SEOHead'
 import ManagementEventsPage from './pages/ManagementEventsPage'
 import CulturalEventsPage from './pages/CulturalEventsPage'
 import RegistrationPortalPage from './pages/RegistrationPortalPage'
@@ -13,10 +14,39 @@ export default function App() {
   const [modalData, setModalData] = useState(null)
   const [previewMode, setPreviewMode] = useState(false)
 
+  // Sync clean browser URL without full reload (preserves SEO navigation & direct sharing)
+  useEffect(() => {
+    const handlePopState = () => {
+      const path = window.location.pathname.toLowerCase()
+      if (path.includes('management')) setCurrentPage('management')
+      else if (path.includes('cultural')) setCurrentPage('cultural')
+      else if (path.includes('register') || path.includes('portal')) setCurrentPage('portal')
+      else if (path.includes('sponsors')) setCurrentPage('sponsors')
+      else setCurrentPage('home')
+    }
+
+    // Initial check from URL
+    handlePopState()
+    window.addEventListener('popstate', handlePopState)
+    return () => window.removeEventListener('popstate', handlePopState)
+  }, [])
+
   const navigateTo = (pageId) => {
     setCurrentPage(pageId)
     setMenuOpen(false)
     window.scrollTo({ top: 0, behavior: 'smooth' })
+
+    const pathMap = {
+      home: '/',
+      management: '/events/management',
+      cultural: '/events/cultural',
+      portal: '/register',
+      sponsors: '/sponsors'
+    }
+    const targetPath = pathMap[pageId] || '/'
+    if (window.location.pathname !== targetPath) {
+      window.history.pushState({ pageId }, '', targetPath)
+    }
   }
 
   // ── Three.js Persistent 3D Background Engine ────────────────
@@ -352,33 +382,72 @@ export default function App() {
       )}
 
       {/* ── SEPARATE PAGE ROUTING ───────────────────────────────── */}
-      {currentPage === 'management' && (
-        <ManagementEventsPage
-          onSelectEvent={(ev) => setModalData(ev)}
-          onBackToHome={() => navigateTo('home')}
-          onOpenRegister={() => navigateTo('portal')}
+      {currentPage === 'home' && (
+        <SEOHead
+          path="/"
+          eventSchema={true}
         />
+      )}
+
+      {currentPage === 'management' && (
+        <>
+          <SEOHead
+            title="Management Events & National Flagship Arenas"
+            description="Explore 8 flagship national management events at YUKTI '27: The AI CEO Challenge, Market Mavericks, Boardroom Crisis, and more at TSM Madurai. Register your team."
+            path="/events/management"
+            subEvents={MANAGEMENT_EVENTS}
+            eventSchema={true}
+          />
+          <ManagementEventsPage
+            onSelectEvent={(ev) => setModalData(ev)}
+            onBackToHome={() => navigateTo('home')}
+            onOpenRegister={() => navigateTo('portal')}
+          />
+        </>
       )}
 
       {currentPage === 'cultural' && (
-        <CulturalEventsPage
-          onSelectEvent={(ev) => setModalData(ev)}
-          onBackToHome={() => navigateTo('home')}
-          onOpenRegister={() => navigateTo('portal')}
-        />
+        <>
+          <SEOHead
+            title="Cultural Confluence & Artistic Spectacles"
+            description="Experience uninhibited artistry, battle of the bands, choreography, and solo performances at YUKTI '27 Cultural Confluence, TSM Madurai."
+            path="/events/cultural"
+            subEvents={CULTURAL_EVENTS}
+            eventSchema={true}
+          />
+          <CulturalEventsPage
+            onSelectEvent={(ev) => setModalData(ev)}
+            onBackToHome={() => navigateTo('home')}
+            onOpenRegister={() => navigateTo('portal')}
+          />
+        </>
       )}
 
       {currentPage === 'portal' && (
-        <RegistrationPortalPage
-          onBackToHome={() => navigateTo('home')}
-        />
+        <>
+          <SEOHead
+            title="Registration Portal — Delegate Passes & Arena Entry"
+            description="Register your delegation and team for YUKTI '27 at Thiagarajar School of Management (TSM), Madurai. Stake your claim in the ₹20,00,000 national bounty."
+            path="/register"
+          />
+          <RegistrationPortalPage
+            onBackToHome={() => navigateTo('home')}
+          />
+        </>
       )}
 
       {currentPage === 'sponsors' && (
-        <Yukti26SponsorsPage
-          onBackToHome={() => navigateTo('home')}
-          onOpenRegister={() => navigateTo('portal')}
-        />
+        <>
+          <SEOHead
+            title="Sponsors & Corporate Partners"
+            description="Corporate partners, sponsors, and supporters of YUKTI at Thiagarajar School of Management (TSM), Madurai."
+            path="/sponsors"
+          />
+          <Yukti26SponsorsPage
+            onBackToHome={() => navigateTo('home')}
+            onOpenRegister={() => navigateTo('portal')}
+          />
+        </>
       )}
 
       {/* ── HOMEPAGE: Dedicated Hero Banner, ₹20L Prize Announcement & Infinite Marquee ── */}

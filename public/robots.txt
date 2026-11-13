@@ -1,0 +1,7 @@
+# Production Robots Configuration for YUKTI '27
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /committee
+
+Sitemap: https://yukti27.tsm.ac.in/sitemap.xml

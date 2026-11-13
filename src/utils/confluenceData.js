@@ -1,21 +1,65 @@
 import eventsDataset from '../../public/events.json'
 
-// YUKTI '27 - Official Confluence Knowledge Base & Config
+// ====================================================================
+// YUKTI '27 — CENTRALIZED DOMAIN & SEO CONFIGURATION
+// ====================================================================
+// Domain Independence:
+// Uses VITE_SITE_URL if configured.
+// Automatically falls back to window.location.origin during browser runtime,
+// and defaults to the intended custom domain or staging URL.
+// ====================================================================
+
+const ENV_SITE_URL = import.meta.env.VITE_SITE_URL || ''
+const IS_PROD_ENV = import.meta.env.PROD
+const IS_STAGING_ENV = import.meta.env.VITE_IS_STAGING === 'true'
+
+export const getSiteUrl = () => {
+  if (ENV_SITE_URL && ENV_SITE_URL.trim() !== '') {
+    return ENV_SITE_URL.replace(/\/$/, '')
+  }
+  if (typeof window !== 'undefined' && window.location.origin) {
+    return window.location.origin.replace(/\/$/, '')
+  }
+  // Production default fallback (easily overridden via .env VITE_SITE_URL)
+  return 'https://yukti27.tsm.ac.in'
+}
+
+/**
+ * Checks if current environment is staging
+ * Staging environments protect against accidental search engine indexing
+ */
+export const isStagingEnvironment = () => {
+  if (IS_STAGING_ENV) return true
+  if (typeof window !== 'undefined') {
+    const host = window.location.hostname
+    if (host.includes('vercel.app') || host.includes('netlify.app') || host.includes('localhost') || host === '127.0.0.1') {
+      return true
+    }
+  }
+  return false
+}
 
 export const SITE_CONFIG = {
   edition: "2027",
-  title: "YUKTI ’27",
+  title: "YUKTI ’27 — National Management & Cultural Fest | TSM Madurai",
+  shortTitle: "YUKTI ’27",
   theme: "INTANGIBLES",
   tagline: "INFINITE POSSIBILITIES",
   subcaption: "Pan-India Management & Cultural Fest",
-  institution: "Thiagarajar School of Management (TSM), Madurai",
+  institution: "Thiagarajar School of Management (TSM)",
+  location: "Thiruparankundram, Madurai, Tamil Nadu, India",
+  pinCode: "625005",
   grandPrizePool: "₹20,00,000",
   rawPrize: "20,00,000",
   dates: "January 28, 29 & 30, 2027",
-  venue: "TSM Campus, Madurai, Tamil Nadu, India",
+  isoStartDate: "2027-01-28T09:00:00+05:30",
+  isoEndDate: "2027-01-30T19:00:00+05:30",
+  venue: "TSM Campus, Thiruparankundram, Madurai, Tamil Nadu 625005",
   portalUrl: "yukti27.tsm.ac.in",
+  organizerUrl: "https://tsm.ac.in",
   email: "yukti@tsm.ac.in",
   socialHandle: "@yukti_tsm",
+  metaDescription: "YUKTI ’27 is the premier annual pan-India management and cultural fest hosted by Thiagarajar School of Management (TSM), Madurai. Featuring 12 national arenas, ₹20,00,000 bounty, boardroom trials, executive leadership, and cultural spectacles.",
   stats: {
     prizePool: "₹20,00,000",
     institutions: "60+ Premier B-Schools",
@@ -45,4 +89,3 @@ export const SPONSORS_DATA = [
 export const MANAGEMENT_EVENTS = eventsDataset.filter(ev => ev.type === 'man');
 
 export const CULTURAL_EVENTS = eventsDataset.filter(ev => ev.type === 'cul');
-
