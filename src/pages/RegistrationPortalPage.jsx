@@ -649,7 +649,26 @@ export default function RegistrationPortalPage({ onBackToHome, onOpenPass, onRec
               </button>
               <button
                 className="btn"
-                onClick={onOpenPass}
+                onClick={() => {
+                  const siteUrl = getSiteUrl()
+                  const membersList = (submittedDossier.members || []).join(',')
+                  const queryParams = new URLSearchParams({
+                    name: submittedDossier.name || '',
+                    college: submittedDossier.college || '',
+                    phone: submittedDossier.phone || '',
+                    email: submittedDossier.email || '',
+                    event: submittedDossier.event || '',
+                    teamName: submittedDossier.teamName || submittedDossier.name + ' Contingent',
+                    regId: submittedDossier.regId || '',
+                    year: submittedDossier.year || '',
+                    delegationType: submittedDossier.delegationType || '',
+                    members: membersList,
+                    fee: submittedDossier.fee || '',
+                    utr: submittedDossier.utr || ''
+                  })
+                  window.history.pushState({}, '', `/pass?${queryParams.toString()}`)
+                  if (onOpenPass) onOpenPass()
+                }}
               >
                 👑 View Royal Delegate Pass ↗
               </button>
@@ -702,6 +721,7 @@ export default function RegistrationPortalPage({ onBackToHome, onOpenPass, onRec
               passUrl={passFullUrl}
               onOpenPass={() => {
                 setShowReceiptModal(false)
+                window.history.pushState({}, '', passFullUrl)
                 if (onOpenPass) onOpenPass()
               }}
               onClose={() => setShowReceiptModal(false)}

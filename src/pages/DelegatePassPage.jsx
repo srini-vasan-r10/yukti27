@@ -11,73 +11,95 @@ import SEOHead from '../utils/SEOHead'
  */
 export default function DelegatePassPage({ onBackToHome }) {
   const [passData, setPassData] = useState(null)
+  const [isDirectAccess, setIsDirectAccess] = useState(false)
+  const [typedKeys, setTypedKeys] = useState('')
+  const [emojis, setEmojis] = useState([])
+  const [celebrating, setCelebrating] = useState(false)
   const barcodeRef = useRef(null)
+
+  // Wholesome, fun, safe emojis pool
+  const safeEmojis = [
+    '✨', '🚀', '🎉', '🌟', '🦄', '🔥', '⚡', '🏆', 
+    '🎈', '🎊', '👑', '💎', '🎯', '🍀', '🍕', '🎮', 
+    '👾', '🌈', '🥳', '🪄', '💡', '🎸', '🛸', '⭐'
+  ]
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
     const name = params.get('name')
+    const regId = params.get('regId')
+
+    // If directly accessed without query params or without a valid regId / name
+    if (!name && !regId) {
+      setIsDirectAccess(true)
+      return
+    }
+
     const college = params.get('college')
     const phone = params.get('phone')
     const email = params.get('email')
     const event = params.get('event')
     const teamName = params.get('teamName')
-    const regId = params.get('regId')
     const year = params.get('year')
     const delegationType = params.get('delegationType')
     const members = params.get('members')
     const fee = params.get('fee')
     const utr = params.get('utr')
 
-    if (name || regId) {
-      setPassData({
-        name: name || 'Valued Delegate',
-        college: college || 'Thiagarajar School of Management (TSM)',
-        phone: phone || '',
-        email: email || '',
-        event: event || 'All-Confluence Arena',
-        teamName: teamName || (name ? `${name}'s Squad` : 'YUKTI Delegation'),
-        regId: regId || 'YK27-DELEGATE',
-        year: year || 'PG / MBA Final Year',
-        delegationType: delegationType || 'Competitor Pass (Team Entry)',
-        members: members ? members.split(',').filter(Boolean) : [],
-        fee: fee || '₹500',
-        utr: utr || 'VERIFIED-UPI'
-      })
-    } else {
-      const lastReg = JSON.parse(localStorage.getItem('yukti_last_pending_reg') || 'null')
-      if (lastReg) {
-        setPassData({
-          name: lastReg.name || 'Valued Delegate',
-          college: lastReg.college || 'Thiagarajar School of Management (TSM)',
-          phone: lastReg.phone || '',
-          email: lastReg.email || '',
-          event: lastReg.event || 'The AI CEO Challenge',
-          teamName: lastReg.teamName || `${lastReg.name}'s Squad`,
-          regId: lastReg.regId || 'YK27-DELEGATE',
-          year: lastReg.year || 'PG / MBA Final Year',
-          delegationType: lastReg.delegationType || 'Competitor Pass (Team Entry)',
-          members: lastReg.members ? (Array.isArray(lastReg.members) ? lastReg.members.map(m=>m.name||m) : [lastReg.members]) : [],
-          fee: lastReg.fee || '₹500',
-          utr: lastReg.utr || 'VERIFIED-UPI'
-        })
-      } else {
-        setPassData({
-          name: 'Srinivasan Rengarajan',
-          college: 'Thiagarajar School of Management (TSM)',
-          phone: '+91 98765 43210',
-          email: 'srinivasan@tsm.ac.in',
-          event: 'The AI CEO Challenge & Best Manager',
-          teamName: 'Titan Stratocasters',
-          regId: 'YK27-A8F2-9X41',
-          year: 'PG / MBA Final Year',
-          delegationType: 'Competitor Pass (Team Entry)',
-          members: ['Priya S. (Finance)', 'Arun M. (Analytics)'],
-          fee: '₹500',
-          utr: '431209874521'
+    setPassData({
+      name: name || 'Valued Delegate',
+      college: college || 'Thiagarajar School of Management (TSM)',
+      phone: phone || '',
+      email: email || '',
+      event: event || 'All-Confluence Arena',
+      teamName: teamName || (name ? `${name}'s Squad` : 'YUKTI Delegation'),
+      regId: regId || 'YK27-DELEGATE',
+      year: year || 'PG / MBA Final Year',
+      delegationType: delegationType || 'Competitor Pass (Team Entry)',
+      members: members ? members.split(',').filter(Boolean) : [],
+      fee: fee || '₹500',
+      utr: utr || 'VERIFIED-UPI'
+    })
+  }, [])
+
+  // Easter Egg keyboard listener for direct 404 page
+  useEffect(() => {
+    if (!isDirectAccess) return
+
+    const handleKeyDown = (e) => {
+      // Ignore meta / control keys
+      if (e.metaKey || e.ctrlKey || e.altKey) return
+      
+      const key = e.key.toLowerCase()
+      if (key.length === 1 && key >= 'a' && key <= 'z') {
+        // Pick random safe emoji
+        const randomEmoji = safeEmojis[Math.floor(Math.random() * safeEmojis.length)]
+        const newEmojiItem = {
+          id: Date.now() + Math.random(),
+          char: randomEmoji,
+          letter: key.toUpperCase(),
+          x: Math.random() * 80 + 10,
+          y: Math.random() * 60 + 20
+        }
+        setEmojis(prev => [...prev.slice(-8), newEmojiItem])
+
+        // Accumulate and check if 'yukti' is typed
+        setTypedKeys(prev => {
+          const next = (prev + key).slice(-5)
+          if (next === 'yukti') {
+            setCelebrating(true)
+            setTimeout(() => {
+              window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1'
+            }, 1800)
+          }
+          return next
         })
       }
     }
-  }, [])
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [isDirectAccess])
 
   // Render authentic Code 128 barcode once passData is loaded
   useEffect(() => {
@@ -97,6 +119,106 @@ export default function DelegatePassPage({ onBackToHome }) {
       }
     }
   }, [passData])
+
+  // If user directly opened /pass with no valid credentials/query params, show the Easter Egg 404
+  if (isDirectAccess) {
+    return (
+      <div className="pass-page-wrapper" style={{ display: 'grid', placeItems: 'center', minHeight: '100vh', textAlign: 'center', padding: '40px 20px', position: 'relative', overflow: 'hidden' }}>
+        <SEOHead
+          title="404 — Delegate Pass Not Found | YUKTI ’27"
+          description="Direct access restricted. Pass dockets are accessible only through verified registration or official QR scan."
+          path="/pass"
+        />
+
+        {/* Floating animated emojis typed by user */}
+        {emojis.map(item => (
+          <div
+            key={item.id}
+            style={{
+              position: 'absolute',
+              left: `${item.x}%`,
+              top: `${item.y}%`,
+              fontSize: '2.5rem',
+              pointerEvents: 'none',
+              animation: 'floatUpFade 1.8s ease-out forwards',
+              zIndex: 40
+            }}
+          >
+            {item.char}
+            <span style={{ fontSize: '0.8rem', color: '#FFF2A6', fontWeight: 'bold', display: 'block', textShadow: '0 0 8px #000' }}>
+              {item.letter}
+            </span>
+          </div>
+        ))}
+
+        <div style={{ maxWidth: '640px', background: '#150924', border: '2px solid #C59B3C', borderRadius: '24px', padding: '40px 30px', boxShadow: '0 20px 80px rgba(0,0,0,0.9)', zIndex: 30, position: 'relative' }}>
+          <div className="mono gold" style={{ fontSize: '0.9rem', letterSpacing: '0.2em' }}>RESTRICTED SECURITY ZONE · 404</div>
+          
+          <h1 style={{ fontSize: 'clamp(3.5rem, 8vw, 6rem)', margin: '10px 0', color: '#F5D77F', fontFamily: "'Space Grotesk', sans-serif" }}>
+            404
+          </h1>
+
+          <h2 style={{ fontSize: '1.4rem', color: '#FFF2A6', marginBottom: '14px' }}>
+            {celebrating ? '🎉 BINGO! YUKTI CONFLUENCE UNLOCKED! 🎉' : 'Delegate Pass Docket Not Found'}
+          </h2>
+
+          <p style={{ color: '#cbd5e1', fontSize: '0.92rem', lineHeight: '1.6', marginBottom: '22px' }}>
+            {celebrating ? (
+              <strong style={{ color: '#10b981' }}>Stand by... Transporting you to the Grand Symphony! 🚀🎶</strong>
+            ) : (
+              <>
+                Pass credentials cannot be accessed directly without an authenticated registration docket or scanning your verified physical/receipt QR code.
+              </>
+            )}
+          </p>
+
+          {/* Easter egg instruction prompt */}
+          <div style={{
+            background: 'rgba(77,29,100,0.4)',
+            border: '1px dashed #C59B3C',
+            borderRadius: '14px',
+            padding: '16px 20px',
+            marginBottom: '26px'
+          }}>
+            <div style={{ fontSize: '0.82rem', color: '#F5D77F', fontWeight: 'bold', marginBottom: '6px' }}>
+              🕹️ ARE YOU ON A PC / KEYBOARD?
+            </div>
+            <div style={{ fontSize: '0.84rem', color: '#e2d9eb' }}>
+              Type <strong style={{ color: '#FFF2A6', letterSpacing: '0.15em', background: '#1F0E2C', padding: '2px 8px', borderRadius: '4px', border: '1px solid #C59B3C' }}>"yukti"</strong> on your keyboard to reveal a cosmic surprise!
+            </div>
+            {typedKeys && (
+              <div className="mono" style={{ marginTop: '10px', fontSize: '0.78rem', color: '#10b981' }}>
+                Key buffer: [{typedKeys}]
+              </div>
+            )}
+          </div>
+
+          <button
+            className="btn"
+            onClick={onBackToHome}
+            style={{
+              padding: '12px 28px',
+              fontSize: '0.88rem',
+              background: 'linear-gradient(135deg, #FFF2A6 0%, #C59B3C 100%)',
+              color: '#1F0E2C',
+              fontWeight: 800,
+              border: 'none',
+              borderRadius: '10px'
+            }}
+          >
+            ← Return to Confluence Home
+          </button>
+        </div>
+
+        <style>{`
+          @keyframes floatUpFade {
+            0% { transform: translateY(0) scale(0.6); opacity: 1; }
+            100% { transform: translateY(-70px) scale(1.3); opacity: 0; }
+          }
+        `}</style>
+      </div>
+    )
+  }
 
   if (!passData) return null
 
