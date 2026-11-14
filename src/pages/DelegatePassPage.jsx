@@ -3,6 +3,7 @@ import { QRCodeSVG } from 'qrcode.react'
 import JsBarcode from 'jsbarcode'
 import html2canvas from 'html2canvas'
 import SEOHead from '../utils/SEOHead'
+import { YUKTI_LOGO_DATA_URI, TSM_LOGO_DATA_URI } from '../utils/passLogos'
 
 /**
  * DelegatePassPage Component
@@ -419,14 +420,16 @@ export default function DelegatePassPage({ onBackToHome }) {
           
           {/* 1. Header with Dual Logos & Accreditation */}
           <div className="pass-header-section">
-            <div className="pass-logo-title-group">
-              <img src="/yukti-logo.webp" alt="YUKTI '27 Logo" className="pass-yukti-crest" />
-              <div>
-                <h2 className="pass-inst-title">THIAGARAJAR SCHOOL OF MANAGEMENT (TSM) · MADURAI</h2>
-                <span className="pass-inst-sub">NAAC A+ & NBA ACCREDITED B-SCHOOL · FOUNDED 1962</span>
-              </div>
+            <div className="pass-logo-badge">
+              <img src={YUKTI_LOGO_DATA_URI} alt="YUKTI '27 Logo" className="pass-yukti-crest" />
             </div>
-            <img src="/tsm-logo.webp" alt="TSM Crest" className="pass-tsm-crest" />
+            <div className="pass-inst-title-block">
+              <h2 className="pass-inst-title">THIAGARAJAR SCHOOL OF MANAGEMENT (TSM) · MADURAI</h2>
+              <span className="pass-inst-sub">NAAC A+ & NBA ACCREDITED B-SCHOOL · FOUNDED 1962</span>
+            </div>
+            <div className="pass-logo-badge">
+              <img src={TSM_LOGO_DATA_URI} alt="TSM Crest" className="pass-tsm-crest" />
+            </div>
           </div>
 
           {/* 2. Main Fest Title & Theme Banner */}
@@ -726,14 +729,20 @@ export default function DelegatePassPage({ onBackToHome }) {
           display: flex;
           justify-content: space-between;
           align-items: center;
+          gap: 16px;
           border-bottom: 1.5px solid rgba(197,155,60,0.3);
           padding-bottom: 14px;
           margin-bottom: 16px;
         }
-        .pass-logo-title-group {
+        .pass-logo-badge {
+          flex-shrink: 0;
           display: flex;
           align-items: center;
-          gap: 14px;
+          justify-content: center;
+        }
+        .pass-inst-title-block {
+          flex: 1;
+          text-align: center;
         }
         .pass-yukti-crest {
           width: 52px;
@@ -748,9 +757,10 @@ export default function DelegatePassPage({ onBackToHome }) {
         }
         .pass-inst-title {
           margin: 0;
-          font-size: 0.96rem;
+          font-size: 0.98rem;
           letter-spacing: 0.04em;
           color: #ffffff;
+          text-align: center;
         }
         .pass-inst-sub {
           font-size: 0.68rem;
@@ -758,7 +768,8 @@ export default function DelegatePassPage({ onBackToHome }) {
           font-family: monospace;
           letter-spacing: 0.1em;
           display: block;
-          margin-top: 2px;
+          margin-top: 3px;
+          text-align: center;
         }
 
         .pass-hero-banner {
@@ -1086,18 +1097,27 @@ export default function DelegatePassPage({ onBackToHome }) {
             box-sizing: border-box !important;
           }
           .pass-header-section {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
             border-bottom: 2px solid #000000 !important;
             padding-bottom: 12px !important;
             margin-bottom: 14px !important;
+          }
+          .pass-inst-title-block {
+            flex: 1 !important;
+            text-align: center !important;
           }
           .pass-inst-title {
             color: #000000 !important;
             font-size: 11.5pt !important;
             font-weight: bold !important;
+            text-align: center !important;
           }
           .pass-inst-sub {
             color: #333333 !important;
             font-size: 7pt !important;
+            text-align: center !important;
           }
           .pass-hero-banner {
             margin-bottom: 16px !important;

@@ -12,6 +12,7 @@ import { buildUpiUri, extractNumericAmount, UPI_CONFIG } from '../utils/upiServi
 import { getTeamSizeRange } from '../utils/teamSizeHelper'
 import ReceiptModal from '../components/ReceiptModal'
 import CustomSelect from '../components/CustomSelect'
+import { generateRandomTeamName } from '../utils/teamNameGenerator'
 
 export default function RegistrationPortalPage({ onBackToHome, onOpenPass, onReceiptModalToggle }) {
   const [selectedTrackType, setSelectedTrackType] = useState('management')
@@ -23,6 +24,7 @@ export default function RegistrationPortalPage({ onBackToHome, onOpenPass, onRec
     email: '',
     phone: '',
     college: '',
+    teamName: '',
     year: 'PG / MBA — 1st Year',
     delegationType: 'Team Entry',
     specialRequirements: '',
@@ -114,8 +116,10 @@ export default function RegistrationPortalPage({ onBackToHome, onOpenPass, onRec
     const regId = 'YK27-' + Math.random().toString(36).substring(2, 6).toUpperCase() + '-' + Math.random().toString(36).substring(2, 6).toUpperCase()
     
     // Save temporary record to LocalStorage
+    const resolvedTeamName = formData.teamName?.trim() || generateRandomTeamName()
     const pendingRecord = {
       ...formData,
+      teamName: resolvedTeamName,
       regId,
       event: currentEvent.title,
       fee: currentEvent.fee || '₹500',
@@ -324,6 +328,41 @@ export default function RegistrationPortalPage({ onBackToHome, onOpenPass, onRec
                         className="portal-input"
                       />
                     </div>
+                  </div>
+
+                  {/* Optional Team / Contingent Name with Randomizer */}
+                  <div className="field-group">
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+                      <label className="mono" style={{ margin: 0 }}>Team / Squad Name (Optional)</label>
+                      <button
+                        type="button"
+                        onClick={() => setFormData(prev => ({ ...prev, teamName: generateRandomTeamName() }))}
+                        style={{
+                          background: 'rgba(197, 155, 60, 0.15)',
+                          border: '1px solid rgba(197, 155, 60, 0.35)',
+                          color: '#F5D77F',
+                          padding: '3px 10px',
+                          borderRadius: '6px',
+                          fontSize: '0.72rem',
+                          fontFamily: 'monospace',
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '5px'
+                        }}
+                        title="Generate a unique team name from 100 power prefixes and 100 arena suffixes"
+                      >
+                        ⚡ Generate Cool Team Name
+                      </button>
+                    </div>
+                    <input
+                      type="text"
+                      name="teamName"
+                      value={formData.teamName}
+                      onChange={handleChange}
+                      placeholder="e.g. Apex Syndicate, Quantum Mavericks, or your custom name"
+                      className="portal-input"
+                    />
                   </div>
 
                   <div className="fields-row-2">
