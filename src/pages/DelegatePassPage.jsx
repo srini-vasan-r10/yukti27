@@ -420,13 +420,13 @@ export default function DelegatePassPage({ onBackToHome }) {
           {/* 1. Header with Dual Logos & Accreditation */}
           <div className="pass-header-section">
             <div className="pass-logo-title-group">
-              <img src="/yukti-logo.png" alt="YUKTI '27 Logo" className="pass-yukti-crest" />
+              <img src="/yukti-logo.webp" alt="YUKTI '27 Logo" className="pass-yukti-crest" />
               <div>
                 <h2 className="pass-inst-title">THIAGARAJAR SCHOOL OF MANAGEMENT (TSM) · MADURAI</h2>
                 <span className="pass-inst-sub">NAAC A+ & NBA ACCREDITED B-SCHOOL · FOUNDED 1962</span>
               </div>
             </div>
-            <img src="/tsm-logo.png" alt="TSM Crest" className="pass-tsm-crest" />
+            <img src="/tsm-logo.webp" alt="TSM Crest" className="pass-tsm-crest" />
           </div>
 
           {/* 2. Main Fest Title & Theme Banner */}

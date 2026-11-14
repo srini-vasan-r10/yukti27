@@ -132,7 +132,7 @@ export default function SponsorsSection() {
         </div>
         <div className="callout-actions">
           <a href="mailto:yukti@tsm.ac.in?subject=YUKTI%202027%20Corporate%20Partnership%20Proposal" className="btn">
-            Request Partnership Deck ↗
+            Request Partnership Deck
           </a>
           <a href="#contact" className="btn ghost">
             Contact Sponsorship Desk

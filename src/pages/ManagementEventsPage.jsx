@@ -113,7 +113,7 @@ export default function ManagementEventsPage({ onSelectEvent, onBackToHome, onOp
                 </div>
                 <div className="actions-col">
                   <button className="btn" onClick={() => onSelectEvent(ev)}>
-                    Full Rulebook ↗
+                    Full Rulebook
                   </button>
                 </div>
               </div>
@@ -139,7 +139,7 @@ export default function ManagementEventsPage({ onSelectEvent, onBackToHome, onOp
           </div>
           <div className="cta-right">
             <button className="btn" onClick={onOpenRegister}>
-              Generate Delegate Dossier ↗
+              Generate Delegate Dossier
             </button>
           </div>
         </div>

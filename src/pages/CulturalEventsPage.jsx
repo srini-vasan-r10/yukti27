@@ -110,7 +110,7 @@ export default function CulturalEventsPage({ onSelectEvent, onBackToHome, onOpen
                     <span style={{ display: 'block', fontSize: '0.7rem', color: '#a69cb4', marginTop: '2px' }}>Fee: {cult.fee}</span>
                   </div>
                   <button className="btn" onClick={() => onSelectEvent(cult)}>
-                    Full Rulebook ↗
+                    Full Rulebook
                   </button>
                 </div>
               </div>
@@ -126,7 +126,7 @@ export default function CulturalEventsPage({ onSelectEvent, onBackToHome, onOpen
           </div>
           <div className="cta-right">
             <button className="btn" onClick={onOpenRegister}>
-              Register Cultural Crew ↗
+              Register Cultural Crew
             </button>
           </div>
         </div>

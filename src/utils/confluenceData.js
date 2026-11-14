@@ -77,20 +77,20 @@ export const SITE_CONFIG = {
 };
 
 export const SPONSORS_DATA = [
-  { name: "Thangamayil", logoImg: "/sponsors/thangamayil.png", type: "Gold Partner", color: "#F5D77F", bg: "rgba(255,255,255,0.06)" },
-  { name: "HDFC Credila", logoImg: "/sponsors/hdfc credilla.png", type: "Education Loan Partner", color: "#FFF2A6", bg: "rgba(255,255,255,0.06)" },
-  { name: "Bank of Baroda", logoImg: "/sponsors/bob.png", type: "Banking Partner", color: "#C59B3C", bg: "rgba(255,255,255,0.06)" },
-  { name: "Federal Bank", logoImg: "/sponsors/federal.png", type: "Associate Partner", color: "#FFF2A6", bg: "rgba(255,255,255,0.06)" },
-  { name: "State Bank of India", logoImg: "/sponsors/sbi.png", type: "Banking Partner", color: "#F5D77F", bg: "rgba(255,255,255,0.06)" },
-  { name: "Pepsi", logoImg: "/sponsors/pepsi.png", type: "Beverage Partner", color: "#FFF2A6", bg: "rgba(255,255,255,0.06)" },
-  { name: "Red Taxi", logoImg: "/sponsors/red taxi.png", type: "Mobility Partner", color: "#F5D77F", bg: "rgba(255,255,255,0.06)" },
-  { name: "Greenlight", logoImg: "/sponsors/greenlight.png", type: "Photography Partner", color: "#C59B3C", bg: "rgba(255,255,255,0.06)" },
-  { name: "Hotel Arasan Sapthagiri", logoImg: "/sponsors/hotel arasan saptagiri.png", type: "Hospitality Partner", color: "#F5D77F", bg: "rgba(255,255,255,0.06)" },
-  { name: "TAPL", logoImg: "/sponsors/tapl.png", type: "Corporate Sponsor", color: "#FFF2A6", bg: "rgba(255,255,255,0.06)" },
-  { name: "Star Guru", logoImg: "/sponsors/starguru.png", type: "Talent Partner", color: "#F5D77F", bg: "rgba(255,255,255,0.06)" },
-  { name: "ARS HTA", logoImg: "/sponsors/ars hta.png", type: "Logistics Partner", color: "#C59B3C", bg: "rgba(255,255,255,0.06)" },
-  { name: "Ramachandra", logoImg: "/sponsors/ramachandra.png", type: "Retail Partner", color: "#F5D77F", bg: "rgba(255,255,255,0.06)" },
-  { name: "Anuj", logoImg: "/sponsors/anuj.png", type: "Merchandise Partner", color: "#FFF2A6", bg: "rgba(255,255,255,0.06)" }
+  { name: "Thangamayil", logoImg: "/sponsors/thangamayil.webp", type: "Gold Partner", color: "#F5D77F", bg: "rgba(255,255,255,0.06)" },
+  { name: "HDFC Credila", logoImg: "/sponsors/hdfc credilla.webp", type: "Education Loan Partner", color: "#FFF2A6", bg: "rgba(255,255,255,0.06)" },
+  { name: "Bank of Baroda", logoImg: "/sponsors/bob.webp", type: "Banking Partner", color: "#C59B3C", bg: "rgba(255,255,255,0.06)" },
+  { name: "Federal Bank", logoImg: "/sponsors/federal.webp", type: "Associate Partner", color: "#FFF2A6", bg: "rgba(255,255,255,0.06)" },
+  { name: "State Bank of India", logoImg: "/sponsors/sbi.webp", type: "Banking Partner", color: "#F5D77F", bg: "rgba(255,255,255,0.06)" },
+  { name: "Pepsi", logoImg: "/sponsors/pepsi.webp", type: "Beverage Partner", color: "#FFF2A6", bg: "rgba(255,255,255,0.06)" },
+  { name: "Red Taxi", logoImg: "/sponsors/red taxi.webp", type: "Mobility Partner", color: "#F5D77F", bg: "rgba(255,255,255,0.06)" },
+  { name: "Greenlight", logoImg: "/sponsors/greenlight.webp", type: "Photography Partner", color: "#C59B3C", bg: "rgba(255,255,255,0.06)" },
+  { name: "Hotel Arasan Sapthagiri", logoImg: "/sponsors/hotel arasan saptagiri.webp", type: "Hospitality Partner", color: "#F5D77F", bg: "rgba(255,255,255,0.06)" },
+  { name: "TAPL", logoImg: "/sponsors/tapl.webp", type: "Corporate Sponsor", color: "#FFF2A6", bg: "rgba(255,255,255,0.06)" },
+  { name: "Star Guru", logoImg: "/sponsors/starguru.webp", type: "Talent Partner", color: "#F5D77F", bg: "rgba(255,255,255,0.06)" },
+  { name: "ARS HTA", logoImg: "/sponsors/ars hta.webp", type: "Logistics Partner", color: "#C59B3C", bg: "rgba(255,255,255,0.06)" },
+  { name: "Ramachandra", logoImg: "/sponsors/ramachandra.webp", type: "Retail Partner", color: "#F5D77F", bg: "rgba(255,255,255,0.06)" },
+  { name: "Anuj", logoImg: "/sponsors/anuj.webp", type: "Merchandise Partner", color: "#FFF2A6", bg: "rgba(255,255,255,0.06)" }
 ];
 
 export const MANAGEMENT_EVENTS = eventsDataset.filter(ev => ev.type === 'man');

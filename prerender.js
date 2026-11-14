@@ -94,7 +94,7 @@ const routes = [
           </li>
         `).join('')}
       </ul>
-      <p><a href="/register">Register your delegation for Management Arenas ↗</a></p>
+      <p><a href="/register">Register your delegation for Management Arenas</a></p>
     `
   },
   {
@@ -116,7 +116,7 @@ const routes = [
           </li>
         `).join('')}
       </ul>
-      <p><a href="/register">Register for Cultural Events ↗</a></p>
+      <p><a href="/register">Register for Cultural Events</a></p>
     `
   },
   {

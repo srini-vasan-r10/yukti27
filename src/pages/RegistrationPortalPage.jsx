@@ -332,7 +332,7 @@ export default function RegistrationPortalPage({ onBackToHome, onOpenPass, onRec
                       <label className="mono">Current Academic Year</label>
                       <select name="year" value={formData.year} onChange={handleChange} className="portal-input">
                         <option>UG — 1st / 2nd Year</option>
-                        <option>UG — Final Year</option>
+                        <option>UG — 3rd / 4th Year (4th Sem / Final Year)</option>
                         <option>PG / MBA — 1st Year</option>
                         <option>PG / MBA — 2nd Year</option>
                         <option>Corporate Observer</option>
@@ -448,9 +448,9 @@ export default function RegistrationPortalPage({ onBackToHome, onOpenPass, onRec
                     {isProcessingPayment ? (
                       'Connecting to Secure Gateway...'
                     ) : isRazorpayConfigured() ? (
-                      `Pay via Razorpay (${currentEvent.fee || '₹500'}) ↗`
+                      `Pay via Razorpay (${currentEvent.fee || '₹500'})`
                     ) : (
-                      `Proceed to Registration Checkout (${currentEvent.fee || '₹500'}) ↗`
+                      `Proceed to Registration Checkout (${currentEvent.fee || '₹500'})`
                     )}
                   </button>
                 </form>
@@ -518,7 +518,7 @@ export default function RegistrationPortalPage({ onBackToHome, onOpenPass, onRec
                       level="M"
                       includeMargin={false}
                       imageSettings={{
-                        src: "/yukti-logo.png",
+                        src: "/yukti-logo.webp",
                         x: undefined,
                         y: undefined,
                         height: 36,
@@ -554,7 +554,7 @@ export default function RegistrationPortalPage({ onBackToHome, onOpenPass, onRec
                         borderRadius: '8px'
                       }}
                     >
-                      Open UPI App Directly ↗
+                      Open UPI App Directly
                     </a>
                   </div>
                 </div>
@@ -584,7 +584,7 @@ export default function RegistrationPortalPage({ onBackToHome, onOpenPass, onRec
                     style={{ fontSize: '1.1rem', letterSpacing: '0.1em' }}
                   />
                   <button type="submit" className="btn" style={{ width: '100%', marginTop: '12px' }}>
-                    Verify & Confirm Registration ↗
+                    Verify & Confirm Registration
                   </button>
                   <button
                     type="button"
@@ -645,7 +645,7 @@ export default function RegistrationPortalPage({ onBackToHome, onOpenPass, onRec
                 style={{ background: 'linear-gradient(135deg, #FFF2A6 0%, #C59B3C 100%)', color: '#1F0E2C', fontWeight: '800' }}
                 onClick={() => setShowReceiptModal(true)}
               >
-                View Official Payment Receipt ↗
+                View Official Payment Receipt
               </button>
               <button
                 className="btn"
@@ -670,7 +670,7 @@ export default function RegistrationPortalPage({ onBackToHome, onOpenPass, onRec
                   if (onOpenPass) onOpenPass()
                 }}
               >
-                View Official Delegate Pass ↗
+                View Official Delegate Pass
               </button>
               <button
                 className="btn ghost"

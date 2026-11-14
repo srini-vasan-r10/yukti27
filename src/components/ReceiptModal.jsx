@@ -333,7 +333,7 @@ export default function ReceiptModal({ dossier, passUrl, onOpenPass, onClose }) 
                 boxShadow: '0 4px 12px rgba(0,0,0,0.4)'
               }}
             >
-              View & Print A4 Delegate Pass ↗
+              View & Print A4 Delegate Pass
             </button>
 
             <button

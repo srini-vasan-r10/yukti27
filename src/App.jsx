@@ -10,22 +10,22 @@ import DelegatePassPage from './pages/DelegatePassPage'
 
 export default function App() {
   const canvasRef = useRef(null)
-  const [currentPage, setCurrentPage] = useState('home') // 'home' | 'management' | 'cultural' | 'portal' | 'sponsors'
+  const [currentPage, setCurrentPage] = useState('home') // 'home' | 'management' | 'cultural' | 'portal' | 'sponsors' | '404'
   const [menuOpen, setMenuOpen] = useState(false)
   const [modalData, setModalData] = useState(null)
-  const [previewMode, setPreviewMode] = useState(false)
   const [hideGlobalFooter, setHideGlobalFooter] = useState(false)
 
   // Sync clean browser URL without full reload (preserves SEO navigation & direct sharing)
   useEffect(() => {
     const handlePopState = () => {
       const path = window.location.pathname.toLowerCase()
-      if (path.includes('management')) setCurrentPage('management')
+      if (path === '/' || path === '') setCurrentPage('home')
+      else if (path.includes('management')) setCurrentPage('management')
       else if (path.includes('cultural')) setCurrentPage('cultural')
       else if (path.includes('register') || path.includes('portal')) setCurrentPage('portal')
       else if (path.includes('sponsors')) setCurrentPage('sponsors')
       else if (path.includes('pass')) setCurrentPage('pass')
-      else setCurrentPage('home')
+      else setCurrentPage('404')
     }
 
     // Initial check from URL
@@ -360,13 +360,13 @@ export default function App() {
               style={{ marginTop: '14px', width: '100%' }}
               onClick={() => navigateTo('portal')}
             >
-              Join Confluence ↗
+              Join Confluence
             </button>
           )}
         </nav>
 
         <button className="btn topbar-cta-btn" onClick={() => navigateTo('portal')}>
-          Join Confluence ↗
+          Join Confluence
         </button>
 
         {/* Mobile Burger Button */}
@@ -380,12 +380,6 @@ export default function App() {
           <span></span>
         </button>
       </header>
-
-      {previewMode && (
-        <div className="admin-banner show">
-          COMMITTEE PREVIEW MODE — illustrative dates and announcements are for review only
-        </div>
-      )}
 
       {/* ── SEPARATE PAGE ROUTING ───────────────────────────────── */}
       {currentPage === 'home' && (
@@ -464,6 +458,63 @@ export default function App() {
         </>
       )}
 
+      {/* ── 404 UNIVERSAL NOT FOUND PAGE ── */}
+      {currentPage === '404' && (
+        <div style={{
+          minHeight: '80vh',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '120px 24px 60px',
+          textAlign: 'center',
+          position: 'relative',
+          zIndex: 20
+        }}>
+          <div style={{
+            background: 'rgba(31, 14, 44, 0.85)',
+            border: '1.5px solid rgba(197, 155, 60, 0.4)',
+            borderRadius: '24px',
+            padding: '48px 32px',
+            maxWidth: '560px',
+            width: '100%',
+            boxShadow: '0 20px 60px rgba(0,0,0,0.85)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)'
+          }}>
+            <div className="mono gold" style={{ fontSize: '0.85rem', letterSpacing: '0.18em', marginBottom: '8px' }}>
+              ERROR 404 · PAGE NOT FOUND
+            </div>
+            <h1 style={{
+              fontSize: '4.5rem',
+              fontFamily: "'Space Grotesk', sans-serif",
+              color: '#FFF2A6',
+              margin: '8px 0',
+              lineHeight: 1
+            }}>
+              404
+            </h1>
+            <p style={{ color: '#cbd5e1', fontSize: '0.96rem', lineHeight: 1.6, margin: '16px 0 28px' }}>
+              The summit docket or route you are searching for is unavailable or restricted. Navigate back to the official confluence to explore the management arenas and cultural spectacles.
+            </p>
+            <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <button
+                className="btn"
+                onClick={() => navigateTo('home')}
+              >
+                Return to Confluence Home
+              </button>
+              <button
+                className="btn ghost"
+                onClick={() => navigateTo('portal')}
+              >
+                Registration Portal
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* ── HOMEPAGE: Dedicated Hero Banner, ₹20L Prize Announcement & Infinite Marquee ── */}
       {currentPage === 'home' && (
         <main>
@@ -510,13 +561,13 @@ export default function App() {
               {/* Primary Call-to-Action Buttons */}
               <div className="hero-actions">
                 <button className="btn" onClick={() => navigateTo('portal')}>
-                  Register for YUKTI ’27 ↗
+                  Register for YUKTI ’27
                 </button>
                 <button className="btn ghost" onClick={() => navigateTo('management')}>
-                  Management Tracks (6) ↗
+                  Management Tracks (6)
                 </button>
                 <button className="btn ghost" onClick={() => navigateTo('cultural')}>
-                  Cultural Tracks (6) ↗
+                  Cultural Tracks (6)
                 </button>
               </div>
 
@@ -538,7 +589,7 @@ export default function App() {
               <div className="about-split-grid">
                 <div className="about-copy-col">
                   <span className="mono gold">The Essence & Philosophy</span>
-                  <h2 className="about-title">ABOUT YUKTI ’27</h2>
+                  <h2 className="about-title" style={{ marginBottom: '32px' }}>ABOUT YUKTI ’27</h2>
                   <blockquote className="about-quote">
                     "{SITE_CONFIG.aboutQuote}"
                   </blockquote>
@@ -650,7 +701,6 @@ export default function App() {
                 </div>
                 <div className="portal-card-foot">
                   <span>Explore 8 Arenas & Rulebooks</span>
-                  <span className="arrow">↗</span>
                 </div>
               </div>
 
@@ -662,7 +712,6 @@ export default function App() {
                 </div>
                 <div className="portal-card-foot">
                   <span>Explore 5 Cultural Arenas</span>
-                  <span className="arrow">↗</span>
                 </div>
               </div>
             </div>
@@ -790,11 +839,6 @@ export default function App() {
         </footer>
       )}
 
-      {/* Committee Preview Toggle Button */}
-      <button className="admin" onClick={() => setPreviewMode(!previewMode)}>
-        {previewMode ? 'PREVIEW MODE: ON ✓' : 'COMMITTEE PREVIEW ↗'}
-      </button>
-
       {/* Event Details Modal */}
       {modalData && (
         <div className="modal open" role="dialog">
@@ -828,7 +872,7 @@ export default function App() {
                   navigateTo('portal')
                 }}
               >
-                Register Team ↗
+                Register Team
               </button>
             </div>
           </div>

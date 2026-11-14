@@ -47,7 +47,7 @@ export default function Yukti26SponsorsPage({ onBackToHome }) {
           <div className="blueprint-header-right">
             <div className="blueprint-yukti26-crest-frame">
               <img
-                src="/yukti26-logo.png"
+                src="/yukti26-logo.webp"
                 alt="YUKTI '26 Logo"
                 className="blueprint-yukti26-logo-img"
               />
@@ -128,7 +128,7 @@ export default function Yukti26SponsorsPage({ onBackToHome }) {
             Interested in partnering for <strong>YUKTI ’27: INTANGIBLES</strong>?
           </p>
           <a href="mailto:yukti@tsm.ac.in" className="btn" style={{ padding: '8px 20px', fontSize: '0.78rem' }}>
-            Inquire Corporate Partnership ↗
+            Inquire Corporate Partnership
           </a>
         </div>
       </div>

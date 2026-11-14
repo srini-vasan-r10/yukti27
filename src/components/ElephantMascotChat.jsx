@@ -153,7 +153,7 @@ ${CULTURAL_EVENTS.map(c => `   - ${c.title} (${c.category}): Team: ${c.teamSize}
         {!isOpen && (
           <div className="mascot-speech-bubble" onClick={() => setIsOpen(true)}>
             <span className="speech-badge mono">₹20L PRIZE POOL</span>
-            <p>Ask Gaja anything ↗</p>
+            <p>Ask Gaja anything</p>
           </div>
         )}
 
@@ -263,7 +263,7 @@ ${CULTURAL_EVENTS.map(c => `   - ${c.title} (${c.category}): Team: ${c.teamSize}
               className="chat-text-input"
             />
             <button type="submit" className="chat-send-btn" disabled={!inputVal.trim() || isLoading}>
-              ↗
+              Send
             </button>
           </form>
         </div>
