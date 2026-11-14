@@ -41,8 +41,8 @@ const routes = [
   {
     path: '',
     outputPath: 'index.html',
-    title: "YUKTI ’27 — National Management & Cultural Fest | Thiagarajar School of Management (TSM) Madurai",
-    description: "YUKTI ’27 is the premier annual pan-India management and cultural fest hosted by Thiagarajar School of Management (TSM), Madurai. Featuring 12 national arenas, ₹20,00,000 bounty, boardroom trials, executive leadership, and cultural spectacles.",
+    title: "YUKTI ’27 — National Management Fest | TSM Madurai",
+    description: "Join YUKTI ’27 at Thiagarajar School of Management (TSM), Madurai. Compete in 12 national management & cultural arenas for a ₹20 Lakh bounty pool.",
     canonical: `${siteUrl}/`,
     heading: "YUKTI ’27 — National Management & Cultural Fest",
     content: `
@@ -50,19 +50,36 @@ const routes = [
       <p>Theme: <strong>INTANGIBLES — INFINITE POSSIBILITIES</strong></p>
       <p>Confirmed Dates: January 28, 29 & 30, 2027 | Venue: TSM Campus, Thiruparankundram, Madurai, Tamil Nadu 625005</p>
       <p>Cumulative National Bounty: <strong>₹20,00,000</strong> in cash prizes, national rolling shields, and corporate grants across 12 flagship arenas.</p>
-      <h3>The Two Confluences</h3>
+      
+      <h3>About YUKTI '27 and Thiagarajar School of Management</h3>
+      <p>
+        For more than two decades, YUKTI has stood as South India's hallmark national summit where ambitious business scholars, startup innovators, and elite creative performers unite. Conceived and hosted by Thiagarajar School of Management (TSM), Madurai — an autonomous institution established in 1962 and accredited NAAC A+ and NBA — YUKTI ’27 explores the thematic crucible of INTANGIBLES — Infinite Possibilities.
+      </p>
+      <p>
+        We examine the critical inflection point where data intelligence intersects human intuition, testing how future corporate leaders harness unseen value, reputational capital, and adaptive resilience in high-stakes corporate environments. Over 1,800 delegates representing 60+ premier B-schools and undergraduate institutions converge for three days of intense competition, boardroom simulations, and cultural mastery.
+      </p>
+
+      <h3>Flagship Competition Confluences</h3>
+      <p>
+        Participants can explore two dedicated tracks: the <strong>Management Arenas</strong> comprising 6 rigorous trials covering strategic leadership, algorithmic finance, venture pitch defense, supply chain stress, and human capital; and the <strong>Cultural Confluence</strong> featuring 6 creative arenas in music, choreography, street drama, fashion, and digital media.
+      </p>
+
+      <h3>Internal Directory & Quick Navigation</h3>
       <ul>
         <li><a href="/events/management">Management Events & Arenas (6 Tracks)</a></li>
         <li><a href="/events/cultural">Cultural Events & Confluence (6 Tracks)</a></li>
         <li><a href="/register">Official Delegate Registration Portal</a></li>
+        <li><a href="#about">About YUKTI '27 Philosophy</a></li>
+        <li><a href="#legacy">TSM Madurai Legacy & Timeline</a></li>
+        <li><a href="#sponsors">Corporate Partners & Sponsors</a></li>
       </ul>
     `
   },
   {
     path: 'events/management',
     outputPath: 'events/management/index.html',
-    title: "Management Events & National Arenas | YUKTI ’27 · TSM Madurai",
-    description: "Compete in 8 high-stakes national management arenas at YUKTI '27: The AI CEO Challenge, Market Mavericks, Boardroom Crisis, and FinStrat at Thiagarajar School of Management.",
+    title: "Management Events & National Arenas | YUKTI ’27 · TSM",
+    description: "Compete in 8 high-stakes national management arenas at YUKTI '27: The AI CEO Challenge, Market Mavericks, Boardroom Crisis, and FinStrat at TSM Madurai.",
     canonical: `${siteUrl}/events/management`,
     heading: "Management Confluence Arenas — YUKTI ’27",
     content: `
@@ -83,7 +100,7 @@ const routes = [
   {
     path: 'events/cultural',
     outputPath: 'events/cultural/index.html',
-    title: "Cultural Confluence & Artistic Spectacles | YUKTI ’27 · TSM Madurai",
+    title: "Cultural Confluence & Spectacles | YUKTI ’27 · TSM",
     description: "Experience uninhibited artistry, battle of the bands, choreography, and solo performances at YUKTI '27 Cultural Confluence, TSM Madurai.",
     canonical: `${siteUrl}/events/cultural`,
     heading: "Cultural Confluence — YUKTI ’27",
@@ -105,7 +122,7 @@ const routes = [
   {
     path: 'register',
     outputPath: 'register/index.html',
-    title: "Priority Registration Portal — Delegate Passes | YUKTI ’27 · TSM Madurai",
+    title: "Priority Registration Portal | YUKTI ’27 · TSM Madurai",
     description: "Stake your institution's claim in the national arenas. Register your delegation and complete your registration fee for YUKTI '27 at TSM Madurai.",
     canonical: `${siteUrl}/register`,
     heading: "Official Delegate Registration Gateway — YUKTI ’27",
@@ -118,7 +135,7 @@ const routes = [
   {
     path: 'pass',
     outputPath: 'pass/index.html',
-    title: "Official Delegate Entry Pass & Credential — YUKTI ’27 | TSM Madurai",
+    title: "Official Delegate Entry Pass | YUKTI ’27 · TSM Madurai",
     description: "Official verified delegate security pass and gate credential for YUKTI '27 at Thiagarajar School of Management (TSM), Madurai.",
     canonical: `${siteUrl}/pass`,
     heading: "Official Delegate Entry Pass — YUKTI ’27",

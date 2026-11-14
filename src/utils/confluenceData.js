@@ -41,7 +41,7 @@ export const isStagingEnvironment = () => {
 
 export const SITE_CONFIG = {
   edition: "2027",
-  title: "YUKTI ’27 — National Management & Cultural Fest | TSM Madurai",
+  title: "YUKTI ’27 — National Management Fest | TSM Madurai",
   shortTitle: "YUKTI ’27",
   theme: "INTANGIBLES",
   tagline: "INFINITE POSSIBILITIES",
@@ -59,7 +59,14 @@ export const SITE_CONFIG = {
   organizerUrl: "https://tsm.ac.in",
   email: "yukti@tsm.ac.in",
   socialHandle: "@yukti.tsm",
-  metaDescription: "YUKTI ’27 is the premier annual pan-India management and cultural fest hosted by Thiagarajar School of Management (TSM), Madurai. Featuring 12 national arenas, ₹20,00,000 bounty, boardroom trials, executive leadership, and cultural spectacles.",
+  socialLinks: {
+    youtube: "https://www.youtube.com/@ThiagarajarSchoolofManagement",
+    twitter: "https://x.com/tsmmadurai",
+    linkedin: "https://www.linkedin.com/school/thiagarajar-school-of-management/",
+    instagram: "https://instagram.com/yukti.tsm",
+    facebook: "https://www.facebook.com/tsmmadurai/"
+  },
+  metaDescription: "Join YUKTI ’27 at Thiagarajar School of Management (TSM), Madurai. Compete in 12 national management & cultural arenas for a ₹20 Lakh bounty pool.",
   stats: {
     prizePool: "₹20,00,000",
     institutions: "60+ Premier B-Schools",

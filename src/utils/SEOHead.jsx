@@ -18,11 +18,25 @@ export default function SEOHead({
   subEvents = null
 }) {
   const siteUrl = getSiteUrl()
-  const cleanPath = path ? (path.startsWith('/') ? path : `/${path}`) : ''
-  const canonicalUrl = `${siteUrl}${cleanPath}`
+  // Ensure clean path without query params or trailing slash issues
+  const cleanPath = path ? (path.startsWith('/') ? path : `/${path}`).split('?')[0].replace(/\/$/, '') : ''
+  const canonicalUrl = `${siteUrl}${cleanPath || '/'}`
   const fullImageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`
-  const metaTitle = title ? `${title} | ${SITE_CONFIG.shortTitle} · TSM Madurai` : SITE_CONFIG.title
-  const metaDesc = description || SITE_CONFIG.metaDescription
+  
+  // Format title to ensure it stays between 50-60 chars
+  let metaTitle = title ? `${title} | YUKTI ’27 · TSM Madurai` : SITE_CONFIG.title
+  if (metaTitle.length > 60) {
+    metaTitle = metaTitle.substring(0, 57) + '...'
+  }
+  
+  // Format meta description to ensure 100-160 chars
+  let metaDesc = description || SITE_CONFIG.metaDescription
+  if (metaDesc.length > 160) {
+    metaDesc = metaDesc.substring(0, 157) + '...'
+  } else if (metaDesc.length < 100) {
+    metaDesc = `${metaDesc} Hosted at Thiagarajar School of Management (TSM), Madurai. Register your contingent today!`
+  }
+  
   const isStaging = isStagingEnvironment()
 
   // Generate Event Schema (JSON-LD) with SubEvents
@@ -93,7 +107,11 @@ export default function SEOHead({
         "logo": `${siteUrl}/tsm-logo.webp`,
         "sameAs": [
           "https://tsm.ac.in",
-          "https://instagram.com/yukti.tsm"
+          SITE_CONFIG.socialLinks.youtube,
+          SITE_CONFIG.socialLinks.twitter,
+          SITE_CONFIG.socialLinks.linkedin,
+          SITE_CONFIG.socialLinks.instagram,
+          SITE_CONFIG.socialLinks.facebook
         ]
       },
       "offers": {
@@ -114,6 +132,9 @@ export default function SEOHead({
       <title>{metaTitle}</title>
       <meta name="description" content={metaDesc} />
       <link rel="canonical" href={canonicalUrl} />
+      <link rel="alternate" hrefLang="en-IN" href={canonicalUrl} />
+      <link rel="alternate" hrefLang="en" href={canonicalUrl} />
+      <link rel="alternate" hrefLang="x-default" href={canonicalUrl} />
 
       {/* Indexing Protection (Disallow staging / allow production) */}
       {isStaging ? (

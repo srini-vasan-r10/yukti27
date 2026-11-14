@@ -533,7 +533,7 @@ export default function App() {
           </section>
 
           {/* ═══ NEW: ABOUT YUKTI '27 SECTION ═══ */}
-          <section className="section about-yukti-section">
+          <section className="section about-yukti-section" id="about">
             <div className="about-frosted-container">
               <div className="about-split-grid">
                 <div className="about-copy-col">
@@ -543,28 +543,31 @@ export default function App() {
                     "{SITE_CONFIG.aboutQuote}"
                   </blockquote>
                   <p className="about-description">
-                    For over two decades, YUKTI has stood as the premier pan-India platform where the brightest business minds and creative powerhouses converge. The 2027 edition explores the <strong>INTANGIBLES</strong>—celebrating visionary leadership, deep strategy, and pure creative expression.
+                    For more than two decades, YUKTI has stood as South India's hallmark national summit where ambitious business scholars, startup innovators, and elite creative performers unite. Conceived and hosted by <strong>Thiagarajar School of Management (TSM)</strong>, Madurai, YUKTI ’27 explores the thematic crucible of <strong>INTANGIBLES — Infinite Possibilities</strong>. We examine the critical inflection point where data intelligence intersects human intuition, testing how future executives harness unseen value, reputational capital, and adaptive resilience in high-stakes corporate environments.
+                  </p>
+                  <p className="about-description" style={{ marginTop: '12px' }}>
+                    Participants immerse themselves across 12 distinct flagship arenas split equally between quantitative corporate problem-solving and vibrant stage spectacles. Whether negotiating cross-border equity mergers, restructuring distressed supply chains under real-time simulated market shocks, or commanding the national proscenium stage, YUKTI ’27 delivers unparalleled collegiate excellence, verified academic certification, and high-visibility corporate recruitment networking.
                   </p>
                   <div className="about-pillars-row">
                     <div className="pillar-item">
                       <span className="pillar-icon">✦</span>
                       <div>
-                        <strong>INNOVATION</strong>
-                        <small>Algorithmic Strategy & Boardroom Trials</small>
+                        <h3>INNOVATION</h3>
+                        <p style={{ margin: 0, fontSize: '0.82rem', color: '#b6a8cb' }}>Algorithmic Strategy & Boardroom Trials</p>
                       </div>
                     </div>
                     <div className="pillar-item">
                       <span className="pillar-icon">◈</span>
                       <div>
-                        <strong>CULTURE</strong>
-                        <small>Uninhibited Artistry & Musical Mastery</small>
+                        <h3>CULTURE</h3>
+                        <p style={{ margin: 0, fontSize: '0.82rem', color: '#b6a8cb' }}>Uninhibited Artistry & Musical Mastery</p>
                       </div>
                     </div>
                     <div className="pillar-item">
                       <span className="pillar-icon">❖</span>
                       <div>
-                        <strong>LEADERSHIP</strong>
-                        <small>Executive Composure Under Extreme Flux</small>
+                        <h3>LEADERSHIP</h3>
+                        <p style={{ margin: 0, fontSize: '0.82rem', color: '#b6a8cb' }}>Executive Composure Under Extreme Flux</p>
                       </div>
                     </div>
                   </div>
@@ -593,10 +596,10 @@ export default function App() {
           </section>
 
           {/* ═══ SPONSORSHIP CONTINUOUS MARQUEE (Restored on Homepage) ═══ */}
-          <section className="sponsors-marquee-section">
+          <section className="sponsors-marquee-section" id="sponsors">
             <div className="marquee-section-head">
               <span className="mono gold">Legacy of Trust · Corporate Partners & Supporters</span>
-              <h3>Proudly Supported by Industry Titans</h3>
+              <h2>Proudly Supported by Industry Titans</h2>
             </div>
 
             <div className="sponsors-marquee-track-wrap">
@@ -756,15 +759,21 @@ export default function App() {
             <div className="footer-nav-columns">
               <div className="footer-col-block">
                 <span className="mono gold col-title">Confluences</span>
-                <a href="#management" onClick={(e) => { e.preventDefault(); navigateTo('management') }}>Management Arenas (6)</a>
-                <a href="#cultural" onClick={(e) => { e.preventDefault(); navigateTo('cultural') }}>Cultural Confluence (6)</a>
-                <a href="#portal" onClick={(e) => { e.preventDefault(); navigateTo('portal') }}>Registration Portal</a>
+                <a href="/events/management" onClick={(e) => { e.preventDefault(); navigateTo('management') }}>Management Arenas (6)</a>
+                <a href="/events/cultural" onClick={(e) => { e.preventDefault(); navigateTo('cultural') }}>Cultural Confluence (6)</a>
+                <a href="/register" onClick={(e) => { e.preventDefault(); navigateTo('portal') }}>Registration Portal</a>
+                <a href="#about" onClick={(e) => { e.preventDefault(); document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' }) }}>Summit Philosophy</a>
+                <a href="#sponsors" onClick={(e) => { e.preventDefault(); document.getElementById('sponsors')?.scrollIntoView({ behavior: 'smooth' }) }}>Corporate Partners</a>
               </div>
 
               <div className="footer-col-block">
-                <span className="mono gold col-title">Reach Out</span>
+                <span className="mono gold col-title">Official Channels</span>
                 <span className="contact-link">Email: <a href="mailto:yukti@tsm.ac.in">yukti@tsm.ac.in</a></span>
-                <span className="contact-link">Instagram: <a href="https://instagram.com/yukti.tsm" target="_blank" rel="noreferrer">@yukti.tsm</a></span>
+                <span className="contact-link">Instagram: <a href={SITE_CONFIG.socialLinks.instagram} target="_blank" rel="noreferrer">@yukti.tsm</a></span>
+                <span className="contact-link">YouTube: <a href={SITE_CONFIG.socialLinks.youtube} target="_blank" rel="noreferrer">TSM Madurai</a></span>
+                <span className="contact-link">LinkedIn: <a href={SITE_CONFIG.socialLinks.linkedin} target="_blank" rel="noreferrer">Thiagarajar School</a></span>
+                <span className="contact-link">X (Twitter): <a href={SITE_CONFIG.socialLinks.twitter} target="_blank" rel="noreferrer">@tsmmadurai</a></span>
+                <span className="contact-link">Facebook: <a href={SITE_CONFIG.socialLinks.facebook} target="_blank" rel="noreferrer">TSM Official</a></span>
               </div>
             </div>
           </div>
