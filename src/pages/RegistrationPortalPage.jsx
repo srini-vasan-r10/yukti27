@@ -381,7 +381,7 @@ export default function RegistrationPortalPage({ onBackToHome, onOpenPass, onRec
 
                       {/* Primary Lead Display */}
                       <div style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '8px 12px', background: 'rgba(255,255,255,0.04)', borderRadius: '10px', marginBottom: '10px', fontSize: '0.82rem' }}>
-                        <span style={{ color: '#F5D77F' }}>👑 Leader (You):</span>
+                        <span style={{ color: '#F5D77F' }}>Primary Leader:</span>
                         <strong style={{ color: '#fff' }}>{formData.name || 'Primary Delegate'}</strong>
                         <span style={{ color: '#94a3b8', fontSize: '0.72rem' }}>({formData.email || 'Email above'})</span>
                       </div>
@@ -433,7 +433,7 @@ export default function RegistrationPortalPage({ onBackToHome, onOpenPass, onRec
                       {/* Interactive prompt if under max capacity */}
                       {(!teamConstraints.max || (1 + additionalMembers.length) < teamConstraints.max) && (
                         <div style={{ marginTop: '8px', fontSize: '0.74rem', color: '#a69cb4' }}>
-                          💡 Have another teammate joining your squad? Click <strong>+ Add Team Member</strong> above to generate a verified credential on your pass.
+                          Need to register additional squad members? Click <strong>+ Add Team Member</strong> above to add them to your official pass roster.
                         </div>
                       )}
                     </div>
@@ -554,7 +554,7 @@ export default function RegistrationPortalPage({ onBackToHome, onOpenPass, onRec
                         borderRadius: '8px'
                       }}
                     >
-                      📱 Open UPI App Directly ↗
+                      Open UPI App Directly ↗
                     </a>
                   </div>
                 </div>
@@ -645,7 +645,7 @@ export default function RegistrationPortalPage({ onBackToHome, onOpenPass, onRec
                 style={{ background: 'linear-gradient(135deg, #FFF2A6 0%, #C59B3C 100%)', color: '#1F0E2C', fontWeight: '800' }}
                 onClick={() => setShowReceiptModal(true)}
               >
-                🧾 View Official Thermal Payment Receipt ↗
+                View Official Payment Receipt ↗
               </button>
               <button
                 className="btn"
@@ -670,7 +670,7 @@ export default function RegistrationPortalPage({ onBackToHome, onOpenPass, onRec
                   if (onOpenPass) onOpenPass()
                 }}
               >
-                👑 View Royal Delegate Pass ↗
+                View Official Delegate Pass ↗
               </button>
               <button
                 className="btn ghost"

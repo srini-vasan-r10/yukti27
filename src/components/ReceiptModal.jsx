@@ -269,13 +269,13 @@ export default function ReceiptModal({ dossier, passUrl, onOpenPass, onClose }) 
               fontWeight: 'bold',
               marginBottom: '12px'
             }}>
-              📸 PLEASE SCREENSHOT THIS SCREEN FOR FUTURE REFERENCE
+              PLEASE SAVE OR SCREENSHOT THIS RECEIPT FOR ENTRANCE VERIFICATION
             </div>
 
             {/* ═══ SCANNABLE QR CODE FOR ROYAL PASS TREATMENT ═══ */}
             <div style={{ textAlign: 'center', borderTop: '1px dashed #a8a29e', paddingTop: '10px' }}>
               <div style={{ fontSize: '0.66rem', fontWeight: 'bold', letterSpacing: '0.04em', marginBottom: '8px', color: '#1c1917' }}>
-                SCAN QR BELOW FOR ROYAL DELEGATE ENTRY PASS
+                SCAN QR BELOW FOR OFFICIAL DELEGATE ENTRY PASS
               </div>
               
               <div style={{
@@ -302,7 +302,7 @@ export default function ReceiptModal({ dossier, passUrl, onOpenPass, onClose }) 
               </div>
               
               <small style={{ display: 'block', fontSize: '0.60rem', color: '#78716c', marginTop: '4px' }}>
-                Scan with phone camera to view full A4 printable pass
+                Scan with mobile camera to view full A4 printable pass
               </small>
 
               {/* Action Buttons Row: View Pass & Download Bill Image */}
@@ -324,7 +324,7 @@ export default function ReceiptModal({ dossier, passUrl, onOpenPass, onClose }) 
                     letterSpacing: '0.03em'
                   }}
                 >
-                  👑 View & Print A4 Delegate Pass ↗
+                  View & Print A4 Delegate Pass ↗
                 </button>
 
                 <button
@@ -347,7 +347,7 @@ export default function ReceiptModal({ dossier, passUrl, onOpenPass, onClose }) 
                     gap: '6px'
                   }}
                 >
-                  📥 {downloadSuccess ? '✓ Bill Image Downloaded' : 'Download Receipt Bill Image (.PNG)'}
+                  {downloadSuccess ? '✓ Bill Image Downloaded' : 'Download Receipt Bill Image (.PNG)'}
                 </button>
               </div>
             </div>

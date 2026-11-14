@@ -14,7 +14,7 @@ export default function DelegatePassPage({ onBackToHome }) {
   const [passData, setPassData] = useState(null)
   const [isDirectAccess, setIsDirectAccess] = useState(false)
   const [typedKeys, setTypedKeys] = useState('')
-  const [emojis, setEmojis] = useState([])
+  const [keystrokes, setKeystrokes] = useState([])
   const [celebrating, setCelebrating] = useState(false)
   const [jumbledLetters, setJumbledLetters] = useState(['K', 'U', 'I', 'Y', 'T'])
   const [isDownloadingPass, setIsDownloadingPass] = useState(false)
@@ -47,13 +47,6 @@ export default function DelegatePassPage({ onBackToHome }) {
     }
   }
 
-  // Wholesome, fun, safe emojis pool
-  const safeEmojis = [
-    '✨', '🚀', '🎉', '🌟', '🦄', '🔥', '⚡', '🏆', 
-    '🎈', '🎊', '👑', '💎', '🎯', '🍀', '🍕', '🎮', 
-    '👾', '🌈', '🥳', '🪄', '💡', '🎸', '🛸', '⭐'
-  ]
-
   // Reshuffle jumbled letters periodically or on click
   const shuffleJumbledLetters = () => {
     const letters = ['Y', 'U', 'K', 'T', 'I']
@@ -64,18 +57,16 @@ export default function DelegatePassPage({ onBackToHome }) {
     setJumbledLetters(letters)
   }
 
-  // Trigger input for a character (used by both keyboard typing and phone/tablet jumbled button taps)
+  // Trigger input for a character (clean geometric ripple pulse instead of emojis)
   const handleCharInput = (char) => {
     const key = char.toLowerCase()
-    const randomEmoji = safeEmojis[Math.floor(Math.random() * safeEmojis.length)]
-    const newEmojiItem = {
+    const newSparkItem = {
       id: Date.now() + Math.random(),
-      char: randomEmoji,
       letter: key.toUpperCase(),
       x: Math.random() * 75 + 12,
       y: Math.random() * 55 + 20
     }
-    setEmojis(prev => [...prev.slice(-8), newEmojiItem])
+    setKeystrokes(prev => [...prev.slice(-8), newSparkItem])
 
     setTypedKeys(prev => {
       const next = (prev + key).slice(-5)
@@ -83,7 +74,7 @@ export default function DelegatePassPage({ onBackToHome }) {
         setCelebrating(true)
         setTimeout(() => {
           window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1'
-        }, 1800)
+        }, 1600)
       }
       return next
     })
@@ -175,86 +166,99 @@ export default function DelegatePassPage({ onBackToHome }) {
           path="/pass"
         />
 
-        {/* Floating animated emojis typed by user */}
-        {emojis.map(item => (
+        {/* Minimal geometric golden letter accents typed by user (Zero emojis) */}
+        {keystrokes.map(item => (
           <div
             key={item.id}
             style={{
               position: 'absolute',
               left: `${item.x}%`,
               top: `${item.y}%`,
-              fontSize: '2.5rem',
               pointerEvents: 'none',
-              animation: 'floatUpFade 1.8s ease-out forwards',
-              zIndex: 40
+              animation: 'floatUpFade 1.6s ease-out forwards',
+              zIndex: 40,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center'
             }}
           >
-            {item.char}
-            <span style={{ fontSize: '0.8rem', color: '#FFF2A6', fontWeight: 'bold', display: 'block', textShadow: '0 0 8px #000' }}>
+            <div style={{
+              width: '38px',
+              height: '38px',
+              borderRadius: '50%',
+              background: 'radial-gradient(circle, #F5D77F 0%, #C59B3C 80%)',
+              color: '#1F0E2C',
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: '1.1rem',
+              fontWeight: '900',
+              display: 'grid',
+              placeItems: 'center',
+              boxShadow: '0 0 15px rgba(245,215,127,0.7)'
+            }}>
               {item.letter}
-            </span>
+            </div>
           </div>
         ))}
 
-        <div style={{ maxWidth: '640px', background: '#150924', border: '2px solid #C59B3C', borderRadius: '24px', padding: '40px 30px', boxShadow: '0 20px 80px rgba(0,0,0,0.9)', zIndex: 30, position: 'relative' }}>
-          <div className="mono gold" style={{ fontSize: '0.9rem', letterSpacing: '0.2em' }}>RESTRICTED SECURITY ZONE · 404</div>
+        <div style={{ maxWidth: '600px', background: '#150924', border: '1.5px solid #C59B3C', borderRadius: '20px', padding: '38px 28px', boxShadow: '0 25px 70px rgba(0,0,0,0.9)', zIndex: 30, position: 'relative' }}>
+          <div className="mono gold" style={{ fontSize: '0.82rem', letterSpacing: '0.18em' }}>RESTRICTED ACCESS · ERROR 404</div>
           
-          <h1 style={{ fontSize: 'clamp(3.5rem, 8vw, 6rem)', margin: '10px 0', color: '#F5D77F', fontFamily: "'Space Grotesk', sans-serif" }}>
+          <h1 style={{ fontSize: 'clamp(3.2rem, 7vw, 5.5rem)', margin: '8px 0', color: '#F5D77F', fontFamily: "'Space Grotesk', sans-serif" }}>
             404
           </h1>
 
-          <h2 style={{ fontSize: '1.4rem', color: '#FFF2A6', marginBottom: '14px' }}>
-            {celebrating ? '🎉 BINGO! YUKTI CONFLUENCE UNLOCKED! 🎉' : 'Delegate Pass Docket Not Found'}
+          <h2 style={{ fontSize: '1.3rem', color: '#FFF2A6', marginBottom: '12px' }}>
+            {celebrating ? 'Access Granted: Confluence Protocol Initiated' : 'Delegate Docket Not Found'}
           </h2>
 
-          <p style={{ color: '#cbd5e1', fontSize: '0.92rem', lineHeight: '1.6', marginBottom: '22px' }}>
+          <p style={{ color: '#cbd5e1', fontSize: '0.90rem', lineHeight: '1.6', marginBottom: '22px' }}>
             {celebrating ? (
-              <strong style={{ color: '#10b981' }}>Stand by... Transporting you to the Grand Symphony! 🚀🎶</strong>
+              <strong style={{ color: '#10b981' }}>Connecting to official fest broadcast stream...</strong>
             ) : (
               <>
-                Pass credentials cannot be accessed directly without an authenticated registration docket or scanning your verified physical/receipt QR code.
+                Delegate credentials are tied directly to an approved registration docket or scanned from your physical registration badge.
               </>
             )}
           </p>
 
-          {/* Easter egg instruction prompt (Dual: PC typing & Mobile/Tablet touch keypad) */}
+          {/* Interactive Input Terminal */}
           <div style={{
-            background: 'rgba(77,29,100,0.4)',
-            border: '1px dashed #C59B3C',
-            borderRadius: '14px',
-            padding: '18px 20px',
-            marginBottom: '26px'
+            background: 'rgba(77,29,100,0.35)',
+            border: '1px solid rgba(197,155,60,0.4)',
+            borderRadius: '12px',
+            padding: '16px 18px',
+            marginBottom: '24px'
           }}>
-            <div style={{ fontSize: '0.82rem', color: '#F5D77F', fontWeight: 'bold', marginBottom: '6px' }}>
-              🕹️ DESKTOP, PHONE OR TABLET EASTER EGG
+            <div className="mono gold" style={{ fontSize: '0.74rem', marginBottom: '6px' }}>
+              KEY SEQUENCE VERIFICATION
             </div>
-            <div style={{ fontSize: '0.84rem', color: '#e2d9eb', lineHeight: '1.5' }}>
-              On PC? Type <strong style={{ color: '#FFF2A6', letterSpacing: '0.15em', background: '#1F0E2C', padding: '2px 8px', borderRadius: '4px', border: '1px solid #C59B3C' }}>"yukti"</strong>.
+            <div style={{ fontSize: '0.82rem', color: '#e2d9eb', lineHeight: '1.5' }}>
+              Keyboard users: Type <strong>"yukti"</strong>.
               <br />
-              On a Phone / Tablet? Tap the jumbled letters below in order to spell <strong>Y-U-K-T-I</strong>!
+              Touchscreen users: Tap the sequence <strong>Y-U-K-T-I</strong> below.
             </div>
 
-            {/* Jumbled YUKTI Interactive Keypad for Phone & Tablet */}
-            <div style={{ marginTop: '16px' }}>
-              <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', flexWrap: 'wrap' }}>
+            {/* Jumbled Keypad Buttons (Professional metallic badge styling, no emojis) */}
+            <div style={{ marginTop: '14px' }}>
+              <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', flexWrap: 'wrap' }}>
                 {jumbledLetters.map((char, index) => (
                   <button
                     key={index}
                     type="button"
                     onClick={() => handleCharInput(char)}
                     style={{
-                      width: '52px',
-                      height: '52px',
-                      borderRadius: '12px',
-                      background: 'linear-gradient(145deg, #2b133d 0%, #150924 100%)',
-                      border: '2px solid #C59B3C',
+                      width: '48px',
+                      height: '48px',
+                      borderRadius: '10px',
+                      background: 'linear-gradient(180deg, #2b133d 0%, #150924 100%)',
+                      border: '1.5px solid #C59B3C',
                       color: '#FFF2A6',
                       fontFamily: "'Space Grotesk', sans-serif",
-                      fontSize: '1.35rem',
+                      fontSize: '1.25rem',
                       fontWeight: '800',
                       cursor: 'pointer',
-                      boxShadow: '0 4px 15px rgba(0,0,0,0.6), inset 0 1px 2px rgba(255,255,255,0.2)',
-                      transition: 'transform 0.15s ease, background 0.2s',
+                      boxShadow: '0 4px 12px rgba(0,0,0,0.6)',
+                      transition: 'transform 0.15s ease',
                       display: 'grid',
                       placeItems: 'center'
                     }}
@@ -269,29 +273,28 @@ export default function DelegatePassPage({ onBackToHome }) {
                 ))}
               </div>
 
-              {/* Reshuffle button */}
               <button
                 type="button"
                 onClick={shuffleJumbledLetters}
                 style={{
-                  marginTop: '12px',
+                  marginTop: '10px',
                   background: 'transparent',
                   border: 'none',
                   color: '#F5D77F',
                   fontFamily: 'monospace',
-                  fontSize: '0.72rem',
+                  fontSize: '0.70rem',
                   letterSpacing: '0.08em',
                   cursor: 'pointer',
                   textDecoration: 'underline'
                 }}
               >
-                🔀 Reshuffle Jumbled Letters
+                Reshuffle Sequence
               </button>
             </div>
 
             {typedKeys && (
-              <div className="mono" style={{ marginTop: '12px', fontSize: '0.80rem', color: '#10b981', background: 'rgba(0,0,0,0.4)', padding: '6px 12px', borderRadius: '6px', display: 'inline-block' }}>
-                Letters Pressed: [{typedKeys.toUpperCase()}]
+              <div className="mono" style={{ marginTop: '10px', fontSize: '0.76rem', color: '#10b981', background: 'rgba(0,0,0,0.4)', padding: '5px 10px', borderRadius: '4px', display: 'inline-block' }}>
+                Input: [{typedKeys.toUpperCase()}]
               </div>
             )}
           </div>
@@ -300,23 +303,23 @@ export default function DelegatePassPage({ onBackToHome }) {
             className="btn"
             onClick={onBackToHome}
             style={{
-              padding: '12px 28px',
-              fontSize: '0.88rem',
+              padding: '11px 24px',
+              fontSize: '0.84rem',
               background: 'linear-gradient(135deg, #FFF2A6 0%, #C59B3C 100%)',
               color: '#1F0E2C',
               fontWeight: 800,
               border: 'none',
-              borderRadius: '10px'
+              borderRadius: '8px'
             }}
           >
-            ← Return to Confluence Home
+            Return to Confluence
           </button>
         </div>
 
         <style>{`
           @keyframes floatUpFade {
-            0% { transform: translateY(0) scale(0.6); opacity: 1; }
-            100% { transform: translateY(-70px) scale(1.3); opacity: 0; }
+            0% { transform: translateY(0) scale(0.7); opacity: 1; }
+            100% { transform: translateY(-60px) scale(1.15); opacity: 0; }
           }
         `}</style>
       </div>
@@ -358,17 +361,16 @@ export default function DelegatePassPage({ onBackToHome }) {
           ← Return to Confluence
         </button>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
-          <span className="mono gold" style={{ fontSize: '0.78rem' }}>1-PAGE A4 FRIENDLY PASS</span>
+          <span className="mono gold" style={{ fontSize: '0.78rem' }}>1-PAGE A4 FORMAT</span>
           <button
             className="btn print-trigger-btn"
             onClick={handleDownloadPassImage}
             disabled={isDownloadingPass}
-            style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
           >
-            {isDownloadingPass ? '⏳ Saving Pass...' : '📥 Download Pass (.PNG)'}
+            {isDownloadingPass ? 'Saving Pass...' : 'Download Pass (.PNG)'}
           </button>
           <button className="btn print-trigger-btn" onClick={() => window.print()}>
-            🖨️ Print Pass / PDF
+            Print Pass / PDF
           </button>
         </div>
       </div>
@@ -379,9 +381,9 @@ export default function DelegatePassPage({ onBackToHome }) {
           <div className="mobile-success-indicator">
             <span className="mobile-check-icon">✓</span>
             <div>
-              <h3 className="mobile-action-heading">Your Royal Pass is Ready!</h3>
+              <h3 className="mobile-action-heading">Official Delegate Pass Verified</h3>
               <p className="mobile-action-sub">
-                Official docket confirmed for <strong>{passData.name}</strong>. Save it directly to your phone photos or print for gate entry.
+                Registration docket confirmed for <strong>{passData.name}</strong>. Save the pass image directly to your device or print for gate inspection.
               </p>
             </div>
           </div>
@@ -393,14 +395,14 @@ export default function DelegatePassPage({ onBackToHome }) {
               onClick={handleDownloadPassImage}
               disabled={isDownloadingPass}
             >
-              📥 {isDownloadingPass ? 'Generating Image...' : 'Click Here to Download Pass'}
+              {isDownloadingPass ? 'Generating Image...' : 'Click Here to Download Pass'}
             </button>
             <button
               type="button"
               className="mobile-print-btn"
               onClick={() => window.print()}
             >
-              🖨️ Print / Save as PDF
+              Print / Save as PDF
             </button>
           </div>
         </div>
@@ -441,7 +443,12 @@ export default function DelegatePassPage({ onBackToHome }) {
           <div className="pass-details-grid">
             {/* Avatar / Barcode Column */}
             <div className="pass-avatar-box">
-              <div className="pass-avatar-icon">🎓</div>
+              <div className="pass-avatar-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F5D77F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                </svg>
+              </div>
               {/* Authentic Barcode generated via jsbarcode */}
               <div className="pass-barcode-wrapper">
                 <svg ref={barcodeRef} className="pass-real-barcode"></svg>
@@ -483,7 +490,7 @@ export default function DelegatePassPage({ onBackToHome }) {
               </div>
               <div className="pass-field">
                 <span className="pass-field-label">PASS CLASSIFICATION</span>
-                <span className="pass-field-value-gold">🎖️ {passData.delegationType}</span>
+                <span className="pass-field-value-gold">{passData.delegationType}</span>
               </div>
             </div>
           </div>
@@ -495,7 +502,7 @@ export default function DelegatePassPage({ onBackToHome }) {
               <div className="pass-members-chips">
                 {passData.members.map((m, idx) => (
                   <span key={idx} className="pass-member-chip">
-                    👤 {m}
+                    {m}
                   </span>
                 ))}
               </div>
