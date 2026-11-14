@@ -1055,42 +1055,55 @@ export default function DelegatePassPage({ onBackToHome }) {
 
         /* ══════════════════════════════════════════════════════════
            STRICT A4 PRINT STYLES (Single Page Perfection, No Bleed)
+           Standard A4: 210mm x 297mm (595.28pt x 841.89pt)
+           Zero margin locks browser headers and footers from printing
            ══════════════════════════════════════════════════════════ */
         @media print {
           @page {
             size: A4 portrait;
-            margin: 6mm 8mm;
+            margin: 0 !important;
           }
           body, html {
             background: #ffffff !important;
             color: #000000 !important;
-            font-size: 10.5pt;
+            font-size: 10pt;
             margin: 0 !important;
             padding: 0 !important;
+            width: 210mm !important;
+            height: 297mm !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
           }
           .no-print, header, footer, #webgl-container, .admin, .progress, .mobile-pass-action-banner {
             display: none !important;
           }
           .pass-page-wrapper {
-            padding: 0 !important;
+            padding: 6mm 8mm !important;
             background: #ffffff !important;
-            min-height: auto !important;
+            min-height: 297mm !important;
+            box-sizing: border-box !important;
           }
           .a4-pass-container {
-            display: block !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            width: 100% !important;
             max-width: 100% !important;
             margin: 0 !important;
             padding: 0 !important;
+            box-sizing: border-box !important;
           }
           .a4-pass-card {
             background: #ffffff !important;
             color: #000000 !important;
             border: 2px solid #000000 !important;
             border-radius: 12px !important;
-            padding: 22px 24px 20px !important;
+            padding: 24px 28px 24px !important;
             box-shadow: none !important;
             page-break-inside: avoid !important;
-            min-height: 258mm !important; /* Calibrated to fill 88-90% of A4 portrait gracefully */
+            page-break-after: avoid !important;
+            page-break-before: avoid !important;
+            height: 283mm !important; /* Fills 95.3% of 297mm A4 portrait, ensuring zero empty gap and 0 extra pages */
             display: flex !important;
             flex-direction: column !important;
             justify-content: space-between !important;
