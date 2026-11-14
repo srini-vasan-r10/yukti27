@@ -417,8 +417,31 @@ export default function RegistrationPortalPage({ onBackToHome, onOpenPass, onRec
                           <button
                             type="button"
                             onClick={handleAddMemberSlot}
-                            className="btn"
-                            style={{ padding: '6px 14px', fontSize: '0.76rem', background: '#1F0E2C', border: '1px solid #C59B3C' }}
+                            style={{
+                              padding: '8px 16px',
+                              fontSize: '0.78rem',
+                              fontWeight: '700',
+                              background: '#1F0E2C',
+                              color: '#FFF2A6',
+                              border: '1.5px solid #C59B3C',
+                              borderRadius: '999px',
+                              cursor: 'pointer',
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '6px',
+                              boxShadow: '0 4px 14px rgba(0,0,0,0.4)',
+                              transition: 'all 0.2s ease'
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.background = '#4D1D64'
+                              e.currentTarget.style.borderColor = '#F5D77F'
+                              e.currentTarget.style.color = '#ffffff'
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.background = '#1F0E2C'
+                              e.currentTarget.style.borderColor = '#C59B3C'
+                              e.currentTarget.style.color = '#FFF2A6'
+                            }}
                           >
                             + Add Team Member
                           </button>

@@ -602,23 +602,23 @@ export default function App() {
                   <div className="about-pillars-row">
                     <div className="pillar-item">
                       <span className="pillar-icon">✦</span>
-                      <div>
-                        <h3>INNOVATION</h3>
-                        <p style={{ margin: 0, fontSize: '0.82rem', color: '#b6a8cb' }}>Algorithmic Strategy & Boardroom Trials</p>
+                      <div className="pillar-text-group">
+                        <strong className="pillar-heading">INNOVATION</strong>
+                        <p className="pillar-desc">Algorithmic Strategy & Boardroom Trials</p>
                       </div>
                     </div>
                     <div className="pillar-item">
                       <span className="pillar-icon">◈</span>
-                      <div>
-                        <h3>CULTURE</h3>
-                        <p style={{ margin: 0, fontSize: '0.82rem', color: '#b6a8cb' }}>Uninhibited Artistry & Musical Mastery</p>
+                      <div className="pillar-text-group">
+                        <strong className="pillar-heading">CULTURE</strong>
+                        <p className="pillar-desc">Uninhibited Artistry & Musical Mastery</p>
                       </div>
                     </div>
                     <div className="pillar-item">
                       <span className="pillar-icon">❖</span>
-                      <div>
-                        <h3>LEADERSHIP</h3>
-                        <p style={{ margin: 0, fontSize: '0.82rem', color: '#b6a8cb' }}>Executive Composure Under Extreme Flux</p>
+                      <div className="pillar-text-group">
+                        <strong className="pillar-heading">LEADERSHIP</strong>
+                        <p className="pillar-desc">Executive Composure Under Extreme Flux</p>
                       </div>
                     </div>
                   </div>
