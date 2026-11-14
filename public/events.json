@@ -22,7 +22,48 @@
     ],
     "teamSize": "Individual",
     "prizes": "₹2,50,000 + Best Manager Shield",
-    "fee": "₹500"
+    "fee": "₹500",
+    "participationType": "individual",
+    "paymentModel": "individual",
+    "feeStructure": {
+      "amount": 500,
+      "currency": "INR",
+      "displayFee": "₹500",
+      "chargedPer": "individual",
+      "splitPaymentSupported": false,
+      "isRefundable": false
+    },
+    "teamConstraints": {
+      "minMembers": 1,
+      "maxMembers": 1,
+      "allowInterCollegeTeams": true,
+      "allowCrossDepartment": true
+    },
+    "eligibility": {
+      "targetAudience": "MBA / PGDM / Final Year UG",
+      "idCardRequired": true,
+      "bonafideCertificateRequired": false
+    },
+    "scheduleMeta": {
+      "mode": "Offline On-Campus",
+      "venueRequired": true,
+      "reportingTime": "08:30 AM IST",
+      "proctoringOrJudgingRounds": 3
+    },
+    "submissionRequirements": {
+      "requiresDocumentUpload": false,
+      "allowedFileTypes": [
+        "pdf",
+        "pptx"
+      ],
+      "maxFileSizeMb": 25
+    },
+    "flags": {
+      "isOpenForRegistration": true,
+      "isSpotRegistrationAllowed": false,
+      "isFeatured": true,
+      "isRollingShieldEvent": true
+    }
   },
   {
     "type": "man",
@@ -47,7 +88,48 @@
     ],
     "teamSize": "2 - 3 Members",
     "prizes": "₹1,00,000 + Marketing Excellence Trophy",
-    "fee": "₹600 per team"
+    "fee": "₹600 per team",
+    "participationType": "team",
+    "paymentModel": "team",
+    "feeStructure": {
+      "amount": 600,
+      "currency": "INR",
+      "displayFee": "₹600 per team",
+      "chargedPer": "team",
+      "splitPaymentSupported": false,
+      "isRefundable": false
+    },
+    "teamConstraints": {
+      "minMembers": 2,
+      "maxMembers": 3,
+      "allowInterCollegeTeams": true,
+      "allowCrossDepartment": true
+    },
+    "eligibility": {
+      "targetAudience": "MBA / PGDM / Final Year UG",
+      "idCardRequired": true,
+      "bonafideCertificateRequired": false
+    },
+    "scheduleMeta": {
+      "mode": "Offline On-Campus",
+      "venueRequired": true,
+      "reportingTime": "08:30 AM IST",
+      "proctoringOrJudgingRounds": 3
+    },
+    "submissionRequirements": {
+      "requiresDocumentUpload": false,
+      "allowedFileTypes": [
+        "pdf",
+        "pptx"
+      ],
+      "maxFileSizeMb": 25
+    },
+    "flags": {
+      "isOpenForRegistration": true,
+      "isSpotRegistrationAllowed": false,
+      "isFeatured": false,
+      "isRollingShieldEvent": false
+    }
   },
   {
     "type": "man",
@@ -72,7 +154,48 @@
     ],
     "teamSize": "2 Members",
     "prizes": "₹1,00,000 + Analytics Champion Trophy",
-    "fee": "₹500 per team"
+    "fee": "₹500 per team",
+    "participationType": "team",
+    "paymentModel": "team",
+    "feeStructure": {
+      "amount": 500,
+      "currency": "INR",
+      "displayFee": "₹500 per team",
+      "chargedPer": "team",
+      "splitPaymentSupported": false,
+      "isRefundable": false
+    },
+    "teamConstraints": {
+      "minMembers": 2,
+      "maxMembers": 2,
+      "allowInterCollegeTeams": true,
+      "allowCrossDepartment": true
+    },
+    "eligibility": {
+      "targetAudience": "MBA / PGDM / Final Year UG",
+      "idCardRequired": true,
+      "bonafideCertificateRequired": false
+    },
+    "scheduleMeta": {
+      "mode": "Offline On-Campus",
+      "venueRequired": true,
+      "reportingTime": "08:30 AM IST",
+      "proctoringOrJudgingRounds": 3
+    },
+    "submissionRequirements": {
+      "requiresDocumentUpload": false,
+      "allowedFileTypes": [
+        "pdf",
+        "pptx"
+      ],
+      "maxFileSizeMb": 25
+    },
+    "flags": {
+      "isOpenForRegistration": true,
+      "isSpotRegistrationAllowed": false,
+      "isFeatured": false,
+      "isRollingShieldEvent": false
+    }
   },
   {
     "type": "man",
@@ -97,7 +220,48 @@
     ],
     "teamSize": "2 - 4 Members",
     "prizes": "₹1,50,000 + Startup Incubation Opportunity",
-    "fee": "₹800 per team"
+    "fee": "₹800 per team",
+    "participationType": "team",
+    "paymentModel": "team",
+    "feeStructure": {
+      "amount": 800,
+      "currency": "INR",
+      "displayFee": "₹800 per team",
+      "chargedPer": "team",
+      "splitPaymentSupported": false,
+      "isRefundable": false
+    },
+    "teamConstraints": {
+      "minMembers": 2,
+      "maxMembers": 4,
+      "allowInterCollegeTeams": true,
+      "allowCrossDepartment": true
+    },
+    "eligibility": {
+      "targetAudience": "MBA / PGDM / Final Year UG",
+      "idCardRequired": true,
+      "bonafideCertificateRequired": false
+    },
+    "scheduleMeta": {
+      "mode": "Offline On-Campus",
+      "venueRequired": true,
+      "reportingTime": "08:30 AM IST",
+      "proctoringOrJudgingRounds": 3
+    },
+    "submissionRequirements": {
+      "requiresDocumentUpload": true,
+      "allowedFileTypes": [
+        "pdf",
+        "pptx"
+      ],
+      "maxFileSizeMb": 25
+    },
+    "flags": {
+      "isOpenForRegistration": true,
+      "isSpotRegistrationAllowed": false,
+      "isFeatured": false,
+      "isRollingShieldEvent": false
+    }
   },
   {
     "type": "man",
@@ -122,7 +286,48 @@
     ],
     "teamSize": "2 - 3 Members",
     "prizes": "₹1,00,000 + Operations Excellence Shield",
-    "fee": "₹600 per team"
+    "fee": "₹600 per team",
+    "participationType": "team",
+    "paymentModel": "team",
+    "feeStructure": {
+      "amount": 600,
+      "currency": "INR",
+      "displayFee": "₹600 per team",
+      "chargedPer": "team",
+      "splitPaymentSupported": false,
+      "isRefundable": false
+    },
+    "teamConstraints": {
+      "minMembers": 2,
+      "maxMembers": 3,
+      "allowInterCollegeTeams": true,
+      "allowCrossDepartment": true
+    },
+    "eligibility": {
+      "targetAudience": "MBA / PGDM / Final Year UG",
+      "idCardRequired": true,
+      "bonafideCertificateRequired": false
+    },
+    "scheduleMeta": {
+      "mode": "Offline On-Campus",
+      "venueRequired": true,
+      "reportingTime": "08:30 AM IST",
+      "proctoringOrJudgingRounds": 3
+    },
+    "submissionRequirements": {
+      "requiresDocumentUpload": false,
+      "allowedFileTypes": [
+        "pdf",
+        "pptx"
+      ],
+      "maxFileSizeMb": 25
+    },
+    "flags": {
+      "isOpenForRegistration": true,
+      "isSpotRegistrationAllowed": false,
+      "isFeatured": false,
+      "isRollingShieldEvent": true
+    }
   },
   {
     "type": "man",
@@ -147,7 +352,48 @@
     ],
     "teamSize": "Individual",
     "prizes": "₹75,000 + Master Negotiator Trophy",
-    "fee": "₹400"
+    "fee": "₹400",
+    "participationType": "individual",
+    "paymentModel": "individual",
+    "feeStructure": {
+      "amount": 400,
+      "currency": "INR",
+      "displayFee": "₹400",
+      "chargedPer": "individual",
+      "splitPaymentSupported": false,
+      "isRefundable": false
+    },
+    "teamConstraints": {
+      "minMembers": 1,
+      "maxMembers": 1,
+      "allowInterCollegeTeams": true,
+      "allowCrossDepartment": true
+    },
+    "eligibility": {
+      "targetAudience": "MBA / PGDM / Final Year UG",
+      "idCardRequired": true,
+      "bonafideCertificateRequired": false
+    },
+    "scheduleMeta": {
+      "mode": "Offline On-Campus",
+      "venueRequired": true,
+      "reportingTime": "08:30 AM IST",
+      "proctoringOrJudgingRounds": 3
+    },
+    "submissionRequirements": {
+      "requiresDocumentUpload": false,
+      "allowedFileTypes": [
+        "pdf",
+        "pptx"
+      ],
+      "maxFileSizeMb": 25
+    },
+    "flags": {
+      "isOpenForRegistration": true,
+      "isSpotRegistrationAllowed": false,
+      "isFeatured": false,
+      "isRollingShieldEvent": false
+    }
   },
   {
     "type": "man",
@@ -172,7 +418,48 @@
     ],
     "teamSize": "2 Members",
     "prizes": "₹1,00,000 + Finance Excellence Trophy",
-    "fee": "₹500 per team"
+    "fee": "₹500 per team",
+    "participationType": "team",
+    "paymentModel": "team",
+    "feeStructure": {
+      "amount": 500,
+      "currency": "INR",
+      "displayFee": "₹500 per team",
+      "chargedPer": "team",
+      "splitPaymentSupported": false,
+      "isRefundable": false
+    },
+    "teamConstraints": {
+      "minMembers": 2,
+      "maxMembers": 2,
+      "allowInterCollegeTeams": true,
+      "allowCrossDepartment": true
+    },
+    "eligibility": {
+      "targetAudience": "MBA / PGDM / Final Year UG",
+      "idCardRequired": true,
+      "bonafideCertificateRequired": false
+    },
+    "scheduleMeta": {
+      "mode": "Offline On-Campus",
+      "venueRequired": true,
+      "reportingTime": "08:30 AM IST",
+      "proctoringOrJudgingRounds": 3
+    },
+    "submissionRequirements": {
+      "requiresDocumentUpload": false,
+      "allowedFileTypes": [
+        "pdf",
+        "pptx"
+      ],
+      "maxFileSizeMb": 25
+    },
+    "flags": {
+      "isOpenForRegistration": true,
+      "isSpotRegistrationAllowed": false,
+      "isFeatured": false,
+      "isRollingShieldEvent": false
+    }
   },
   {
     "type": "man",
@@ -197,7 +484,48 @@
     ],
     "teamSize": "2 Members",
     "prizes": "₹75,000 + HR Excellence Shield",
-    "fee": "₹500 per team"
+    "fee": "₹500 per team",
+    "participationType": "team",
+    "paymentModel": "team",
+    "feeStructure": {
+      "amount": 500,
+      "currency": "INR",
+      "displayFee": "₹500 per team",
+      "chargedPer": "team",
+      "splitPaymentSupported": false,
+      "isRefundable": false
+    },
+    "teamConstraints": {
+      "minMembers": 2,
+      "maxMembers": 2,
+      "allowInterCollegeTeams": true,
+      "allowCrossDepartment": true
+    },
+    "eligibility": {
+      "targetAudience": "MBA / PGDM / Final Year UG",
+      "idCardRequired": true,
+      "bonafideCertificateRequired": false
+    },
+    "scheduleMeta": {
+      "mode": "Offline On-Campus",
+      "venueRequired": true,
+      "reportingTime": "08:30 AM IST",
+      "proctoringOrJudgingRounds": 3
+    },
+    "submissionRequirements": {
+      "requiresDocumentUpload": false,
+      "allowedFileTypes": [
+        "pdf",
+        "pptx"
+      ],
+      "maxFileSizeMb": 25
+    },
+    "flags": {
+      "isOpenForRegistration": true,
+      "isSpotRegistrationAllowed": false,
+      "isFeatured": false,
+      "isRollingShieldEvent": true
+    }
   },
   {
     "type": "man",
@@ -222,7 +550,48 @@
     ],
     "teamSize": "2 - 3 Members",
     "prizes": "₹1,25,000 + Consulting Excellence Trophy",
-    "fee": "₹700 per team"
+    "fee": "₹700 per team",
+    "participationType": "team",
+    "paymentModel": "team",
+    "feeStructure": {
+      "amount": 700,
+      "currency": "INR",
+      "displayFee": "₹700 per team",
+      "chargedPer": "team",
+      "splitPaymentSupported": false,
+      "isRefundable": false
+    },
+    "teamConstraints": {
+      "minMembers": 2,
+      "maxMembers": 3,
+      "allowInterCollegeTeams": true,
+      "allowCrossDepartment": true
+    },
+    "eligibility": {
+      "targetAudience": "MBA / PGDM / Final Year UG",
+      "idCardRequired": true,
+      "bonafideCertificateRequired": false
+    },
+    "scheduleMeta": {
+      "mode": "Offline On-Campus",
+      "venueRequired": true,
+      "reportingTime": "08:30 AM IST",
+      "proctoringOrJudgingRounds": 3
+    },
+    "submissionRequirements": {
+      "requiresDocumentUpload": false,
+      "allowedFileTypes": [
+        "pdf",
+        "pptx"
+      ],
+      "maxFileSizeMb": 25
+    },
+    "flags": {
+      "isOpenForRegistration": true,
+      "isSpotRegistrationAllowed": false,
+      "isFeatured": false,
+      "isRollingShieldEvent": false
+    }
   },
   {
     "type": "man",
@@ -247,7 +616,48 @@
     ],
     "teamSize": "Individual",
     "prizes": "₹75,000 + Sales Champion Trophy",
-    "fee": "₹400"
+    "fee": "₹400",
+    "participationType": "individual",
+    "paymentModel": "individual",
+    "feeStructure": {
+      "amount": 400,
+      "currency": "INR",
+      "displayFee": "₹400",
+      "chargedPer": "individual",
+      "splitPaymentSupported": false,
+      "isRefundable": false
+    },
+    "teamConstraints": {
+      "minMembers": 1,
+      "maxMembers": 1,
+      "allowInterCollegeTeams": true,
+      "allowCrossDepartment": true
+    },
+    "eligibility": {
+      "targetAudience": "MBA / PGDM / Final Year UG",
+      "idCardRequired": true,
+      "bonafideCertificateRequired": false
+    },
+    "scheduleMeta": {
+      "mode": "Offline On-Campus",
+      "venueRequired": true,
+      "reportingTime": "08:30 AM IST",
+      "proctoringOrJudgingRounds": 3
+    },
+    "submissionRequirements": {
+      "requiresDocumentUpload": false,
+      "allowedFileTypes": [
+        "pdf",
+        "pptx"
+      ],
+      "maxFileSizeMb": 25
+    },
+    "flags": {
+      "isOpenForRegistration": true,
+      "isSpotRegistrationAllowed": false,
+      "isFeatured": false,
+      "isRollingShieldEvent": false
+    }
   },
   {
     "type": "man",
@@ -272,7 +682,48 @@
     ],
     "teamSize": "2 - 3 Members",
     "prizes": "₹1,00,000 + Global Strategist Trophy",
-    "fee": "₹600 per team"
+    "fee": "₹600 per team",
+    "participationType": "team",
+    "paymentModel": "team",
+    "feeStructure": {
+      "amount": 600,
+      "currency": "INR",
+      "displayFee": "₹600 per team",
+      "chargedPer": "team",
+      "splitPaymentSupported": false,
+      "isRefundable": false
+    },
+    "teamConstraints": {
+      "minMembers": 2,
+      "maxMembers": 3,
+      "allowInterCollegeTeams": true,
+      "allowCrossDepartment": true
+    },
+    "eligibility": {
+      "targetAudience": "MBA / PGDM / Final Year UG",
+      "idCardRequired": true,
+      "bonafideCertificateRequired": false
+    },
+    "scheduleMeta": {
+      "mode": "Offline On-Campus",
+      "venueRequired": true,
+      "reportingTime": "08:30 AM IST",
+      "proctoringOrJudgingRounds": 3
+    },
+    "submissionRequirements": {
+      "requiresDocumentUpload": false,
+      "allowedFileTypes": [
+        "pdf",
+        "pptx"
+      ],
+      "maxFileSizeMb": 25
+    },
+    "flags": {
+      "isOpenForRegistration": true,
+      "isSpotRegistrationAllowed": false,
+      "isFeatured": false,
+      "isRollingShieldEvent": false
+    }
   },
   {
     "type": "man",
@@ -297,7 +748,48 @@
     ],
     "teamSize": "2 - 3 Members",
     "prizes": "₹1,25,000 + Crisis Commander Shield",
-    "fee": "₹700 per team"
+    "fee": "₹700 per team",
+    "participationType": "team",
+    "paymentModel": "team",
+    "feeStructure": {
+      "amount": 700,
+      "currency": "INR",
+      "displayFee": "₹700 per team",
+      "chargedPer": "team",
+      "splitPaymentSupported": false,
+      "isRefundable": false
+    },
+    "teamConstraints": {
+      "minMembers": 2,
+      "maxMembers": 3,
+      "allowInterCollegeTeams": true,
+      "allowCrossDepartment": true
+    },
+    "eligibility": {
+      "targetAudience": "MBA / PGDM / Final Year UG",
+      "idCardRequired": true,
+      "bonafideCertificateRequired": false
+    },
+    "scheduleMeta": {
+      "mode": "Offline On-Campus",
+      "venueRequired": true,
+      "reportingTime": "08:30 AM IST",
+      "proctoringOrJudgingRounds": 3
+    },
+    "submissionRequirements": {
+      "requiresDocumentUpload": false,
+      "allowedFileTypes": [
+        "pdf",
+        "pptx"
+      ],
+      "maxFileSizeMb": 25
+    },
+    "flags": {
+      "isOpenForRegistration": true,
+      "isSpotRegistrationAllowed": false,
+      "isFeatured": false,
+      "isRollingShieldEvent": true
+    }
   },
   {
     "type": "cul",
@@ -313,7 +805,48 @@
       "Originality"
     ],
     "prizes": "₹1,75,000 + Studio Grants",
-    "fee": "₹1,200 per band"
+    "fee": "₹1,200 per band",
+    "participationType": "team",
+    "paymentModel": "team",
+    "feeStructure": {
+      "amount": 1200,
+      "currency": "INR",
+      "displayFee": "₹1,200 per band",
+      "chargedPer": "team",
+      "splitPaymentSupported": false,
+      "isRefundable": false
+    },
+    "teamConstraints": {
+      "minMembers": 5,
+      "maxMembers": 8,
+      "allowInterCollegeTeams": true,
+      "allowCrossDepartment": true
+    },
+    "eligibility": {
+      "targetAudience": "All UG & PG Students",
+      "idCardRequired": true,
+      "bonafideCertificateRequired": false
+    },
+    "scheduleMeta": {
+      "mode": "Offline On-Campus",
+      "venueRequired": true,
+      "reportingTime": "08:30 AM IST",
+      "proctoringOrJudgingRounds": 4
+    },
+    "submissionRequirements": {
+      "requiresDocumentUpload": false,
+      "allowedFileTypes": [
+        "pdf",
+        "pptx"
+      ],
+      "maxFileSizeMb": 25
+    },
+    "flags": {
+      "isOpenForRegistration": true,
+      "isSpotRegistrationAllowed": false,
+      "isFeatured": true,
+      "isRollingShieldEvent": false
+    }
   },
   {
     "type": "cul",
@@ -329,7 +862,48 @@
       "Stage Presence"
     ],
     "prizes": "₹75,000 + Best Vocalist Trophy",
-    "fee": "₹300"
+    "fee": "₹300",
+    "participationType": "team",
+    "paymentModel": "team",
+    "feeStructure": {
+      "amount": 300,
+      "currency": "INR",
+      "displayFee": "₹300",
+      "chargedPer": "team",
+      "splitPaymentSupported": false,
+      "isRefundable": false
+    },
+    "teamConstraints": {
+      "minMembers": 4,
+      "maxMembers": 5,
+      "allowInterCollegeTeams": true,
+      "allowCrossDepartment": true
+    },
+    "eligibility": {
+      "targetAudience": "All UG & PG Students",
+      "idCardRequired": true,
+      "bonafideCertificateRequired": false
+    },
+    "scheduleMeta": {
+      "mode": "Offline On-Campus",
+      "venueRequired": true,
+      "reportingTime": "08:30 AM IST",
+      "proctoringOrJudgingRounds": 4
+    },
+    "submissionRequirements": {
+      "requiresDocumentUpload": false,
+      "allowedFileTypes": [
+        "pdf",
+        "pptx"
+      ],
+      "maxFileSizeMb": 25
+    },
+    "flags": {
+      "isOpenForRegistration": true,
+      "isSpotRegistrationAllowed": false,
+      "isFeatured": false,
+      "isRollingShieldEvent": false
+    }
   },
   {
     "type": "cul",
@@ -345,7 +919,48 @@
       "Stage Energy"
     ],
     "prizes": "₹1,25,000 + Dance Excellence Trophy",
-    "fee": "₹1,000 per team"
+    "fee": "₹1,000 per team",
+    "participationType": "team",
+    "paymentModel": "team",
+    "feeStructure": {
+      "amount": 1000,
+      "currency": "INR",
+      "displayFee": "₹1,000 per team",
+      "chargedPer": "team",
+      "splitPaymentSupported": false,
+      "isRefundable": false
+    },
+    "teamConstraints": {
+      "minMembers": 6,
+      "maxMembers": 12,
+      "allowInterCollegeTeams": true,
+      "allowCrossDepartment": true
+    },
+    "eligibility": {
+      "targetAudience": "All UG & PG Students",
+      "idCardRequired": true,
+      "bonafideCertificateRequired": false
+    },
+    "scheduleMeta": {
+      "mode": "Offline On-Campus",
+      "venueRequired": true,
+      "reportingTime": "08:30 AM IST",
+      "proctoringOrJudgingRounds": 4
+    },
+    "submissionRequirements": {
+      "requiresDocumentUpload": false,
+      "allowedFileTypes": [
+        "pdf",
+        "pptx"
+      ],
+      "maxFileSizeMb": 25
+    },
+    "flags": {
+      "isOpenForRegistration": true,
+      "isSpotRegistrationAllowed": false,
+      "isFeatured": false,
+      "isRollingShieldEvent": false
+    }
   },
   {
     "type": "cul",
@@ -361,7 +976,48 @@
       "Presentation"
     ],
     "prizes": "₹1,00,000 + Cultural Excellence Shield",
-    "fee": "₹500 per entry"
+    "fee": "₹500 per entry",
+    "participationType": "team",
+    "paymentModel": "entry",
+    "feeStructure": {
+      "amount": 500,
+      "currency": "INR",
+      "displayFee": "₹500 per entry",
+      "chargedPer": "individual",
+      "splitPaymentSupported": false,
+      "isRefundable": false
+    },
+    "teamConstraints": {
+      "minMembers": 5,
+      "maxMembers": 10,
+      "allowInterCollegeTeams": true,
+      "allowCrossDepartment": true
+    },
+    "eligibility": {
+      "targetAudience": "All UG & PG Students",
+      "idCardRequired": true,
+      "bonafideCertificateRequired": false
+    },
+    "scheduleMeta": {
+      "mode": "Offline On-Campus",
+      "venueRequired": true,
+      "reportingTime": "08:30 AM IST",
+      "proctoringOrJudgingRounds": 4
+    },
+    "submissionRequirements": {
+      "requiresDocumentUpload": false,
+      "allowedFileTypes": [
+        "pdf",
+        "pptx"
+      ],
+      "maxFileSizeMb": 25
+    },
+    "flags": {
+      "isOpenForRegistration": true,
+      "isSpotRegistrationAllowed": false,
+      "isFeatured": false,
+      "isRollingShieldEvent": true
+    }
   },
   {
     "type": "cul",
@@ -377,7 +1033,48 @@
       "Audience Engagement"
     ],
     "prizes": "₹1,25,000 + Theatre Excellence Trophy",
-    "fee": "₹1,000 per team"
+    "fee": "₹1,000 per team",
+    "participationType": "team",
+    "paymentModel": "team",
+    "feeStructure": {
+      "amount": 1000,
+      "currency": "INR",
+      "displayFee": "₹1,000 per team",
+      "chargedPer": "team",
+      "splitPaymentSupported": false,
+      "isRefundable": false
+    },
+    "teamConstraints": {
+      "minMembers": 5,
+      "maxMembers": 12,
+      "allowInterCollegeTeams": true,
+      "allowCrossDepartment": true
+    },
+    "eligibility": {
+      "targetAudience": "All UG & PG Students",
+      "idCardRequired": true,
+      "bonafideCertificateRequired": false
+    },
+    "scheduleMeta": {
+      "mode": "Offline On-Campus",
+      "venueRequired": true,
+      "reportingTime": "08:30 AM IST",
+      "proctoringOrJudgingRounds": 4
+    },
+    "submissionRequirements": {
+      "requiresDocumentUpload": false,
+      "allowedFileTypes": [
+        "pdf",
+        "pptx"
+      ],
+      "maxFileSizeMb": 25
+    },
+    "flags": {
+      "isOpenForRegistration": true,
+      "isSpotRegistrationAllowed": false,
+      "isFeatured": false,
+      "isRollingShieldEvent": false
+    }
   },
   {
     "type": "cul",
@@ -393,7 +1090,49 @@
       "Technical Quality"
     ],
     "prizes": "₹50,000 + Photography Excellence Award",
-    "fee": "₹250"
+    "fee": "₹250",
+    "participationType": "flexible",
+    "paymentModel": "team",
+    "feeStructure": {
+      "amount": 250,
+      "currency": "INR",
+      "displayFee": "₹250",
+      "chargedPer": "team",
+      "splitPaymentSupported": false,
+      "isRefundable": false
+    },
+    "teamConstraints": {
+      "minMembers": 1,
+      "maxMembers": 1,
+      "allowInterCollegeTeams": true,
+      "allowCrossDepartment": true
+    },
+    "eligibility": {
+      "targetAudience": "All UG & PG Students",
+      "idCardRequired": true,
+      "bonafideCertificateRequired": false
+    },
+    "scheduleMeta": {
+      "mode": "Offline On-Campus",
+      "venueRequired": true,
+      "reportingTime": "08:30 AM IST",
+      "proctoringOrJudgingRounds": 4
+    },
+    "submissionRequirements": {
+      "requiresDocumentUpload": true,
+      "allowedFileTypes": [
+        "jpg",
+        "png",
+        "raw"
+      ],
+      "maxFileSizeMb": 25
+    },
+    "flags": {
+      "isOpenForRegistration": true,
+      "isSpotRegistrationAllowed": false,
+      "isFeatured": false,
+      "isRollingShieldEvent": false
+    }
   },
   {
     "type": "cul",
@@ -409,7 +1148,48 @@
       "Visual Impact"
     ],
     "prizes": "₹60,000 + Artist Excellence Trophy",
-    "fee": "₹300"
+    "fee": "₹300",
+    "participationType": "flexible",
+    "paymentModel": "team",
+    "feeStructure": {
+      "amount": 300,
+      "currency": "INR",
+      "displayFee": "₹300",
+      "chargedPer": "team",
+      "splitPaymentSupported": false,
+      "isRefundable": false
+    },
+    "teamConstraints": {
+      "minMembers": 1,
+      "maxMembers": 1,
+      "allowInterCollegeTeams": true,
+      "allowCrossDepartment": true
+    },
+    "eligibility": {
+      "targetAudience": "All UG & PG Students",
+      "idCardRequired": true,
+      "bonafideCertificateRequired": false
+    },
+    "scheduleMeta": {
+      "mode": "Offline On-Campus",
+      "venueRequired": true,
+      "reportingTime": "08:30 AM IST",
+      "proctoringOrJudgingRounds": 4
+    },
+    "submissionRequirements": {
+      "requiresDocumentUpload": false,
+      "allowedFileTypes": [
+        "pdf",
+        "pptx"
+      ],
+      "maxFileSizeMb": 25
+    },
+    "flags": {
+      "isOpenForRegistration": true,
+      "isSpotRegistrationAllowed": false,
+      "isFeatured": false,
+      "isRollingShieldEvent": false
+    }
   },
   {
     "type": "cul",
@@ -425,7 +1205,49 @@
       "Audience Impact"
     ],
     "prizes": "₹1,00,000 + Digital Creator Award",
-    "fee": "₹600 per team"
+    "fee": "₹600 per team",
+    "participationType": "team",
+    "paymentModel": "team",
+    "feeStructure": {
+      "amount": 600,
+      "currency": "INR",
+      "displayFee": "₹600 per team",
+      "chargedPer": "team",
+      "splitPaymentSupported": false,
+      "isRefundable": false
+    },
+    "teamConstraints": {
+      "minMembers": 4,
+      "maxMembers": 4,
+      "allowInterCollegeTeams": true,
+      "allowCrossDepartment": true
+    },
+    "eligibility": {
+      "targetAudience": "All UG & PG Students",
+      "idCardRequired": true,
+      "bonafideCertificateRequired": false
+    },
+    "scheduleMeta": {
+      "mode": "Offline On-Campus",
+      "venueRequired": true,
+      "reportingTime": "08:30 AM IST",
+      "proctoringOrJudgingRounds": 4
+    },
+    "submissionRequirements": {
+      "requiresDocumentUpload": true,
+      "allowedFileTypes": [
+        "mp4",
+        "mov",
+        "gdrive_link"
+      ],
+      "maxFileSizeMb": 25
+    },
+    "flags": {
+      "isOpenForRegistration": true,
+      "isSpotRegistrationAllowed": false,
+      "isFeatured": false,
+      "isRollingShieldEvent": false
+    }
   },
   {
     "type": "cul",
@@ -441,7 +1263,48 @@
       "Crowd Engagement"
     ],
     "prizes": "₹1,00,000 + Music Production Grants",
-    "fee": "₹500 per entry"
+    "fee": "₹500 per entry",
+    "participationType": "flexible",
+    "paymentModel": "entry",
+    "feeStructure": {
+      "amount": 500,
+      "currency": "INR",
+      "displayFee": "₹500 per entry",
+      "chargedPer": "individual",
+      "splitPaymentSupported": false,
+      "isRefundable": false
+    },
+    "teamConstraints": {
+      "minMembers": 1,
+      "maxMembers": 1,
+      "allowInterCollegeTeams": true,
+      "allowCrossDepartment": true
+    },
+    "eligibility": {
+      "targetAudience": "All UG & PG Students",
+      "idCardRequired": true,
+      "bonafideCertificateRequired": false
+    },
+    "scheduleMeta": {
+      "mode": "Offline On-Campus",
+      "venueRequired": true,
+      "reportingTime": "08:30 AM IST",
+      "proctoringOrJudgingRounds": 4
+    },
+    "submissionRequirements": {
+      "requiresDocumentUpload": false,
+      "allowedFileTypes": [
+        "pdf",
+        "pptx"
+      ],
+      "maxFileSizeMb": 25
+    },
+    "flags": {
+      "isOpenForRegistration": true,
+      "isSpotRegistrationAllowed": false,
+      "isFeatured": false,
+      "isRollingShieldEvent": false
+    }
   },
   {
     "type": "cul",
@@ -457,6 +1320,47 @@
       "Audience Connection"
     ],
     "prizes": "₹50,000 + Literary Excellence Trophy",
-    "fee": "₹250"
+    "fee": "₹250",
+    "participationType": "flexible",
+    "paymentModel": "team",
+    "feeStructure": {
+      "amount": 250,
+      "currency": "INR",
+      "displayFee": "₹250",
+      "chargedPer": "team",
+      "splitPaymentSupported": false,
+      "isRefundable": false
+    },
+    "teamConstraints": {
+      "minMembers": 1,
+      "maxMembers": 1,
+      "allowInterCollegeTeams": true,
+      "allowCrossDepartment": true
+    },
+    "eligibility": {
+      "targetAudience": "All UG & PG Students",
+      "idCardRequired": true,
+      "bonafideCertificateRequired": false
+    },
+    "scheduleMeta": {
+      "mode": "Offline On-Campus",
+      "venueRequired": true,
+      "reportingTime": "08:30 AM IST",
+      "proctoringOrJudgingRounds": 4
+    },
+    "submissionRequirements": {
+      "requiresDocumentUpload": false,
+      "allowedFileTypes": [
+        "pdf",
+        "pptx"
+      ],
+      "maxFileSizeMb": 25
+    },
+    "flags": {
+      "isOpenForRegistration": true,
+      "isSpotRegistrationAllowed": false,
+      "isFeatured": false,
+      "isRollingShieldEvent": false
+    }
   }
 ]
