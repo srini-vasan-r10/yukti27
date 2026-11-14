@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { QRCodeSVG } from 'qrcode.react'
-import { SITE_CONFIG } from '../utils/confluenceData'
 import SEOHead from '../utils/SEOHead'
 
+/**
+ * DelegatePassPage Component
+ * Perfectly calibrated for standard A4 sheet single-page printing.
+ * In browser: Luxurious dark gold/purple boarding pass aesthetic.
+ * In print / PDF: Automatically converts to crisp black-and-white / gold A4 page with 0 page breaks, 0 clipping, and perfect 1-page fit!
+ */
 export default function DelegatePassPage({ onBackToHome }) {
   const [passData, setPassData] = useState(null)
 
   useEffect(() => {
-    // Parse query params or fallback to local storage
     const params = new URLSearchParams(window.location.search)
     const name = params.get('name')
     const college = params.get('college')
@@ -25,12 +29,11 @@ export default function DelegatePassPage({ onBackToHome }) {
         regId: regId || 'YK27-DELEGATE',
         year: year || 'PG / MBA Final Year',
         delegationType: delegationType || 'Competitor Pass (Team Entry)',
-        members: members ? members.split(',') : [],
+        members: members ? members.split(',').filter(Boolean) : [],
         fee: fee || '₹500',
         utr: utr || 'VERIFIED-UPI'
       })
     } else {
-      // Try local storage
       const lastReg = JSON.parse(localStorage.getItem('yukti_last_pending_reg') || 'null')
       if (lastReg) {
         setPassData({
@@ -44,14 +47,13 @@ export default function DelegatePassPage({ onBackToHome }) {
           utr: lastReg.utr || 'VERIFIED-UPI'
         })
       } else {
-        // Sample fallback for direct preview
         setPassData({
           name: 'Srinivasan Rengarajan',
           college: 'Thiagarajar School of Management (TSM)',
           regId: 'YK27-A8F2-9X41',
           year: 'PG / MBA Final Year',
           delegationType: 'Competitor Pass (Team Entry)',
-          members: ['Member 2: Priya S.', 'Member 3: Arun M.'],
+          members: ['Priya S. (Finance)', 'Arun M. (Analytics)'],
           fee: '₹500',
           utr: '431209874521'
         })
@@ -61,290 +63,556 @@ export default function DelegatePassPage({ onBackToHome }) {
 
   if (!passData) return null
 
-  // URL encoded self-link for the QR code on the pass itself
   const passUrl = typeof window !== 'undefined' ? window.location.href : 'https://yukti27.tsm.ac.in/pass'
 
   return (
-    <div className="subpage-wrapper" style={{ minHeight: '100vh', padding: '100px 5vw 60px' }}>
+    <div className="pass-page-wrapper">
       <SEOHead
         title="Official Delegate Entry Pass — YUKTI ’27"
         description="Official YUKTI '27 delegate entry badge and security pass for Thiagarajar School of Management (TSM), Madurai."
         path="/pass"
       />
 
-      <div style={{ maxWidth: '1050px', margin: '0 auto' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px', flexWrap: 'wrap', gap: '12px' }}>
-          <button className="back-breadcrumb-btn" onClick={onBackToHome}>
-            ← Return to Confluence
+      {/* Screen-Only Controls Bar */}
+      <div className="no-print pass-screen-bar">
+        <button className="back-breadcrumb-btn" onClick={onBackToHome}>
+          ← Return to Confluence
+        </button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <span className="mono gold" style={{ fontSize: '0.78rem' }}>1-PAGE A4 FRIENDLY PASS</span>
+          <button className="btn print-trigger-btn" onClick={() => window.print()}>
+            🖨️ Print Pass / Save as PDF
           </button>
-          <div style={{ display: 'flex', gap: '10px' }}>
-            <button className="btn" onClick={() => window.print()}>
-              🖨️ Print Pass / Save as PDF
-            </button>
-          </div>
         </div>
+      </div>
 
-        <div className="pass-welcome-banner" style={{
-          background: 'linear-gradient(135deg, rgba(77,29,100,0.5), rgba(31,14,44,0.9))',
-          border: '1px solid rgba(197,155,60,0.3)',
-          borderRadius: '16px',
-          padding: '16px 24px',
-          marginBottom: '28px',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: '12px'
-        }}>
-          <div>
-            <span className="mono gold" style={{ fontSize: '0.72rem', letterSpacing: '0.14em' }}>ROYAL PASS TREATMENT · CONFIRMED DELEGATE</span>
-            <h3 style={{ margin: '4px 0 0', color: '#fff', fontSize: '1.25rem' }}>Welcome to YUKTI ’27, {passData.name}!</h3>
+      {/* ═══ STANDARDIZED SINGLE-PAGE A4 PASS SHEET ═══ */}
+      <div className="a4-pass-container">
+        {/* Pass Outer Border Box */}
+        <div className="a4-pass-card">
+          
+          {/* 1. Header with Dual Logos & Accreditation */}
+          <div className="pass-header-section">
+            <div className="pass-logo-title-group">
+              <img src="/yukti-logo.png" alt="YUKTI '27 Logo" className="pass-yukti-crest" />
+              <div>
+                <h2 className="pass-inst-title">THIAGARAJAR SCHOOL OF MANAGEMENT (TSM) · MADURAI</h2>
+                <span className="pass-inst-sub">NAAC A+ & NBA ACCREDITED B-SCHOOL · FOUNDED 1962</span>
+              </div>
+            </div>
+            <img src="/tsm-logo.png" alt="TSM Crest" className="pass-tsm-crest" />
           </div>
-          <span className="mono" style={{ color: '#10b981', background: 'rgba(16,185,129,0.15)', border: '1px solid #10b981', padding: '6px 14px', borderRadius: '8px', fontSize: '0.75rem', fontWeight: 'bold' }}>
-            ✓ ALL-ARENA ACCESS GRANTED
-          </span>
-        </div>
 
-        {/* ═══ THE DELUXE ENTRY PASS CARD (Matching user reference layout) ═══ */}
-        <div className="deluxe-ticket-container" style={{
-          position: 'relative',
-          background: 'radial-gradient(ellipse at 80% 20%, #1a0a2a 0%, #0d0617 100%)',
-          borderRadius: '24px',
-          border: '1.5px solid rgba(197,155,60,0.4)',
-          boxShadow: '0 30px 80px rgba(0,0,0,0.9), 0 0 50px rgba(197,155,60,0.15)',
-          overflow: 'hidden',
-          display: 'flex',
-          flexWrap: 'wrap',
-          color: '#ffffff'
-        }}>
-          {/* Main Badge / Left & Middle Body (70%) */}
-          <div style={{ flex: '1 1 640px', padding: '36px 36px 28px', position: 'relative' }}>
-            {/* Header with Dual Crests & Institution Details */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(197,155,60,0.25)', paddingBottom: '16px', marginBottom: '20px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-                <img src="/yukti-logo.webp" alt="YUKTI '27" style={{ width: '48px', height: '48px', borderRadius: '50%', border: '1.5px solid #C59B3C' }} />
-                <div>
-                  <strong style={{ fontSize: '0.98rem', letterSpacing: '0.04em', display: 'block', color: '#fff' }}>
-                    THIAGARAJAR SCHOOL OF MANAGEMENT (TSM) · MADURAI
-                  </strong>
-                  <small className="mono gold" style={{ fontSize: '0.68rem', letterSpacing: '0.12em' }}>
-                    NAAC A+ & NBA ACCREDITED B-SCHOOL · FOUNDED 1962
-                  </small>
-                </div>
-              </div>
-              <img src="/tsm-logo.webp" alt="TSM Crest" style={{ width: '46px', height: '46px', objectFit: 'contain' }} />
+          {/* 2. Main Fest Title & Theme Banner */}
+          <div className="pass-hero-banner">
+            <h1 className="pass-main-title">YUKTI ’27</h1>
+            <div className="pass-theme-tagline">INTANGIBLES — INFINITE POSSIBILITIES</div>
+            <span className="pass-status-pill">OFFICIAL ALL-CONFLUENCE DELEGATE ENTRY BADGE</span>
+          </div>
+
+          {/* 3. Delegate Credentials & Barcode Grid */}
+          <div className="pass-details-grid">
+            {/* Avatar / Barcode Column */}
+            <div className="pass-avatar-box">
+              <div className="pass-avatar-icon">🎓</div>
+              <div className="pass-barcode-lines">||||| | ||||| || ||| |</div>
+              <span className="pass-docket-id">{passData.regId}</span>
             </div>
 
-            {/* Title & Theme Banner */}
-            <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-              <h1 style={{
-                fontFamily: "'Space Grotesk', sans-serif",
-                fontSize: '2.8rem',
-                margin: '0',
-                lineHeight: '1',
-                background: 'linear-gradient(135deg, #FFF2A6 20%, #F5D77F 60%, #C59B3C 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                fontWeight: '800'
-              }}>
-                YUKTI ’27
-              </h1>
-              <div className="mono" style={{ fontSize: '0.86rem', color: '#F5D77F', letterSpacing: '0.22em', marginTop: '6px' }}>
-                INTANGIBLES — INFINITE POSSIBILITIES
+            {/* Delegate Info */}
+            <div className="pass-meta-col">
+              <div className="pass-field">
+                <span className="pass-field-label">PRIMARY DELEGATE</span>
+                <strong className="pass-field-value-primary">{passData.name}</strong>
+              </div>
+              <div className="pass-field">
+                <span className="pass-field-label">COLLEGE / INSTITUTION</span>
+                <span className="pass-field-value">{passData.college}</span>
               </div>
             </div>
 
-            {/* Delegate Details Grid */}
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'auto 1fr 1fr',
-              gap: '20px',
-              alignItems: 'center',
-              background: 'rgba(255,255,255,0.03)',
-              border: '1px solid rgba(197,155,60,0.2)',
-              borderRadius: '16px',
-              padding: '20px',
-              marginBottom: '22px'
-            }}>
-              {/* Avatar placeholder / Barcode */}
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-                <div style={{
-                  width: '74px',
-                  height: '74px',
-                  borderRadius: '12px',
-                  background: 'rgba(77,29,100,0.5)',
-                  border: '1.5px solid #C59B3C',
-                  display: 'grid',
-                  placeItems: 'center',
-                  fontSize: '1.8rem'
-                }}>
-                  🎓
-                </div>
-                <div style={{ letterSpacing: '2px', fontFamily: 'monospace', fontSize: '0.62rem', color: '#cbd5e1' }}>
-                  ||||| | ||||| ||
-                </div>
-                <span className="mono gold" style={{ fontSize: '0.72rem', fontWeight: 'bold' }}>{passData.regId}</span>
+            {/* Pass Category & Academic Level */}
+            <div className="pass-meta-col">
+              <div className="pass-field">
+                <span className="pass-field-label">ACADEMIC LEVEL</span>
+                <strong className="pass-field-value">{passData.year}</strong>
               </div>
-
-              {/* Delegate Info */}
-              <div>
-                <span className="mono" style={{ fontSize: '0.65rem', color: '#a69cb4', display: 'block' }}>Primary Delegate</span>
-                <strong style={{ fontSize: '1.15rem', color: '#ffffff', display: 'block', margin: '2px 0 6px' }}>
-                  {passData.name}
-                </strong>
-                <span className="mono" style={{ fontSize: '0.65rem', color: '#a69cb4', display: 'block' }}>Institution</span>
-                <span style={{ fontSize: '0.85rem', color: '#e2d9eb', display: 'block' }}>
-                  {passData.college}
-                </span>
-              </div>
-
-              {/* Pass Category & Team Details */}
-              <div>
-                <span className="mono" style={{ fontSize: '0.65rem', color: '#a69cb4', display: 'block' }}>Academic Level</span>
-                <strong style={{ fontSize: '0.92rem', color: '#ffffff', display: 'block', margin: '2px 0 6px' }}>
-                  {passData.year}
-                </strong>
-                <span className="mono" style={{ fontSize: '0.65rem', color: '#a69cb4', display: 'block' }}>Pass Category</span>
-                <span className="gold" style={{ fontSize: '0.85rem', fontWeight: 'bold', display: 'block' }}>
-                  🎖️ {passData.delegationType}
-                </span>
+              <div className="pass-field">
+                <span className="pass-field-label">PASS CLASSIFICATION</span>
+                <span className="pass-field-value-gold">🎖️ {passData.delegationType}</span>
               </div>
             </div>
+          </div>
 
-            {/* Additional Team Members (If Any) */}
-            {passData.members && passData.members.length > 0 && (
-              <div style={{
-                background: 'rgba(77,29,100,0.2)',
-                border: '1px solid rgba(197,155,60,0.25)',
-                borderRadius: '12px',
-                padding: '12px 18px',
-                marginBottom: '20px'
-              }}>
-                <span className="mono gold" style={{ fontSize: '0.68rem', letterSpacing: '0.12em' }}>CONFIRMED CONTINGENT MEMBERS:</span>
-                <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', marginTop: '6px' }}>
-                  {passData.members.map((m, idx) => (
-                    <span key={idx} style={{ fontSize: '0.82rem', color: '#f1e9f9', background: 'rgba(255,255,255,0.06)', padding: '4px 10px', borderRadius: '6px', border: '1px solid rgba(255,255,255,0.1)' }}>
-                      👤 {m}
-                    </span>
-                  ))}
-                </div>
+          {/* 4. Contingent Members Roster (One team, one pass) */}
+          {passData.members && passData.members.length > 0 && (
+            <div className="pass-members-box">
+              <span className="pass-section-label">CONFIRMED CONTINGENT TEAM ROSTER:</span>
+              <div className="pass-members-chips">
+                {passData.members.map((m, idx) => (
+                  <span key={idx} className="pass-member-chip">
+                    👤 {m}
+                  </span>
+                ))}
               </div>
-            )}
+            </div>
+          )}
 
-            {/* Venue Zones Permitted (Universal Pass - One team one pass) */}
-            <div style={{
-              background: 'rgba(15,7,32,0.6)',
-              border: '1px solid rgba(197,155,60,0.2)',
-              borderRadius: '14px',
-              padding: '16px 20px',
-              marginBottom: '20px'
-            }}>
-              <span className="mono gold" style={{ fontSize: '0.68rem', letterSpacing: '0.12em', display: 'block', marginBottom: '8px' }}>
-                PERMITTED ALL-CONFLUENCE ZONES:
-              </span>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '8px', fontSize: '0.82rem', color: '#cbd5e1' }}>
-                <div>☑ Auditorium A (Main Stage)</div>
+          {/* 5. Access Zones & Verification QR Row */}
+          <div className="pass-zones-qr-row">
+            {/* Permitted Campus Zones */}
+            <div className="pass-zones-box">
+              <span className="pass-section-label">PERMITTED ALL-CONFLUENCE CAMPUS ZONES:</span>
+              <div className="pass-zones-checklist">
+                <div>☑ Auditorium A (Main Stage & Keynotes)</div>
                 <div>☑ Boardroom Syndicate Rooms</div>
-                <div>☑ Amphitheatre (Cultural Evening)</div>
-                <div>☑ Dining & Executive Networking Hall</div>
+                <div>☑ Open Amphitheatre (Cultural Evening)</div>
+                <div>☑ Executive Networking & Dining Hall</div>
+              </div>
+
+              {/* Logistics & Dates */}
+              <div className="pass-logistics-strip">
+                <div>
+                  <span className="pass-micro-label">CONFERENCE DATES</span>
+                  <strong>January 28, 29 & 30, 2027</strong>
+                </div>
+                <div>
+                  <span className="pass-micro-label">REPORTING DESK</span>
+                  <strong>08:30 AM IST · Main Foyer</strong>
+                </div>
+                <div>
+                  <span className="pass-micro-label">CAMPUS VENUE</span>
+                  <strong>TSM Madurai – 625005</strong>
+                </div>
               </div>
             </div>
 
-            {/* Schedule & Reporting */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid rgba(197,155,60,0.25)', paddingTop: '14px', fontSize: '0.78rem', color: '#cbd5e1', flexWrap: 'wrap', gap: '10px' }}>
-              <div>
-                <span className="mono" style={{ fontSize: '0.65rem', color: '#a69cb4', display: 'block' }}>Conference Dates</span>
-                <strong style={{ color: '#fff' }}>January 28, 29 & 30, 2027</strong>
-              </div>
-              <div>
-                <span className="mono" style={{ fontSize: '0.65rem', color: '#a69cb4', display: 'block' }}>Reporting Desk</span>
-                <strong style={{ color: '#fff' }}>08:30 AM IST · Main Foyer</strong>
-              </div>
-              <div>
-                <span className="mono" style={{ fontSize: '0.65rem', color: '#a69cb4', display: 'block' }}>Campus Venue</span>
-                <strong style={{ color: '#fff' }}>TSM Madurai – 625005</strong>
-              </div>
-            </div>
-
-            <div style={{ marginTop: '14px', fontSize: '0.64rem', color: '#94a3b8', lineHeight: '1.4' }}>
-              GUIDELINES: 1. Mandatory valid Student / College ID card. 2. Non-transferable pass. 3. Wi-Fi: TSM-GUEST. 4. Committee helpline: yukti@tsm.ac.in | Instagram @yukti.tsm.
-            </div>
-          </div>
-
-          {/* Right Stub: Verification QR Code & Security Stamp (30%) */}
-          <div style={{
-            flex: '0 1 300px',
-            borderLeft: '2px dashed rgba(197,155,60,0.4)',
-            padding: '36px 28px',
-            background: 'linear-gradient(180deg, rgba(31,14,44,0.7) 0%, rgba(13,6,26,0.95) 100%)',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            textAlign: 'center',
-            position: 'relative'
-          }}>
-            <div>
-              <span className="mono gold" style={{ fontSize: '0.78rem', letterSpacing: '0.16em', fontWeight: '800' }}>
-                SCAN FOR GATE ENTRY
-              </span>
-              
-              <div style={{
-                background: '#ffffff',
-                padding: '14px',
-                borderRadius: '16px',
-                margin: '18px auto',
-                boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
-                display: 'inline-block'
-              }}>
+            {/* Verification Security QR & Stamp */}
+            <div className="pass-security-box">
+              <span className="pass-qr-header">SCAN AT GATE ENTRY</span>
+              <div className="pass-qr-frame">
                 <QRCodeSVG
                   value={passUrl}
-                  size={170}
+                  size={118}
                   level="M"
                   includeMargin={false}
-                  imageSettings={{
-                    src: "/yukti-logo.png",
-                    x: undefined,
-                    y: undefined,
-                    height: 32,
-                    width: 32,
-                    excavate: true,
-                  }}
                 />
               </div>
-
-              <div style={{ fontSize: '0.78rem', color: '#10b981', fontWeight: 'bold' }}>
-                PAID & VERIFIED — {passData.fee}
-              </div>
-              <div className="mono" style={{ fontSize: '0.68rem', color: '#cbd5e1', marginTop: '4px' }}>
-                Txn Ref: {passData.utr}
-              </div>
+              <div className="pass-verified-badge">PAID & VERIFIED — {passData.fee}</div>
+              <span className="pass-txn-ref">Txn Ref: {passData.utr}</span>
             </div>
+          </div>
 
-            {/* Official Metallic Gold Security Hologram Stamp */}
-            <div style={{
-              width: '100px',
-              height: '100px',
-              borderRadius: '16px',
-              background: 'linear-gradient(135deg, #FFF2A6 0%, #C59B3C 50%, #F5D77F 100%)',
-              color: '#1F0E2C',
-              padding: '6px',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              boxShadow: '0 0 25px rgba(245,215,127,0.4), inset 0 0 10px rgba(255,255,255,0.6)',
-              margin: '20px auto 0',
-              fontWeight: 'bold',
-              border: '2px solid #FFF2A6'
-            }}>
-              <div style={{ fontSize: '1.4rem' }}>🛡️</div>
-              <span style={{ fontSize: '0.72rem', letterSpacing: '0.05em' }}>YUKTI ’27</span>
-              <small style={{ fontSize: '0.52rem', textTransform: 'uppercase' }}>SECURE ACCESS</small>
-            </div>
+          {/* 6. Footer Legal & Guidelines */}
+          <div className="pass-guidelines-footer">
+            <div>1. Mandatory valid Student / College ID card must be presented with this pass at the gate.</div>
+            <div>2. Non-transferable ticket; committee reserves right of admission. 3. Wi-Fi: TSM-GUEST.</div>
+            <div>4. Committee helpline: yukti@tsm.ac.in | Instagram: @yukti.tsm | Website: yukti27.tsm.ac.in</div>
           </div>
         </div>
       </div>
+
+      {/* ═══ PRINT & SCREEN STYLES (Strict A4 Page Formatting) ═══ */}
+      <style>{`
+        .pass-page-wrapper {
+          min-height: 100vh;
+          padding: 90px 4vw 60px;
+          background: #090412;
+          color: #ffffff;
+          font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .pass-screen-bar {
+          max-width: 900px;
+          margin: 0 auto 20px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 12px;
+        }
+        .print-trigger-btn {
+          background: linear-gradient(135deg, #FFF2A6 0%, #C59B3C 100%);
+          color: #1F0E2C;
+          font-weight: 800;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+        }
+
+        /* Screen Presentation of Pass */
+        .a4-pass-container {
+          max-width: 900px;
+          margin: 0 auto;
+        }
+        .a4-pass-card {
+          background: #150924;
+          border: 2px solid #C59B3C;
+          border-radius: 20px;
+          padding: 28px 32px;
+          box-shadow: 0 30px 80px rgba(0,0,0,0.9), 0 0 40px rgba(197,155,60,0.2);
+          position: relative;
+        }
+        .pass-header-section {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 1.5px solid rgba(197,155,60,0.3);
+          padding-bottom: 14px;
+          margin-bottom: 16px;
+        }
+        .pass-logo-title-group {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+        }
+        .pass-yukti-crest {
+          width: 52px;
+          height: 52px;
+          border-radius: 50%;
+          border: 1.5px solid #C59B3C;
+        }
+        .pass-tsm-crest {
+          width: 50px;
+          height: 50px;
+          object-fit: contain;
+        }
+        .pass-inst-title {
+          margin: 0;
+          font-size: 0.96rem;
+          letter-spacing: 0.04em;
+          color: #ffffff;
+        }
+        .pass-inst-sub {
+          font-size: 0.68rem;
+          color: #F5D77F;
+          font-family: monospace;
+          letter-spacing: 0.1em;
+          display: block;
+          margin-top: 2px;
+        }
+
+        .pass-hero-banner {
+          text-align: center;
+          margin-bottom: 20px;
+        }
+        .pass-main-title {
+          font-family: 'Space Grotesk', sans-serif;
+          font-size: 2.6rem;
+          margin: 0;
+          line-height: 1;
+          color: #FFF2A6;
+          letter-spacing: -0.02em;
+          font-weight: 800;
+        }
+        .pass-theme-tagline {
+          font-family: monospace;
+          font-size: 0.85rem;
+          color: #F5D77F;
+          letter-spacing: 0.2em;
+          margin-top: 6px;
+        }
+        .pass-status-pill {
+          display: inline-block;
+          margin-top: 8px;
+          background: rgba(16,185,129,0.15);
+          border: 1px solid #10b981;
+          color: #10b981;
+          font-size: 0.68rem;
+          font-weight: 800;
+          padding: 4px 14px;
+          border-radius: 999px;
+          letter-spacing: 0.1em;
+        }
+
+        .pass-details-grid {
+          display: grid;
+          grid-template-columns: 140px 1fr 1fr;
+          gap: 18px;
+          align-items: center;
+          background: rgba(255,255,255,0.035);
+          border: 1px solid rgba(197,155,60,0.25);
+          border-radius: 14px;
+          padding: 16px 20px;
+          margin-bottom: 16px;
+        }
+        .pass-avatar-box {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          border-right: 1px solid rgba(197,155,60,0.2);
+          padding-right: 16px;
+        }
+        .pass-avatar-icon {
+          width: 58px;
+          height: 58px;
+          border-radius: 12px;
+          background: rgba(77,29,100,0.5);
+          border: 1.5px solid #C59B3C;
+          display: grid;
+          place-items: center;
+          font-size: 1.6rem;
+        }
+        .pass-barcode-lines {
+          font-family: monospace;
+          font-size: 0.58rem;
+          color: #cbd5e1;
+          letter-spacing: 2px;
+          margin-top: 4px;
+        }
+        .pass-docket-id {
+          font-family: monospace;
+          font-size: 0.72rem;
+          color: #F5D77F;
+          font-weight: bold;
+          margin-top: 2px;
+        }
+
+        .pass-field {
+          margin-bottom: 8px;
+        }
+        .pass-field-label {
+          font-size: 0.62rem;
+          font-family: monospace;
+          color: #a69cb4;
+          display: block;
+          letter-spacing: 0.1em;
+        }
+        .pass-field-value-primary {
+          font-size: 1.15rem;
+          color: #ffffff;
+          display: block;
+        }
+        .pass-field-value {
+          font-size: 0.88rem;
+          color: #e2d9eb;
+          display: block;
+        }
+        .pass-field-value-gold {
+          font-size: 0.88rem;
+          color: #F5D77F;
+          font-weight: bold;
+          display: block;
+        }
+
+        .pass-members-box {
+          background: rgba(77,29,100,0.25);
+          border: 1px solid rgba(197,155,60,0.25);
+          border-radius: 12px;
+          padding: 10px 16px;
+          margin-bottom: 16px;
+        }
+        .pass-section-label {
+          font-family: monospace;
+          font-size: 0.68rem;
+          color: #F5D77F;
+          letter-spacing: 0.12em;
+          display: block;
+          margin-bottom: 6px;
+        }
+        .pass-members-chips {
+          display: flex;
+          gap: 10px;
+          flex-wrap: wrap;
+        }
+        .pass-member-chip {
+          background: rgba(255,255,255,0.06);
+          border: 1px solid rgba(255,255,255,0.12);
+          padding: 4px 10px;
+          border-radius: 6px;
+          font-size: 0.78rem;
+          color: #ffffff;
+        }
+
+        .pass-zones-qr-row {
+          display: grid;
+          grid-template-columns: 1fr 200px;
+          gap: 18px;
+          margin-bottom: 16px;
+        }
+        .pass-zones-box {
+          background: rgba(15,7,32,0.6);
+          border: 1px solid rgba(197,155,60,0.25);
+          border-radius: 14px;
+          padding: 14px 18px;
+        }
+        .pass-zones-checklist {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 6px;
+          font-size: 0.76rem;
+          color: #cbd5e1;
+          margin-bottom: 12px;
+        }
+        .pass-logistics-strip {
+          display: flex;
+          justify-content: space-between;
+          border-top: 1px solid rgba(197,155,60,0.2);
+          padding-top: 10px;
+          font-size: 0.74rem;
+        }
+        .pass-micro-label {
+          font-family: monospace;
+          font-size: 0.6rem;
+          color: #a69cb4;
+          display: block;
+        }
+
+        .pass-security-box {
+          background: rgba(255,255,255,0.035);
+          border: 1px dashed rgba(197,155,60,0.4);
+          border-radius: 14px;
+          padding: 12px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+        }
+        .pass-qr-header {
+          font-family: monospace;
+          font-size: 0.65rem;
+          color: #F5D77F;
+          font-weight: bold;
+          letter-spacing: 0.1em;
+          margin-bottom: 8px;
+        }
+        .pass-qr-frame {
+          background: #ffffff;
+          padding: 6px;
+          border-radius: 8px;
+          display: inline-block;
+          margin-bottom: 8px;
+        }
+        .pass-verified-badge {
+          font-size: 0.72rem;
+          color: #10b981;
+          font-weight: bold;
+        }
+        .pass-txn-ref {
+          font-family: monospace;
+          font-size: 0.62rem;
+          color: #cbd5e1;
+          margin-top: 2px;
+        }
+
+        .pass-guidelines-footer {
+          border-top: 1px solid rgba(197,155,60,0.25);
+          padding-top: 10px;
+          font-size: 0.62rem;
+          color: #94a3b8;
+          line-height: 1.45;
+        }
+
+        /* ══════════════════════════════════════════════════════════
+           STRICT A4 PRINT STYLES (Single Page Perfection, No Bleed)
+           ══════════════════════════════════════════════════════════ */
+        @media print {
+          @page {
+            size: A4 portrait;
+            margin: 10mm;
+          }
+          body, html {
+            background: #ffffff !important;
+            color: #000000 !important;
+            font-size: 11pt;
+            margin: 0 !important;
+            padding: 0 !important;
+          }
+          .no-print, header, footer, #webgl-container, .admin, .progress {
+            display: none !important;
+          }
+          .pass-page-wrapper {
+            padding: 0 !important;
+            background: #ffffff !important;
+            min-height: auto !important;
+          }
+          .a4-pass-container {
+            max-width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+          }
+          .a4-pass-card {
+            background: #ffffff !important;
+            color: #000000 !important;
+            border: 2px solid #000000 !important;
+            border-radius: 12px !important;
+            padding: 20px !important;
+            box-shadow: none !important;
+            page-break-inside: avoid !important;
+          }
+          .pass-header-section {
+            border-bottom: 2px solid #000000 !important;
+          }
+          .pass-inst-title {
+            color: #000000 !important;
+            font-size: 11pt !important;
+            font-weight: bold !important;
+          }
+          .pass-inst-sub {
+            color: #333333 !important;
+          }
+          .pass-main-title {
+            color: #000000 !important;
+            font-size: 26pt !important;
+          }
+          .pass-theme-tagline {
+            color: #222222 !important;
+            font-weight: bold !important;
+          }
+          .pass-status-pill {
+            background: #f4f4f5 !important;
+            border: 1px solid #000000 !important;
+            color: #000000 !important;
+          }
+          .pass-details-grid {
+            background: #f8fafc !important;
+            border: 1px solid #000000 !important;
+            color: #000000 !important;
+          }
+          .pass-avatar-icon {
+            background: #e2e8f0 !important;
+            border: 1px solid #000000 !important;
+          }
+          .pass-field-value-primary {
+            color: #000000 !important;
+          }
+          .pass-field-value, .pass-field-value-gold {
+            color: #111111 !important;
+          }
+          .pass-members-box {
+            background: #f8fafc !important;
+            border: 1px solid #000000 !important;
+          }
+          .pass-member-chip {
+            background: #ffffff !important;
+            border: 1px solid #888888 !important;
+            color: #000000 !important;
+          }
+          .pass-zones-box {
+            background: #f8fafc !important;
+            border: 1px solid #000000 !important;
+            color: #000000 !important;
+          }
+          .pass-zones-checklist {
+            color: #111111 !important;
+          }
+          .pass-security-box {
+            background: #ffffff !important;
+            border: 1px dashed #000000 !important;
+          }
+          .pass-qr-frame {
+            border: 1px solid #000000 !important;
+          }
+          .pass-verified-badge {
+            color: #000000 !important;
+            font-weight: bold !important;
+          }
+          .pass-docket-id, .pass-txn-ref, .pass-guidelines-footer {
+            color: #333333 !important;
+          }
+        }
+      `}</style>
     </div>
   )
 }
