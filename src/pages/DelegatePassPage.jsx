@@ -15,6 +15,7 @@ export default function DelegatePassPage({ onBackToHome }) {
   const [typedKeys, setTypedKeys] = useState('')
   const [emojis, setEmojis] = useState([])
   const [celebrating, setCelebrating] = useState(false)
+  const [jumbledLetters, setJumbledLetters] = useState(['K', 'U', 'I', 'Y', 'T'])
   const barcodeRef = useRef(null)
 
   // Wholesome, fun, safe emojis pool
@@ -24,6 +25,41 @@ export default function DelegatePassPage({ onBackToHome }) {
     '👾', '🌈', '🥳', '🪄', '💡', '🎸', '🛸', '⭐'
   ]
 
+  // Reshuffle jumbled letters periodically or on click
+  const shuffleJumbledLetters = () => {
+    const letters = ['Y', 'U', 'K', 'T', 'I']
+    for (let i = letters.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [letters[i], letters[j]] = [letters[j], letters[i]]
+    }
+    setJumbledLetters(letters)
+  }
+
+  // Trigger input for a character (used by both keyboard typing and phone/tablet jumbled button taps)
+  const handleCharInput = (char) => {
+    const key = char.toLowerCase()
+    const randomEmoji = safeEmojis[Math.floor(Math.random() * safeEmojis.length)]
+    const newEmojiItem = {
+      id: Date.now() + Math.random(),
+      char: randomEmoji,
+      letter: key.toUpperCase(),
+      x: Math.random() * 75 + 12,
+      y: Math.random() * 55 + 20
+    }
+    setEmojis(prev => [...prev.slice(-8), newEmojiItem])
+
+    setTypedKeys(prev => {
+      const next = (prev + key).slice(-5)
+      if (next === 'yukti') {
+        setCelebrating(true)
+        setTimeout(() => {
+          window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1'
+        }, 1800)
+      }
+      return next
+    })
+  }
+
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
     const name = params.get('name')
@@ -32,6 +68,7 @@ export default function DelegatePassPage({ onBackToHome }) {
     // If directly accessed without query params or without a valid regId / name
     if (!name && !regId) {
       setIsDirectAccess(true)
+      shuffleJumbledLetters()
       return
     }
 
@@ -72,28 +109,7 @@ export default function DelegatePassPage({ onBackToHome }) {
       
       const key = e.key.toLowerCase()
       if (key.length === 1 && key >= 'a' && key <= 'z') {
-        // Pick random safe emoji
-        const randomEmoji = safeEmojis[Math.floor(Math.random() * safeEmojis.length)]
-        const newEmojiItem = {
-          id: Date.now() + Math.random(),
-          char: randomEmoji,
-          letter: key.toUpperCase(),
-          x: Math.random() * 80 + 10,
-          y: Math.random() * 60 + 20
-        }
-        setEmojis(prev => [...prev.slice(-8), newEmojiItem])
-
-        // Accumulate and check if 'yukti' is typed
-        setTypedKeys(prev => {
-          const next = (prev + key).slice(-5)
-          if (next === 'yukti') {
-            setCelebrating(true)
-            setTimeout(() => {
-              window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1'
-            }, 1800)
-          }
-          return next
-        })
+        handleCharInput(key)
       }
     }
 
@@ -172,23 +188,81 @@ export default function DelegatePassPage({ onBackToHome }) {
             )}
           </p>
 
-          {/* Easter egg instruction prompt */}
+          {/* Easter egg instruction prompt (Dual: PC typing & Mobile/Tablet touch keypad) */}
           <div style={{
             background: 'rgba(77,29,100,0.4)',
             border: '1px dashed #C59B3C',
             borderRadius: '14px',
-            padding: '16px 20px',
+            padding: '18px 20px',
             marginBottom: '26px'
           }}>
             <div style={{ fontSize: '0.82rem', color: '#F5D77F', fontWeight: 'bold', marginBottom: '6px' }}>
-              🕹️ ARE YOU ON A PC / KEYBOARD?
+              🕹️ DESKTOP, PHONE OR TABLET EASTER EGG
             </div>
-            <div style={{ fontSize: '0.84rem', color: '#e2d9eb' }}>
-              Type <strong style={{ color: '#FFF2A6', letterSpacing: '0.15em', background: '#1F0E2C', padding: '2px 8px', borderRadius: '4px', border: '1px solid #C59B3C' }}>"yukti"</strong> on your keyboard to reveal a cosmic surprise!
+            <div style={{ fontSize: '0.84rem', color: '#e2d9eb', lineHeight: '1.5' }}>
+              On PC? Type <strong style={{ color: '#FFF2A6', letterSpacing: '0.15em', background: '#1F0E2C', padding: '2px 8px', borderRadius: '4px', border: '1px solid #C59B3C' }}>"yukti"</strong>.
+              <br />
+              On a Phone / Tablet? Tap the jumbled letters below in order to spell <strong>Y-U-K-T-I</strong>!
             </div>
+
+            {/* Jumbled YUKTI Interactive Keypad for Phone & Tablet */}
+            <div style={{ marginTop: '16px' }}>
+              <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', flexWrap: 'wrap' }}>
+                {jumbledLetters.map((char, index) => (
+                  <button
+                    key={index}
+                    type="button"
+                    onClick={() => handleCharInput(char)}
+                    style={{
+                      width: '52px',
+                      height: '52px',
+                      borderRadius: '12px',
+                      background: 'linear-gradient(145deg, #2b133d 0%, #150924 100%)',
+                      border: '2px solid #C59B3C',
+                      color: '#FFF2A6',
+                      fontFamily: "'Space Grotesk', sans-serif",
+                      fontSize: '1.35rem',
+                      fontWeight: '800',
+                      cursor: 'pointer',
+                      boxShadow: '0 4px 15px rgba(0,0,0,0.6), inset 0 1px 2px rgba(255,255,255,0.2)',
+                      transition: 'transform 0.15s ease, background 0.2s',
+                      display: 'grid',
+                      placeItems: 'center'
+                    }}
+                    onMouseDown={(e) => e.currentTarget.style.transform = 'scale(0.92)'}
+                    onMouseUp={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                    onTouchStart={(e) => e.currentTarget.style.transform = 'scale(0.92)'}
+                    onTouchEnd={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                    aria-label={`Letter ${char}`}
+                  >
+                    {char}
+                  </button>
+                ))}
+              </div>
+
+              {/* Reshuffle button */}
+              <button
+                type="button"
+                onClick={shuffleJumbledLetters}
+                style={{
+                  marginTop: '12px',
+                  background: 'transparent',
+                  border: 'none',
+                  color: '#F5D77F',
+                  fontFamily: 'monospace',
+                  fontSize: '0.72rem',
+                  letterSpacing: '0.08em',
+                  cursor: 'pointer',
+                  textDecoration: 'underline'
+                }}
+              >
+                🔀 Reshuffle Jumbled Letters
+              </button>
+            </div>
+
             {typedKeys && (
-              <div className="mono" style={{ marginTop: '10px', fontSize: '0.78rem', color: '#10b981' }}>
-                Key buffer: [{typedKeys}]
+              <div className="mono" style={{ marginTop: '12px', fontSize: '0.80rem', color: '#10b981', background: 'rgba(0,0,0,0.4)', padding: '6px 12px', borderRadius: '6px', display: 'inline-block' }}>
+                Letters Pressed: [{typedKeys.toUpperCase()}]
               </div>
             )}
           </div>
