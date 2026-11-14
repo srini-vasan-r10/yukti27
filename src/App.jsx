@@ -288,10 +288,12 @@ export default function App() {
     <>
       <div className="progress" id="progress-bar"></div>
 
-      {/* ── Persistent 3D Viewport ────────────────────────────── */}
-      <div id="webgl-container">
-        <canvas ref={canvasRef} className="hero-canvas" aria-label="3D Strategic Universe Canvas" />
-      </div>
+      {/* ── Persistent 3D Viewport (Hidden on pass page to prevent any visual obstruction) ── */}
+      {currentPage !== 'pass' && (
+        <div id="webgl-container">
+          <canvas ref={canvasRef} className="hero-canvas" aria-label="3D Strategic Universe Canvas" />
+        </div>
+      )}
 
       {/* ── Header ───────────────────────────────────────────── */}
       <header className="topbar">
@@ -728,55 +730,54 @@ export default function App() {
         </main>
       )}
 
-      {/* ── Creative High-Impact Global Footer ─────────────────── */}
-      <footer className="site-footer creative-footer">
-        <div className="footer-top-row">
-          <div className="footer-brand-col">
-            <div className="footer-dual-logos">
-              <div className="footer-logo-ring">
-                <img src="/yukti-logo.webp" alt="YUKTI ’27 Logo" className="footer-yukti-logo" loading="lazy" width="64" height="64" />
+      {/* ── Creative High-Impact Global Footer (Hidden on pass page) ─────────────────── */}
+      {currentPage !== 'pass' && (
+        <footer className="site-footer creative-footer">
+          <div className="footer-top-row">
+            <div className="footer-brand-col">
+              <div className="footer-dual-logos">
+                <div className="footer-logo-ring">
+                  <img src="/yukti-logo.webp" alt="YUKTI ’27 Logo" className="footer-yukti-logo" loading="lazy" width="64" height="64" />
+                </div>
+                <div className="footer-logo-divider" />
+                <div className="footer-logo-ring">
+                  <img src="/tsm-logo.webp" alt="TSM Madurai Crest" className="footer-tsm-logo" loading="lazy" width="64" height="64" />
+                </div>
               </div>
-              <div className="footer-logo-divider" />
-              <div className="footer-logo-ring">
-                <img src="/tsm-logo.webp" alt="TSM Madurai Crest" className="footer-tsm-logo" loading="lazy" width="64" height="64" />
+              <div className="footer-titles">
+                <span className="footer-super">YUKTI ’27 · INTANGIBLES</span>
+                <p className="footer-venue">Thiagarajar School of Management (TSM), Madurai – 625005</p>
+                <small className="mono gold">NAAC A+ & NBA ACCREDITED · ESTD 1962</small>
               </div>
             </div>
-            <div className="footer-titles">
-              <span className="footer-super">YUKTI ’27 · INTANGIBLES</span>
-              <p className="footer-venue">Thiagarajar School of Management (TSM), Madurai – 625005</p>
-              <small className="mono gold">NAAC A+ & NBA ACCREDITED · ESTD 1962</small>
+
+            <div className="footer-nav-columns">
+              <div className="footer-col-block">
+                <span className="mono gold col-title">Confluences</span>
+                <a href="#management" onClick={(e) => { e.preventDefault(); navigateTo('management') }}>Management Arenas (6)</a>
+                <a href="#cultural" onClick={(e) => { e.preventDefault(); navigateTo('cultural') }}>Cultural Confluence (6)</a>
+                <a href="#portal" onClick={(e) => { e.preventDefault(); navigateTo('portal') }}>Registration Portal</a>
+              </div>
+
+              <div className="footer-col-block">
+                <span className="mono gold col-title">Reach Out</span>
+                <span className="contact-link">Email: <a href="mailto:yukti@tsm.ac.in">yukti@tsm.ac.in</a></span>
+                <span className="contact-link">Instagram: <a href="https://instagram.com/yukti.tsm" target="_blank" rel="noreferrer">@yukti.tsm</a></span>
+              </div>
             </div>
           </div>
 
-          <div className="footer-nav-columns">
-            <div className="footer-col-block">
-              <span className="mono gold col-title">Confluences</span>
-              <a href="#management" onClick={(e) => { e.preventDefault(); navigateTo('management') }}>Management Arenas (6)</a>
-              <a href="#cultural" onClick={(e) => { e.preventDefault(); navigateTo('cultural') }}>Cultural Confluence (6)</a>
-              <a href="#portal" onClick={(e) => { e.preventDefault(); navigateTo('portal') }}>Registration Portal</a>
-              {/*
-              <a href="#sponsors" onClick={(e) => { e.preventDefault(); navigateTo('sponsors') }}>YUKTI ’26 Sponsors</a>
-              */}
+          {/* Brochure Footer Pillar Ribbon */}
+          <div className="footer-ribbon-bar">
+            <div className="ribbon-text mono">
+              POWERED BY <span className="gold">INNOVATION</span> | <span className="gold">CULTURE</span> | <span className="gold">LEADERSHIP</span>
             </div>
-
-            <div className="footer-col-block">
-              <span className="mono gold col-title">Reach Out</span>
-              <span className="contact-link">Email: <a href="mailto:yukti@tsm.ac.in">yukti@tsm.ac.in</a></span>
-              <span className="contact-link">Instagram: <a href="https://instagram.com/yukti.tsm" target="_blank" rel="noreferrer">@yukti.tsm</a></span>
+            <div className="footer-sub-note">
+              © 2027 Thiagarajar School of Management. All rights reserved.
             </div>
           </div>
-        </div>
-
-        {/* Brochure Footer Pillar Ribbon */}
-        <div className="footer-ribbon-bar">
-          <div className="ribbon-text mono">
-            POWERED BY <span className="gold">INNOVATION</span> | <span className="gold">CULTURE</span> | <span className="gold">LEADERSHIP</span>
-          </div>
-          <div className="footer-sub-note">
-            © 2027 Thiagarajar School of Management. All rights reserved.
-          </div>
-        </div>
-      </footer>
+        </footer>
+      )}
 
       {/* Committee Preview Toggle Button */}
       <button className="admin" onClick={() => setPreviewMode(!previewMode)}>

@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { QRCodeSVG } from 'qrcode.react'
+import JsBarcode from 'jsbarcode'
 import SEOHead from '../utils/SEOHead'
 
 /**
@@ -10,6 +11,7 @@ import SEOHead from '../utils/SEOHead'
  */
 export default function DelegatePassPage({ onBackToHome }) {
   const [passData, setPassData] = useState(null)
+  const barcodeRef = useRef(null)
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
@@ -60,6 +62,25 @@ export default function DelegatePassPage({ onBackToHome }) {
       }
     }
   }, [])
+
+  // Render authentic Code 128 barcode once passData is loaded
+  useEffect(() => {
+    if (barcodeRef.current && passData?.regId) {
+      try {
+        JsBarcode(barcodeRef.current, passData.regId, {
+          format: 'CODE128',
+          lineColor: '#C59B3C',
+          width: 1.4,
+          height: 38,
+          displayValue: false,
+          margin: 0,
+          background: 'transparent'
+        })
+      } catch (e) {
+        console.warn('JsBarcode render error:', e)
+      }
+    }
+  }, [passData])
 
   if (!passData) return null
 
@@ -115,7 +136,10 @@ export default function DelegatePassPage({ onBackToHome }) {
             {/* Avatar / Barcode Column */}
             <div className="pass-avatar-box">
               <div className="pass-avatar-icon">🎓</div>
-              <div className="pass-barcode-lines">||||| | ||||| || ||| |</div>
+              {/* Authentic Barcode generated via jsbarcode */}
+              <div className="pass-barcode-wrapper">
+                <svg ref={barcodeRef} className="pass-real-barcode"></svg>
+              </div>
               <span className="pass-docket-id">{passData.regId}</span>
             </div>
 
@@ -220,6 +244,8 @@ export default function DelegatePassPage({ onBackToHome }) {
           background: #090412;
           color: #ffffff;
           font-family: 'Plus Jakarta Sans', sans-serif;
+          position: relative;
+          z-index: 25;
         }
         .pass-screen-bar {
           max-width: 900px;
@@ -229,6 +255,8 @@ export default function DelegatePassPage({ onBackToHome }) {
           align-items: center;
           flex-wrap: wrap;
           gap: 12px;
+          position: relative;
+          z-index: 30;
         }
         .print-trigger-btn {
           background: linear-gradient(135deg, #FFF2A6 0%, #C59B3C 100%);
@@ -244,14 +272,17 @@ export default function DelegatePassPage({ onBackToHome }) {
         .a4-pass-container {
           max-width: 900px;
           margin: 0 auto;
+          position: relative;
+          z-index: 30;
         }
         .a4-pass-card {
           background: #150924;
           border: 2px solid #C59B3C;
           border-radius: 20px;
           padding: 28px 32px;
-          box-shadow: 0 30px 80px rgba(0,0,0,0.9), 0 0 40px rgba(197,155,60,0.2);
+          box-shadow: 0 30px 80px rgba(0,0,0,0.95), 0 0 50px rgba(77,29,100,0.5);
           position: relative;
+          z-index: 30;
         }
         .pass-header-section {
           display: flex;
@@ -353,19 +384,25 @@ export default function DelegatePassPage({ onBackToHome }) {
           place-items: center;
           font-size: 1.6rem;
         }
-        .pass-barcode-lines {
-          font-family: monospace;
-          font-size: 0.58rem;
-          color: #cbd5e1;
-          letter-spacing: 2px;
-          margin-top: 4px;
+        .pass-barcode-wrapper {
+          margin-top: 6px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          overflow: hidden;
+        }
+        .pass-real-barcode {
+          max-width: 110px;
+          height: 32px;
+          display: block;
         }
         .pass-docket-id {
           font-family: monospace;
           font-size: 0.72rem;
           color: #F5D77F;
           font-weight: bold;
-          margin-top: 2px;
+          margin-top: 4px;
         }
 
         .pass-field {
