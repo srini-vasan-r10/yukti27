@@ -17,6 +17,10 @@ export default function DelegatePassPage({ onBackToHome }) {
     const params = new URLSearchParams(window.location.search)
     const name = params.get('name')
     const college = params.get('college')
+    const phone = params.get('phone')
+    const email = params.get('email')
+    const event = params.get('event')
+    const teamName = params.get('teamName')
     const regId = params.get('regId')
     const year = params.get('year')
     const delegationType = params.get('delegationType')
@@ -28,6 +32,10 @@ export default function DelegatePassPage({ onBackToHome }) {
       setPassData({
         name: name || 'Valued Delegate',
         college: college || 'Thiagarajar School of Management (TSM)',
+        phone: phone || '',
+        email: email || '',
+        event: event || 'All-Confluence Arena',
+        teamName: teamName || (name ? `${name}'s Squad` : 'YUKTI Delegation'),
         regId: regId || 'YK27-DELEGATE',
         year: year || 'PG / MBA Final Year',
         delegationType: delegationType || 'Competitor Pass (Team Entry)',
@@ -41,6 +49,10 @@ export default function DelegatePassPage({ onBackToHome }) {
         setPassData({
           name: lastReg.name || 'Valued Delegate',
           college: lastReg.college || 'Thiagarajar School of Management (TSM)',
+          phone: lastReg.phone || '',
+          email: lastReg.email || '',
+          event: lastReg.event || 'The AI CEO Challenge',
+          teamName: lastReg.teamName || `${lastReg.name}'s Squad`,
           regId: lastReg.regId || 'YK27-DELEGATE',
           year: lastReg.year || 'PG / MBA Final Year',
           delegationType: lastReg.delegationType || 'Competitor Pass (Team Entry)',
@@ -52,6 +64,10 @@ export default function DelegatePassPage({ onBackToHome }) {
         setPassData({
           name: 'Srinivasan Rengarajan',
           college: 'Thiagarajar School of Management (TSM)',
+          phone: '+91 98765 43210',
+          email: 'srinivasan@tsm.ac.in',
+          event: 'The AI CEO Challenge & Best Manager',
+          teamName: 'Titan Stratocasters',
           regId: 'YK27-A8F2-9X41',
           year: 'PG / MBA Final Year',
           delegationType: 'Competitor Pass (Team Entry)',
@@ -84,7 +100,24 @@ export default function DelegatePassPage({ onBackToHome }) {
 
   if (!passData) return null
 
-  const passUrl = typeof window !== 'undefined' ? window.location.href : 'https://yukti27.tsm.ac.in/pass'
+  // Payload encoded in the entry security QR code on the pass:
+  // Provides full structured information for fast gate scanner apps / smartphones:
+  // Team name, arena/event, team leader and contact details, and member roster.
+  const qrPassPayload = [
+    `YUKTI '27 OFFICIAL ENTRY PASS`,
+    `----------------------------`,
+    `DOCKET ID: ${passData.regId}`,
+    `TEAM: ${passData.teamName || 'N/A'}`,
+    `EVENT: ${passData.event || 'Flagship Arena'}`,
+    `TEAM LEADER: ${passData.name}`,
+    passData.phone ? `CONTACT: ${passData.phone}` : null,
+    passData.email ? `EMAIL: ${passData.email}` : null,
+    `COLLEGE: ${passData.college}`,
+    `MEMBERS: ${passData.members && passData.members.length > 0 ? passData.members.join(', ') : 'Single Contender'}`,
+    `STATUS: PAID & VERIFIED (${passData.fee || '₹500'})`,
+    `UTR REF: ${passData.utr || 'VERIFIED'}`,
+    `VENUE: TSM Madurai (Jan 28-30, 2027)`
+  ].filter(Boolean).join('\n')
 
   return (
     <div className="pass-page-wrapper">
@@ -128,7 +161,14 @@ export default function DelegatePassPage({ onBackToHome }) {
           <div className="pass-hero-banner">
             <h1 className="pass-main-title">YUKTI ’27</h1>
             <div className="pass-theme-tagline">INTANGIBLES — INFINITE POSSIBILITIES</div>
-            <span className="pass-status-pill">OFFICIAL ALL-CONFLUENCE DELEGATE ENTRY BADGE</span>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', flexWrap: 'wrap', marginTop: '6px' }}>
+              <span className="pass-status-pill">OFFICIAL ALL-CONFLUENCE DELEGATE ENTRY BADGE</span>
+              {passData.event && (
+                <span className="pass-status-pill" style={{ background: 'rgba(197,155,60,0.18)', borderColor: '#C59B3C', color: '#FFF2A6' }}>
+                  ARENA: {passData.event}
+                </span>
+              )}
+            </div>
           </div>
 
           {/* 3. Delegate Credentials & Barcode Grid */}
@@ -146,17 +186,31 @@ export default function DelegatePassPage({ onBackToHome }) {
             {/* Delegate Info */}
             <div className="pass-meta-col">
               <div className="pass-field">
-                <span className="pass-field-label">PRIMARY DELEGATE</span>
+                <span className="pass-field-label">TEAM LEADER (PRIMARY)</span>
                 <strong className="pass-field-value-primary">{passData.name}</strong>
               </div>
               <div className="pass-field">
                 <span className="pass-field-label">COLLEGE / INSTITUTION</span>
                 <span className="pass-field-value">{passData.college}</span>
               </div>
+              {passData.phone && (
+                <div className="pass-field">
+                  <span className="pass-field-label">LEADER CONTACT</span>
+                  <span className="pass-field-value mono" style={{ fontSize: '0.78rem', color: '#F5D77F' }}>
+                    {passData.phone}
+                  </span>
+                </div>
+              )}
             </div>
 
             {/* Pass Category & Academic Level */}
             <div className="pass-meta-col">
+              <div className="pass-field">
+                <span className="pass-field-label">TEAM SQUAD NAME</span>
+                <strong className="pass-field-value-gold" style={{ color: '#FFF2A6' }}>
+                  {passData.teamName || `${passData.name}'s Contingent`}
+                </strong>
+              </div>
               <div className="pass-field">
                 <span className="pass-field-label">ACADEMIC LEVEL</span>
                 <strong className="pass-field-value">{passData.year}</strong>
@@ -216,7 +270,7 @@ export default function DelegatePassPage({ onBackToHome }) {
               <span className="pass-qr-header">SCAN AT GATE ENTRY</span>
               <div className="pass-qr-frame">
                 <QRCodeSVG
-                  value={passUrl}
+                  value={qrPassPayload}
                   size={118}
                   level="M"
                   includeMargin={false}

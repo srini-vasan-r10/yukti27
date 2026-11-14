@@ -14,6 +14,7 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [modalData, setModalData] = useState(null)
   const [previewMode, setPreviewMode] = useState(false)
+  const [hideGlobalFooter, setHideGlobalFooter] = useState(false)
 
   // Sync clean browser URL without full reload (preserves SEO navigation & direct sharing)
   useEffect(() => {
@@ -438,6 +439,7 @@ export default function App() {
           <RegistrationPortalPage
             onBackToHome={() => navigateTo('home')}
             onOpenPass={() => navigateTo('pass')}
+            onReceiptModalToggle={(open) => setHideGlobalFooter(open)}
           />
         </>
       )}
@@ -730,8 +732,8 @@ export default function App() {
         </main>
       )}
 
-      {/* ── Creative High-Impact Global Footer (Hidden on pass page) ─────────────────── */}
-      {currentPage !== 'pass' && (
+      {/* ── Creative High-Impact Global Footer (Hidden on pass page & receipt modal) ── */}
+      {currentPage !== 'pass' && !hideGlobalFooter && (
         <footer className="site-footer creative-footer">
           <div className="footer-top-row">
             <div className="footer-brand-col">

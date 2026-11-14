@@ -1,26 +1,57 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { QRCodeSVG } from 'qrcode.react'
+import html2canvas from 'html2canvas'
 
 /**
  * ReceiptModal Component
  * Redesigned to strictly match the mechanical thermal POS printer:
  * 1. Physical connection: The printer head sits flush and seamlessly atop the receipt paper.
- * 2. Downward emerging animation: The receipt comes down continuously from the printer slot (no detached gap, no zooming/expanding that disconnects it).
- * 3. Contained viewport: Modal stays centered and perfectly contained within 85vh with smooth internal scroll.
- * 4. Authentic thermal paper receipt styling with live barcode/QR code and screenshot reminder.
+ * 2. Downward emerging animation: The receipt comes down continuously from the printer slot.
+ * 3. Auto-download bill image: Captures high-res JPEG/PNG receipt bill image and downloads it automatically for the user.
+ * 4. Contained viewport: Modal stays centered and perfectly contained within 85vh with smooth internal scroll.
  */
 export default function ReceiptModal({ dossier, passUrl, onOpenPass, onClose }) {
   if (!dossier) return null
 
   const [isPrinting, setIsPrinting] = useState(true)
+  const [downloadSuccess, setDownloadSuccess] = useState(false)
+  const receiptCaptureRef = useRef(null)
 
   useEffect(() => {
     // Printing feeder motion completes after 1.6s
     const timer = setTimeout(() => {
       setIsPrinting(false)
+      // Auto-trigger clean bill image download once printed
+      triggerBillDownload()
     }, 1600)
     return () => clearTimeout(timer)
   }, [])
+
+  const triggerBillDownload = async () => {
+    if (!receiptCaptureRef.current) return
+    try {
+      // Small delay to ensure QR code and DOM are fully rendered
+      setTimeout(async () => {
+        if (!receiptCaptureRef.current) return
+        const canvas = await html2canvas(receiptCaptureRef.current, {
+          scale: 2, // High resolution capture
+          backgroundColor: '#FFFDF7',
+          useCORS: true,
+          logging: false
+        })
+        const image = canvas.toDataURL('image/png')
+        const link = document.createElement('a')
+        link.href = image
+        link.download = `YUKTI27-RECEIPT-${dossier.regId || 'BILL'}.png`
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
+        setDownloadSuccess(true)
+      }, 500)
+    } catch (err) {
+      console.warn('Receipt image download error:', err)
+    }
+  }
 
   return (
     <div style={{
@@ -134,11 +165,12 @@ export default function ReceiptModal({ dossier, passUrl, onOpenPass, onClose }) 
         }}>
           {/* Sliding receipt paper */}
           <div
+            ref={receiptCaptureRef}
             className="receipt-paper-scroll"
             style={{
               background: '#FFFDF7',
               color: '#1c1917',
-              padding: '18px 20px 22px',
+              padding: '18px 20px 28px',
               fontFamily: "'Courier New', Courier, monospace",
               boxShadow: '0 20px 50px rgba(0,0,0,0.85)',
               position: 'relative',
@@ -273,39 +305,65 @@ export default function ReceiptModal({ dossier, passUrl, onOpenPass, onClose }) 
                 Scan with phone camera to view full A4 printable pass
               </small>
 
-              <button
-                onClick={onOpenPass}
-                style={{
-                  width: '100%',
-                  marginTop: '10px',
-                  padding: '9px 12px',
-                  background: '#1F0E2C',
-                  color: '#FFF2A6',
-                  border: '1.5px solid #C59B3C',
-                  borderRadius: '8px',
-                  fontFamily: "'Plus Jakarta Sans', sans-serif",
-                  fontWeight: 'bold',
-                  fontSize: '0.80rem',
-                  cursor: 'pointer',
-                  letterSpacing: '0.03em'
-                }}
-              >
-                👑 View & Print A4 Delegate Pass ↗
-              </button>
+              {/* Action Buttons Row: View Pass & Download Bill Image */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '12px' }}>
+                <button
+                  type="button"
+                  onClick={onOpenPass}
+                  style={{
+                    width: '100%',
+                    padding: '10px 14px',
+                    background: '#1F0E2C',
+                    color: '#FFF2A6',
+                    border: '1.5px solid #C59B3C',
+                    borderRadius: '8px',
+                    fontFamily: "'Plus Jakarta Sans', sans-serif",
+                    fontWeight: 'bold',
+                    fontSize: '0.80rem',
+                    cursor: 'pointer',
+                    letterSpacing: '0.03em'
+                  }}
+                >
+                  👑 View & Print A4 Delegate Pass ↗
+                </button>
+
+                <button
+                  type="button"
+                  onClick={triggerBillDownload}
+                  style={{
+                    width: '100%',
+                    padding: '8px 12px',
+                    background: 'rgba(16, 185, 129, 0.12)',
+                    color: '#047857',
+                    border: '1px solid #10b981',
+                    borderRadius: '8px',
+                    fontFamily: "'Courier New', Courier, monospace",
+                    fontWeight: 'bold',
+                    fontSize: '0.74rem',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '6px'
+                  }}
+                >
+                  📥 {downloadSuccess ? '✓ Bill Image Downloaded' : 'Download Receipt Bill Image (.PNG)'}
+                </button>
+              </div>
             </div>
 
-            {/* Footer Receipt Note */}
-            <div style={{ textAlign: 'center', marginTop: '12px', fontSize: '0.62rem', color: '#78716c' }}>
+            {/* Footer Receipt Note with generous bottom padding so jagged edge never touches text */}
+            <div style={{ textAlign: 'center', marginTop: '14px', paddingBottom: '16px', fontSize: '0.62rem', color: '#78716c' }}>
               HAVE A WONDERFUL EXPERIENCE AT YUKTI ’27!
             </div>
 
             {/* Jagged / Zigzag paper bottom edge effect */}
             <div style={{
               position: 'absolute',
-              bottom: '-6px',
+              bottom: '0',
               left: 0,
               right: 0,
-              height: '6px',
+              height: '8px',
               backgroundImage: 'radial-gradient(circle, transparent, transparent 50%, #FFFDF7 50%, #FFFDF7 100%)',
               backgroundSize: '12px 14px',
               pointerEvents: 'none'

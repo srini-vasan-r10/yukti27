@@ -12,7 +12,7 @@ import { buildUpiUri, extractNumericAmount, UPI_CONFIG } from '../utils/upiServi
 import { getTeamSizeRange } from '../utils/teamSizeHelper'
 import ReceiptModal from '../components/ReceiptModal'
 
-export default function RegistrationPortalPage({ onBackToHome, onOpenPass }) {
+export default function RegistrationPortalPage({ onBackToHome, onOpenPass, onReceiptModalToggle }) {
   const [selectedTrackType, setSelectedTrackType] = useState('management')
   const [selectedEventId, setSelectedEventId] = useState('the-ai-ceo-challenge')
 
@@ -36,6 +36,13 @@ export default function RegistrationPortalPage({ onBackToHome, onOpenPass }) {
   const [showReceiptModal, setShowReceiptModal] = useState(false)
   const [utrNumber, setUtrNumber] = useState('')
   const [submittedDossier, setSubmittedDossier] = useState(null)
+
+  // Notify parent App when receipt modal is opened/closed to suppress footer
+  useEffect(() => {
+    if (onReceiptModalToggle) {
+      onReceiptModalToggle(showReceiptModal)
+    }
+  }, [showReceiptModal, onReceiptModalToggle])
 
   const [isProcessingPayment, setIsProcessingPayment] = useState(false)
 
@@ -671,11 +678,15 @@ export default function RegistrationPortalPage({ onBackToHome, onOpenPass }) {
         {/* Thermal Payment Receipt Modal (Matches user uploaded second image) */}
         {showReceiptModal && submittedDossier && (() => {
           const siteUrl = getSiteUrl()
-          // Construct self-contained pass URL with query parameters
+          // Construct self-contained pass URL with query parameters including team, leader contact & event
           const membersList = (submittedDossier.members || []).join(',')
           const queryParams = new URLSearchParams({
             name: submittedDossier.name || '',
             college: submittedDossier.college || '',
+            phone: submittedDossier.phone || '',
+            email: submittedDossier.email || '',
+            event: submittedDossier.event || '',
+            teamName: submittedDossier.teamName || submittedDossier.name + ' Contingent',
             regId: submittedDossier.regId || '',
             year: submittedDossier.year || '',
             delegationType: submittedDossier.delegationType || '',
