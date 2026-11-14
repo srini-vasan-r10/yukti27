@@ -143,7 +143,7 @@ export default function DelegatePassPage({ onBackToHome }) {
       try {
         JsBarcode(barcodeRef.current, passData.regId, {
           format: 'CODE128',
-          lineColor: '#C59B3C',
+          lineColor: '#000000',
           width: 1.4,
           height: 38,
           displayValue: false,
@@ -449,10 +449,12 @@ export default function DelegatePassPage({ onBackToHome }) {
                   <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
                 </svg>
               </div>
-              {/* Authentic Barcode generated via jsbarcode */}
-              <div className="pass-barcode-wrapper">
+
+              {/* Barcode in a crisp black container with generous padding all around */}
+              <div className="pass-barcode-box">
                 <svg ref={barcodeRef} className="pass-real-barcode"></svg>
               </div>
+
               <span className="pass-docket-id">{passData.regId}</span>
             </div>
 
@@ -810,17 +812,23 @@ export default function DelegatePassPage({ onBackToHome }) {
           place-items: center;
           font-size: 1.6rem;
         }
-        .pass-barcode-wrapper {
-          margin-top: 6px;
+        .pass-barcode-box {
+          margin-top: 10px;
+          background: #ffffff;
+          padding: 8px 12px;
+          border-radius: 8px;
+          border: 1.5px solid #000000;
+          box-shadow: 0 4px 14px rgba(0,0,0,0.6);
           display: flex;
-          justify-content: center;
           align-items: center;
-          width: 100%;
-          overflow: hidden;
+          justify-content: center;
+          width: calc(100% - 10px);
+          box-sizing: border-box;
         }
         .pass-real-barcode {
-          max-width: 110px;
-          height: 32px;
+          width: 100%;
+          max-width: 120px;
+          height: 38px;
           display: block;
         }
         .pass-docket-id {
@@ -828,7 +836,7 @@ export default function DelegatePassPage({ onBackToHome }) {
           font-size: 0.72rem;
           color: #F5D77F;
           font-weight: bold;
-          margin-top: 4px;
+          margin-top: 6px;
         }
 
         .pass-field {

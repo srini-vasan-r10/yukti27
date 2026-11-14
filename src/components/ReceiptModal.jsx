@@ -289,14 +289,6 @@ export default function ReceiptModal({ dossier, passUrl, onOpenPass, onClose }) 
                   size={130}
                   level="M"
                   includeMargin={false}
-                  imageSettings={{
-                    src: "/yukti-logo.png",
-                    x: undefined,
-                    y: undefined,
-                    height: 24,
-                    width: 24,
-                    excavate: true,
-                  }}
                 />
               </div>
               
