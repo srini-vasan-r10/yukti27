@@ -379,7 +379,11 @@ export default function DelegatePassPage({ onBackToHome }) {
       <div className="no-print mobile-pass-action-banner">
         <div className="mobile-action-inner">
           <div className="mobile-success-indicator">
-            <span className="mobile-check-icon">✓</span>
+            <span className="mobile-check-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </span>
             <div>
               <h3 className="mobile-action-heading">Official Delegate Pass Verified</h3>
               <p className="mobile-action-sub">
@@ -441,16 +445,9 @@ export default function DelegatePassPage({ onBackToHome }) {
 
           {/* 3. Delegate Credentials & Barcode Grid */}
           <div className="pass-details-grid">
-            {/* Avatar / Barcode Column */}
+            {/* Barcode & Docket Column (Clean, zero icons) */}
             <div className="pass-avatar-box">
-              <div className="pass-avatar-icon">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F5D77F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                  <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-                </svg>
-              </div>
-
-              {/* Barcode in a crisp black container with generous padding all around */}
+              {/* Flat barcode box with tight, clean padding and zero elevation shadow */}
               <div className="pass-barcode-box">
                 <svg ref={barcodeRef} className="pass-real-barcode"></svg>
               </div>
@@ -556,11 +553,17 @@ export default function DelegatePassPage({ onBackToHome }) {
             </div>
           </div>
 
-          {/* 6. Footer Legal & Guidelines */}
+          {/* 6. Footer Legal, Campus Guidelines & Comprehensive Terms & Conditions */}
           <div className="pass-guidelines-footer">
-            <div>1. Mandatory valid Student / College ID card must be presented with this pass at the gate.</div>
-            <div>2. Non-transferable ticket; committee reserves right of admission. 3. Wi-Fi: TSM-GUEST.</div>
-            <div>4. Committee helpline: yukti@tsm.ac.in | Instagram: @yukti.tsm | Website: yukti27.tsm.ac.in</div>
+            <div className="pass-terms-title mono gold">TERMS OF ADMISSION & CONFLUENCE CODE OF CONDUCT</div>
+            <div className="pass-terms-grid">
+              <div>• <strong>Identity Verification:</strong> A valid physical college/institution photo ID card and this verified delegate pass docket must be produced at the registration desk for badge clearance.</div>
+              <div>• <strong>Access Protocols:</strong> Admission is restricted strictly to registered delegates and authorized contingent members. Badges are non-transferable; impersonation entails immediate disqualification.</div>
+              <div>• <strong>Campus Discipline:</strong> Thiagarajar School of Management (TSM) maintains a strict zero-tolerance policy against substance use, hazing, harassment, or property damage. Violators face immediate debarment.</div>
+              <div>• <strong>Schedule & Jury Governance:</strong> Decisions rendered by appointed corporate judges and executive review panels are definitive and binding across all management and cultural arenas.</div>
+              <div>• <strong>Bounty & Honors:</strong> Cash bounties, trophies, and certificates are disbursed post-valedictory verification to designated primary team leads via official banking conduits.</div>
+              <div>• <strong>Helpdesk & Network:</strong> Wi-Fi SSID: <em>TSM-GUEST</em> | Support: <em>yukti@tsm.ac.in</em> | Web: <em>yukti27.tsm.ac.in</em> | Campus Security Desk Ext: 402.</div>
+            </div>
           </div>
         </div>
       </div>
@@ -630,10 +633,9 @@ export default function DelegatePassPage({ onBackToHome }) {
           border-radius: 50%;
           background: #10b981;
           color: #ffffff;
-          font-weight: bold;
-          font-size: 1.2rem;
-          display: grid;
-          placeItems: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           flex-shrink: 0;
           box-shadow: 0 0 12px #10b981;
         }
@@ -799,30 +801,21 @@ export default function DelegatePassPage({ onBackToHome }) {
           display: flex;
           flex-direction: column;
           align-items: center;
+          justify-content: center;
           border-right: 1px solid rgba(197,155,60,0.2);
           padding-right: 16px;
         }
-        .pass-avatar-icon {
-          width: 58px;
-          height: 58px;
-          border-radius: 12px;
-          background: rgba(77,29,100,0.5);
-          border: 1.5px solid #C59B3C;
-          display: grid;
-          place-items: center;
-          font-size: 1.6rem;
-        }
+        /* Crisp, flat monochrome barcode container with tight padding and zero drop shadow */
         .pass-barcode-box {
-          margin-top: 10px;
           background: #ffffff;
-          padding: 8px 12px;
-          border-radius: 8px;
-          border: 1.5px solid #000000;
-          box-shadow: 0 4px 14px rgba(0,0,0,0.6);
+          padding: 4px 6px;
+          border-radius: 4px;
+          border: 1px solid #111111;
+          box-shadow: none;
           display: flex;
           align-items: center;
           justify-content: center;
-          width: calc(100% - 10px);
+          width: 100%;
           box-sizing: border-box;
         }
         .pass-real-barcode {
@@ -968,11 +961,32 @@ export default function DelegatePassPage({ onBackToHome }) {
         }
 
         .pass-guidelines-footer {
-          border-top: 1px solid rgba(197,155,60,0.25);
-          padding-top: 10px;
+          border-top: 1.5px solid rgba(197,155,60,0.3);
+          padding-top: 14px;
+          margin-top: 14px;
+        }
+        .pass-terms-title {
+          font-size: 0.70rem;
+          margin-bottom: 8px;
+          letter-spacing: 0.14em;
+        }
+        .pass-terms-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 6px 16px;
           font-size: 0.62rem;
-          color: #94a3b8;
-          line-height: 1.45;
+          color: #a69cb4;
+          line-height: 1.5;
+        }
+
+        /* Hide full pass presentation on Mobile & Tablet to prevent clutter, keeping only the direct Print/Save action */
+        @media screen and (max-width: 900px) {
+          .a4-pass-container {
+            display: none !important;
+          }
+          .pass-screen-bar {
+            margin-bottom: 12px;
+          }
         }
 
         /* ══════════════════════════════════════════════════════════
@@ -990,7 +1004,7 @@ export default function DelegatePassPage({ onBackToHome }) {
             margin: 0 !important;
             padding: 0 !important;
           }
-          .no-print, header, footer, #webgl-container, .admin, .progress {
+          .no-print, header, footer, #webgl-container, .admin, .progress, .mobile-pass-action-banner {
             display: none !important;
           }
           .pass-page-wrapper {
@@ -999,6 +1013,7 @@ export default function DelegatePassPage({ onBackToHome }) {
             min-height: auto !important;
           }
           .a4-pass-container {
+            display: block !important;
             max-width: 100% !important;
             margin: 0 !important;
             padding: 0 !important;
@@ -1008,7 +1023,7 @@ export default function DelegatePassPage({ onBackToHome }) {
             color: #000000 !important;
             border: 2px solid #000000 !important;
             border-radius: 12px !important;
-            padding: 20px !important;
+            padding: 16px 20px !important;
             box-shadow: none !important;
             page-break-inside: avoid !important;
           }
@@ -1025,7 +1040,7 @@ export default function DelegatePassPage({ onBackToHome }) {
           }
           .pass-main-title {
             color: #000000 !important;
-            font-size: 26pt !important;
+            font-size: 24pt !important;
           }
           .pass-theme-tagline {
             color: #222222 !important;
@@ -1041,9 +1056,10 @@ export default function DelegatePassPage({ onBackToHome }) {
             border: 1px solid #000000 !important;
             color: #000000 !important;
           }
-          .pass-avatar-icon {
-            background: #e2e8f0 !important;
+          .pass-barcode-box {
+            background: #ffffff !important;
             border: 1px solid #000000 !important;
+            box-shadow: none !important;
           }
           .pass-field-value-primary {
             color: #000000 !important;
@@ -1079,8 +1095,18 @@ export default function DelegatePassPage({ onBackToHome }) {
             color: #000000 !important;
             font-weight: bold !important;
           }
-          .pass-docket-id, .pass-txn-ref, .pass-guidelines-footer {
+          .pass-docket-id, .pass-txn-ref {
             color: #333333 !important;
+          }
+          .pass-guidelines-footer {
+            border-top: 1.5px solid #000000 !important;
+          }
+          .pass-terms-title {
+            color: #000000 !important;
+            font-weight: bold !important;
+          }
+          .pass-terms-grid {
+            color: #222222 !important;
           }
         }
       `}</style>
