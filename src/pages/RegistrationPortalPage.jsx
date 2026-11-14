@@ -11,6 +11,7 @@ import { submitToPostgres } from '../utils/postgresService'
 import { buildUpiUri, extractNumericAmount, UPI_CONFIG } from '../utils/upiService'
 import { getTeamSizeRange } from '../utils/teamSizeHelper'
 import ReceiptModal from '../components/ReceiptModal'
+import CustomSelect from '../components/CustomSelect'
 
 export default function RegistrationPortalPage({ onBackToHome, onOpenPass, onReceiptModalToggle }) {
   const [selectedTrackType, setSelectedTrackType] = useState('management')
@@ -259,17 +260,15 @@ export default function RegistrationPortalPage({ onBackToHome, onOpenPass, onRec
                   {/* Specific Event Selector */}
                   <div className="field-group">
                     <label className="mono">Select Competitive Arena *</label>
-                    <select
+                    <CustomSelect
                       value={selectedEventId}
-                      onChange={(e) => setSelectedEventId(e.target.value)}
-                      className="portal-input"
-                    >
-                      {(selectedTrackType === 'management' ? MANAGEMENT_EVENTS : CULTURAL_EVENTS).map((ev) => (
-                        <option key={ev.id} value={ev.id}>
-                          {ev.title} ({ev.fee || '₹500'})
-                        </option>
-                      ))}
-                    </select>
+                      onChange={(val) => setSelectedEventId(val)}
+                      options={(selectedTrackType === 'management' ? MANAGEMENT_EVENTS : CULTURAL_EVENTS).map((ev) => ({
+                        value: ev.id,
+                        label: ev.title,
+                        badge: ev.fee || '₹500'
+                      }))}
+                    />
                   </div>
 
                   {/* Standard Form Inputs */}
@@ -330,21 +329,29 @@ export default function RegistrationPortalPage({ onBackToHome, onOpenPass, onRec
                   <div className="fields-row-2">
                     <div className="field-group">
                       <label className="mono">Current Academic Year</label>
-                      <select name="year" value={formData.year} onChange={handleChange} className="portal-input">
-                        <option>UG — 1st / 2nd Year</option>
-                        <option>UG — 3rd / 4th Year (4th Sem / Final Year)</option>
-                        <option>PG / MBA — 1st Year</option>
-                        <option>PG / MBA — 2nd Year</option>
-                        <option>Corporate Observer</option>
-                      </select>
+                      <CustomSelect
+                        value={formData.year}
+                        onChange={(val) => setFormData(prev => ({ ...prev, year: val }))}
+                        options={[
+                          'UG — 1st / 2nd Year',
+                          'UG — 3rd / 4th Year (4th Sem / Final Year)',
+                          'PG / MBA — 1st Year',
+                          'PG / MBA — 2nd Year',
+                          'Corporate Observer'
+                        ]}
+                      />
                     </div>
                     <div className="field-group">
                       <label className="mono">Delegation Format</label>
-                      <select name="delegationType" value={formData.delegationType} onChange={handleChange} className="portal-input">
-                        <option>Team Entry</option>
-                        <option>Individual Contender</option>
-                        <option>Institutional Contingent</option>
-                      </select>
+                      <CustomSelect
+                        value={formData.delegationType}
+                        onChange={(val) => setFormData(prev => ({ ...prev, delegationType: val }))}
+                        options={[
+                          'Team Entry',
+                          'Individual Contender',
+                          'Institutional Contingent'
+                        ]}
+                      />
                     </div>
                   </div>
 
