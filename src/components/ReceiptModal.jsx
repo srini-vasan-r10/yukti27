@@ -295,58 +295,69 @@ export default function ReceiptModal({ dossier, passUrl, onOpenPass, onClose }) 
               <small style={{ display: 'block', fontSize: '0.60rem', color: '#78716c', marginTop: '4px' }}>
                 Scan with mobile camera to view full A4 printable pass
               </small>
-
-              {/* Action Buttons Row: View Pass & Download Bill Image */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '12px' }}>
-                <button
-                  type="button"
-                  onClick={onOpenPass}
-                  style={{
-                    width: '100%',
-                    padding: '10px 14px',
-                    background: '#1F0E2C',
-                    color: '#FFF2A6',
-                    border: '1.5px solid #C59B3C',
-                    borderRadius: '8px',
-                    fontFamily: "'Plus Jakarta Sans', sans-serif",
-                    fontWeight: 'bold',
-                    fontSize: '0.80rem',
-                    cursor: 'pointer',
-                    letterSpacing: '0.03em'
-                  }}
-                >
-                  View & Print A4 Delegate Pass ↗
-                </button>
-
-                <button
-                  type="button"
-                  onClick={triggerBillDownload}
-                  style={{
-                    width: '100%',
-                    padding: '8px 12px',
-                    background: 'rgba(16, 185, 129, 0.12)',
-                    color: '#047857',
-                    border: '1px solid #10b981',
-                    borderRadius: '8px',
-                    fontFamily: "'Courier New', Courier, monospace",
-                    fontWeight: 'bold',
-                    fontSize: '0.74rem',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '6px'
-                  }}
-                >
-                  {downloadSuccess ? '✓ Bill Image Downloaded' : 'Download Receipt Bill Image (.PNG)'}
-                </button>
-              </div>
             </div>
 
             {/* Clean Receipt Footer Note */}
             <div style={{ textAlign: 'center', marginTop: '14px', paddingBottom: '6px', fontSize: '0.62rem', color: '#78716c', letterSpacing: '0.04em' }}>
               THIAGARAJAR SCHOOL OF MANAGEMENT · YUKTI ’27
             </div>
+          </div>
+
+          {/* Action Buttons Row: Outside Receipt Paper (not captured in PNG download) */}
+          <div style={{
+            background: 'rgba(31, 14, 44, 0.95)',
+            border: '1.5px solid rgba(197, 155, 60, 0.35)',
+            borderRadius: '0 0 12px 12px',
+            padding: '12px 14px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '8px',
+            boxShadow: '0 10px 25px rgba(0,0,0,0.85)',
+            zIndex: 30
+          }}>
+            <button
+              type="button"
+              onClick={onOpenPass}
+              style={{
+                width: '100%',
+                padding: '10px 14px',
+                background: '#1F0E2C',
+                color: '#FFF2A6',
+                border: '1.5px solid #C59B3C',
+                borderRadius: '8px',
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
+                fontWeight: 'bold',
+                fontSize: '0.80rem',
+                cursor: 'pointer',
+                letterSpacing: '0.03em',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.4)'
+              }}
+            >
+              View & Print A4 Delegate Pass ↗
+            </button>
+
+            <button
+              type="button"
+              onClick={triggerBillDownload}
+              style={{
+                width: '100%',
+                padding: '8px 12px',
+                background: 'rgba(16, 185, 129, 0.15)',
+                color: '#34d399',
+                border: '1px solid #10b981',
+                borderRadius: '8px',
+                fontFamily: "'Courier New', Courier, monospace",
+                fontWeight: 'bold',
+                fontSize: '0.74rem',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '6px'
+              }}
+            >
+              {downloadSuccess ? '✓ Bill Image Downloaded' : 'Download Receipt Bill Image (.PNG)'}
+            </button>
           </div>
         </div>
       </div>
