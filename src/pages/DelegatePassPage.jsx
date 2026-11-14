@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { QRCodeSVG } from 'qrcode.react'
 import JsBarcode from 'jsbarcode'
+import html2canvas from 'html2canvas'
 import SEOHead from '../utils/SEOHead'
 
 /**
@@ -16,7 +17,35 @@ export default function DelegatePassPage({ onBackToHome }) {
   const [emojis, setEmojis] = useState([])
   const [celebrating, setCelebrating] = useState(false)
   const [jumbledLetters, setJumbledLetters] = useState(['K', 'U', 'I', 'Y', 'T'])
+  const [isDownloadingPass, setIsDownloadingPass] = useState(false)
   const barcodeRef = useRef(null)
+  const passCardRef = useRef(null)
+
+  const handleDownloadPassImage = async () => {
+    if (!passCardRef.current) return
+    setIsDownloadingPass(true)
+    try {
+      const canvas = await html2canvas(passCardRef.current, {
+        scale: 2,
+        backgroundColor: '#150924',
+        useCORS: true,
+        logging: false
+      })
+      const img = canvas.toDataURL('image/png')
+      const link = document.createElement('a')
+      link.href = img
+      link.download = `YUKTI27-PASS-${passData?.regId || 'DELEGATE'}.png`
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+    } catch (err) {
+      console.warn('Error saving pass image:', err)
+      // Fallback to browser print if image capture is prevented on device
+      window.print()
+    } finally {
+      setIsDownloadingPass(false)
+    }
+  }
 
   // Wholesome, fun, safe emojis pool
   const safeEmojis = [
@@ -328,18 +357,59 @@ export default function DelegatePassPage({ onBackToHome }) {
         <button className="back-breadcrumb-btn" onClick={onBackToHome}>
           ← Return to Confluence
         </button>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
           <span className="mono gold" style={{ fontSize: '0.78rem' }}>1-PAGE A4 FRIENDLY PASS</span>
-          <button className="btn print-trigger-btn" onClick={() => window.print()}>
-            🖨️ Print Pass / Save as PDF
+          <button
+            className="btn print-trigger-btn"
+            onClick={handleDownloadPassImage}
+            disabled={isDownloadingPass}
+            style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
+          >
+            {isDownloadingPass ? '⏳ Saving Pass...' : '📥 Download Pass (.PNG)'}
           </button>
+          <button className="btn print-trigger-btn" onClick={() => window.print()}>
+            🖨️ Print Pass / PDF
+          </button>
+        </div>
+      </div>
+
+      {/* ═══ MOBILE / TABLET DEDICATED PROMINENT ACTION CARD ═══ */}
+      <div className="no-print mobile-pass-action-banner">
+        <div className="mobile-action-inner">
+          <div className="mobile-success-indicator">
+            <span className="mobile-check-icon">✓</span>
+            <div>
+              <h3 className="mobile-action-heading">Your Royal Pass is Ready!</h3>
+              <p className="mobile-action-sub">
+                Official docket confirmed for <strong>{passData.name}</strong>. Save it directly to your phone photos or print for gate entry.
+              </p>
+            </div>
+          </div>
+
+          <div className="mobile-buttons-row">
+            <button
+              type="button"
+              className="mobile-download-btn"
+              onClick={handleDownloadPassImage}
+              disabled={isDownloadingPass}
+            >
+              📥 {isDownloadingPass ? 'Generating Image...' : 'Click Here to Download Pass'}
+            </button>
+            <button
+              type="button"
+              className="mobile-print-btn"
+              onClick={() => window.print()}
+            >
+              🖨️ Print / Save as PDF
+            </button>
+          </div>
         </div>
       </div>
 
       {/* ═══ STANDARDIZED SINGLE-PAGE A4 PASS SHEET ═══ */}
       <div className="a4-pass-container">
         {/* Pass Outer Border Box */}
-        <div className="a4-pass-card">
+        <div ref={passCardRef} className="a4-pass-card">
           
           {/* 1. Header with Dual Logos & Accreditation */}
           <div className="pass-header-section">
@@ -512,10 +582,109 @@ export default function DelegatePassPage({ onBackToHome }) {
           background: linear-gradient(135deg, #FFF2A6 0%, #C59B3C 100%);
           color: #1F0E2C;
           font-weight: 800;
-          padding: 10px 20px;
+          padding: 10px 18px;
           border: none;
           border-radius: 8px;
           cursor: pointer;
+          font-size: 0.82rem;
+          transition: transform 0.2s ease;
+        }
+        .print-trigger-btn:hover {
+          transform: translateY(-2px);
+        }
+
+        /* ═══ MOBILE / TABLET DEDICATED ACTION BANNER ═══ */
+        .mobile-pass-action-banner {
+          max-width: 900px;
+          margin: 0 auto 24px;
+          position: relative;
+          z-index: 30;
+        }
+        .mobile-action-inner {
+          background: linear-gradient(145deg, rgba(77,29,100,0.55) 0%, rgba(31,14,44,0.95) 100%);
+          border: 1.5px solid #C59B3C;
+          border-radius: 18px;
+          padding: 20px 22px;
+          box-shadow: 0 10px 40px rgba(0,0,0,0.7), 0 0 25px rgba(197,155,60,0.25);
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+        }
+        .mobile-success-indicator {
+          display: flex;
+          align-items: flex-start;
+          gap: 14px;
+        }
+        .mobile-check-icon {
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          background: #10b981;
+          color: #ffffff;
+          font-weight: bold;
+          font-size: 1.2rem;
+          display: grid;
+          placeItems: center;
+          flex-shrink: 0;
+          box-shadow: 0 0 12px #10b981;
+        }
+        .mobile-action-heading {
+          margin: 0 0 4px;
+          color: #FFF2A6;
+          font-size: 1.15rem;
+          font-weight: 800;
+        }
+        .mobile-action-sub {
+          margin: 0;
+          color: #cbd5e1;
+          font-size: 0.84rem;
+          line-height: 1.5;
+        }
+        .mobile-buttons-row {
+          display: flex;
+          gap: 10px;
+          flex-wrap: wrap;
+        }
+        .mobile-download-btn {
+          flex: 1 1 200px;
+          padding: 13px 18px;
+          background: linear-gradient(135deg, #FFF2A6 0%, #C59B3C 100%);
+          color: #1F0E2C;
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-weight: 800;
+          font-size: 0.88rem;
+          border: none;
+          border-radius: 10px;
+          cursor: pointer;
+          box-shadow: 0 4px 18px rgba(197,155,60,0.35);
+          transition: transform 0.15s ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+        }
+        .mobile-download-btn:active {
+          transform: scale(0.97);
+        }
+        .mobile-print-btn {
+          flex: 1 1 140px;
+          padding: 13px 18px;
+          background: rgba(31,14,44,0.85);
+          color: #FFF2A6;
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-weight: 700;
+          font-size: 0.88rem;
+          border: 1.5px solid #C59B3C;
+          border-radius: 10px;
+          cursor: pointer;
+          transition: transform 0.15s ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+        }
+        .mobile-print-btn:active {
+          transform: scale(0.97);
         }
 
         /* Screen Presentation of Pass */
