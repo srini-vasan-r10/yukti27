@@ -30,24 +30,38 @@ export default function ReceiptModal({ dossier, passUrl, onOpenPass, onClose }) 
   const triggerBillDownload = async () => {
     if (!receiptCaptureRef.current) return
     try {
-      // Small delay to ensure QR code and DOM are fully rendered
-      setTimeout(async () => {
-        if (!receiptCaptureRef.current) return
-        const canvas = await html2canvas(receiptCaptureRef.current, {
-          scale: 2, // High resolution capture
-          backgroundColor: '#FFFDF7',
-          useCORS: true,
-          logging: false
-        })
-        const image = canvas.toDataURL('image/png')
-        const link = document.createElement('a')
-        link.href = image
-        link.download = `YUKTI27-RECEIPT-${dossier.regId || 'BILL'}.png`
-        document.body.appendChild(link)
-        link.click()
-        document.body.removeChild(link)
-        setDownloadSuccess(true)
-      }, 500)
+      const el = receiptCaptureRef.current
+      // Save current scroll position and full scrollHeight
+      const originalScrollTop = el.scrollTop
+      const originalMaxHeight = el.style.maxHeight
+      const originalOverflow = el.style.overflowY
+
+      // Expand to natural content height so html2canvas captures entire receipt from header to QR without blank space
+      el.style.maxHeight = 'none'
+      el.style.overflowY = 'visible'
+
+      const canvas = await html2canvas(el, {
+        scale: 2, // Crisp retina resolution
+        backgroundColor: '#FFFDF7',
+        useCORS: true,
+        logging: false,
+        windowWidth: el.scrollWidth,
+        windowHeight: el.scrollHeight
+      })
+
+      // Revert styles back to scrollable modal viewport
+      el.style.maxHeight = originalMaxHeight
+      el.style.overflowY = originalOverflow
+      el.scrollTop = originalScrollTop
+
+      const image = canvas.toDataURL('image/png')
+      const link = document.createElement('a')
+      link.href = image
+      link.download = `YUKTI27-RECEIPT-${dossier.regId || 'BILL'}.png`
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+      setDownloadSuccess(true)
     } catch (err) {
       console.warn('Receipt image download error:', err)
     }
@@ -257,23 +271,8 @@ export default function ReceiptModal({ dossier, passUrl, onOpenPass, onClose }) 
               </div>
             </div>
 
-            {/* Advisory Notice */}
-            <div style={{
-              background: '#FEF3C7',
-              border: '1px solid #F59E0B',
-              borderRadius: '6px',
-              padding: '6px 8px',
-              textAlign: 'center',
-              fontSize: '0.66rem',
-              color: '#92400E',
-              fontWeight: 'bold',
-              marginBottom: '12px'
-            }}>
-              PLEASE SAVE OR SCREENSHOT THIS RECEIPT FOR ENTRANCE VERIFICATION
-            </div>
-
-            {/* ═══ SCANNABLE QR CODE FOR ROYAL PASS TREATMENT ═══ */}
-            <div style={{ textAlign: 'center', borderTop: '1px dashed #a8a29e', paddingTop: '10px' }}>
+            {/* ═══ SCANNABLE QR CODE FOR VERIFIED PASS ═══ */}
+            <div style={{ textAlign: 'center', paddingTop: '6px' }}>
               <div style={{ fontSize: '0.66rem', fontWeight: 'bold', letterSpacing: '0.04em', marginBottom: '8px', color: '#1c1917' }}>
                 SCAN QR BELOW FOR OFFICIAL DELEGATE ENTRY PASS
               </div>
@@ -352,22 +351,10 @@ export default function ReceiptModal({ dossier, passUrl, onOpenPass, onClose }) 
               </div>
             </div>
 
-            {/* Footer Receipt Note with generous bottom padding so jagged edge never touches text */}
-            <div style={{ textAlign: 'center', marginTop: '14px', paddingBottom: '16px', fontSize: '0.62rem', color: '#78716c' }}>
-              HAVE A WONDERFUL EXPERIENCE AT YUKTI ’27!
+            {/* Clean Receipt Footer Note */}
+            <div style={{ textAlign: 'center', marginTop: '14px', paddingBottom: '6px', fontSize: '0.62rem', color: '#78716c', letterSpacing: '0.04em' }}>
+              THIAGARAJAR SCHOOL OF MANAGEMENT · YUKTI ’27
             </div>
-
-            {/* Jagged / Zigzag paper bottom edge effect */}
-            <div style={{
-              position: 'absolute',
-              bottom: '0',
-              left: 0,
-              right: 0,
-              height: '8px',
-              backgroundImage: 'radial-gradient(circle, transparent, transparent 50%, #FFFDF7 50%, #FFFDF7 100%)',
-              backgroundSize: '12px 14px',
-              pointerEvents: 'none'
-            }} />
           </div>
         </div>
       </div>
