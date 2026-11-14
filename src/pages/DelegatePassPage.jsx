@@ -508,9 +508,9 @@ export default function DelegatePassPage({ onBackToHome }) {
             </div>
           )}
 
-          {/* 5. Access Zones & Verification QR Row */}
+          {/* 5. Access Zones & Verification QR Row (Boarding Pass Architecture with Tear-off Perforation Notch) */}
           <div className="pass-zones-qr-row">
-            {/* Permitted Campus Zones */}
+            {/* Permitted Campus Zones & Logistics (Main Body) */}
             <div className="pass-zones-box">
               <span className="pass-section-label">PERMITTED ALL-CONFLUENCE CAMPUS ZONES:</span>
               <div className="pass-zones-checklist">
@@ -537,13 +537,21 @@ export default function DelegatePassPage({ onBackToHome }) {
               </div>
             </div>
 
-            {/* Verification Security QR & Stamp */}
+            {/* Boarding Pass Tear-Off Perforation Divider with Top & Bottom Cutout Notches */}
+            <div className="pass-tearoff-divider">
+              <div className="notch-cut notch-top"></div>
+              <div className="dashed-tear-line"></div>
+              <span className="tear-label mono">TEAR / SCAN</span>
+              <div className="notch-cut notch-bottom"></div>
+            </div>
+
+            {/* Verification Security QR & Stamp (Gate Entry Stub) */}
             <div className="pass-security-box">
               <span className="pass-qr-header">SCAN AT GATE ENTRY</span>
               <div className="pass-qr-frame">
                 <QRCodeSVG
                   value={qrPassPayload}
-                  size={118}
+                  size={124}
                   level="M"
                   includeMargin={false}
                 />
@@ -890,9 +898,54 @@ export default function DelegatePassPage({ onBackToHome }) {
 
         .pass-zones-qr-row {
           display: grid;
-          grid-template-columns: 1fr 200px;
-          gap: 18px;
+          grid-template-columns: 1fr 28px 210px;
+          gap: 12px;
+          align-items: stretch;
           margin-bottom: 16px;
+          position: relative;
+        }
+        .pass-tearoff-divider {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-between;
+          position: relative;
+          padding: 8px 0;
+        }
+        .dashed-tear-line {
+          width: 1px;
+          height: 100%;
+          border-left: 2px dashed rgba(197,155,60,0.5);
+        }
+        .tear-label {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%) rotate(90deg);
+          white-space: nowrap;
+          font-size: 0.52rem;
+          color: #F5D77F;
+          letter-spacing: 0.2em;
+          background: #150924;
+          padding: 2px 6px;
+        }
+        .notch-cut {
+          width: 18px;
+          height: 18px;
+          background: #090412;
+          border-radius: 50%;
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 5;
+        }
+        .notch-top {
+          top: -14px;
+          box-shadow: inset 0 -2px 4px rgba(0,0,0,0.8);
+        }
+        .notch-bottom {
+          bottom: -14px;
+          box-shadow: inset 0 2px 4px rgba(0,0,0,0.8);
         }
         .pass-zones-box {
           background: rgba(15,7,32,0.6);
@@ -995,12 +1048,12 @@ export default function DelegatePassPage({ onBackToHome }) {
         @media print {
           @page {
             size: A4 portrait;
-            margin: 10mm;
+            margin: 6mm 8mm;
           }
           body, html {
             background: #ffffff !important;
             color: #000000 !important;
-            font-size: 11pt;
+            font-size: 10.5pt;
             margin: 0 !important;
             padding: 0 !important;
           }
@@ -1023,90 +1076,194 @@ export default function DelegatePassPage({ onBackToHome }) {
             color: #000000 !important;
             border: 2px solid #000000 !important;
             border-radius: 12px !important;
-            padding: 16px 20px !important;
+            padding: 22px 24px 20px !important;
             box-shadow: none !important;
             page-break-inside: avoid !important;
+            min-height: 258mm !important; /* Calibrated to fill 88-90% of A4 portrait gracefully */
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            box-sizing: border-box !important;
           }
           .pass-header-section {
             border-bottom: 2px solid #000000 !important;
+            padding-bottom: 12px !important;
+            margin-bottom: 14px !important;
           }
           .pass-inst-title {
             color: #000000 !important;
-            font-size: 11pt !important;
+            font-size: 11.5pt !important;
             font-weight: bold !important;
           }
           .pass-inst-sub {
             color: #333333 !important;
+            font-size: 7pt !important;
+          }
+          .pass-hero-banner {
+            margin-bottom: 16px !important;
           }
           .pass-main-title {
             color: #000000 !important;
-            font-size: 24pt !important;
+            font-size: 26pt !important;
+            letter-spacing: -0.01em !important;
           }
           .pass-theme-tagline {
             color: #222222 !important;
             font-weight: bold !important;
+            font-size: 9pt !important;
+            letter-spacing: 0.16em !important;
           }
           .pass-status-pill {
             background: #f4f4f5 !important;
             border: 1px solid #000000 !important;
             color: #000000 !important;
+            font-size: 7.5pt !important;
+            padding: 3px 10px !important;
           }
           .pass-details-grid {
             background: #f8fafc !important;
-            border: 1px solid #000000 !important;
+            border: 1.5px solid #000000 !important;
             color: #000000 !important;
+            padding: 14px 18px !important;
+            margin-bottom: 14px !important;
+            grid-template-columns: 145px 1fr 1fr !important;
           }
           .pass-barcode-box {
             background: #ffffff !important;
-            border: 1px solid #000000 !important;
+            border: 1.5px solid #000000 !important;
             box-shadow: none !important;
+            padding: 4px 6px !important;
+          }
+          .pass-real-barcode {
+            max-width: 130px !important;
+            height: 38px !important;
+          }
+          .pass-field-label {
+            color: #444444 !important;
+            font-size: 6.5pt !important;
           }
           .pass-field-value-primary {
             color: #000000 !important;
+            font-size: 12.5pt !important;
+            font-weight: bold !important;
           }
           .pass-field-value, .pass-field-value-gold {
             color: #111111 !important;
+            font-size: 9.5pt !important;
           }
           .pass-members-box {
             background: #f8fafc !important;
             border: 1px solid #000000 !important;
+            padding: 10px 14px !important;
+            margin-bottom: 14px !important;
+          }
+          .pass-section-label {
+            color: #111111 !important;
+            font-weight: bold !important;
+            font-size: 7.5pt !important;
           }
           .pass-member-chip {
             background: #ffffff !important;
-            border: 1px solid #888888 !important;
+            border: 1px solid #666666 !important;
             color: #000000 !important;
+            font-size: 8pt !important;
+          }
+          .pass-zones-qr-row {
+            grid-template-columns: 1fr 24px 190px !important;
+            gap: 8px !important;
+            margin-bottom: 14px !important;
           }
           .pass-zones-box {
             background: #f8fafc !important;
-            border: 1px solid #000000 !important;
+            border: 1.5px solid #000000 !important;
             color: #000000 !important;
+            padding: 14px 16px !important;
           }
           .pass-zones-checklist {
             color: #111111 !important;
+            font-size: 8.5pt !important;
+            line-height: 1.5 !important;
+          }
+          .pass-logistics-strip {
+            border-top: 1px solid #cccccc !important;
+            padding-top: 10px !important;
+            font-size: 8pt !important;
+          }
+          .pass-micro-label {
+            color: #555555 !important;
+            font-size: 6.5pt !important;
+          }
+          /* Boarding Pass Tear-Off Divider in Print */
+          .pass-tearoff-divider {
+            display: flex !important;
+          }
+          .dashed-tear-line {
+            border-left: 2px dashed #000000 !important;
+          }
+          .tear-label {
+            background: #ffffff !important;
+            color: #000000 !important;
+            font-weight: bold !important;
+            font-size: 5.5pt !important;
+            border: 1px solid #000000 !important;
+          }
+          .notch-cut {
+            background: #ffffff !important;
+            border: 2px solid #000000 !important;
+            box-shadow: none !important;
+          }
+          .notch-top {
+            border-bottom: none !important;
+            border-radius: 0 0 16px 16px !important;
+            top: -22px !important;
+            height: 12px !important;
+            width: 22px !important;
+          }
+          .notch-bottom {
+            border-top: none !important;
+            border-radius: 16px 16px 0 0 !important;
+            bottom: -22px !important;
+            height: 12px !important;
+            width: 22px !important;
           }
           .pass-security-box {
             background: #ffffff !important;
-            border: 1px dashed #000000 !important;
+            border: 1.5px dashed #000000 !important;
+            padding: 10px !important;
+          }
+          .pass-qr-header {
+            color: #000000 !important;
+            font-weight: bold !important;
+            font-size: 7pt !important;
           }
           .pass-qr-frame {
-            border: 1px solid #000000 !important;
+            border: 1.5px solid #000000 !important;
+            padding: 4px !important;
           }
           .pass-verified-badge {
             color: #000000 !important;
             font-weight: bold !important;
+            font-size: 7.5pt !important;
           }
           .pass-docket-id, .pass-txn-ref {
-            color: #333333 !important;
+            color: #111111 !important;
+            font-size: 7pt !important;
           }
           .pass-guidelines-footer {
             border-top: 1.5px solid #000000 !important;
+            padding-top: 12px !important;
+            margin-top: 10px !important;
           }
           .pass-terms-title {
             color: #000000 !important;
             font-weight: bold !important;
+            font-size: 7.5pt !important;
+            margin-bottom: 6px !important;
           }
           .pass-terms-grid {
             color: #222222 !important;
+            font-size: 6.8pt !important;
+            line-height: 1.45 !important;
           }
         }
       `}</style>
