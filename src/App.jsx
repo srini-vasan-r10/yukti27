@@ -791,17 +791,15 @@ export default function App() {
             {/* Column 1: Brand & Sitemap */}
             <div className="footer-grid-brand-sitemap">
               <div className="footer-brand-header">
-                <div className="footer-dual-logos">
-                  <div className="footer-logo-ring">
-                    <img src="/yukti-logo.webp" alt="YUKTI ’27 Logo" className="footer-yukti-logo" loading="lazy" width="56" height="56" />
-                  </div>
-                  <div className="footer-logo-divider" />
-                  <div className="footer-logo-ring">
-                    <img src="/tsm-logo.webp" alt="TSM Madurai Crest" className="footer-tsm-logo" loading="lazy" width="56" height="56" />
-                  </div>
-                  <div className="footer-brand-title-wrap">
-                    <span className="footer-inst-title">YUKTI '27 | Thiagarajar School of Management</span>
-                    <span className="footer-inst-sub">Madurai · Tamil Nadu · Estd 1962</span>
+                <div className="footer-title-row">
+                  <h3 className="footer-inst-title">Thiagarajar School of Management</h3>
+                  <div className="footer-dual-logos">
+                    <div className="footer-logo-ring">
+                      <img src="/yukti-logo.webp" alt="YUKTI ’27 Logo" className="footer-yukti-logo" loading="lazy" width="40" height="40" />
+                    </div>
+                    <div className="footer-logo-ring">
+                      <img src="/tsm-logo.webp" alt="TSM Madurai Crest" className="footer-tsm-logo" loading="lazy" width="40" height="40" />
+                    </div>
                   </div>
                 </div>
                 <div className="footer-copyright-note">

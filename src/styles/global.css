@@ -723,11 +723,11 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
 .creative-footer{
   position:relative;
   z-index:20; /* Elevate above WebGL canvas (z-index: 1) and standard sections */
-  padding:50px 7vw 36px;
+  padding:48px 5vw 32px;
   display:flex;
   flex-direction:column;
-  gap:36px;
-  background:#0b0514; /* Solid opaque backdrop so 3D objects never bleed through */
+  gap:32px;
+  background:#0b0514;
   background:linear-gradient(180deg, #180927 0%, #0b0514 100%);
   border-top:2px solid var(--gold-border);
   box-shadow:0 -30px 60px rgba(0,0,0,0.85);
@@ -735,8 +735,8 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
 
 .footer-layout-grid{
   display:grid;
-  grid-template-columns:1.25fr 1fr 1.1fr;
-  gap:44px;
+  grid-template-columns:1.35fr 1.05fr 1fr;
+  gap:40px;
   align-items:start;
 }
 
@@ -744,35 +744,51 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
 .footer-grid-brand-sitemap{
   display:flex;
   flex-direction:column;
-  gap:24px;
+  gap:22px;
 }
 .footer-brand-header{
   display:flex;
   flex-direction:column;
-  gap:10px;
+  gap:8px;
 }
-.footer-dual-logos{
+.footer-title-row{
   display:flex;
   align-items:center;
-  gap:14px;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+}
+.footer-inst-title{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:1.15rem;
+  font-weight:700;
+  color:#ffffff;
+  letter-spacing:0.01em;
+  line-height:1.25;
+  margin:0;
+}
+.footer-dual-logos{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  flex-shrink:0;
 }
 .footer-logo-ring{
-  width:52px;
-  height:52px;
+  width:40px;
+  height:40px;
   border-radius:50%;
   border:1px solid var(--gold-border);
-  padding:3px;
+  padding:2px;
   display:grid;
   place-items:center;
   background:rgba(31,14,44,0.6);
-  box-shadow:0 0 16px rgba(197,155,60,0.25);
-  transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+  box-shadow:0 0 12px rgba(197,155,60,0.25);
+  transition:transform .3s ease, border-color .3s ease;
   flex-shrink:0;
 }
 .footer-logo-ring:hover{
   transform:scale(1.08);
   border-color:var(--gold-figure);
-  box-shadow:0 0 24px rgba(245,215,127,0.45);
 }
 .footer-yukti-logo,
 .footer-tsm-logo{
@@ -785,35 +801,11 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
 .footer-tsm-logo{
   object-fit:contain;
 }
-.footer-logo-divider{
-  width:1px;
-  height:36px;
-  background:rgba(197,155,60,0.35);
-}
-.footer-brand-title-wrap{
-  display:flex;
-  flex-direction:column;
-  gap:2px;
-}
-.footer-inst-title{
-  font-family:'Space Grotesk',sans-serif;
-  font-size:1.05rem;
-  font-weight:700;
-  color:#ffffff;
-  letter-spacing:0.02em;
-  line-height:1.25;
-}
-.footer-inst-sub{
-  font-size:0.75rem;
-  color:var(--muted);
-  font-family:var(--font-mono, monospace);
-  letter-spacing:0.04em;
-}
 .footer-copyright-note{
-  font-size:0.78rem;
+  font-size:0.8rem;
   color:#94a3b8;
   line-height:1.4;
-  margin-top:2px;
+  margin:0;
 }
 
 .footer-sitemap-section{
@@ -823,12 +815,13 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
 }
 .footer-section-heading{
   font-family:'Space Grotesk',sans-serif;
-  font-size:0.95rem;
+  font-size:1.05rem;
   font-weight:700;
   color:#ffffff;
-  letter-spacing:0.03em;
+  letter-spacing:0.02em;
   display:block;
-  margin-bottom:2px;
+  margin:0 0 4px 0;
+  line-height:1.25;
 }
 .footer-sitemap-links{
   display:flex;
@@ -837,10 +830,11 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
 }
 .footer-sitemap-links a{
   color:#cbd5e1;
-  font-size:0.8rem;
+  font-size:0.82rem;
   text-decoration:none;
-  transition:color 0.2s ease, transform 0.2s ease;
+  transition:color 0.2s ease;
   white-space:nowrap;
+  line-height:1.4;
 }
 .footer-sitemap-links a:hover{
   color:var(--gold-figure, #F5D77F);
@@ -860,8 +854,8 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
   gap:10px;
 }
 .contact-detail-row{
-  font-size:0.84rem;
-  line-height:1.5;
+  font-size:0.86rem;
+  line-height:1.55;
   color:#cbd5e1;
 }
 .contact-label{
@@ -869,7 +863,7 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
   font-weight:600;
 }
 .contact-accent-link{
-  color:#38bdf8; /* Clear readable modern email link */
+  color:#38bdf8;
   text-decoration:none;
   transition:color 0.2s ease;
   word-break:break-all;
@@ -885,14 +879,14 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
   display:flex;
   flex-wrap:wrap;
   align-items:center;
-  gap:8px;
-  margin-top:8px;
-  padding-top:10px;
+  gap:10px;
+  margin-top:10px;
+  padding-top:12px;
   border-top:1px solid rgba(197,155,60,0.15);
 }
 .contact-social-row a{
   color:#e2e8f0;
-  font-size:0.8rem;
+  font-size:0.82rem;
   text-decoration:none;
   transition:color 0.2s ease;
 }
@@ -908,6 +902,7 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
 .footer-grid-map{
   display:flex;
   flex-direction:column;
+  align-items:flex-end;
 }
 .footer-map-card{
   position:relative;
@@ -916,8 +911,9 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
   border-radius:14px;
   overflow:hidden;
   box-shadow:0 12px 32px rgba(0,0,0,0.5);
-  height:190px;
+  height:185px;
   width:100%;
+  max-width:380px;
 }
 .footer-map-header{
   position:absolute;
