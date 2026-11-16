@@ -787,42 +787,104 @@ export default function App() {
       {/* ── Creative High-Impact Global Footer (Hidden on pass page & receipt modal) ── */}
       {currentPage !== 'pass' && !hideGlobalFooter && (
         <footer className="site-footer creative-footer">
-          <div className="footer-top-row">
-            <div className="footer-brand-col">
-              <div className="footer-dual-logos">
-                <div className="footer-logo-ring">
-                  <img src="/yukti-logo.webp" alt="YUKTI ’27 Logo" className="footer-yukti-logo" loading="lazy" width="64" height="64" />
+          <div className="footer-layout-grid">
+            {/* Column 1: Brand & Sitemap */}
+            <div className="footer-grid-brand-sitemap">
+              <div className="footer-brand-header">
+                <div className="footer-dual-logos">
+                  <div className="footer-logo-ring">
+                    <img src="/yukti-logo.webp" alt="YUKTI ’27 Logo" className="footer-yukti-logo" loading="lazy" width="56" height="56" />
+                  </div>
+                  <div className="footer-logo-divider" />
+                  <div className="footer-logo-ring">
+                    <img src="/tsm-logo.webp" alt="TSM Madurai Crest" className="footer-tsm-logo" loading="lazy" width="56" height="56" />
+                  </div>
+                  <div className="footer-brand-title-wrap">
+                    <span className="footer-inst-title">YUKTI '27 | Thiagarajar School of Management</span>
+                    <span className="footer-inst-sub">Madurai · Tamil Nadu · Estd 1962</span>
+                  </div>
                 </div>
-                <div className="footer-logo-divider" />
-                <div className="footer-logo-ring">
-                  <img src="/tsm-logo.webp" alt="TSM Madurai Crest" className="footer-tsm-logo" loading="lazy" width="64" height="64" />
+                <div className="footer-copyright-note">
+                  © 2027 Thiagarajar School of Management. All rights reserved.
                 </div>
               </div>
-              <div className="footer-titles">
-                <span className="footer-super">YUKTI ’27 · INTANGIBLES</span>
-                <p className="footer-venue">Thiagarajar School of Management (TSM), Madurai – 625005</p>
-                <small className="mono gold">NAAC A+ & NBA ACCREDITED · ESTD 1962</small>
+
+              <div className="footer-sitemap-section">
+                <span className="footer-section-heading">Sitemap</span>
+                <div className="footer-sitemap-links">
+                  <a href="#hero" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>Home</a>
+                  <a href="#about" onClick={(e) => { e.preventDefault(); document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' }) }}>About</a>
+                  <a href="#why-attend" onClick={(e) => { e.preventDefault(); document.getElementById('why-attend')?.scrollIntoView({ behavior: 'smooth' }) }}>Who Can Participate?</a>
+                  <a href="/events/management" onClick={(e) => { e.preventDefault(); navigateTo('management') }}>Conference Tracks</a>
+                  <a href="/events/cultural" onClick={(e) => { e.preventDefault(); navigateTo('cultural') }}>Cultural Confluence</a>
+                  <a href="#sponsors" onClick={(e) => { e.preventDefault(); document.getElementById('sponsors')?.scrollIntoView({ behavior: 'smooth' }) }}>Corporate Partners</a>
+                  <a href="/register" onClick={(e) => { e.preventDefault(); navigateTo('portal') }}>Submission Procedure</a>
+                  <a href="#timeline" onClick={(e) => { e.preventDefault(); document.getElementById('timeline')?.scrollIntoView({ behavior: 'smooth' }) }}>Key Dates</a>
+                  <a href="/schedule" onClick={(e) => { e.preventDefault(); navigateTo('schedule') }}>Schedule</a>
+                  <a href="#updates" onClick={(e) => { e.preventDefault(); document.getElementById('updates')?.scrollIntoView({ behavior: 'smooth' }) }}>Updates</a>
+                  <a href="#faq" onClick={(e) => { e.preventDefault(); document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' }) }}>FAQs</a>
+                  <a href="/register" onClick={(e) => { e.preventDefault(); navigateTo('portal') }}>Sign-in / Sign up</a>
+                </div>
               </div>
             </div>
 
-            <div className="footer-nav-columns">
-              <div className="footer-col-block">
-                <span className="mono gold col-title">Confluences</span>
-                <a href="/events/management" onClick={(e) => { e.preventDefault(); navigateTo('management') }}>Management Arenas (6)</a>
-                <a href="/events/cultural" onClick={(e) => { e.preventDefault(); navigateTo('cultural') }}>Cultural Confluence (6)</a>
-                <a href="/register" onClick={(e) => { e.preventDefault(); navigateTo('portal') }}>Registration Portal</a>
-                <a href="#about" onClick={(e) => { e.preventDefault(); document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' }) }}>Summit Philosophy</a>
-                <a href="#sponsors" onClick={(e) => { e.preventDefault(); document.getElementById('sponsors')?.scrollIntoView({ behavior: 'smooth' }) }}>Corporate Partners</a>
+            {/* Column 2: Contact Us */}
+            <div className="footer-grid-contact">
+              <span className="footer-section-heading">Contact Us</span>
+              <div className="footer-contact-details">
+                <div className="contact-detail-row">
+                  <span className="contact-label">Conference Chairperson:</span>{' '}
+                  <a href="mailto:chairperson@tsm.ac.in" className="contact-accent-link">chairperson@tsm.ac.in</a>
+                </div>
+                <div className="contact-detail-row">
+                  <span className="contact-label">General Enquiries:</span>{' '}
+                  <a href="mailto:yukti@tsm.ac.in" className="contact-accent-link">yukti@tsm.ac.in</a>
+                </div>
+                <div className="contact-detail-row contact-campus-line">
+                  <span className="contact-label">Campus Desk:</span>{' '}
+                  <span className="contact-text-dim">TSM Madurai, Pasumalai, Madurai – 625005</span>
+                </div>
+                <div className="contact-social-row">
+                  <a href={SITE_CONFIG.socialLinks.instagram} target="_blank" rel="noreferrer" title="Instagram">Instagram</a>
+                  <span className="social-sep">·</span>
+                  <a href={SITE_CONFIG.socialLinks.youtube} target="_blank" rel="noreferrer" title="YouTube">YouTube</a>
+                  <span className="social-sep">·</span>
+                  <a href={SITE_CONFIG.socialLinks.linkedin} target="_blank" rel="noreferrer" title="LinkedIn">LinkedIn</a>
+                  <span className="social-sep">·</span>
+                  <a href={SITE_CONFIG.socialLinks.twitter} target="_blank" rel="noreferrer" title="X (Twitter)">X</a>
+                  <span className="social-sep">·</span>
+                  <a href={SITE_CONFIG.socialLinks.facebook} target="_blank" rel="noreferrer" title="Facebook">Facebook</a>
+                </div>
               </div>
+            </div>
 
-              <div className="footer-col-block">
-                <span className="mono gold col-title">Official Channels</span>
-                <span className="contact-link">Email: <a href="mailto:yukti@tsm.ac.in">yukti@tsm.ac.in</a></span>
-                <span className="contact-link">Instagram: <a href={SITE_CONFIG.socialLinks.instagram} target="_blank" rel="noreferrer">@yukti.tsm</a></span>
-                <span className="contact-link">YouTube: <a href={SITE_CONFIG.socialLinks.youtube} target="_blank" rel="noreferrer">TSM Madurai</a></span>
-                <span className="contact-link">LinkedIn: <a href={SITE_CONFIG.socialLinks.linkedin} target="_blank" rel="noreferrer">Thiagarajar School</a></span>
-                <span className="contact-link">X (Twitter): <a href={SITE_CONFIG.socialLinks.twitter} target="_blank" rel="noreferrer">@tsmmadurai</a></span>
-                <span className="contact-link">Facebook: <a href={SITE_CONFIG.socialLinks.facebook} target="_blank" rel="noreferrer">TSM Official</a></span>
+            {/* Column 3: Interactive Google Maps Widget */}
+            <div className="footer-grid-map">
+              <div className="footer-map-card">
+                <div className="footer-map-header">
+                  <a
+                    href="https://maps.google.com/?q=Thiagarajar+School+of+Management+Madurai"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="footer-map-badge"
+                  >
+                    <span>Maps</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                      <polyline points="15 3 21 3 21 9" />
+                      <line x1="10" y1="14" x2="21" y2="3" />
+                    </svg>
+                  </a>
+                </div>
+                <div className="footer-map-iframe-wrap">
+                  <iframe
+                    title="Thiagarajar School of Management Madurai Map"
+                    src="https://maps.google.com/maps?q=Thiagarajar+School+of+Management+Madurai&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                    loading="lazy"
+                    allowFullScreen=""
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -833,7 +895,7 @@ export default function App() {
               POWERED BY <span className="gold">INNOVATION</span> | <span className="gold">CULTURE</span> | <span className="gold">LEADERSHIP</span>
             </div>
             <div className="footer-sub-note">
-              © 2027 Thiagarajar School of Management. All rights reserved.
+              NAAC A+ & NBA ACCREDITED · ESTD 1962 · PASUMALAI, MADURAI
             </div>
           </div>
         </footer>
