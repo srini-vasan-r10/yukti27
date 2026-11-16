@@ -739,6 +739,11 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
   gap:40px;
   flex-wrap:wrap;
 }
+.footer-links-group{
+  display:flex;
+  gap:48px;
+  align-items:flex-start;
+}
 .footer-brand-col{
   display:flex;
   flex-direction:column;
@@ -1722,10 +1727,28 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
   .topbar-tsm-col{
     display:none; /* Hide crest in topbar on compact phones to avoid crowding */
   }
+  .footer-links-group{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+    width:100%;
+  }
+  .footer-links-group{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+    width:100%;
+  }
+  .footer-col-block a{
+    font-size:.78rem;
+  }
+  .contact-link{
+    font-size:.76rem;
+  }
   .footer-top-row{
     flex-direction:column;
     align-items:flex-start;
-    gap:28px;
+    gap:22px;
     text-align:left;
   }
   .footer-brand-col{
@@ -1968,10 +1991,22 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
     gap:24px;
     text-align:left;
   }
+  .footer-links-group{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+    width:100%;
+  }
+  .footer-col-block a{
+    font-size:.78rem;
+  }
+  .contact-link{
+    font-size:.76rem;
+  }
   .footer-top-row{
     flex-direction:column;
     align-items:flex-start;
-    gap:24px;
+    gap:22px;
     text-align:left;
   }
   .footer-brand-col{

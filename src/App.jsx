@@ -791,11 +791,11 @@ export default function App() {
             <div className="footer-brand-col">
               <div className="footer-dual-logos">
                 <div className="footer-logo-ring">
-                  <img src="/yukti-logo.webp" alt="YUKTI ’27 Logo" className="footer-yukti-logo" loading="lazy" width="64" height="64" />
+                  <img src="/yukti-logo.webp" alt="YUKTI ’27 Logo" className="footer-yukti-logo" loading="lazy" width="56" height="56" />
                 </div>
                 <div className="footer-logo-divider" />
                 <div className="footer-logo-ring">
-                  <img src="/tsm-logo.webp" alt="TSM Madurai Crest" className="footer-tsm-logo" loading="lazy" width="64" height="64" />
+                  <img src="/tsm-logo.webp" alt="TSM Madurai Crest" className="footer-tsm-logo" loading="lazy" width="56" height="56" />
                 </div>
               </div>
               <div className="footer-titles">
@@ -805,23 +805,25 @@ export default function App() {
               </div>
             </div>
 
-            <div className="footer-col-block">
-              <span className="mono gold col-title">Confluences</span>
-              <a href="/events/management" onClick={(e) => { e.preventDefault(); navigateTo('management') }}>Management Arenas (6)</a>
-              <a href="/events/cultural" onClick={(e) => { e.preventDefault(); navigateTo('cultural') }}>Cultural Confluence (6)</a>
-              <a href="/register" onClick={(e) => { e.preventDefault(); navigateTo('portal') }}>Registration Portal</a>
-              <a href="#about" onClick={(e) => { e.preventDefault(); document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' }) }}>Summit Philosophy</a>
-              <a href="#sponsors" onClick={(e) => { e.preventDefault(); document.getElementById('sponsors')?.scrollIntoView({ behavior: 'smooth' }) }}>Corporate Partners</a>
-            </div>
+            <div className="footer-links-group">
+              <div className="footer-col-block">
+                <span className="mono gold col-title">Confluences</span>
+                <a href="/events/management" onClick={(e) => { e.preventDefault(); navigateTo('management') }}>Management Arenas (6)</a>
+                <a href="/events/cultural" onClick={(e) => { e.preventDefault(); navigateTo('cultural') }}>Cultural Confluence (6)</a>
+                <a href="/register" onClick={(e) => { e.preventDefault(); navigateTo('portal') }}>Registration Portal</a>
+                <a href="#about" onClick={(e) => { e.preventDefault(); document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' }) }}>Summit Philosophy</a>
+                <a href="#sponsors" onClick={(e) => { e.preventDefault(); document.getElementById('sponsors')?.scrollIntoView({ behavior: 'smooth' }) }}>Corporate Partners</a>
+              </div>
 
-            <div className="footer-col-block">
-              <span className="mono gold col-title">Official Channels</span>
-              <span className="contact-link">Email: <a href="mailto:yukti@tsm.ac.in">yukti@tsm.ac.in</a></span>
-              <span className="contact-link">Instagram: <a href={SITE_CONFIG.socialLinks.instagram} target="_blank" rel="noreferrer">@yukti.tsm</a></span>
-              <span className="contact-link">YouTube: <a href={SITE_CONFIG.socialLinks.youtube} target="_blank" rel="noreferrer">TSM Madurai</a></span>
-              <span className="contact-link">LinkedIn: <a href={SITE_CONFIG.socialLinks.linkedin} target="_blank" rel="noreferrer">Thiagarajar School</a></span>
-              <span className="contact-link">X (Twitter): <a href={SITE_CONFIG.socialLinks.twitter} target="_blank" rel="noreferrer">@tsmmadurai</a></span>
-              <span className="contact-link">Facebook: <a href={SITE_CONFIG.socialLinks.facebook} target="_blank" rel="noreferrer">TSM Official</a></span>
+              <div className="footer-col-block">
+                <span className="mono gold col-title">Official Channels</span>
+                <span className="contact-link">Email: <a href="mailto:yukti@tsm.ac.in">yukti@tsm.ac.in</a></span>
+                <span className="contact-link">Instagram: <a href={SITE_CONFIG.socialLinks.instagram} target="_blank" rel="noreferrer">@yukti.tsm</a></span>
+                <span className="contact-link">YouTube: <a href={SITE_CONFIG.socialLinks.youtube} target="_blank" rel="noreferrer">TSM Madurai</a></span>
+                <span className="contact-link">LinkedIn: <a href={SITE_CONFIG.socialLinks.linkedin} target="_blank" rel="noreferrer">Thiagarajar School</a></span>
+                <span className="contact-link">X (Twitter): <a href={SITE_CONFIG.socialLinks.twitter} target="_blank" rel="noreferrer">@tsmmadurai</a></span>
+                <span className="contact-link">Facebook: <a href={SITE_CONFIG.socialLinks.facebook} target="_blank" rel="noreferrer">TSM Official</a></span>
+              </div>
             </div>
 
             {/* Google Maps Embed Tile */}
