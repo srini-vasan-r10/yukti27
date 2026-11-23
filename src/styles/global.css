@@ -223,31 +223,48 @@ main{position:relative;z-index:10}
   display:inline-block;
   margin:0 auto 16px;
   width:max-content;
+  padding:18px 36px; /* Generously extended bounds so glow never clips into hard rectangle edges */
+}
+
+/* Ambient Radial Feathered Backlight (Extended & Softly Blurred Corners) */
+.laser-yukti-wrap::before{
+  content:'';
+  position:absolute;
+  inset:-25px -45px; /* Extends far beyond the text boundary */
+  border-radius:50px; /* Generously rounded/curved corners */
+  background:radial-gradient(ellipse 65% 55% at 50% 50%, rgba(245,215,127,0.18) 0%, rgba(77,29,100,0.15) 45%, transparent 75%);
+  filter:blur(36px); /* Heavy feathering so there is zero box perception */
+  pointer-events:none;
+  z-index:0;
 }
 
 .outlined-base-text{
+  position:relative;
+  z-index:1;
   margin:0;
   color:transparent !important;
   -webkit-text-fill-color:transparent !important;
-  -webkit-text-stroke:2px #000000; /* Distinct solid black outline */
-  filter:drop-shadow(0 2px 8px rgba(0,0,0,0.95));
+  -webkit-text-stroke:2.2px #000000; /* Distinct solid black outline */
+  filter:drop-shadow(0 2px 4px rgba(0,0,0,0.9));
   opacity:0.95;
 }
 
 .laser-filled-text{
   position:absolute;
-  top:0;
-  left:0;
-  right:0;
+  top:18px; /* Offset matching padding */
+  left:36px;
+  right:36px;
   margin:0;
   z-index:2;
   transition:clip-path 0.05s linear;
+  filter:drop-shadow(0 0 16px rgba(245,215,127,0.45));
 }
 
 .laser-cutting-point{
   position:absolute;
-  top:0;
-  bottom:0;
+  top:12px;
+  bottom:12px;
+  left:36px;
   width:4px;
   z-index:10;
   pointer-events:none;

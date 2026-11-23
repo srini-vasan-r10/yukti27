@@ -41,6 +41,7 @@ export default function RobotHandWriter({ onComplete }) {
       <h1
         className="hero-single-line laser-filled-text"
         style={{ clipPath: `inset(0 ${100 - fillPercent}% 0 0)` }}
+        aria-hidden="true"
       >
         YUKTI ’27
       </h1>
@@ -49,7 +50,7 @@ export default function RobotHandWriter({ onComplete }) {
       {isEngraving && (
         <div
           className="laser-cutting-point"
-          style={{ left: `${fillPercent}%` }}
+          style={{ left: `calc(36px + (100% - 72px) * ${fillPercent / 100})` }}
         >
           <span className="plasma-core" />
           <span className="plasma-beam-spark" />
