@@ -226,14 +226,15 @@ main{position:relative;z-index:10}
   padding:18px 36px; /* Generously extended bounds so glow never clips into hard rectangle edges */
 }
 
-/* Ambient Radial Feathered Backlight (Extended & Softly Blurred Corners) */
+/* Ambient Radial Feathered Backlight (Extended an additional 10px on all sides, outer 5px blurred) */
 .laser-yukti-wrap::before{
   content:'';
   position:absolute;
-  inset:-25px -45px; /* Extends far beyond the text boundary */
-  border-radius:50px; /* Generously rounded/curved corners */
-  background:radial-gradient(ellipse 65% 55% at 50% 50%, rgba(245,215,127,0.18) 0%, rgba(77,29,100,0.15) 45%, transparent 75%);
-  filter:blur(36px); /* Heavy feathering so there is zero box perception */
+  inset:-35px -55px; /* Extended 10px further on all sides (-25px/-45px -> -35px/-55px) */
+  border-radius:60px; /* Extended smooth corner radius */
+  background:radial-gradient(ellipse 70% 60% at 50% 50%, rgba(245,215,127,0.22) 0%, rgba(245,215,127,0.12) 65%, transparent 95%);
+  filter:blur(42px); /* Outer edge feathered and softly blurred */
+  box-shadow:0 0 25px 5px rgba(245,215,127,0.12); /* Subtle 5px feathered soft halo */
   pointer-events:none;
   z-index:0;
 }
