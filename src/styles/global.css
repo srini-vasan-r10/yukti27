@@ -229,8 +229,8 @@ main{position:relative;z-index:10}
   margin:0;
   color:transparent !important;
   -webkit-text-fill-color:transparent !important;
-  -webkit-text-stroke:2px rgba(10,4,18,0.95); /* Crisp black outline */
-  filter:drop-shadow(0 0 1px rgba(0,0,0,0.9));
+  -webkit-text-stroke:2px #000000; /* Distinct solid black outline */
+  filter:drop-shadow(0 2px 8px rgba(0,0,0,0.95));
   opacity:0.95;
 }
 

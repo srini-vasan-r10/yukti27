@@ -3,72 +3,125 @@ import * as THREE from 'three'
 /**
  * Procedural Space Robot Astronaut Figurines for YUKTI '27 (AI x Human Nexus)
  * 
- * True Humanoid Astronauts floating and spacewalking in deep space:
- * 1. Robo-Astronaut 1: "The Commander" (Humanoid astronaut in spacewalking posture, multi-axis gentle space-drift)
- * 2. Robo-Astronaut 2: "The Cyber-Explorer" (Humanoid with thruster pack, micro-gravity floating pose)
- * 3. Robo-Astronaut 3: "The Synthesis Drone" (Compact companion astronaut unit with helmet visor and telemetry antennae)
+ * Distinctly Coloured Astronaut Dolls Floating in Space:
+ * 1. Commander (Titanium Gold & Deep Obsidian Suit)
+ * 2. Pathfinder (Electric Crimson / Rose-Gold Cyber-Suit)
+ * 3. Vanguard (Emerald Cyan / Platinum-Cobalt Deep-Space Suit)
  */
 
 export const createRoboMaterials = () => {
-  // Polished aerospace gold
-  const aerospaceGold = new THREE.MeshStandardMaterial({
-    color: 0xF5D77F,
-    metalness: 0.95,
-    roughness: 0.2,
-    emissive: 0x382005,
-    emissiveIntensity: 0.2,
-  })
-
-  // Deep space-suit composite purple
-  const deepComposite = new THREE.MeshStandardMaterial({
-    color: 0x2A113B,
-    metalness: 0.7,
-    roughness: 0.35,
-    emissive: 0x150720,
-    emissiveIntensity: 0.4,
-  })
-
-  // Helmet Visor mirror glass reflecting cosmic surroundings
-  const helmetVisorGold = new THREE.MeshStandardMaterial({
+  // Shared Helmet Visor Glass (Warm Metallic Gold Mirror)
+  const visorGold = new THREE.MeshStandardMaterial({
     color: 0xFFF2A6,
     metalness: 0.98,
-    roughness: 0.1,
-    emissive: 0xF5D77F,
-    emissiveIntensity: 0.6,
+    roughness: 0.08,
+    emissive: 0xC59B3C,
+    emissiveIntensity: 0.45,
   })
 
-  // Cyan telemetry lights & chest console
-  const cyanGlow = new THREE.MeshBasicMaterial({
-    color: 0x38BDF8,
-  })
+  // Telemetry indicators
+  const cyanBeacon = new THREE.MeshBasicMaterial({ color: 0x38BDF8 })
+  const goldBeacon = new THREE.MeshBasicMaterial({ color: 0xFFF2A6 })
+  const rubyBeacon = new THREE.MeshBasicMaterial({ color: 0xF43F5E })
+  const flameBlue = new THREE.MeshBasicMaterial({ color: 0x38BDF8, transparent: true, opacity: 0.85 })
+  const flameAmber = new THREE.MeshBasicMaterial({ color: 0xF59E0B, transparent: true, opacity: 0.85 })
 
-  const thrusterFlame = new THREE.MeshBasicMaterial({
-    color: 0x60A5FA,
-    transparent: true,
-    opacity: 0.85,
-  })
+  // ── ROBOT 1: TITANIUM GOLD & OBSIDIAN (Strategic Leadership) ──
+  const robo1Mats = {
+    suit: new THREE.MeshStandardMaterial({
+      color: 0x1E0D2A, // Royal Deep Obsidian
+      metalness: 0.82,
+      roughness: 0.28,
+      emissive: 0x12051B,
+      emissiveIntensity: 0.35,
+    }),
+    armor: new THREE.MeshStandardMaterial({
+      color: 0xF5D77F, // Brilliant Metallic Gold
+      metalness: 0.95,
+      roughness: 0.16,
+      emissive: 0x4D1D64,
+      emissiveIntensity: 0.25,
+    }),
+    visor: visorGold,
+    beacon: cyanBeacon,
+    flame: flameBlue,
+  }
 
-  return { aerospaceGold, deepComposite, helmetVisorGold, cyanGlow, thrusterFlame }
+  // ── ROBOT 2: CRIMSON ROSE-GOLD (Cultural & Dynamic Artistry) ──
+  const robo2Mats = {
+    suit: new THREE.MeshStandardMaterial({
+      color: 0x4A0418, // Deep Cosmic Wine/Crimson
+      metalness: 0.85,
+      roughness: 0.24,
+      emissive: 0x2E020E,
+      emissiveIntensity: 0.4,
+    }),
+    armor: new THREE.MeshStandardMaterial({
+      color: 0xFB7185, // Rose-Gold / Radiant Coral
+      metalness: 0.92,
+      roughness: 0.18,
+      emissive: 0x9F1239,
+      emissiveIntensity: 0.3,
+    }),
+    visor: new THREE.MeshStandardMaterial({
+      color: 0xFFE4E6,
+      metalness: 0.98,
+      roughness: 0.08,
+      emissive: 0xFB7185,
+      emissiveIntensity: 0.5,
+    }),
+    beacon: rubyBeacon,
+    flame: flameAmber,
+  }
+
+  // ── ROBOT 3: EMERALD PLATINUM (Cybernetic Analytics & Intelligence) ──
+  const robo3Mats = {
+    suit: new THREE.MeshStandardMaterial({
+      color: 0x06282E, // Deep Cyber Teal / Slate
+      metalness: 0.88,
+      roughness: 0.22,
+      emissive: 0x03171B,
+      emissiveIntensity: 0.45,
+    }),
+    armor: new THREE.MeshStandardMaterial({
+      color: 0x2DD4BF, // Electric Emerald / Mint Chrome
+      metalness: 0.95,
+      roughness: 0.15,
+      emissive: 0x0F766E,
+      emissiveIntensity: 0.35,
+    }),
+    visor: new THREE.MeshStandardMaterial({
+      color: 0xCCFBF1,
+      metalness: 0.98,
+      roughness: 0.08,
+      emissive: 0x2DD4BF,
+      emissiveIntensity: 0.55,
+    }),
+    beacon: goldBeacon,
+    flame: flameBlue,
+  }
+
+  return { robo1Mats, robo2Mats, robo3Mats }
 }
 
 /**
- * Helper to build a complete Humanoid Spacewalking Astronaut Doll / Figurine
+ * Builds a detailed Humanoid Spacewalking Astronaut Doll
  */
-const buildHumanoidAstronaut = (materials, scale = 1.0) => {
+const buildHumanoidAstronaut = (mats, scale = 1.0) => {
   const astronaut = new THREE.Group()
 
-  // 1. Torso / Life Support Suit
+  // 1. Torso Suit
   const chest = new THREE.Mesh(
     new THREE.BoxGeometry(0.7 * scale, 0.9 * scale, 0.45 * scale),
-    materials.deepComposite
+    mats.suit
   )
   chest.position.y = 0.5 * scale
   astronaut.add(chest)
 
-  // Chest Armor Plate (Gold)
+  // Armor Chestplate (Colored Highlight)
   const armorPlate = new THREE.Mesh(
     new THREE.BoxGeometry(0.6 * scale, 0.45 * scale, 0.12 * scale),
-    materials.aerospaceGold
+    mats.armor
   )
   armorPlate.position.set(0, 0.6 * scale, 0.24 * scale)
   astronaut.add(armorPlate)
@@ -76,14 +129,14 @@ const buildHumanoidAstronaut = (materials, scale = 1.0) => {
   // Telemetry HUD lights on chest
   const chestLight1 = new THREE.Mesh(
     new THREE.BoxGeometry(0.12 * scale, 0.06 * scale, 0.05 * scale),
-    materials.cyanGlow
+    mats.beacon
   )
   chestLight1.position.set(-0.16 * scale, 0.65 * scale, 0.31 * scale)
   astronaut.add(chestLight1)
 
   const chestLight2 = new THREE.Mesh(
     new THREE.BoxGeometry(0.08 * scale, 0.06 * scale, 0.05 * scale),
-    materials.cyanGlow
+    mats.beacon
   )
   chestLight2.position.set(0.16 * scale, 0.65 * scale, 0.31 * scale)
   astronaut.add(chestLight2)
@@ -91,40 +144,40 @@ const buildHumanoidAstronaut = (materials, scale = 1.0) => {
   // 2. Helmet & Visor
   const helmet = new THREE.Mesh(
     new THREE.SphereGeometry(0.38 * scale, 24, 24),
-    materials.deepComposite
+    mats.suit
   )
   helmet.position.y = 1.25 * scale
   astronaut.add(helmet)
 
-  // Large Gold Reflective Astronaut Visor
+  // Reflective Astronaut Visor
   const visor = new THREE.Mesh(
     new THREE.SphereGeometry(0.32 * scale, 24, 24, 0, Math.PI * 2, 0, Math.PI / 2),
-    materials.helmetVisorGold
+    mats.visor
   )
   visor.rotation.x = Math.PI / 2
   visor.position.set(0, 1.25 * scale, 0.15 * scale)
   astronaut.add(visor)
 
-  // Helmet side communications beacon
-  const comBeacon = new THREE.Mesh(
+  // Helmet side antenna
+  const antenna = new THREE.Mesh(
     new THREE.CylinderGeometry(0.04 * scale, 0.04 * scale, 0.25 * scale, 8),
-    materials.aerospaceGold
+    mats.armor
   )
-  comBeacon.position.set(0.38 * scale, 1.4 * scale, 0)
-  astronaut.add(comBeacon)
+  antenna.position.set(0.38 * scale, 1.4 * scale, 0)
+  astronaut.add(antenna)
 
-  // 3. Life Support Backpack / Jetpack (PLSS)
+  // 3. Jetpack (PLSS)
   const backpack = new THREE.Mesh(
     new THREE.BoxGeometry(0.55 * scale, 0.75 * scale, 0.3 * scale),
-    materials.aerospaceGold
+    mats.armor
   )
   backpack.position.set(0, 0.55 * scale, -0.32 * scale)
   astronaut.add(backpack)
 
-  // Dual Thruster nozzles at bottom of backpack
+  // Dual Thruster nozzles
   const nozzleL = new THREE.Mesh(
     new THREE.ConeGeometry(0.09 * scale, 0.18 * scale, 12),
-    materials.deepComposite
+    mats.suit
   )
   nozzleL.rotation.x = Math.PI
   nozzleL.position.set(-0.18 * scale, 0.12 * scale, -0.32 * scale)
@@ -134,10 +187,10 @@ const buildHumanoidAstronaut = (materials, scale = 1.0) => {
   nozzleR.position.x = 0.18 * scale
   astronaut.add(nozzleR)
 
-  // Thruster plume (subtle blue glow)
+  // Thruster flame
   const plumeL = new THREE.Mesh(
     new THREE.ConeGeometry(0.06 * scale, 0.25 * scale, 8),
-    materials.thrusterFlame
+    mats.flame
   )
   plumeL.rotation.x = Math.PI
   plumeL.position.set(-0.18 * scale, -0.05 * scale, -0.32 * scale)
@@ -148,18 +201,17 @@ const buildHumanoidAstronaut = (materials, scale = 1.0) => {
   astronaut.add(plumeR)
 
   // 4. Arms (Floating microgravity gesture)
-  // Left Shoulder & Arm
   const armL = new THREE.Group()
   const bicepL = new THREE.Mesh(
     new THREE.CylinderGeometry(0.11 * scale, 0.1 * scale, 0.45 * scale, 12),
-    materials.aerospaceGold
+    mats.armor
   )
   bicepL.position.y = -0.22 * scale
   armL.add(bicepL)
 
   const gloveL = new THREE.Mesh(
     new THREE.SphereGeometry(0.12 * scale, 12, 12),
-    materials.deepComposite
+    mats.suit
   )
   gloveL.position.y = -0.48 * scale
   armL.add(gloveL)
@@ -169,18 +221,17 @@ const buildHumanoidAstronaut = (materials, scale = 1.0) => {
   armL.rotation.x = -0.3
   astronaut.add(armL)
 
-  // Right Shoulder & Arm
   const armR = new THREE.Group()
   const bicepR = new THREE.Mesh(
     new THREE.CylinderGeometry(0.11 * scale, 0.1 * scale, 0.45 * scale, 12),
-    materials.aerospaceGold
+    mats.armor
   )
   bicepR.position.y = -0.22 * scale
   armR.add(bicepR)
 
   const gloveR = new THREE.Mesh(
     new THREE.SphereGeometry(0.12 * scale, 12, 12),
-    materials.deepComposite
+    mats.suit
   )
   gloveR.position.y = -0.48 * scale
   armR.add(gloveR)
@@ -190,19 +241,18 @@ const buildHumanoidAstronaut = (materials, scale = 1.0) => {
   armR.rotation.x = 0.4
   astronaut.add(armR)
 
-  // 5. Legs (Floating zero-gravity bend)
-  // Left Leg
+  // 5. Legs (Floating zero-gravity stride)
   const legL = new THREE.Group()
   const thighL = new THREE.Mesh(
     new THREE.CylinderGeometry(0.13 * scale, 0.11 * scale, 0.55 * scale, 12),
-    materials.deepComposite
+    mats.suit
   )
   thighL.position.y = -0.27 * scale
   legL.add(thighL)
 
   const bootL = new THREE.Mesh(
     new THREE.BoxGeometry(0.18 * scale, 0.15 * scale, 0.28 * scale),
-    materials.aerospaceGold
+    mats.armor
   )
   bootL.position.set(0, -0.6 * scale, 0.05 * scale)
   legL.add(bootL)
@@ -212,18 +262,17 @@ const buildHumanoidAstronaut = (materials, scale = 1.0) => {
   legL.rotation.z = 0.15
   astronaut.add(legL)
 
-  // Right Leg (bent in running/floating space stride)
   const legR = new THREE.Group()
   const thighR = new THREE.Mesh(
     new THREE.CylinderGeometry(0.13 * scale, 0.11 * scale, 0.55 * scale, 12),
-    materials.deepComposite
+    mats.suit
   )
   thighR.position.y = -0.27 * scale
   legR.add(thighR)
 
   const bootR = new THREE.Mesh(
     new THREE.BoxGeometry(0.18 * scale, 0.15 * scale, 0.28 * scale),
-    materials.aerospaceGold
+    mats.armor
   )
   bootR.position.set(0, -0.6 * scale, 0.05 * scale)
   legR.add(bootR)
@@ -237,17 +286,17 @@ const buildHumanoidAstronaut = (materials, scale = 1.0) => {
 }
 
 /**
- * 1. The Commander (Leading Spacewalker)
+ * Robot 1: Gold & Obsidian Commander (Spins Clockwise Yaw + Pitch)
  */
 export const buildCommanderAstronaut = (materials) => {
-  const group = buildHumanoidAstronaut(materials, 1.0)
+  const group = buildHumanoidAstronaut(materials.robo1Mats, 1.0)
   group.position.set(-3.2, 1.4, -1.0)
   group.rotation.set(0.2, 0.4, -0.2)
 
   return {
     group,
-    rotX: 0.004,
-    rotY: 0.008,
+    rotX: 0.005,
+    rotY: 0.009,
     rotZ: 0.003,
     orbitR: 3.5,
     orbitY: 1.4,
@@ -257,18 +306,18 @@ export const buildCommanderAstronaut = (materials) => {
 }
 
 /**
- * 2. The Cyber-Explorer (Mid-Space Floating Spacewalker)
+ * Robot 2: Crimson Rose-Gold Pathfinder (Spins Counter-Clockwise Roll + Inverted Yaw)
  */
 export const buildExplorerAstronaut = (materials) => {
-  const group = buildHumanoidAstronaut(materials, 0.88)
+  const group = buildHumanoidAstronaut(materials.robo2Mats, 0.88)
   group.position.set(3.4, -1.2, -1.2)
   group.rotation.set(-0.3, -0.5, 0.3)
 
   return {
     group,
-    rotX: -0.005,
-    rotY: -0.007,
-    rotZ: -0.004,
+    rotX: -0.006,
+    rotY: -0.008,
+    rotZ: -0.005,
     orbitR: 3.8,
     orbitY: -1.2,
     speed: -0.0003,
@@ -277,18 +326,18 @@ export const buildExplorerAstronaut = (materials) => {
 }
 
 /**
- * 3. The Scout (Foreground Microgravity Astronaut)
+ * Robot 3: Emerald Platinum Vanguard (Spins Dynamic Pitch + Wobble)
  */
 export const buildScoutAstronaut = (materials) => {
-  const group = buildHumanoidAstronaut(materials, 0.75)
+  const group = buildHumanoidAstronaut(materials.robo3Mats, 0.75)
   group.position.set(-1.4, -2.6, -0.6)
   group.rotation.set(0.4, 0.2, 0.3)
 
   return {
     group,
-    rotX: 0.006,
-    rotY: -0.005,
-    rotZ: 0.008,
+    rotX: 0.007,
+    rotY: -0.006,
+    rotZ: 0.009,
     orbitR: 2.4,
     orbitY: -2.6,
     speed: 0.00045,
