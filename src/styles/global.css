@@ -217,101 +217,72 @@ main{position:relative;z-index:10}
   opacity:0.92;
 }
 
-/* ═══ ROBOTIC HAND WRITER & STAGGERED HERO SEQUENCE ═══ */
-.robo-writer-container{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  position:relative;
-  margin-bottom:8px;
-}
-.laser-engraved-text{
+/* ═══ LASER ENGRAVED YUKTI '27 (Black outline filled with gold laser) ═══ */
+.laser-yukti-wrap{
   position:relative;
   display:inline-block;
-  min-height:1.15em;
+  margin:0 auto 16px;
+  width:max-content;
 }
-.cyber-stylus-head{
-  display:inline-block;
-  position:relative;
+
+.outlined-base-text{
+  margin:0;
+  color:transparent !important;
+  -webkit-text-fill-color:transparent !important;
+  -webkit-text-stroke:2px rgba(10,4,18,0.95); /* Crisp black outline */
+  filter:drop-shadow(0 0 1px rgba(0,0,0,0.9));
+  opacity:0.95;
+}
+
+.laser-filled-text{
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  margin:0;
+  z-index:2;
+  transition:clip-path 0.05s linear;
+}
+
+.laser-cutting-point{
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:4px;
+  z-index:10;
+  pointer-events:none;
+  transform:translateX(-50%);
+}
+.plasma-core{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
   width:14px;
   height:14px;
-  margin-left:6px;
-  vertical-align:middle;
-}
-.laser-beam-nozzle{
-  position:absolute;
-  top:-22px;
-  left:-8px;
-  width:32px;
-  height:32px;
-  border-radius:50%;
-  background:radial-gradient(circle, #38bdf8 10%, rgba(56,189,248,0.3) 50%, transparent 70%);
-  animation:plasmaPulse 0.12s infinite alternate;
-}
-.laser-contact-spark{
-  position:absolute;
-  top:2px;
-  left:2px;
-  width:10px;
-  height:10px;
-  background:#fff2a6;
-  border-radius:50%;
-  box-shadow:0 0 16px #fff2a6, 0 0 28px #38bdf8;
-  animation:sparkFlicker 0.08s infinite alternate;
-}
-.stylus-arm-link{
-  position:absolute;
-  top:-35px;
-  left:8px;
-  width:3px;
-  height:32px;
-  background:linear-gradient(180deg, rgba(197,155,60,0.8), #38bdf8);
-  transform:rotate(28deg);
-  box-shadow:0 0 8px rgba(56,189,248,0.5);
-}
-
-@keyframes plasmaPulse{
-  0%{transform:scale(0.85);opacity:0.85}
-  100%{transform:scale(1.25);opacity:1}
-}
-@keyframes sparkFlicker{
-  0%{opacity:0.75;transform:scale(0.9)}
-  100%{opacity:1;transform:scale(1.4)}
-}
-
-.robo-telemetry-badge{
-  font-size:0.62rem;
-  color:#38bdf8;
-  letter-spacing:0.18em;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  margin-top:4px;
-  opacity:0.9;
-  text-shadow:0 0 8px rgba(56,189,248,0.4);
-}
-.telemetry-dot{
-  width:6px;
-  height:6px;
   border-radius:50%;
   background:#38bdf8;
-  box-shadow:0 0 8px #38bdf8;
-  animation:sparkFlicker 0.3s infinite alternate;
+  box-shadow:0 0 14px #38bdf8, 0 0 24px #fff2a6;
+  animation:sparkFlicker 0.08s infinite alternate;
 }
-
-/* Staggered visibility transitions for hero elements after robot finishes writing */
-.stagger-hidden{
-  opacity:0;
-  transform:translateY(22px);
-  pointer-events:none;
-  transition:opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+.plasma-beam-spark{
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:50%;
+  width:2px;
+  transform:translateX(-50%);
+  background:linear-gradient(180deg, transparent, #38bdf8 30%, #fff2a6 50%, #38bdf8 70%, transparent);
+  box-shadow:0 0 10px #38bdf8;
 }
-.stagger-visible{
-  opacity:1;
-  transform:translateY(0);
-  pointer-events:auto;
-  transition:opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+.laser-trace-line{
+  position:absolute;
+  top:-20px;
+  bottom:-20px;
+  left:50%;
+  width:1px;
+  transform:translateX(-50%);
+  background:rgba(56,189,248,0.4);
 }
 
 /* Single line heading for YUKTI '27 */
@@ -761,6 +732,8 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
 /* ═══ NEW: WHY ATTEND SECTION ═══ */
 .why-attend-section{
   padding:90px 7vw 80px;
+  position:relative;
+  z-index:5;
 }
 .why-attend-grid{
   display:grid;
@@ -768,24 +741,26 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
   gap:22px;
 }
 .why-card{
-  background:rgba(31,14,44,0.75);
-  border:1px solid rgba(197,155,60,0.22);
+  background:rgba(20,9,29,0.92); /* Solid deep dark backdrop for crisp readability */
+  border:1px solid rgba(197,155,60,0.3);
   border-radius:18px;
   padding:30px 24px;
-  backdrop-filter:blur(20px);
+  backdrop-filter:blur(32px);
+  -webkit-backdrop-filter:blur(32px);
   display:flex;
   flex-direction:column;
   justify-content:space-between;
   transition:transform .3s ease, border-color .3s ease;
+  box-shadow:0 20px 50px rgba(0,0,0,0.85);
 }
 .why-card:hover{
   transform:translateY(-6px);
   border-color:var(--gold-border);
-  box-shadow:0 15px 40px rgba(0,0,0,0.6);
+  box-shadow:0 25px 60px rgba(0,0,0,0.95);
 }
 .highlighted-why-card{
   border:1.5px solid var(--gold-border);
-  background:linear-gradient(145deg, rgba(77,29,100,0.5), rgba(31,14,44,0.9));
+  background:linear-gradient(145deg, rgba(77,29,100,0.85), rgba(20,9,29,0.98));
 }
 .why-icon-badge{
   width:44px;
@@ -801,15 +776,18 @@ h1 em{font-style:normal;color:var(--gold-figure);text-shadow:0 0 45px rgba(245,2
 }
 .why-card h3{
   font-family:'Space Grotesk',sans-serif;
-  font-size:1.2rem;
+  font-size:1.25rem;
+  font-weight:700;
   margin:0 0 10px;
   color:#ffffff;
+  text-shadow:0 2px 8px rgba(0,0,0,0.8);
 }
 .why-card p{
-  color:#cbd5e1;
-  font-size:.84rem;
+  color:#e2e8f0; /* Crisp bright high-contrast text */
+  font-size:.88rem;
   line-height:1.65;
   margin:0 0 20px;
+  text-shadow:0 1px 4px rgba(0,0,0,0.7);
 }
 .why-stat{
   font-size:.65rem;

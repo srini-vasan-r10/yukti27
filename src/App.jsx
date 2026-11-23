@@ -9,11 +9,10 @@ import Yukti26SponsorsPage from './pages/Yukti26SponsorsPage'
 import DelegatePassPage from './pages/DelegatePassPage'
 import RobotHandWriter from './components/RobotHandWriter'
 import {
-  createHorizonSun,
   createRoboMaterials,
-  buildStrategistRobo,
-  buildCyberMuseRobo,
-  buildSentinelDrone
+  buildCommanderAstronaut,
+  buildExplorerAstronaut,
+  buildScoutAstronaut
 } from './utils/robotFigurines'
 
 export default function App() {
@@ -105,7 +104,8 @@ export default function App() {
 
       scene = new THREE.Scene()
       camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100)
-      camera.position.set(0, 0, 11)
+      const isMobile = window.innerWidth <= 768
+      camera.position.set(0, 0, isMobile ? 14 : 11)
 
       // Strict Royal Purple & Brilliant Metallic Gold Materials (Zero Blue Tones)
       const deepGoldMat = new THREE.MeshStandardMaterial({
@@ -136,20 +136,22 @@ export default function App() {
         opacity: 0.65,
       })
 
-      // ── SUN HORIZON & ROBOT FIGURINES (AI x Human Nexus) ──
-      const { sunGroup, corona1, corona2 } = createHorizonSun(scene)
+      // ── PROCEDURAL HUMANOID SPACEWALKING ROBOT ASTRONAUTS (AI x Human Nexus) ──
       const roboMats = createRoboMaterials()
 
-      const robo1 = buildStrategistRobo(roboMats)
-      scene.add(robo1.group)
+      const astro1 = buildCommanderAstronaut(roboMats)
+      astro1.group.position.set(isMobile ? -1.8 : -3.2, isMobile ? 3.0 : 1.4, isMobile ? 1.5 : -1.0)
+      scene.add(astro1.group)
 
-      const robo2 = buildCyberMuseRobo(roboMats)
-      scene.add(robo2.group)
+      const astro2 = buildExplorerAstronaut(roboMats)
+      astro2.group.position.set(isMobile ? 1.8 : 3.4, isMobile ? -3.0 : -1.2, isMobile ? 1.0 : -1.2)
+      scene.add(astro2.group)
 
-      const robo3 = buildSentinelDrone(roboMats)
-      scene.add(robo3.group)
+      const astro3 = buildScoutAstronaut(roboMats)
+      astro3.group.position.set(isMobile ? 0 : -1.4, isMobile ? -5.2 : -2.6, isMobile ? 2.0 : -0.6)
+      scene.add(astro3.group)
 
-      const roboEntities = [robo1, robo2, robo3]
+      const roboEntities = [astro1, astro2, astro3]
 
       // Ambient Kinetic Orbital Rings (Gold & Deep Purple)
       ringA = new THREE.Mesh(
@@ -222,24 +224,17 @@ export default function App() {
         camera.position.y += (-mouseY * 0.25 - camera.position.y) * 0.04
         camera.lookAt(0, 0, 0)
 
-        // Rotate Sun Coronas subtly
-        if (corona1) corona1.rotation.z += 0.002
-        if (corona2) corona2.rotation.z -= 0.0015
-
-        // Animate each robot in its own independent direction with high-specular sun highlights
+        // Animate each humanoid astronaut spacewalking in zero-gravity
         roboEntities.forEach((item) => {
           item.group.rotation.x += item.rotX * rotMultiplier
           item.group.rotation.y += item.rotY * rotMultiplier
           item.group.rotation.z += item.rotZ * rotMultiplier
 
-          // Floating sine orbit
+          // Gentle zero-g floating sine motion
           const orbitTime = t * item.speed + item.phase
-          item.group.position.y = item.orbitY + Math.sin(orbitTime * 2.5) * 0.35
-          item.group.position.x += Math.cos(orbitTime * 1.8) * 0.003
+          item.group.position.y = item.orbitY + Math.sin(orbitTime * 2.2) * 0.28
+          item.group.position.x += Math.cos(orbitTime * 1.5) * 0.002
         })
-
-        if (robo2.ring1) robo2.ring1.rotation.y += 0.02 * rotMultiplier
-        if (robo2.ring2) robo2.ring2.rotation.x -= 0.015 * rotMultiplier
 
         ringA.rotation.z -= 0.003 * rotMultiplier
         ringA.rotation.x += 0.001 * rotMultiplier
@@ -505,23 +500,23 @@ export default function App() {
               </div>
 
               <div className="hero-titles-wrap">
-                <RobotHandWriter onComplete={() => setHeroUnlocked(true)} />
-                <div className={`hero-theme-clean-subtitle ${heroUnlocked ? 'stagger-visible' : 'stagger-hidden'}`}>
+                <RobotHandWriter />
+                <div className="hero-theme-clean-subtitle">
                   <div className="theme-super-title">INTANGIBLES</div>
                   <div className="theme-tagline-text mono">INFINITE POSSIBILITIES</div>
                 </div>
               </div>
 
-              <div className={`theme-headline-badge mono ${heroUnlocked ? 'stagger-visible' : 'stagger-hidden'}`}>
+              <div className="theme-headline-badge mono">
                 Pan-India Management & Cultural Fest
               </div>
 
-              <p className={`hero-sub ${heroUnlocked ? 'stagger-visible' : 'stagger-hidden'}`}>
+              <p className="hero-sub">
                 Exploring the human-AI nexus, celebrating the core values of innovation and creativity. Where logic meets magic and human intuition collaborates with artificial intelligence.
               </p>
 
               {/* ═══ MONUMENTAL ₹20,00,000 PRIZE ANNOUNCEMENT ═══ */}
-              <div className={`grand-prize-hero-banner ${heroUnlocked ? 'stagger-visible' : 'stagger-hidden'}`}>
+              <div className="grand-prize-hero-banner">
                 <div className="prize-glow-bg" />
                 <div className="prize-banner-inner">
                   <div className="prize-label-row">
@@ -538,7 +533,7 @@ export default function App() {
               </div>
 
               {/* Primary Call-to-Action Buttons */}
-              <div className={`hero-actions ${heroUnlocked ? 'stagger-visible' : 'stagger-hidden'}`}>
+              <div className="hero-actions">
                 <button className="btn" onClick={() => navigateTo('portal')}>
                   Register for YUKTI ’27
                 </button>
@@ -550,7 +545,7 @@ export default function App() {
                 </button>
               </div>
 
-              <div className={`hero-meta ${heroUnlocked ? 'stagger-visible' : 'stagger-hidden'}`}>
+              <div className="hero-meta">
                 <div><span className="mono">Grand Bounty</span><strong className="gold">₹20,00,000</strong></div>
                 <div><span className="mono">Theme</span><strong>INTANGIBLES</strong></div>
                 <div><span className="mono">Confirmed Dates</span><strong>{SITE_CONFIG.dates}</strong></div>
