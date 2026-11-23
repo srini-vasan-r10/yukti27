@@ -217,6 +217,103 @@ main{position:relative;z-index:10}
   opacity:0.92;
 }
 
+/* ═══ ROBOTIC HAND WRITER & STAGGERED HERO SEQUENCE ═══ */
+.robo-writer-container{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  margin-bottom:8px;
+}
+.laser-engraved-text{
+  position:relative;
+  display:inline-block;
+  min-height:1.15em;
+}
+.cyber-stylus-head{
+  display:inline-block;
+  position:relative;
+  width:14px;
+  height:14px;
+  margin-left:6px;
+  vertical-align:middle;
+}
+.laser-beam-nozzle{
+  position:absolute;
+  top:-22px;
+  left:-8px;
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  background:radial-gradient(circle, #38bdf8 10%, rgba(56,189,248,0.3) 50%, transparent 70%);
+  animation:plasmaPulse 0.12s infinite alternate;
+}
+.laser-contact-spark{
+  position:absolute;
+  top:2px;
+  left:2px;
+  width:10px;
+  height:10px;
+  background:#fff2a6;
+  border-radius:50%;
+  box-shadow:0 0 16px #fff2a6, 0 0 28px #38bdf8;
+  animation:sparkFlicker 0.08s infinite alternate;
+}
+.stylus-arm-link{
+  position:absolute;
+  top:-35px;
+  left:8px;
+  width:3px;
+  height:32px;
+  background:linear-gradient(180deg, rgba(197,155,60,0.8), #38bdf8);
+  transform:rotate(28deg);
+  box-shadow:0 0 8px rgba(56,189,248,0.5);
+}
+
+@keyframes plasmaPulse{
+  0%{transform:scale(0.85);opacity:0.85}
+  100%{transform:scale(1.25);opacity:1}
+}
+@keyframes sparkFlicker{
+  0%{opacity:0.75;transform:scale(0.9)}
+  100%{opacity:1;transform:scale(1.4)}
+}
+
+.robo-telemetry-badge{
+  font-size:0.62rem;
+  color:#38bdf8;
+  letter-spacing:0.18em;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-top:4px;
+  opacity:0.9;
+  text-shadow:0 0 8px rgba(56,189,248,0.4);
+}
+.telemetry-dot{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#38bdf8;
+  box-shadow:0 0 8px #38bdf8;
+  animation:sparkFlicker 0.3s infinite alternate;
+}
+
+/* Staggered visibility transitions for hero elements after robot finishes writing */
+.stagger-hidden{
+  opacity:0;
+  transform:translateY(22px);
+  pointer-events:none;
+  transition:opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.stagger-visible{
+  opacity:1;
+  transform:translateY(0);
+  pointer-events:auto;
+  transition:opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 /* Single line heading for YUKTI '27 */
 .hero-single-line{
   font-family:'Space Grotesk',sans-serif;

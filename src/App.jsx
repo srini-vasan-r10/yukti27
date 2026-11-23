@@ -7,6 +7,14 @@ import CulturalEventsPage from './pages/CulturalEventsPage'
 import RegistrationPortalPage from './pages/RegistrationPortalPage'
 import Yukti26SponsorsPage from './pages/Yukti26SponsorsPage'
 import DelegatePassPage from './pages/DelegatePassPage'
+import RobotHandWriter from './components/RobotHandWriter'
+import {
+  createHorizonSun,
+  createRoboMaterials,
+  buildStrategistRobo,
+  buildCyberMuseRobo,
+  buildSentinelDrone
+} from './utils/robotFigurines'
 
 export default function App() {
   const canvasRef = useRef(null)
@@ -14,6 +22,7 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [modalData, setModalData] = useState(null)
   const [hideGlobalFooter, setHideGlobalFooter] = useState(false)
+  const [heroUnlocked, setHeroUnlocked] = useState(false)
 
   // Sync clean browser URL without full reload (preserves SEO navigation & direct sharing)
   useEffect(() => {
@@ -127,57 +136,20 @@ export default function App() {
         opacity: 0.65,
       })
 
-      // Multi-Floating Geometric Clusters distributed across full screen
-      const shapes = []
+      // ── SUN HORIZON & ROBOT FIGURINES (AI x Human Nexus) ──
+      const { sunGroup, corona1, corona2 } = createHorizonSun(scene)
+      const roboMats = createRoboMaterials()
 
-      // 1. Spinning Pyramids (Tetrahedrons)
-      const pyramid1 = new THREE.Mesh(new THREE.TetrahedronGeometry(1.25, 0), deepGoldMat)
-      pyramid1.position.set(-4.5, 2.2, -1.5)
-      scene.add(pyramid1)
-      shapes.push({ mesh: pyramid1, rotX: 0.008, rotY: 0.012, rotZ: 0.005, orbitR: 4.8, orbitY: 2.2, speed: 0.0004, phase: 0 })
+      const robo1 = buildStrategistRobo(roboMats)
+      scene.add(robo1.group)
 
-      const pyramid2 = new THREE.Mesh(new THREE.ConeGeometry(0.9, 1.6, 4), royalPurpleMat)
-      pyramid2.position.set(3.8, -2.6, -1.0)
-      scene.add(pyramid2)
-      shapes.push({ mesh: pyramid2, rotX: -0.009, rotY: 0.014, rotZ: 0.006, orbitR: 4.2, orbitY: -2.6, speed: -0.00035, phase: 2 })
+      const robo2 = buildCyberMuseRobo(roboMats)
+      scene.add(robo2.group)
 
-      // 2. Spinning Cubes (Box Geometries with Wireframe Nested Core)
-      const cube1 = new THREE.Mesh(new THREE.BoxGeometry(1.4, 1.4, 1.4), brightGoldMat)
-      cube1.position.set(-4.2, -2.4, -0.8)
-      const cube1Wire = new THREE.Mesh(new THREE.BoxGeometry(1.7, 1.7, 1.7), sparkWireMat)
-      cube1.add(cube1Wire)
-      scene.add(cube1)
-      shapes.push({ mesh: cube1, rotX: 0.01, rotY: -0.011, rotZ: 0.007, orbitR: 4.5, orbitY: -2.4, speed: 0.0003, phase: 3.5 })
+      const robo3 = buildSentinelDrone(roboMats)
+      scene.add(robo3.group)
 
-      const cube2 = new THREE.Mesh(new THREE.BoxGeometry(1.1, 1.1, 1.1), deepGoldMat)
-      cube2.position.set(4.6, 2.8, -2.0)
-      scene.add(cube2)
-      shapes.push({ mesh: cube2, rotX: -0.012, rotY: 0.008, rotZ: -0.006, orbitR: 5.0, orbitY: 2.8, speed: -0.00045, phase: 1.2 })
-
-      // 3. Spinning Spheres / Balls (Icosahedrons & Smooth Spheres)
-      const ball1 = new THREE.Mesh(new THREE.IcosahedronGeometry(1.1, 2), brightGoldMat)
-      ball1.position.set(-1.8, -3.2, 0)
-      const ballRing = new THREE.Mesh(new THREE.TorusGeometry(1.6, 0.02, 8, 80), sparkWireMat)
-      ballRing.rotation.x = Math.PI / 3
-      ball1.add(ballRing)
-      scene.add(ball1)
-      shapes.push({ mesh: ball1, rotX: 0.006, rotY: 0.015, rotZ: 0.009, orbitR: 2.5, orbitY: -3.2, speed: 0.0005, phase: 4.8 })
-
-      const ball2 = new THREE.Mesh(new THREE.SphereGeometry(0.85, 24, 24), royalPurpleMat)
-      ball2.position.set(-2.2, 3.4, -1.2)
-      scene.add(ball2)
-      shapes.push({ mesh: ball2, rotX: 0.014, rotY: 0.008, rotZ: -0.005, orbitR: 3.0, orbitY: 3.4, speed: -0.0004, phase: 2.8 })
-
-      const ball3 = new THREE.Mesh(new THREE.DodecahedronGeometry(0.95, 0), deepGoldMat)
-      ball3.position.set(2.0, -3.5, -1.5)
-      scene.add(ball3)
-      shapes.push({ mesh: ball3, rotX: -0.008, rotY: -0.012, rotZ: 0.01, orbitR: 2.8, orbitY: -3.5, speed: 0.00035, phase: 5.6 })
-
-      // 4. Center-Right Ambient Kinetic Geometries (filling back of hero & page)
-      const midOcta = new THREE.Mesh(new THREE.OctahedronGeometry(1.3, 0), brightGoldMat)
-      midOcta.position.set(-0.2, 0.5, -2.5)
-      scene.add(midOcta)
-      shapes.push({ mesh: midOcta, rotX: 0.005, rotY: 0.009, rotZ: 0.004, orbitR: 1.2, orbitY: 0.5, speed: 0.0002, phase: 0 })
+      const roboEntities = [robo1, robo2, robo3]
 
       // Ambient Kinetic Orbital Rings (Gold & Deep Purple)
       ringA = new THREE.Mesh(
@@ -250,17 +222,24 @@ export default function App() {
         camera.position.y += (-mouseY * 0.25 - camera.position.y) * 0.04
         camera.lookAt(0, 0, 0)
 
-        // Rotate and orbit all geometric primitives across the page
-        shapes.forEach((item) => {
-          item.mesh.rotation.x += item.rotX * rotMultiplier
-          item.mesh.rotation.y += item.rotY * rotMultiplier
-          item.mesh.rotation.z += item.rotZ * rotMultiplier
+        // Rotate Sun Coronas subtly
+        if (corona1) corona1.rotation.z += 0.002
+        if (corona2) corona2.rotation.z -= 0.0015
 
-          // Gentle floating sine motion
+        // Animate each robot in its own independent direction with high-specular sun highlights
+        roboEntities.forEach((item) => {
+          item.group.rotation.x += item.rotX * rotMultiplier
+          item.group.rotation.y += item.rotY * rotMultiplier
+          item.group.rotation.z += item.rotZ * rotMultiplier
+
+          // Floating sine orbit
           const orbitTime = t * item.speed + item.phase
-          item.mesh.position.y = item.orbitY + Math.sin(orbitTime * 2.5) * 0.35
-          item.mesh.position.x += Math.cos(orbitTime * 1.8) * 0.003
+          item.group.position.y = item.orbitY + Math.sin(orbitTime * 2.5) * 0.35
+          item.group.position.x += Math.cos(orbitTime * 1.8) * 0.003
         })
+
+        if (robo2.ring1) robo2.ring1.rotation.y += 0.02 * rotMultiplier
+        if (robo2.ring2) robo2.ring2.rotation.x -= 0.015 * rotMultiplier
 
         ringA.rotation.z -= 0.003 * rotMultiplier
         ringA.rotation.x += 0.001 * rotMultiplier
@@ -526,23 +505,23 @@ export default function App() {
               </div>
 
               <div className="hero-titles-wrap">
-                <h1 className="hero-single-line">YUKTI ’27</h1>
-                <div className="hero-theme-clean-subtitle">
+                <RobotHandWriter onComplete={() => setHeroUnlocked(true)} />
+                <div className={`hero-theme-clean-subtitle ${heroUnlocked ? 'stagger-visible' : 'stagger-hidden'}`}>
                   <div className="theme-super-title">INTANGIBLES</div>
                   <div className="theme-tagline-text mono">INFINITE POSSIBILITIES</div>
                 </div>
               </div>
 
-              <div className="theme-headline-badge mono">
+              <div className={`theme-headline-badge mono ${heroUnlocked ? 'stagger-visible' : 'stagger-hidden'}`}>
                 Pan-India Management & Cultural Fest
               </div>
 
-              <p className="hero-sub">
+              <p className={`hero-sub ${heroUnlocked ? 'stagger-visible' : 'stagger-hidden'}`}>
                 Exploring the human-AI nexus, celebrating the core values of innovation and creativity. Where logic meets magic and human intuition collaborates with artificial intelligence.
               </p>
 
               {/* ═══ MONUMENTAL ₹20,00,000 PRIZE ANNOUNCEMENT ═══ */}
-              <div className="grand-prize-hero-banner">
+              <div className={`grand-prize-hero-banner ${heroUnlocked ? 'stagger-visible' : 'stagger-hidden'}`}>
                 <div className="prize-glow-bg" />
                 <div className="prize-banner-inner">
                   <div className="prize-label-row">
@@ -553,25 +532,25 @@ export default function App() {
                     {SITE_CONFIG.grandPrizePool}
                   </div>
                   <p className="prize-caption">
-                    Twenty Lakhs Rupees in total cash bounties, national rolling shields, and corporate incubation grants across 12 flagship arenas.
+                    Twenty Lakhs Rupees in total cash bounties, national rolling shields, and corporate incubation grants across 22 flagship arenas.
                   </p>
                 </div>
               </div>
 
               {/* Primary Call-to-Action Buttons */}
-              <div className="hero-actions">
+              <div className={`hero-actions ${heroUnlocked ? 'stagger-visible' : 'stagger-hidden'}`}>
                 <button className="btn" onClick={() => navigateTo('portal')}>
                   Register for YUKTI ’27
                 </button>
                 <button className="btn ghost" onClick={() => navigateTo('management')}>
-                  Management Tracks (6)
+                  Management Tracks (11)
                 </button>
                 <button className="btn ghost" onClick={() => navigateTo('cultural')}>
-                  Cultural Tracks (6)
+                  Cultural Tracks (10)
                 </button>
               </div>
 
-              <div className="hero-meta">
+              <div className={`hero-meta ${heroUnlocked ? 'stagger-visible' : 'stagger-hidden'}`}>
                 <div><span className="mono">Grand Bounty</span><strong className="gold">₹20,00,000</strong></div>
                 <div><span className="mono">Theme</span><strong>INTANGIBLES</strong></div>
                 <div><span className="mono">Confirmed Dates</span><strong>{SITE_CONFIG.dates}</strong></div>
@@ -808,8 +787,8 @@ export default function App() {
             <div className="footer-links-group">
               <div className="footer-col-block">
                 <span className="mono gold col-title">Confluences</span>
-                <a href="/events/management" onClick={(e) => { e.preventDefault(); navigateTo('management') }}>Management Arenas (6)</a>
-                <a href="/events/cultural" onClick={(e) => { e.preventDefault(); navigateTo('cultural') }}>Cultural Confluence (6)</a>
+                <a href="/events/management" onClick={(e) => { e.preventDefault(); navigateTo('management') }}>Management Arenas (11)</a>
+                <a href="/events/cultural" onClick={(e) => { e.preventDefault(); navigateTo('cultural') }}>Cultural Confluence (10)</a>
                 <a href="/register" onClick={(e) => { e.preventDefault(); navigateTo('portal') }}>Registration Portal</a>
                 <a href="#about" onClick={(e) => { e.preventDefault(); document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' }) }}>Summit Philosophy</a>
                 <a href="#sponsors" onClick={(e) => { e.preventDefault(); document.getElementById('sponsors')?.scrollIntoView({ behavior: 'smooth' }) }}>Corporate Partners</a>

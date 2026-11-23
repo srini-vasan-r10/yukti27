@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && node prerender.js && node generate-sitemap.js",
-    "postbuild": "node generate-sitemap.js",
     "lint": "oxlint",
     "preview": "vite preview"
   },

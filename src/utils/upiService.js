@@ -10,8 +10,8 @@
  */
 
 export const UPI_CONFIG = {
-  vpa: 'sv100204-1@okaxis',
-  payeeName: 'Srinivasan R',
+  vpa: import.meta.env.VITE_UPI_VPA || 'yukti@tsm.ac.in',
+  payeeName: import.meta.env.VITE_UPI_PAYEE_NAME || 'YUKTI 2027 TSM',
   currency: 'INR'
 }
 

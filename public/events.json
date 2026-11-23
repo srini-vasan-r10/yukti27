@@ -1,27 +1,28 @@
 [
   {
     "type": "man",
-    "id": "the-ai-ceo-challenge",
+    "id": "the-apex-manager",
     "num": "01",
-    "title": "The AI CEO Challenge",
-    "domain": "Executive Leadership & Best Manager",
-    "shortDesc": "A high-stakes individual competition testing strategic thinking, executive composure, and leadership under pressure.",
+    "title": "THE APEX MANAGER",
+    "domain": "Flagship Leadership (Mr. & Ms. YUKTI)",
+    "club": "POC",
+    "shortDesc": "The ultimate test of executive composure, strategic acumen, crisis diplomacy, and multidimensional leadership to crown Mr. & Ms. YUKTI.",
     "rounds": [
       {
         "name": "Round 1: Cognitive Inquisitor",
-        "desc": "Psychometric evaluation and analytical reasoning challenge."
+        "desc": "Psychometric stress testing, quick decision matrices, and corporate acumen round."
       },
       {
-        "name": "Round 2: Boardroom Crisis",
-        "desc": "Resolve a simulated corporate crisis with limited resources and time."
+        "name": "Round 2: Boardroom Crucible",
+        "desc": "Live simulation resolving acute organizational crises under extreme time flux."
       },
       {
-        "name": "Round 3: The CEO's Verdict",
-        "desc": "Present a strategic business decision before an expert jury."
+        "name": "Round 3: The Grand Proscenium Defense",
+        "desc": "Executive defense and visionary defense before a jury of distinguished corporate leaders."
       }
     ],
-    "teamSize": "Individual",
-    "prizes": "₹2,50,000 + Best Manager Shield",
+    "teamSize": "Individual (1 Member)",
+    "prizes": "₹2,50,000 + Best Manager Rolling Trophy",
     "fee": "₹500",
     "participationType": "individual",
     "paymentModel": "individual",
@@ -48,53 +49,40 @@
       "mode": "Offline On-Campus",
       "venueRequired": true,
       "reportingTime": "08:30 AM IST",
-      "proctoringOrJudgingRounds": 3
-    },
-    "submissionRequirements": {
-      "requiresDocumentUpload": false,
-      "allowedFileTypes": [
-        "pdf",
-        "pptx"
-      ],
-      "maxFileSizeMb": 25
-    },
-    "flags": {
-      "isOpenForRegistration": true,
-      "isSpotRegistrationAllowed": false,
-      "isFeatured": true,
-      "isRollingShieldEvent": true
+      "date": "2027-01-28"
     }
   },
   {
     "type": "man",
-    "id": "market-mavericks",
+    "id": "fintorum",
     "num": "02",
-    "title": "Market Mavericks",
-    "domain": "Marketing Strategy & Brand Management",
-    "shortDesc": "A battlefield of brands where participants transform ordinary products into extraordinary market leaders.",
+    "title": "FINTORUM",
+    "domain": "Finance & Wealth Architecture",
+    "club": "Artha",
+    "shortDesc": "High-velocity financial valuation, distressed asset restructuring, derivative hedging, and boardroom capital pitch.",
     "rounds": [
       {
-        "name": "Round 1: Brand Decode",
-        "desc": "Identify brands through unconventional marketing clues."
+        "name": "Round 1: Quantitative Screener",
+        "desc": "Algorithmic corporate valuation, portfolio rebalancing, and financial analytics."
       },
       {
-        "name": "Round 2: Market Disruptor",
-        "desc": "Develop a creative campaign for a challenging product."
+        "name": "Round 2: Distressed M&A Sprint",
+        "desc": "Structuring an aggressive cross-border buyout and tax-optimized restructuring plan."
       },
       {
-        "name": "Round 3: Brand Wars",
-        "desc": "Defend your marketing strategy against competing teams."
+        "name": "Round 3: Angel & Institutional Pitch",
+        "desc": "Defending capital deployment before veteran investment bankers."
       }
     ],
-    "teamSize": "2 - 3 Members",
-    "prizes": "₹1,00,000 + Marketing Excellence Trophy",
-    "fee": "₹600 per team",
+    "teamSize": "Team of 2 to 3",
+    "prizes": "₹1,75,000 + Certificates of Corporate Excellence",
+    "fee": "₹750",
     "participationType": "team",
     "paymentModel": "team",
     "feeStructure": {
-      "amount": 600,
+      "amount": 750,
       "currency": "INR",
-      "displayFee": "₹600 per team",
+      "displayFee": "₹750",
       "chargedPer": "team",
       "splitPaymentSupported": false,
       "isRefundable": false
@@ -106,61 +94,260 @@
       "allowCrossDepartment": true
     },
     "eligibility": {
-      "targetAudience": "MBA / PGDM / Final Year UG",
+      "targetAudience": "Undergraduate & Postgraduate Scholars",
       "idCardRequired": true,
       "bonafideCertificateRequired": false
     },
     "scheduleMeta": {
       "mode": "Offline On-Campus",
       "venueRequired": true,
-      "reportingTime": "08:30 AM IST",
-      "proctoringOrJudgingRounds": 3
-    },
-    "submissionRequirements": {
-      "requiresDocumentUpload": false,
-      "allowedFileTypes": [
-        "pdf",
-        "pptx"
-      ],
-      "maxFileSizeMb": 25
-    },
-    "flags": {
-      "isOpenForRegistration": true,
-      "isSpotRegistrationAllowed": false,
-      "isFeatured": false,
-      "isRollingShieldEvent": false
+      "reportingTime": "09:00 AM IST",
+      "date": "2027-01-28"
     }
   },
   {
     "type": "man",
-    "id": "the-analyst-arena",
+    "id": "datavista",
     "num": "03",
-    "title": "The Analyst Arena",
-    "domain": "Business Analytics & Decision Science",
-    "shortDesc": "Where numbers tell stories and data-driven minds compete to uncover business opportunities.",
+    "title": "DATAVISTA",
+    "domain": "Data Analytics & Strategic Intelligence",
+    "club": "Quantrix",
+    "shortDesc": "Translating unstructured Big Data, machine predictive models, and business intelligence into decisive corporate advantage.",
     "rounds": [
       {
-        "name": "Round 1: Data Detective",
-        "desc": "Interpret datasets and identify hidden business patterns."
+        "name": "Round 1: Algorithmic Synthesis",
+        "desc": "Statistical exploration, cleansing high-noise enterprise datasets, and hypothesis validation."
       },
       {
-        "name": "Round 2: Insight Factory",
-        "desc": "Solve a business problem using analytical reasoning."
+        "name": "Round 2: Predictive Dashboard Sprint",
+        "desc": "Building predictive business intelligence narratives under time constraints."
       },
       {
-        "name": "Round 3: Data to Decisions",
-        "desc": "Present actionable recommendations to the judging panel."
+        "name": "Round 3: Executive Intelligence Brief",
+        "desc": "Presenting data-driven strategic interventions to senior analytics directors."
       }
     ],
-    "teamSize": "2 Members",
-    "prizes": "₹1,00,000 + Analytics Champion Trophy",
-    "fee": "₹500 per team",
+    "teamSize": "Team of 3",
+    "prizes": "₹1,50,000 + Quantrix Shield",
+    "fee": "₹750",
+    "participationType": "team",
+    "paymentModel": "team",
+    "feeStructure": {
+      "amount": 750,
+      "currency": "INR",
+      "displayFee": "₹750",
+      "chargedPer": "team",
+      "splitPaymentSupported": false,
+      "isRefundable": false
+    },
+    "teamConstraints": {
+      "minMembers": 3,
+      "maxMembers": 3,
+      "allowInterCollegeTeams": true,
+      "allowCrossDepartment": true
+    },
+    "eligibility": {
+      "targetAudience": "All Collegiate Scholars",
+      "idCardRequired": true,
+      "bonafideCertificateRequired": false
+    },
+    "scheduleMeta": {
+      "mode": "Offline On-Campus",
+      "venueRequired": true,
+      "reportingTime": "09:00 AM IST",
+      "date": "2027-01-28"
+    }
+  },
+  {
+    "type": "man",
+    "id": "emporia",
+    "num": "04",
+    "title": "EMPORIA",
+    "domain": "Strategic Marketing & Brand Dominance",
+    "club": "Chandhai",
+    "shortDesc": "Navigating market disruption, omnichannel growth hacking, consumer neuromarketing, and brand repositioning.",
+    "rounds": [
+      {
+        "name": "Round 1: Consumer Insight Lab",
+        "desc": "Decoding subcultural consumer psychographics and viral marketing mechanics."
+      },
+      {
+        "name": "Round 2: Guerrilla Campaign Launch",
+        "desc": "Designing a 360-degree digital and offline turnaround campaign."
+      },
+      {
+        "name": "Round 3: Brand War Crucible",
+        "desc": "Live courtroom-style brand defense and counter-positioning warfare."
+      }
+    ],
+    "teamSize": "Max 2 Members",
+    "prizes": "₹1,50,000 + Chandhai Trophy",
+    "fee": "₹600",
+    "participationType": "team",
+    "paymentModel": "team",
+    "feeStructure": {
+      "amount": 600,
+      "currency": "INR",
+      "displayFee": "₹600",
+      "chargedPer": "team",
+      "splitPaymentSupported": false,
+      "isRefundable": false
+    },
+    "teamConstraints": {
+      "minMembers": 1,
+      "maxMembers": 2,
+      "allowInterCollegeTeams": true,
+      "allowCrossDepartment": true
+    },
+    "eligibility": {
+      "targetAudience": "All Collegiate Scholars",
+      "idCardRequired": true,
+      "bonafideCertificateRequired": false
+    },
+    "scheduleMeta": {
+      "mode": "Offline On-Campus",
+      "venueRequired": true,
+      "reportingTime": "09:30 AM IST",
+      "date": "2027-01-28"
+    }
+  },
+  {
+    "type": "man",
+    "id": "roster-edge",
+    "num": "05",
+    "title": "ROSTER EDGE",
+    "domain": "Human Capital & Strategic Negotiation",
+    "club": "Nach",
+    "shortDesc": "Managing collective bargaining, corporate union standoffs, AI talent transformation, and high-stakes executive retention.",
+    "rounds": [
+      {
+        "name": "Round 1: Cultural Fitment & Policy Sprint",
+        "desc": "Formulating modern remote-first human capital frameworks and diversity metrics."
+      },
+      {
+        "name": "Round 2: The Negotiation Arena",
+        "desc": "Multi-stakeholder bilateral bargaining simulation against aggressive labor mediators."
+      },
+      {
+        "name": "Round 3: Boardroom Retention Defense",
+        "desc": "Preventing hostile corporate talent poaching with equity architectures."
+      }
+    ],
+    "teamSize": "Team of 2 to 3",
+    "prizes": "₹1,50,000 + Nach Excellence Award",
+    "fee": "₹750",
+    "participationType": "team",
+    "paymentModel": "team",
+    "feeStructure": {
+      "amount": 750,
+      "currency": "INR",
+      "displayFee": "₹750",
+      "chargedPer": "team",
+      "splitPaymentSupported": false,
+      "isRefundable": false
+    },
+    "teamConstraints": {
+      "minMembers": 2,
+      "maxMembers": 3,
+      "allowInterCollegeTeams": true,
+      "allowCrossDepartment": true
+    },
+    "eligibility": {
+      "targetAudience": "All Collegiate Scholars",
+      "idCardRequired": true,
+      "bonafideCertificateRequired": false
+    },
+    "scheduleMeta": {
+      "mode": "Offline On-Campus",
+      "venueRequired": true,
+      "reportingTime": "09:30 AM IST",
+      "date": "2027-01-28"
+    }
+  },
+  {
+    "type": "man",
+    "id": "optimize",
+    "num": "06",
+    "title": "OPTIMIZE",
+    "domain": "Supply Chain & Operations Excellence",
+    "club": "Kaizen",
+    "shortDesc": "Restructuring distressed global supply chains, bottleneck eradication, lean manufacturing, and real-time logistics optimization.",
+    "rounds": [
+      {
+        "name": "Round 1: Six Sigma Diagnostic",
+        "desc": "Root-cause bottleneck discovery and algorithmic warehouse queue modeling."
+      },
+      {
+        "name": "Round 2: The Black Swan Supply Shock",
+        "desc": "Navigating canal blockages, geopolitical embargoes, and port strikes in real-time."
+      },
+      {
+        "name": "Round 3: Green Logistics Blueprint",
+        "desc": "Presenting sustainable, zero-emission supply line networks to operational executives."
+      }
+    ],
+    "teamSize": "Team of 3 to 4",
+    "prizes": "₹1,60,000 + Kaizen Operations Shield",
+    "fee": "₹800",
+    "participationType": "team",
+    "paymentModel": "team",
+    "feeStructure": {
+      "amount": 800,
+      "currency": "INR",
+      "displayFee": "₹800",
+      "chargedPer": "team",
+      "splitPaymentSupported": false,
+      "isRefundable": false
+    },
+    "teamConstraints": {
+      "minMembers": 3,
+      "maxMembers": 4,
+      "allowInterCollegeTeams": true,
+      "allowCrossDepartment": true
+    },
+    "eligibility": {
+      "targetAudience": "All Collegiate Scholars",
+      "idCardRequired": true,
+      "bonafideCertificateRequired": false
+    },
+    "scheduleMeta": {
+      "mode": "Offline On-Campus",
+      "venueRequired": true,
+      "reportingTime": "09:00 AM IST",
+      "date": "2027-01-28"
+    }
+  },
+  {
+    "type": "man",
+    "id": "quorum-quest",
+    "num": "07",
+    "title": "QUORUM QUEST",
+    "domain": "The National Corporate Bizz-Quiz",
+    "club": "Readers Society",
+    "shortDesc": "South India's most intellectually electrifying battle of corporate encyclopedias, brand trivia, market history, and economic anomalies.",
+    "rounds": [
+      {
+        "name": "Round 1: Rapid Crossfire Written Prelims",
+        "desc": "30 intense audio-visual questions testing corporate history, brand logos, and trade trivia."
+      },
+      {
+        "name": "Round 2: Buzzer Grid & Steal Matrix",
+        "desc": "Speed-round buzzer arena with negative marking and strategic clue unmasking."
+      },
+      {
+        "name": "Round 3: The Grand Quorum Finals",
+        "desc": "On-stage multimedia quiz finale testing global economic scandals and corporate empires."
+      }
+    ],
+    "teamSize": "Team of 2",
+    "prizes": "₹1,25,000 + Readers Society Trophy",
+    "fee": "₹500",
     "participationType": "team",
     "paymentModel": "team",
     "feeStructure": {
       "amount": 500,
       "currency": "INR",
-      "displayFee": "₹500 per team",
+      "displayFee": "₹500",
       "chargedPer": "team",
       "splitPaymentSupported": false,
       "isRefundable": false
@@ -172,61 +359,48 @@
       "allowCrossDepartment": true
     },
     "eligibility": {
-      "targetAudience": "MBA / PGDM / Final Year UG",
+      "targetAudience": "Open to All College Students",
       "idCardRequired": true,
       "bonafideCertificateRequired": false
     },
     "scheduleMeta": {
       "mode": "Offline On-Campus",
       "venueRequired": true,
-      "reportingTime": "08:30 AM IST",
-      "proctoringOrJudgingRounds": 3
-    },
-    "submissionRequirements": {
-      "requiresDocumentUpload": false,
-      "allowedFileTypes": [
-        "pdf",
-        "pptx"
-      ],
-      "maxFileSizeMb": 25
-    },
-    "flags": {
-      "isOpenForRegistration": true,
-      "isSpotRegistrationAllowed": false,
-      "isFeatured": false,
-      "isRollingShieldEvent": false
+      "reportingTime": "10:00 AM IST",
+      "date": "2027-01-28"
     }
   },
   {
     "type": "man",
-    "id": "startup-storm",
-    "num": "04",
-    "title": "Startup Storm",
-    "domain": "Entrepreneurship & Innovation",
-    "shortDesc": "An entrepreneurial showdown challenging participants to turn disruptive ideas into scalable ventures.",
+    "id": "founder-sandbox",
+    "num": "08",
+    "title": "FOUNDER SANDBOX",
+    "domain": "Startup Incubation & Venture Pitch",
+    "club": "E-Cell",
+    "shortDesc": "Transform zero-to-one prototypes into venture-fundable enterprises under rapid investor scrutiny and market reality checks.",
     "rounds": [
       {
-        "name": "Round 1: Idea Ignition",
-        "desc": "Pitch an innovative startup concept."
+        "name": "Round 1: Pitch Deck Screening",
+        "desc": "Evaluation of problem-solution fit, TAM expansion, and unique unit economics."
       },
       {
-        "name": "Round 2: Investor Interrogation",
-        "desc": "Defend your business model before a panel of investors."
+        "name": "Round 2: The Investor Shark Pen",
+        "desc": "Hard-hitting valuation grill and stress-testing customer acquisition unit costs."
       },
       {
-        "name": "Round 3: Scale or Fail",
-        "desc": "Develop a growth strategy under real-world constraints."
+        "name": "Round 3: Demo Day Finals",
+        "desc": "Final term-sheet presentation to seed investors, venture capitalists, and incubation heads."
       }
     ],
-    "teamSize": "2 - 4 Members",
-    "prizes": "₹1,50,000 + Startup Incubation Opportunity",
-    "fee": "₹800 per team",
+    "teamSize": "Team of 2 to 4",
+    "prizes": "₹2,00,000 + Incubation Fast-Track Grants",
+    "fee": "₹800",
     "participationType": "team",
     "paymentModel": "team",
     "feeStructure": {
       "amount": 800,
       "currency": "INR",
-      "displayFee": "₹800 per team",
+      "displayFee": "₹800",
       "chargedPer": "team",
       "splitPaymentSupported": false,
       "isRefundable": false
@@ -238,580 +412,252 @@
       "allowCrossDepartment": true
     },
     "eligibility": {
-      "targetAudience": "MBA / PGDM / Final Year UG",
+      "targetAudience": "All Collegiate Scholars & Innovators",
       "idCardRequired": true,
       "bonafideCertificateRequired": false
     },
     "scheduleMeta": {
       "mode": "Offline On-Campus",
       "venueRequired": true,
-      "reportingTime": "08:30 AM IST",
-      "proctoringOrJudgingRounds": 3
-    },
-    "submissionRequirements": {
-      "requiresDocumentUpload": true,
-      "allowedFileTypes": [
-        "pdf",
-        "pptx"
-      ],
-      "maxFileSizeMb": 25
-    },
-    "flags": {
-      "isOpenForRegistration": true,
-      "isSpotRegistrationAllowed": false,
-      "isFeatured": false,
-      "isRollingShieldEvent": false
+      "reportingTime": "09:30 AM IST",
+      "date": "2027-01-28"
     }
   },
   {
     "type": "man",
-    "id": "supply-chain-syndicate",
-    "num": "05",
-    "title": "Supply Chain Syndicate",
-    "domain": "Operations & Supply Chain Management",
-    "shortDesc": "A strategic operations challenge testing participants' ability to manage disruptions and optimize complex supply networks.",
-    "rounds": [
-      {
-        "name": "Round 1: Logistics Logic",
-        "desc": "Solve supply chain and inventory management challenges."
-      },
-      {
-        "name": "Round 2: Disruption Protocol",
-        "desc": "Respond to simulated logistics and procurement crises."
-      },
-      {
-        "name": "Round 3: The Optimization Mission",
-        "desc": "Design an efficient end-to-end supply chain."
-      }
-    ],
-    "teamSize": "2 - 3 Members",
-    "prizes": "₹1,00,000 + Operations Excellence Shield",
-    "fee": "₹600 per team",
-    "participationType": "team",
-    "paymentModel": "team",
-    "feeStructure": {
-      "amount": 600,
-      "currency": "INR",
-      "displayFee": "₹600 per team",
-      "chargedPer": "team",
-      "splitPaymentSupported": false,
-      "isRefundable": false
-    },
-    "teamConstraints": {
-      "minMembers": 2,
-      "maxMembers": 3,
-      "allowInterCollegeTeams": true,
-      "allowCrossDepartment": true
-    },
-    "eligibility": {
-      "targetAudience": "MBA / PGDM / Final Year UG",
-      "idCardRequired": true,
-      "bonafideCertificateRequired": false
-    },
-    "scheduleMeta": {
-      "mode": "Offline On-Campus",
-      "venueRequired": true,
-      "reportingTime": "08:30 AM IST",
-      "proctoringOrJudgingRounds": 3
-    },
-    "submissionRequirements": {
-      "requiresDocumentUpload": false,
-      "allowedFileTypes": [
-        "pdf",
-        "pptx"
-      ],
-      "maxFileSizeMb": 25
-    },
-    "flags": {
-      "isOpenForRegistration": true,
-      "isSpotRegistrationAllowed": false,
-      "isFeatured": false,
-      "isRollingShieldEvent": true
-    }
-  },
-  {
-    "type": "man",
-    "id": "deal-or-no-deal",
-    "num": "06",
-    "title": "Deal or No Deal",
-    "domain": "Negotiation & Business Communication",
-    "shortDesc": "A high-pressure negotiation arena where persuasion, confidence, and strategic thinking determine the winners.",
-    "rounds": [
-      {
-        "name": "Round 1: Negotiator's Instinct",
-        "desc": "Demonstrate negotiation skills through rapid-fire scenarios."
-      },
-      {
-        "name": "Round 2: The Bargaining Table",
-        "desc": "Negotiate a simulated business transaction."
-      },
-      {
-        "name": "Round 3: The Final Deal",
-        "desc": "Close a complex multi-party business agreement."
-      }
-    ],
-    "teamSize": "Individual",
-    "prizes": "₹75,000 + Master Negotiator Trophy",
-    "fee": "₹400",
-    "participationType": "individual",
-    "paymentModel": "individual",
-    "feeStructure": {
-      "amount": 400,
-      "currency": "INR",
-      "displayFee": "₹400",
-      "chargedPer": "individual",
-      "splitPaymentSupported": false,
-      "isRefundable": false
-    },
-    "teamConstraints": {
-      "minMembers": 1,
-      "maxMembers": 1,
-      "allowInterCollegeTeams": true,
-      "allowCrossDepartment": true
-    },
-    "eligibility": {
-      "targetAudience": "MBA / PGDM / Final Year UG",
-      "idCardRequired": true,
-      "bonafideCertificateRequired": false
-    },
-    "scheduleMeta": {
-      "mode": "Offline On-Campus",
-      "venueRequired": true,
-      "reportingTime": "08:30 AM IST",
-      "proctoringOrJudgingRounds": 3
-    },
-    "submissionRequirements": {
-      "requiresDocumentUpload": false,
-      "allowedFileTypes": [
-        "pdf",
-        "pptx"
-      ],
-      "maxFileSizeMb": 25
-    },
-    "flags": {
-      "isOpenForRegistration": true,
-      "isSpotRegistrationAllowed": false,
-      "isFeatured": false,
-      "isRollingShieldEvent": false
-    }
-  },
-  {
-    "type": "man",
-    "id": "finance-frenzy",
-    "num": "07",
-    "title": "Finance Frenzy",
-    "domain": "Finance & Investment Management",
-    "shortDesc": "An intense financial competition challenging participants to think like investment bankers and portfolio managers.",
-    "rounds": [
-      {
-        "name": "Round 1: Financial IQ",
-        "desc": "Test financial knowledge through rapid-fire challenges."
-      },
-      {
-        "name": "Round 2: Portfolio Panic",
-        "desc": "Manage a simulated investment portfolio amid market fluctuations."
-      },
-      {
-        "name": "Round 3: The Investment Verdict",
-        "desc": "Present an investment strategy backed by financial analysis."
-      }
-    ],
-    "teamSize": "2 Members",
-    "prizes": "₹1,00,000 + Finance Excellence Trophy",
-    "fee": "₹500 per team",
-    "participationType": "team",
-    "paymentModel": "team",
-    "feeStructure": {
-      "amount": 500,
-      "currency": "INR",
-      "displayFee": "₹500 per team",
-      "chargedPer": "team",
-      "splitPaymentSupported": false,
-      "isRefundable": false
-    },
-    "teamConstraints": {
-      "minMembers": 2,
-      "maxMembers": 2,
-      "allowInterCollegeTeams": true,
-      "allowCrossDepartment": true
-    },
-    "eligibility": {
-      "targetAudience": "MBA / PGDM / Final Year UG",
-      "idCardRequired": true,
-      "bonafideCertificateRequired": false
-    },
-    "scheduleMeta": {
-      "mode": "Offline On-Campus",
-      "venueRequired": true,
-      "reportingTime": "08:30 AM IST",
-      "proctoringOrJudgingRounds": 3
-    },
-    "submissionRequirements": {
-      "requiresDocumentUpload": false,
-      "allowedFileTypes": [
-        "pdf",
-        "pptx"
-      ],
-      "maxFileSizeMb": 25
-    },
-    "flags": {
-      "isOpenForRegistration": true,
-      "isSpotRegistrationAllowed": false,
-      "isFeatured": false,
-      "isRollingShieldEvent": false
-    }
-  },
-  {
-    "type": "man",
-    "id": "hr-human-capital",
-    "num": "08",
-    "title": "HR: Human Capital",
-    "domain": "Human Resource Management & Organizational Behaviour",
-    "shortDesc": "A people-management challenge testing talent acquisition, conflict resolution, and organizational leadership.",
-    "rounds": [
-      {
-        "name": "Round 1: Talent Detective",
-        "desc": "Evaluate candidates through recruitment scenarios."
-      },
-      {
-        "name": "Round 2: Workplace Wars",
-        "desc": "Resolve complex employee conflicts and organizational dilemmas."
-      },
-      {
-        "name": "Round 3: Culture Architects",
-        "desc": "Develop a people strategy for a growing organization."
-      }
-    ],
-    "teamSize": "2 Members",
-    "prizes": "₹75,000 + Harini will give you a Shield",
-    "fee": "₹500 per team",
-    "participationType": "team",
-    "paymentModel": "team",
-    "feeStructure": {
-      "amount": 500,
-      "currency": "INR",
-      "displayFee": "₹500 per team",
-      "chargedPer": "team",
-      "splitPaymentSupported": false,
-      "isRefundable": false
-    },
-    "teamConstraints": {
-      "minMembers": 2,
-      "maxMembers": 2,
-      "allowInterCollegeTeams": true,
-      "allowCrossDepartment": true
-    },
-    "eligibility": {
-      "targetAudience": "MBA / PGDM / Final Year UG",
-      "idCardRequired": true,
-      "bonafideCertificateRequired": false
-    },
-    "scheduleMeta": {
-      "mode": "Offline On-Campus",
-      "venueRequired": true,
-      "reportingTime": "08:30 AM IST",
-      "proctoringOrJudgingRounds": 3
-    },
-    "submissionRequirements": {
-      "requiresDocumentUpload": false,
-      "allowedFileTypes": [
-        "pdf",
-        "pptx"
-      ],
-      "maxFileSizeMb": 25
-    },
-    "flags": {
-      "isOpenForRegistration": true,
-      "isSpotRegistrationAllowed": false,
-      "isFeatured": false,
-      "isRollingShieldEvent": true
-    }
-  },
-  {
-    "type": "man",
-    "id": "the-consulting-room",
+    "id": "mindjack",
     "num": "09",
-    "title": "The Consulting Room",
-    "domain": "Business Consulting & Strategic Management",
-    "shortDesc": "A consulting simulation where participants tackle real-world business problems and deliver boardroom-ready solutions.",
+    "title": "MINDJACK",
+    "domain": "Strategic Game Theory & Cognitive Trials",
+    "club": "R-Space",
+    "shortDesc": "An unpredictable arena of behavioural psychology, game theory dilemmas, asymmetric negotiations, and mental dexterity.",
     "rounds": [
       {
-        "name": "Round 1: Case Crack",
-        "desc": "Analyze a complex business case and identify its core problem."
+        "name": "Round 1: The Prisoner's Matrix",
+        "desc": "Iterated game theory challenges testing trust, bluffing, and risk calibration."
       },
       {
-        "name": "Round 2: Strategy Sprint",
-        "desc": "Develop a practical solution under strict time constraints."
+        "name": "Round 2: Asymmetric Market Simulation",
+        "desc": "Trading under insider information asymmetry and speculative artificial bubbles."
       },
       {
-        "name": "Round 3: Partner's Review",
-        "desc": "Defend recommendations before a panel of industry experts."
+        "name": "Round 3: The Master Strategist Gauntlet",
+        "desc": "High-velocity live cognitive boardroom face-off."
       }
     ],
-    "teamSize": "2 - 3 Members",
-    "prizes": "₹1,25,000 + Consulting Excellence Trophy",
-    "fee": "₹700 per team",
+    "teamSize": "Team of 3",
+    "prizes": "₹1,40,000 + R-Space Trophy",
+    "fee": "₹750",
     "participationType": "team",
     "paymentModel": "team",
     "feeStructure": {
-      "amount": 700,
+      "amount": 750,
       "currency": "INR",
-      "displayFee": "₹700 per team",
+      "displayFee": "₹750",
       "chargedPer": "team",
       "splitPaymentSupported": false,
       "isRefundable": false
     },
     "teamConstraints": {
-      "minMembers": 2,
+      "minMembers": 3,
       "maxMembers": 3,
       "allowInterCollegeTeams": true,
       "allowCrossDepartment": true
     },
     "eligibility": {
-      "targetAudience": "MBA / PGDM / Final Year UG",
+      "targetAudience": "All Collegiate Scholars",
       "idCardRequired": true,
       "bonafideCertificateRequired": false
     },
     "scheduleMeta": {
       "mode": "Offline On-Campus",
       "venueRequired": true,
-      "reportingTime": "08:30 AM IST",
-      "proctoringOrJudgingRounds": 3
-    },
-    "submissionRequirements": {
-      "requiresDocumentUpload": false,
-      "allowedFileTypes": [
-        "pdf",
-        "pptx"
-      ],
-      "maxFileSizeMb": 25
-    },
-    "flags": {
-      "isOpenForRegistration": true,
-      "isSpotRegistrationAllowed": false,
-      "isFeatured": false,
-      "isRollingShieldEvent": false
+      "reportingTime": "10:00 AM IST",
+      "date": "2027-01-28"
     }
   },
   {
     "type": "man",
-    "id": "the-sales-showdown",
+    "id": "ipl-auction",
     "num": "10",
-    "title": "The Sales Showdown",
-    "domain": "Sales Management & Business Development",
-    "shortDesc": "A high-energy sales competition testing persuasion, customer understanding, objection handling, and closing skills.",
+    "title": "IPL AUCTION",
+    "domain": "Sports Analytics & Bidding Economics",
+    "club": "Sports Committee",
+    "shortDesc": "Build the championship franchise squad balancing purse budgets, player analytics, RTM cards, and real-time bidding wars.",
     "rounds": [
       {
-        "name": "Round 1: Pitch Perfect",
-        "desc": "Deliver a compelling product pitch within a limited time."
+        "name": "Round 1: Cricket Analytics Trivia",
+        "desc": "Statistical screening testing player form, pitch conditions, and historical match stats."
       },
       {
-        "name": "Round 2: Objection Overload",
-        "desc": "Handle difficult customer objections and negotiate effectively."
+        "name": "Round 2: The Live Mega Auction",
+        "desc": "High-decibel bidding war with dynamic purse deductions, foreign quota limits, and stealth bids."
       },
       {
-        "name": "Round 3: Close the Deal",
-        "desc": "Convert a simulated prospect into a successful business deal."
+        "name": "Round 3: Tactical Squad Validation",
+        "desc": "Simulated match-play analysis defending squad composition against simulated league scenarios."
       }
     ],
-    "teamSize": "Individual",
-    "prizes": "₹75,000 + Sales Champion Trophy",
-    "fee": "₹400",
-    "participationType": "individual",
-    "paymentModel": "individual",
+    "teamSize": "Team of 3 to 5",
+    "prizes": "₹1,50,000 + Sports Committee Championship Shield",
+    "fee": "₹900",
+    "participationType": "team",
+    "paymentModel": "team",
     "feeStructure": {
-      "amount": 400,
+      "amount": 900,
       "currency": "INR",
-      "displayFee": "₹400",
-      "chargedPer": "individual",
+      "displayFee": "₹900",
+      "chargedPer": "team",
       "splitPaymentSupported": false,
       "isRefundable": false
     },
     "teamConstraints": {
-      "minMembers": 1,
-      "maxMembers": 1,
+      "minMembers": 3,
+      "maxMembers": 5,
       "allowInterCollegeTeams": true,
       "allowCrossDepartment": true
     },
     "eligibility": {
-      "targetAudience": "MBA / PGDM / Final Year UG",
+      "targetAudience": "All Collegiate Scholars",
       "idCardRequired": true,
       "bonafideCertificateRequired": false
     },
     "scheduleMeta": {
       "mode": "Offline On-Campus",
       "venueRequired": true,
-      "reportingTime": "08:30 AM IST",
-      "proctoringOrJudgingRounds": 3
-    },
-    "submissionRequirements": {
-      "requiresDocumentUpload": false,
-      "allowedFileTypes": [
-        "pdf",
-        "pptx"
-      ],
-      "maxFileSizeMb": 25
-    },
-    "flags": {
-      "isOpenForRegistration": true,
-      "isSpotRegistrationAllowed": false,
-      "isFeatured": false,
-      "isRollingShieldEvent": false
+      "reportingTime": "09:30 AM IST",
+      "date": "2027-01-29"
     }
   },
   {
     "type": "man",
-    "id": "global-business-league",
+    "id": "pivot-or-perish-reboot",
     "num": "11",
-    "title": "Global Business League",
-    "domain": "International Business & Global Strategy",
-    "shortDesc": "A global market simulation challenging participants to navigate international trade, cultural differences, and geopolitical uncertainty.",
+    "title": "PIVOT OR PERISH: REBOOT",
+    "domain": "Turnaround Strategy & Crisis Transformation",
+    "club": "Pivot Club",
+    "shortDesc": "Rescue sinking conglomerate giants on the brink of bankruptcy through radical strategic pivots and operational transformation.",
     "rounds": [
       {
-        "name": "Round 1: Global Radar",
-        "desc": "Identify international business opportunities and market trends."
+        "name": "Round 1: Post-Mortem Diagnostics",
+        "desc": "Dissecting failed business models, balance-sheet toxicities, and obsolete revenue channels."
       },
       {
-        "name": "Round 2: Borderless Battles",
-        "desc": "Solve international trade and cross-border business challenges."
+        "name": "Round 2: 72-Hour Turnaround Plan",
+        "desc": "Executing an aggressive product, market, and branding overhaul under simulated capital shortages."
       },
       {
-        "name": "Round 3: Global Expansion",
-        "desc": "Present an international market entry strategy."
+        "name": "Round 3: Creditors & Stakeholder Defense",
+        "desc": "Selling the reboot blueprint to skeptical institutional creditors and board members."
       }
     ],
-    "teamSize": "2 - 3 Members",
-    "prizes": "₹1,00,000 + Global Strategist Trophy",
-    "fee": "₹600 per team",
+    "teamSize": "Team of 4",
+    "prizes": "₹1,60,000 + Pivot Club Award",
+    "fee": "₹800",
     "participationType": "team",
     "paymentModel": "team",
     "feeStructure": {
-      "amount": 600,
+      "amount": 800,
       "currency": "INR",
-      "displayFee": "₹600 per team",
+      "displayFee": "₹800",
       "chargedPer": "team",
       "splitPaymentSupported": false,
       "isRefundable": false
     },
     "teamConstraints": {
-      "minMembers": 2,
-      "maxMembers": 3,
+      "minMembers": 4,
+      "maxMembers": 4,
       "allowInterCollegeTeams": true,
       "allowCrossDepartment": true
     },
     "eligibility": {
-      "targetAudience": "MBA / PGDM / Final Year UG",
+      "targetAudience": "All Collegiate Scholars",
       "idCardRequired": true,
       "bonafideCertificateRequired": false
     },
     "scheduleMeta": {
       "mode": "Offline On-Campus",
       "venueRequired": true,
-      "reportingTime": "08:30 AM IST",
-      "proctoringOrJudgingRounds": 3
-    },
-    "submissionRequirements": {
-      "requiresDocumentUpload": false,
-      "allowedFileTypes": [
-        "pdf",
-        "pptx"
-      ],
-      "maxFileSizeMb": 25
-    },
-    "flags": {
-      "isOpenForRegistration": true,
-      "isSpotRegistrationAllowed": false,
-      "isFeatured": false,
-      "isRollingShieldEvent": false
-    }
-  },
-  {
-    "type": "man",
-    "id": "the-crisis-command",
-    "num": "12",
-    "title": "The Crisis Command",
-    "domain": "Crisis Management & Corporate Governance",
-    "shortDesc": "An intense corporate crisis simulation testing leadership, ethical judgment, risk management, and decision-making under uncertainty.",
-    "rounds": [
-      {
-        "name": "Round 1: Risk Radar",
-        "desc": "Identify organizational risks through real-world business scenarios."
-      },
-      {
-        "name": "Round 2: Crisis Unleashed",
-        "desc": "Manage a rapidly evolving corporate emergency."
-      },
-      {
-        "name": "Round 3: Reputation Recovery",
-        "desc": "Present a recovery strategy to restore stakeholder confidence."
-      }
-    ],
-    "teamSize": "2 - 3 Members",
-    "prizes": "₹1,25,000 + Crisis Commander Shield",
-    "fee": "₹700 per team",
-    "participationType": "team",
-    "paymentModel": "team",
-    "feeStructure": {
-      "amount": 700,
-      "currency": "INR",
-      "displayFee": "₹700 per team",
-      "chargedPer": "team",
-      "splitPaymentSupported": false,
-      "isRefundable": false
-    },
-    "teamConstraints": {
-      "minMembers": 2,
-      "maxMembers": 3,
-      "allowInterCollegeTeams": true,
-      "allowCrossDepartment": true
-    },
-    "eligibility": {
-      "targetAudience": "MBA / PGDM / Final Year UG",
-      "idCardRequired": true,
-      "bonafideCertificateRequired": false
-    },
-    "scheduleMeta": {
-      "mode": "Offline On-Campus",
-      "venueRequired": true,
-      "reportingTime": "08:30 AM IST",
-      "proctoringOrJudgingRounds": 3
-    },
-    "submissionRequirements": {
-      "requiresDocumentUpload": false,
-      "allowedFileTypes": [
-        "pdf",
-        "pptx"
-      ],
-      "maxFileSizeMb": 25
-    },
-    "flags": {
-      "isOpenForRegistration": true,
-      "isSpotRegistrationAllowed": false,
-      "isFeatured": false,
-      "isRollingShieldEvent": true
+      "reportingTime": "09:00 AM IST",
+      "date": "2027-01-29"
     }
   },
   {
     "type": "cul",
-    "id": "battle-of-bands",
-    "title": "Battle of Bands",
-    "category": "Acoustic, Rock & Fusion",
-    "shortDesc": "A high-energy musical showdown bringing together talented bands for an electrifying live performance.",
-    "format": "Band Ensemble (5 - 8 musicians, 15 minutes stage set)",
-    "judging": [
-      "Harmonic Complexity",
-      "Instrumental Virtuosity",
-      "Stage Presence",
-      "Originality"
+    "id": "meltyrag",
+    "num": "12",
+    "title": "MELTYRAG",
+    "category": "Solo Singing & Vocal Performance",
+    "club": "Symphonies",
+    "shortDesc": "Command the grand auditorium acoustic stage with raw pitch precision, emotional resonance, and vocal virtuosity.",
+    "rounds": [
+      {
+        "name": "Round 1: Acoustica Prelims",
+        "desc": "2-minute solo vocal performance (Eastern or Western, acoustic accompaniment optional)."
+      },
+      {
+        "name": "Round 2: The Spotlight Grand Finale",
+        "desc": "Full-stage vocal performance with live sound balancing and jury critique."
+      }
     ],
-    "prizes": "₹1,75,000 + Studio Grants",
-    "fee": "₹1,200 per band",
+    "teamSize": "Solo (1 Member)",
+    "prizes": "₹75,000 + Golden Mic Trophy",
+    "fee": "₹300",
+    "participationType": "individual",
+    "paymentModel": "individual",
+    "feeStructure": {
+      "amount": 300,
+      "currency": "INR",
+      "displayFee": "₹300",
+      "chargedPer": "individual",
+      "splitPaymentSupported": false,
+      "isRefundable": false
+    },
+    "teamConstraints": {
+      "minMembers": 1,
+      "maxMembers": 1,
+      "allowInterCollegeTeams": true,
+      "allowCrossDepartment": true
+    },
+    "eligibility": {
+      "targetAudience": "Open to All College Vocalists",
+      "idCardRequired": true,
+      "bonafideCertificateRequired": false
+    },
+    "scheduleMeta": {
+      "mode": "Offline On-Campus",
+      "venueRequired": true,
+      "reportingTime": "10:00 AM IST",
+      "date": "2027-01-30"
+    }
+  },
+  {
+    "type": "cul",
+    "id": "riff-rumbles",
+    "num": "13",
+    "title": "RIFF RUMBLES",
+    "category": "Battle of the Bands",
+    "club": "Symphonies",
+    "shortDesc": "Thunderous electric guitar distortion, driving bass rhythms, and powerhouse original band compositions in an explosive live showcase.",
+    "rounds": [
+      {
+        "name": "Round 1: Soundcheck & Jam Screening",
+        "desc": "Tight 5-minute set covering one original composition or reimagined rock classic."
+      },
+      {
+        "name": "Round 2: The Open-Air Proscenium Battle",
+        "desc": "15-minute live pro-rig concert set judged on tightness, arrangement, and crowd electricity."
+      }
+    ],
+    "teamSize": "Team of 5 to 8",
+    "prizes": "₹2,00,000 + Symphonies Rock Shield",
+    "fee": "₹1,200",
     "participationType": "team",
     "paymentModel": "team",
     "feeStructure": {
       "amount": 1200,
       "currency": "INR",
-      "displayFee": "₹1,200 per band",
+      "displayFee": "₹1,200",
       "chargedPer": "team",
       "splitPaymentSupported": false,
       "isRefundable": false
@@ -823,167 +669,94 @@
       "allowCrossDepartment": true
     },
     "eligibility": {
-      "targetAudience": "All UG & PG Students",
+      "targetAudience": "Collegiate & Independent Bands",
       "idCardRequired": true,
       "bonafideCertificateRequired": false
     },
     "scheduleMeta": {
       "mode": "Offline On-Campus",
       "venueRequired": true,
-      "reportingTime": "08:30 AM IST",
-      "proctoringOrJudgingRounds": 4
-    },
-    "submissionRequirements": {
-      "requiresDocumentUpload": false,
-      "allowedFileTypes": [
-        "pdf",
-        "pptx"
-      ],
-      "maxFileSizeMb": 25
-    },
-    "flags": {
-      "isOpenForRegistration": true,
-      "isSpotRegistrationAllowed": false,
-      "isFeatured": true,
-      "isRollingShieldEvent": false
+      "reportingTime": "01:00 PM IST",
+      "date": "2027-01-30"
     }
   },
   {
     "type": "cul",
-    "id": "solo-symphony",
-    "title": "Solo Symphony",
-    "category": "Solo Singing & Vocal Performance",
-    "shortDesc": "A platform for exceptional vocalists to showcase their range, expression, and musical identity before a live audience.",
-    "format": "Individual Performance (4 - 5 minutes)",
-    "judging": [
-      "Vocal Range",
-      "Pitch Accuracy",
-      "Musical Expression",
-      "Stage Presence"
+    "id": "floor-faceoff",
+    "num": "14",
+    "title": "FLOOR FACEOFF",
+    "category": "Solo Dance Championship",
+    "club": "Xtreme Moves",
+    "shortDesc": "Electrifying 1-on-1 freestyle dance cypher battles spanning hip-hop, popping, locking, contemporary, and freestyle rhythm.",
+    "rounds": [
+      {
+        "name": "Round 1: Cypher Showcase",
+        "desc": "60-second individual performance to test choreography, stage presence, and rhythm."
+      },
+      {
+        "name": "Round 2: The 1v1 Sudden-Death Faceoff",
+        "desc": "Head-to-head live DJ drop battle with impromptu track switches and jury elimination."
+      }
     ],
-    "prizes": "₹75,000 + Best Vocalist Trophy",
-    "fee": "₹300",
-    "participationType": "team",
-    "paymentModel": "team",
+    "teamSize": "Solo (1 Member)",
+    "prizes": "₹80,000 + Xtreme Moves Solo Trophy",
+    "fee": "₹350",
+    "participationType": "individual",
+    "paymentModel": "individual",
     "feeStructure": {
-      "amount": 300,
+      "amount": 350,
       "currency": "INR",
-      "displayFee": "₹300",
-      "chargedPer": "team",
-      "splitPaymentSupported": false,
-      "isRefundable": false
-    },
-    "teamConstraints": {
-      "minMembers": 4,
-      "maxMembers": 5,
-      "allowInterCollegeTeams": true,
-      "allowCrossDepartment": true
-    },
-    "eligibility": {
-      "targetAudience": "All UG & PG Students",
-      "idCardRequired": true,
-      "bonafideCertificateRequired": false
-    },
-    "scheduleMeta": {
-      "mode": "Offline On-Campus",
-      "venueRequired": true,
-      "reportingTime": "08:30 AM IST",
-      "proctoringOrJudgingRounds": 4
-    },
-    "submissionRequirements": {
-      "requiresDocumentUpload": false,
-      "allowedFileTypes": [
-        "pdf",
-        "pptx"
-      ],
-      "maxFileSizeMb": 25
-    },
-    "flags": {
-      "isOpenForRegistration": true,
-      "isSpotRegistrationAllowed": false,
-      "isFeatured": false,
-      "isRollingShieldEvent": false
-    }
-  },
-  {
-    "type": "cul",
-    "id": "footloose-frenzy",
-    "title": "Footloose Frenzy",
-    "category": "Western & Contemporary Dance",
-    "shortDesc": "An explosive dance competition celebrating choreography, rhythm, synchronization, and stage charisma.",
-    "format": "Group Performance (6 - 12 dancers, 8 minutes)",
-    "judging": [
-      "Choreography",
-      "Synchronization",
-      "Creativity",
-      "Stage Energy"
-    ],
-    "prizes": "₹1,25,000 + Dance Excellence Trophy",
-    "fee": "₹1,000 per team",
-    "participationType": "team",
-    "paymentModel": "team",
-    "feeStructure": {
-      "amount": 1000,
-      "currency": "INR",
-      "displayFee": "₹1,000 per team",
-      "chargedPer": "team",
-      "splitPaymentSupported": false,
-      "isRefundable": false
-    },
-    "teamConstraints": {
-      "minMembers": 6,
-      "maxMembers": 12,
-      "allowInterCollegeTeams": true,
-      "allowCrossDepartment": true
-    },
-    "eligibility": {
-      "targetAudience": "All UG & PG Students",
-      "idCardRequired": true,
-      "bonafideCertificateRequired": false
-    },
-    "scheduleMeta": {
-      "mode": "Offline On-Campus",
-      "venueRequired": true,
-      "reportingTime": "08:30 AM IST",
-      "proctoringOrJudgingRounds": 4
-    },
-    "submissionRequirements": {
-      "requiresDocumentUpload": false,
-      "allowedFileTypes": [
-        "pdf",
-        "pptx"
-      ],
-      "maxFileSizeMb": 25
-    },
-    "flags": {
-      "isOpenForRegistration": true,
-      "isSpotRegistrationAllowed": false,
-      "isFeatured": false,
-      "isRollingShieldEvent": false
-    }
-  },
-  {
-    "type": "cul",
-    "id": "natyarangam",
-    "title": "Natyarangam",
-    "category": "Classical & Folk Dance",
-    "shortDesc": "A celebration of India's rich cultural heritage through classical elegance and vibrant traditional dance forms.",
-    "format": "Solo or Group Performance (5 - 10 minutes)",
-    "judging": [
-      "Technical Precision",
-      "Traditional Authenticity",
-      "Expression",
-      "Presentation"
-    ],
-    "prizes": "₹1,00,000 + Cultural Excellence Shield",
-    "fee": "₹500 per entry",
-    "participationType": "team",
-    "paymentModel": "entry",
-    "feeStructure": {
-      "amount": 500,
-      "currency": "INR",
-      "displayFee": "₹500 per entry",
+      "displayFee": "₹350",
       "chargedPer": "individual",
+      "splitPaymentSupported": false,
+      "isRefundable": false
+    },
+    "teamConstraints": {
+      "minMembers": 1,
+      "maxMembers": 1,
+      "allowInterCollegeTeams": true,
+      "allowCrossDepartment": true
+    },
+    "eligibility": {
+      "targetAudience": "All Collegiate Dancers",
+      "idCardRequired": true,
+      "bonafideCertificateRequired": false
+    },
+    "scheduleMeta": {
+      "mode": "Offline On-Campus",
+      "venueRequired": true,
+      "reportingTime": "10:30 AM IST",
+      "date": "2027-01-30"
+    }
+  },
+  {
+    "type": "cul",
+    "id": "groove-gala",
+    "num": "15",
+    "title": "GROOVE GALA",
+    "category": "Mega Group Choreography",
+    "club": "Xtreme Moves",
+    "shortDesc": "Synchronized formations, acrobatic transitions, thematic narrative choreography, and pulsating collegiate group dancing.",
+    "rounds": [
+      {
+        "name": "Round 1: Stage Rehearsal & Spacing",
+        "desc": "Stage orientation, lighting cue alignment, and props safety certification."
+      },
+      {
+        "name": "Round 2: The Main Stage Spectacular",
+        "desc": "8 to 10 minute full-crew production judged on synchronization, difficulty, and theme interpretation."
+      }
+    ],
+    "teamSize": "Team of 5 to 10",
+    "prizes": "₹2,50,000 + National Choreography Shield",
+    "fee": "₹1,500",
+    "participationType": "team",
+    "paymentModel": "team",
+    "feeStructure": {
+      "amount": 1500,
+      "currency": "INR",
+      "displayFee": "₹1,500",
+      "chargedPer": "team",
       "splitPaymentSupported": false,
       "isRefundable": false
     },
@@ -994,351 +767,354 @@
       "allowCrossDepartment": true
     },
     "eligibility": {
-      "targetAudience": "All UG & PG Students",
+      "targetAudience": "Collegiate Dance Troupes",
       "idCardRequired": true,
       "bonafideCertificateRequired": false
     },
     "scheduleMeta": {
       "mode": "Offline On-Campus",
       "venueRequired": true,
-      "reportingTime": "08:30 AM IST",
-      "proctoringOrJudgingRounds": 4
-    },
-    "submissionRequirements": {
-      "requiresDocumentUpload": false,
-      "allowedFileTypes": [
-        "pdf",
-        "pptx"
-      ],
-      "maxFileSizeMb": 25
-    },
-    "flags": {
-      "isOpenForRegistration": true,
-      "isSpotRegistrationAllowed": false,
-      "isFeatured": false,
-      "isRollingShieldEvent": true
+      "reportingTime": "02:00 PM IST",
+      "date": "2027-01-30"
     }
   },
   {
     "type": "cul",
-    "id": "theatre-thunder",
-    "title": "Theatre Thunder",
-    "category": "Drama, Theatre & Street Play",
-    "shortDesc": "A dramatic stage competition where powerful storytelling, compelling performances, and creative direction take center stage.",
-    "format": "Theatre Ensemble (5 - 12 members, 15 minutes)",
-    "judging": [
-      "Acting",
-      "Script Quality",
-      "Direction",
-      "Audience Engagement"
+    "id": "kaivinai",
+    "num": "16",
+    "title": "KAIVINAI",
+    "category": "Traditional Art, Craft & Cultural Heritage",
+    "club": "WDC",
+    "shortDesc": "A celebration of indigenous handcrafted artistry, sustainable craft, indigenous motifs, and live artistic craftsmanship.",
+    "rounds": [
+      {
+        "name": "Round 1: Material Conception & Theme Reveal",
+        "desc": "Unveiling eco-sustainable materials, traditional canvas mediums, and design brief."
+      },
+      {
+        "name": "Round 2: Live Craft Creation & Heritage Exhibition",
+        "desc": "3-hour live fabrication judged on traditional intricacy, aesthetic balance, and narrative."
+      }
     ],
-    "prizes": "₹1,25,000 + Theatre Excellence Trophy",
-    "fee": "₹1,000 per team",
-    "participationType": "team",
-    "paymentModel": "team",
-    "feeStructure": {
-      "amount": 1000,
-      "currency": "INR",
-      "displayFee": "₹1,000 per team",
-      "chargedPer": "team",
-      "splitPaymentSupported": false,
-      "isRefundable": false
-    },
-    "teamConstraints": {
-      "minMembers": 5,
-      "maxMembers": 12,
-      "allowInterCollegeTeams": true,
-      "allowCrossDepartment": true
-    },
-    "eligibility": {
-      "targetAudience": "All UG & PG Students",
-      "idCardRequired": true,
-      "bonafideCertificateRequired": false
-    },
-    "scheduleMeta": {
-      "mode": "Offline On-Campus",
-      "venueRequired": true,
-      "reportingTime": "08:30 AM IST",
-      "proctoringOrJudgingRounds": 4
-    },
-    "submissionRequirements": {
-      "requiresDocumentUpload": false,
-      "allowedFileTypes": [
-        "pdf",
-        "pptx"
-      ],
-      "maxFileSizeMb": 25
-    },
-    "flags": {
-      "isOpenForRegistration": true,
-      "isSpotRegistrationAllowed": false,
-      "isFeatured": false,
-      "isRollingShieldEvent": false
-    }
-  },
-  {
-    "type": "cul",
-    "id": "frame-by-frame",
-    "title": "Frame by Frame",
-    "category": "Photography & Visual Storytelling",
-    "shortDesc": "A creative photography challenge where participants capture compelling stories through a powerful visual lens.",
-    "format": "Individual Competition (3 submitted photographs based on a theme)",
-    "judging": [
-      "Composition",
-      "Visual Storytelling",
-      "Creativity",
-      "Technical Quality"
-    ],
-    "prizes": "₹50,000 + Photography Excellence Award",
-    "fee": "₹250",
-    "participationType": "flexible",
-    "paymentModel": "team",
-    "feeStructure": {
-      "amount": 250,
-      "currency": "INR",
-      "displayFee": "₹250",
-      "chargedPer": "team",
-      "splitPaymentSupported": false,
-      "isRefundable": false
-    },
-    "teamConstraints": {
-      "minMembers": 1,
-      "maxMembers": 1,
-      "allowInterCollegeTeams": true,
-      "allowCrossDepartment": true
-    },
-    "eligibility": {
-      "targetAudience": "All UG & PG Students",
-      "idCardRequired": true,
-      "bonafideCertificateRequired": false
-    },
-    "scheduleMeta": {
-      "mode": "Offline On-Campus",
-      "venueRequired": true,
-      "reportingTime": "08:30 AM IST",
-      "proctoringOrJudgingRounds": 4
-    },
-    "submissionRequirements": {
-      "requiresDocumentUpload": true,
-      "allowedFileTypes": [
-        "jpg",
-        "png",
-        "raw"
-      ],
-      "maxFileSizeMb": 25
-    },
-    "flags": {
-      "isOpenForRegistration": true,
-      "isSpotRegistrationAllowed": false,
-      "isFeatured": false,
-      "isRollingShieldEvent": false
-    }
-  },
-  {
-    "type": "cul",
-    "id": "canvas-conquest",
-    "title": "Canvas Conquest",
-    "category": "Fine Arts, Painting & Illustration",
-    "shortDesc": "An artistic battlefield where imagination meets technique through live painting and creative visual expression.",
-    "format": "Individual Competition (90-minute live creation)",
-    "judging": [
-      "Originality",
-      "Artistic Technique",
-      "Theme Interpretation",
-      "Visual Impact"
-    ],
-    "prizes": "₹60,000 + Artist Excellence Trophy",
-    "fee": "₹300",
-    "participationType": "flexible",
-    "paymentModel": "team",
-    "feeStructure": {
-      "amount": 300,
-      "currency": "INR",
-      "displayFee": "₹300",
-      "chargedPer": "team",
-      "splitPaymentSupported": false,
-      "isRefundable": false
-    },
-    "teamConstraints": {
-      "minMembers": 1,
-      "maxMembers": 1,
-      "allowInterCollegeTeams": true,
-      "allowCrossDepartment": true
-    },
-    "eligibility": {
-      "targetAudience": "All UG & PG Students",
-      "idCardRequired": true,
-      "bonafideCertificateRequired": false
-    },
-    "scheduleMeta": {
-      "mode": "Offline On-Campus",
-      "venueRequired": true,
-      "reportingTime": "08:30 AM IST",
-      "proctoringOrJudgingRounds": 4
-    },
-    "submissionRequirements": {
-      "requiresDocumentUpload": false,
-      "allowedFileTypes": [
-        "pdf",
-        "pptx"
-      ],
-      "maxFileSizeMb": 25
-    },
-    "flags": {
-      "isOpenForRegistration": true,
-      "isSpotRegistrationAllowed": false,
-      "isFeatured": false,
-      "isRollingShieldEvent": false
-    }
-  },
-  {
-    "type": "cul",
-    "id": "reel-revolution",
-    "title": "Reel Revolution",
-    "category": "Short Films & Digital Content Creation",
-    "shortDesc": "A digital storytelling competition challenging creators to produce impactful short-form visual content.",
-    "format": "Individual or Team (maximum 4 members, 3-minute film)",
-    "judging": [
-      "Storytelling",
-      "Editing",
-      "Creativity",
-      "Audience Impact"
-    ],
-    "prizes": "₹1,00,000 + Digital Creator Award",
-    "fee": "₹600 per team",
+    "teamSize": "Team of 4 to 6",
+    "prizes": "₹1,00,000 + WDC Heritage Award",
+    "fee": "₹600",
     "participationType": "team",
     "paymentModel": "team",
     "feeStructure": {
       "amount": 600,
       "currency": "INR",
-      "displayFee": "₹600 per team",
+      "displayFee": "₹600",
       "chargedPer": "team",
       "splitPaymentSupported": false,
       "isRefundable": false
     },
     "teamConstraints": {
       "minMembers": 4,
-      "maxMembers": 4,
+      "maxMembers": 6,
       "allowInterCollegeTeams": true,
       "allowCrossDepartment": true
     },
     "eligibility": {
-      "targetAudience": "All UG & PG Students",
+      "targetAudience": "All Collegiate Artists & Designers",
       "idCardRequired": true,
       "bonafideCertificateRequired": false
     },
     "scheduleMeta": {
       "mode": "Offline On-Campus",
       "venueRequired": true,
-      "reportingTime": "08:30 AM IST",
-      "proctoringOrJudgingRounds": 4
-    },
-    "submissionRequirements": {
-      "requiresDocumentUpload": true,
-      "allowedFileTypes": [
-        "mp4",
-        "mov",
-        "gdrive_link"
-      ],
-      "maxFileSizeMb": 25
-    },
-    "flags": {
-      "isOpenForRegistration": true,
-      "isSpotRegistrationAllowed": false,
-      "isFeatured": false,
-      "isRollingShieldEvent": false
+      "reportingTime": "09:30 AM IST",
+      "date": "2027-01-30"
     }
   },
   {
     "type": "cul",
-    "id": "battle-of-the-beats",
-    "title": "Battle of the Beats",
-    "category": "DJ, Music Production & Beatboxing",
-    "shortDesc": "A high-voltage music arena featuring live mixing, original beats, rhythm innovation, and electrifying performances.",
-    "format": "Individual or Duo Performance (8 minutes)",
-    "judging": [
-      "Beat Selection",
-      "Mixing Skills",
-      "Originality",
-      "Crowd Engagement"
+    "id": "adgenix",
+    "num": "17",
+    "title": "ADGENIX",
+    "category": "Creative Ad-Zap & Commercial Drama",
+    "club": "Navras",
+    "shortDesc": "Uninhibited comedic satire, quick-witted ad-zapping, commercial spoofs, and live on-stage branding theatricals.",
+    "rounds": [
+      {
+        "name": "Round 1: The Bizarre Product Allotment",
+        "desc": "Teams pick unmarketable/funny products and script a 3-minute television commercial."
+      },
+      {
+        "name": "Round 2: Live On-Stage Zapping",
+        "desc": "Performers face spontaneous jingle changes, celebrity mimicry prompts, and live buzzer cues."
+      }
     ],
-    "prizes": "₹1,00,000 + Music Production Grants",
-    "fee": "₹500 per entry",
-    "participationType": "flexible",
-    "paymentModel": "entry",
-    "feeStructure": {
-      "amount": 500,
-      "currency": "INR",
-      "displayFee": "₹500 per entry",
-      "chargedPer": "individual",
-      "splitPaymentSupported": false,
-      "isRefundable": false
-    },
-    "teamConstraints": {
-      "minMembers": 1,
-      "maxMembers": 1,
-      "allowInterCollegeTeams": true,
-      "allowCrossDepartment": true
-    },
-    "eligibility": {
-      "targetAudience": "All UG & PG Students",
-      "idCardRequired": true,
-      "bonafideCertificateRequired": false
-    },
-    "scheduleMeta": {
-      "mode": "Offline On-Campus",
-      "venueRequired": true,
-      "reportingTime": "08:30 AM IST",
-      "proctoringOrJudgingRounds": 4
-    },
-    "submissionRequirements": {
-      "requiresDocumentUpload": false,
-      "allowedFileTypes": [
-        "pdf",
-        "pptx"
-      ],
-      "maxFileSizeMb": 25
-    },
-    "flags": {
-      "isOpenForRegistration": true,
-      "isSpotRegistrationAllowed": false,
-      "isFeatured": false,
-      "isRollingShieldEvent": false
-    }
-  },
-  {
-    "type": "cul",
-    "id": "wordsmith-wars",
-    "title": "Wordsmith Wars",
-    "category": "Literary Arts, Poetry & Creative Writing",
-    "shortDesc": "A celebration of language and imagination where writers and speakers compete through poetry, storytelling, and spoken word.",
-    "format": "Individual Performance (5 minutes)",
-    "judging": [
-      "Language Proficiency",
-      "Originality",
-      "Expression",
-      "Audience Connection"
-    ],
-    "prizes": "₹50,000 + Literary Excellence Trophy",
-    "fee": "₹250",
-    "participationType": "flexible",
+    "teamSize": "Team of 3 to 5",
+    "prizes": "₹1,20,000 + Navras Golden Jester Shield",
+    "fee": "₹750",
+    "participationType": "team",
     "paymentModel": "team",
     "feeStructure": {
-      "amount": 250,
+      "amount": 750,
       "currency": "INR",
-      "displayFee": "₹250",
+      "displayFee": "₹750",
       "chargedPer": "team",
       "splitPaymentSupported": false,
       "isRefundable": false
     },
     "teamConstraints": {
-      "minMembers": 1,
-      "maxMembers": 1,
+      "minMembers": 3,
+      "maxMembers": 5,
       "allowInterCollegeTeams": true,
       "allowCrossDepartment": true
     },
     "eligibility": {
-      "targetAudience": "All UG & PG Students",
+      "targetAudience": "All Collegiate Performers",
+      "idCardRequired": true,
+      "bonafideCertificateRequired": false
+    },
+    "scheduleMeta": {
+      "mode": "Offline On-Campus",
+      "venueRequired": true,
+      "reportingTime": "11:00 AM IST",
+      "date": "2027-01-30"
+    }
+  },
+  {
+    "type": "cul",
+    "id": "cineverse",
+    "num": "18",
+    "title": "CINEVERSE",
+    "category": "Cinema Analysis, Short Films & Trivia",
+    "club": "Navras",
+    "shortDesc": "For the cinephiles: screenplay analysis, cinematic direction breakdowns, iconic film trivia, and video editing sprints.",
+    "rounds": [
+      {
+        "name": "Round 1: The Director's Cut Quiz",
+        "desc": "Audio-visual screening testing cinematography, soundtrack scores, and world cinema mastery."
+      },
+      {
+        "name": "Round 2: Scene Re-Imagination Sprint",
+        "desc": "Live scene deconstruction and alternative script pitching to distinguished filmmakers."
+      }
+    ],
+    "teamSize": "Team of 3",
+    "prizes": "₹1,00,000 + Cineverse Director's Clapperboard",
+    "fee": "₹600",
+    "participationType": "team",
+    "paymentModel": "team",
+    "feeStructure": {
+      "amount": 600,
+      "currency": "INR",
+      "displayFee": "₹600",
+      "chargedPer": "team",
+      "splitPaymentSupported": false,
+      "isRefundable": false
+    },
+    "teamConstraints": {
+      "minMembers": 3,
+      "maxMembers": 3,
+      "allowInterCollegeTeams": true,
+      "allowCrossDepartment": true
+    },
+    "eligibility": {
+      "targetAudience": "All Collegiate Film Enthusiasts",
+      "idCardRequired": true,
+      "bonafideCertificateRequired": false
+    },
+    "scheduleMeta": {
+      "mode": "Offline On-Campus",
+      "venueRequired": true,
+      "reportingTime": "10:00 AM IST",
+      "date": "2027-01-30"
+    }
+  },
+  {
+    "type": "cul",
+    "id": "frame-x",
+    "num": "19",
+    "title": "FRAME X",
+    "category": "Viral Reels & Digital Storytelling",
+    "club": "Impressions",
+    "shortDesc": "Capture the raw heartbeat, comedic chaos, and high-energy drama of YUKTI in short-form cinematic digital reels.",
+    "rounds": [
+      {
+        "name": "Round 1: Live Campus Hunting",
+        "desc": "Capturing real-time candid moments across events under strict prompt parameters."
+      },
+      {
+        "name": "Round 2: The Fast-Cut Render",
+        "desc": "Color grading, sound synchronization, and narrative pacing submitted for jury screening."
+      }
+    ],
+    "teamSize": "Team of 2 to 4",
+    "prizes": "₹1,00,000 + Impressions Creator Trophy",
+    "fee": "₹500",
+    "participationType": "team",
+    "paymentModel": "team",
+    "feeStructure": {
+      "amount": 500,
+      "currency": "INR",
+      "displayFee": "₹500",
+      "chargedPer": "team",
+      "splitPaymentSupported": false,
+      "isRefundable": false
+    },
+    "teamConstraints": {
+      "minMembers": 2,
+      "maxMembers": 4,
+      "allowInterCollegeTeams": true,
+      "allowCrossDepartment": true
+    },
+    "eligibility": {
+      "targetAudience": "All Collegiate Content Creators",
+      "idCardRequired": true,
+      "bonafideCertificateRequired": false
+    },
+    "scheduleMeta": {
+      "mode": "Offline On-Campus",
+      "venueRequired": true,
+      "reportingTime": "09:00 AM IST",
+      "date": "2027-01-30"
+    }
+  },
+  {
+    "type": "cul",
+    "id": "rolling-shutter",
+    "num": "20",
+    "title": "ROLLING SHUTTER",
+    "category": "Campus Photography & Visual Journalism",
+    "club": "Impressions",
+    "shortDesc": "Master shutter speed, framing, lighting contrast, and high-impact visual storytelling behind the camera lens.",
+    "rounds": [
+      {
+        "name": "Round 1: Theme Reveal & Candid Marathon",
+        "desc": "Exploring the campus to freeze emotion, geometry, and lighting into high-resolution stills."
+      },
+      {
+        "name": "Round 2: The Gallery Curation",
+        "desc": "Defending compositional choices, dynamic range, and emotional storytelling to a master jury."
+      }
+    ],
+    "teamSize": "Team of 2",
+    "prizes": "₹80,000 + Golden Lens Award",
+    "fee": "₹400",
+    "participationType": "team",
+    "paymentModel": "team",
+    "feeStructure": {
+      "amount": 400,
+      "currency": "INR",
+      "displayFee": "₹400",
+      "chargedPer": "team",
+      "splitPaymentSupported": false,
+      "isRefundable": false
+    },
+    "teamConstraints": {
+      "minMembers": 2,
+      "maxMembers": 2,
+      "allowInterCollegeTeams": true,
+      "allowCrossDepartment": true
+    },
+    "eligibility": {
+      "targetAudience": "All Collegiate Photographers",
+      "idCardRequired": true,
+      "bonafideCertificateRequired": false
+    },
+    "scheduleMeta": {
+      "mode": "Offline On-Campus",
+      "venueRequired": true,
+      "reportingTime": "09:30 AM IST",
+      "date": "2027-01-30"
+    }
+  },
+  {
+    "type": "cul",
+    "id": "operation-z",
+    "num": "21",
+    "title": "OPERATION Z",
+    "category": "The Cipher Hunt & Campus Treasure Quest",
+    "club": "Zero Gravity",
+    "shortDesc": "Cryptic puzzles, cryptographic cipher locks, physical geolocation coordinates, and thrilling high-adrenaline campus treasure hunt.",
+    "rounds": [
+      {
+        "name": "Round 1: The Cryptic Decryption",
+        "desc": "Solving algebraic ciphers, steganography hints, and historical riddles."
+      },
+      {
+        "name": "Round 2: The Physical Campus Gauntlet",
+        "desc": "Navigating dynamic hidden markers, checkpoint challenges, and clock-beating retrieval."
+      }
+    ],
+    "teamSize": "Team of 3",
+    "prizes": "₹1,20,000 + Zero Gravity Shield",
+    "fee": "₹600",
+    "participationType": "team",
+    "paymentModel": "team",
+    "feeStructure": {
+      "amount": 600,
+      "currency": "INR",
+      "displayFee": "₹600",
+      "chargedPer": "team",
+      "splitPaymentSupported": false,
+      "isRefundable": false
+    },
+    "teamConstraints": {
+      "minMembers": 3,
+      "maxMembers": 3,
+      "allowInterCollegeTeams": true,
+      "allowCrossDepartment": true
+    },
+    "eligibility": {
+      "targetAudience": "Open to All College Students",
+      "idCardRequired": true,
+      "bonafideCertificateRequired": false
+    },
+    "scheduleMeta": {
+      "mode": "Offline On-Campus",
+      "venueRequired": true,
+      "reportingTime": "11:00 AM IST",
+      "date": "2027-01-30"
+    }
+  },
+  {
+    "type": "man",
+    "id": "hackathon-nexus",
+    "num": "22",
+    "title": "YUKTI HACKATHON: AI NEXUS",
+    "domain": "AI & Product Prototyping",
+    "club": "Incubation Cell",
+    "shortDesc": "A 24-hour sprint building real-world generative AI and software solutions supported by the Incubation Cell.",
+    "rounds": [
+      {
+        "name": "Round 1: Problem Statement & Architecture",
+        "desc": "Ideation and architecture pitching for real-world enterprise prompts."
+      },
+      {
+        "name": "Round 2: 24-Hour Code Sprint",
+        "desc": "Intense prototype development with mentor check-ins and code audits."
+      },
+      {
+        "name": "Round 3: Grand Demo & Seed Grant Pitch",
+        "desc": "Final live product deployment and pitching for startup incubation."
+      }
+    ],
+    "teamSize": "Team of 2 to 4",
+    "prizes": "₹2,50,000 + Incubation Grants",
+    "fee": "₹800",
+    "participationType": "team",
+    "paymentModel": "team",
+    "feeStructure": {
+      "amount": 800,
+      "currency": "INR",
+      "displayFee": "₹800",
+      "chargedPer": "team",
+      "splitPaymentSupported": false,
+      "isRefundable": false
+    },
+    "teamConstraints": {
+      "minMembers": 2,
+      "maxMembers": 4,
+      "allowInterCollegeTeams": true,
+      "allowCrossDepartment": true
+    },
+    "eligibility": {
+      "targetAudience": "All Developers, Innovators & Students",
       "idCardRequired": true,
       "bonafideCertificateRequired": false
     },
@@ -1346,21 +1122,7 @@
       "mode": "Offline On-Campus",
       "venueRequired": true,
       "reportingTime": "08:30 AM IST",
-      "proctoringOrJudgingRounds": 4
-    },
-    "submissionRequirements": {
-      "requiresDocumentUpload": false,
-      "allowedFileTypes": [
-        "pdf",
-        "pptx"
-      ],
-      "maxFileSizeMb": 25
-    },
-    "flags": {
-      "isOpenForRegistration": true,
-      "isSpotRegistrationAllowed": false,
-      "isFeatured": false,
-      "isRollingShieldEvent": false
+      "date": "2027-01-29"
     }
   }
 ]
