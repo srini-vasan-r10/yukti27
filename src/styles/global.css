@@ -245,11 +245,11 @@ main{position:relative;z-index:10}
   margin:0;
   z-index:2;
   transition:clip-path 0.05s linear;
-  background:linear-gradient(135deg, #FFF7D6 0%, #F5D77F 45%, #C59B3C 85%, #926C15 100%) !important;
+  background:linear-gradient(135deg, #FFF2A6 0%, #F5D77F 50%, #C59B3C 100%) !important;
   -webkit-background-clip:text !important;
   -webkit-text-fill-color:transparent !important;
-  -webkit-text-stroke:0.5px rgba(255,242,166,0.6);
-  filter:drop-shadow(0 0 18px rgba(245,215,127,0.6));
+  -webkit-text-stroke:0px !important;
+  filter:none !important;
 }
 
 .laser-cutting-point{
@@ -303,10 +303,10 @@ main{position:relative;z-index:10}
   margin:0 0 16px;
   font-weight:700;
   white-space:nowrap;
-  background:linear-gradient(135deg, var(--bright-spark) 20%, var(--gold-figure) 60%, var(--gold-border) 100%);
+  background:linear-gradient(135deg, #FFF2A6 0%, #F5D77F 50%, #C59B3C 100%);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-  filter:drop-shadow(0 4px 25px rgba(245,215,127,0.3));
+  filter:none !important;
 }
 
 h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(3.8rem,7.5vw,6.5rem);line-height:.95;letter-spacing:-.03em;margin:0 0 16px;font-weight:700}
