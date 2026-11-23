@@ -50,7 +50,7 @@ export default function RobotHandWriter({ onComplete }) {
       {isEngraving && (
         <div
           className="laser-cutting-point"
-          style={{ left: `calc(36px + (100% - 72px) * ${fillPercent / 100})` }}
+          style={{ left: `${fillPercent}%` }}
         >
           <span className="plasma-core" />
           <span className="plasma-beam-spark" />
