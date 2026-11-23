@@ -245,7 +245,11 @@ main{position:relative;z-index:10}
   margin:0;
   z-index:2;
   transition:clip-path 0.05s linear;
-  background:none !important;
+  background:linear-gradient(135deg, #FFF7D6 0%, #F5D77F 45%, #C59B3C 85%, #926C15 100%) !important;
+  -webkit-background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+  -webkit-text-stroke:0.5px rgba(255,242,166,0.6);
+  filter:drop-shadow(0 0 18px rgba(245,215,127,0.6));
 }
 
 .laser-cutting-point{
